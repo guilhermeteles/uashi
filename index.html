@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" /><meta name="viewport" content="width=device-width,initial-scale=1.0" />
+  <title>Protótipo Uashi — Índice de Navegação</title>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --bg:#0A0A0A; --surface:#141414; --surface-2:#1E1E1E;
+      --red:#E8321A; --gold:#F5A800; --blue:#1A6FD4; --cream:#F0E8D0; --muted:#6B6B6B;
+      --font-display:'Bebas Neue',sans-serif;
+    }
+    * { box-sizing:border-box; margin:0; padding:0; }
+    body { background:var(--bg); color:var(--cream); font-family:'Inter',sans-serif; min-height:100vh; }
+
+    /* ── header ── */
+    header { padding:48px 40px 0; max-width:1100px; margin:0 auto; }
+    .logo { height:36px; width:auto; display:block; margin-bottom:20px; }
+    .swoosh { height:3px; background:linear-gradient(90deg,var(--red),var(--gold),var(--blue)); border:none; border-radius:2px; margin:20px 0 32px; }
+    .headline { font-family:var(--font-display); font-size:clamp(1.6rem,3vw,2.4rem); letter-spacing:.04em; color:var(--cream); line-height:1; margin-bottom:6px; }
+    .subline { font-size:.85rem; color:var(--muted); }
+
+    /* ── badge protótipo ── */
+    .proto-badge { display:inline-flex; align-items:center; gap:6px; background:rgba(245,168,0,.1); border:1px solid rgba(245,168,0,.25); border-radius:99px; padding:4px 12px; font-size:.72rem; font-weight:600; color:var(--gold); margin-bottom:32px; }
+
+    /* ── grid de seções ── */
+    main { max-width:1100px; margin:0 auto; padding:0 40px 64px; }
+    .section-label {
+      font-family:var(--font-display); font-size:1rem; letter-spacing:.08em; color:var(--muted);
+      text-transform:uppercase; margin-bottom:14px; margin-top:36px;
+      display:flex; align-items:center; gap:12px;
+    }
+    .section-label::after { content:''; flex:1; height:1px; background:rgba(255,255,255,.06); }
+
+    .cards { display:grid; grid-template-columns:repeat(auto-fill,minmax(220px,1fr)); gap:12px; }
+
+    .card {
+      background:var(--surface); border:1px solid rgba(255,255,255,.07); border-radius:14px;
+      padding:18px; text-decoration:none; color:var(--cream);
+      transition:transform .18s, box-shadow .18s, border-color .18s;
+      display:flex; flex-direction:column; gap:8px;
+    }
+    .card:hover { transform:translateY(-3px); box-shadow:0 12px 32px rgba(0,0,0,.45); border-color:rgba(255,255,255,.14); }
+    .card.red  { border-color:rgba(232,50,26,.25); }
+    .card.gold { border-color:rgba(245,168,0,.25); }
+    .card.blue { border-color:rgba(26,111,212,.25); }
+    .card.green { border-color:rgba(34,197,94,.25); }
+
+    .card:hover.red  { border-color:rgba(232,50,26,.5); }
+    .card:hover.gold { border-color:rgba(245,168,0,.5); }
+    .card:hover.blue { border-color:rgba(26,111,212,.5); }
+    .card:hover.green { border-color:rgba(34,197,94,.5); }
+
+    .card-icon { font-size:1.5rem; margin-bottom:2px; }
+    .card-title { font-weight:700; font-size:.9rem; color:var(--cream); }
+    .card-desc { font-size:.75rem; color:var(--muted); line-height:1.5; }
+    .card-arrow { font-size:.75rem; color:var(--muted); margin-top:auto; padding-top:8px; }
+
+    .tag { display:inline-flex; align-items:center; padding:2px 8px; border-radius:99px; font-size:.65rem; font-weight:700; }
+    .tag-red  { background:rgba(232,50,26,.15); color:var(--red); }
+    .tag-gold { background:rgba(245,168,0,.15); color:var(--gold); }
+    .tag-blue { background:rgba(26,111,212,.15); color:var(--blue); }
+    .tag-green { background:rgba(34,197,94,.12); color:#22c55e; }
+
+    /* ── footer ── */
+    footer { max-width:1100px; margin:0 auto; padding:24px 40px; border-top:1px solid rgba(255,255,255,.06); display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:12px; }
+    footer span { font-size:.75rem; color:var(--muted); }
+
+    @media(max-width:600px){
+      header,main,footer { padding-left:20px; padding-right:20px; }
+      .cards { grid-template-columns:1fr 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <img src="uashi-logo.svg" alt="Uashi" class="logo" />
+  <hr class="swoosh" />
+  <div class="headline">PROTÓTIPO VISUAL</div>
+  <div class="subline" style="margin-bottom:16px;">Navegue pelas telas abaixo para revisar o fluxo completo.</div>
+  <div class="proto-badge">⚠ Protótipo estático — dados fictícios</div>
+</header>
+
+<main>
+
+  <!-- LANDING ───────────────────────────────────────── -->
+  <div class="section-label">🌐 Landing Page</div>
+  <div class="cards">
+    <a href="landing/index.html" class="card red">
+      <div class="card-icon">🏠</div>
+      <div class="card-title">Landing principal</div>
+      <div class="card-desc">Página pública com hero, como funciona, preços, planos, mapa e FAQ.</div>
+      <div class="card-arrow">Abrir →</div>
+    </a>
+    <a href="landing/franquia.html" class="card gold">
+      <div class="card-icon">🏪</div>
+      <div class="card-title">Seja um franqueado</div>
+      <div class="card-desc">Página B2B de captação com projeções, diferenciais e formulário de lead.</div>
+      <div class="card-arrow">Abrir →</div>
+    </a>
+    <a href="landing/cadastro.html" class="card blue">
+      <div class="card-icon">📝</div>
+      <div class="card-title">Cadastro</div>
+      <div class="card-desc">Onboarding multi-etapa: tipo de usuário, plataforma, senha e sucesso.</div>
+      <div class="card-arrow">Abrir →</div>
+    </a>
+  </div>
+
+  <!-- APP ───────────────────────────────────────────── -->
+  <div class="section-label">📱 App Mobile</div>
+  <div class="cards">
+    <a href="app/splash.html" class="card">
+      <div class="card-icon">✨</div>
+      <div class="card-title">Onboarding / Splash</div>
+      <div class="card-desc">3 slides de apresentação com swipe.</div>
+      <div class="card-arrow">Abrir →</div>
+    </a>
+    <a href="app/login.html" class="card">
+      <div class="card-icon">🔑</div>
+      <div class="card-title">Login</div>
+      <div class="card-desc">Social login (Google/Apple) + e-mail e senha.</div>
+      <div class="card-arrow">Abrir →</div>
+    </a>
+    <a href="app/index.html" class="card gold">
+      <div class="card-icon">🏠</div>
+      <div class="card-title">Home</div>
+      <div class="card-desc">Dashboard com créditos, atalhos, fidelidade e unidade mais próxima.</div>
+      <div class="card-arrow">Abrir →</div>
+    </a>
+    <a href="app/qrcode.html" class="card red">
+      <div class="card-icon">📷</div>
+      <div class="card-title">QR Code</div>
+      <div class="card-desc">QR gerado dinamicamente com contador regressivo de 28 minutos.</div>
+      <div class="card-arrow">Abrir →</div>
+    </a>
+    <a href="app/comprar.html" class="card">
+      <div class="card-icon">🚗</div>
+      <div class="card-title">Selecionar lavagem</div>
+      <div class="card-desc">Escolha de veículo e tipo (Simples / Completa / Premium).</div>
+      <div class="card-arrow">Abrir →</div>
+    </a>
+    <a href="app/creditos.html" class="card">
+      <div class="card-icon">💳</div>
+      <div class="card-title">Comprar créditos</div>
+      <div class="card-desc">Seleção de valor, bônus por faixa e formas de pagamento.</div>
+      <div class="card-arrow">Abrir →</div>
+    </a>
+    <a href="app/checkout.html" class="card">
+      <div class="card-icon">💰</div>
+      <div class="card-title">Checkout</div>
+      <div class="card-desc">Resumo, cartão/Pix, confirmação e loading de pagamento.</div>
+      <div class="card-arrow">Abrir →</div>
+    </a>
+    <a href="app/planos.html" class="card gold">
+      <div class="card-icon">📦</div>
+      <div class="card-title">Planos</div>
+      <div class="card-desc">Toggle mensal/anual, 3 planos com comparativo e CTAs.</div>
+      <div class="card-arrow">Abrir →</div>
+    </a>
+    <a href="app/gerenciar-plano.html" class="card">
+      <div class="card-icon">⚙️</div>
+      <div class="card-title">Gerenciar plano</div>
+      <div class="card-desc">Uso do mês, forma de pagamento, faturas e cancelamento.</div>
+      <div class="card-arrow">Abrir →</div>
+    </a>
+    <a href="app/fidelidade.html" class="card gold">
+      <div class="card-icon">⭐</div>
+      <div class="card-title">Fidelidade</div>
+      <div class="card-desc">Níveis Bronze→Diamante, progresso e histórico de pontos.</div>
+      <div class="card-arrow">Abrir →</div>
+    </a>
+    <a href="app/historico.html" class="card">
+      <div class="card-icon">📋</div>
+      <div class="card-title">Histórico</div>
+      <div class="card-desc">Lavagens agrupadas por mês com filtros por tipo.</div>
+      <div class="card-arrow">Abrir →</div>
+    </a>
+    <a href="app/detalhe-lavagem.html" class="card">
+      <div class="card-icon">🧾</div>
+      <div class="card-title">Detalhe da lavagem</div>
+      <div class="card-desc">Comprovante com tipo, unidade, valor, pontos e avaliação por estrelas.</div>
+      <div class="card-arrow">Abrir →</div>
+    </a>
+    <a href="app/mapa.html" class="card blue">
+      <div class="card-icon">🗺️</div>
+      <div class="card-title">Mapa de unidades</div>
+      <div class="card-desc">Mapa + lista de unidades com distância, fila e status.</div>
+      <div class="card-arrow">Abrir →</div>
+    </a>
+    <a href="app/unidade.html" class="card blue">
+      <div class="card-icon">🏢</div>
+      <div class="card-title">Detalhe da unidade</div>
+      <div class="card-desc">Horários de pico, endereço, fila e botão "Lavar aqui agora".</div>
+      <div class="card-arrow">Abrir →</div>
+    </a>
+    <a href="app/conta.html" class="card">
+      <div class="card-icon">👤</div>
+      <div class="card-title">Conta</div>
+      <div class="card-desc">Menu do perfil com acesso a veículos, dependentes, plano e suporte.</div>
+      <div class="card-arrow">Abrir →</div>
+    </a>
+    <a href="app/veiculos.html" class="card">
+      <div class="card-icon">🚙</div>
+      <div class="card-title">Meus veículos</div>
+      <div class="card-desc">Lista de veículos cadastrados com modal de adição.</div>
+      <div class="card-arrow">Abrir →</div>
+    </a>
+    <a href="app/dependentes.html" class="card">
+      <div class="card-icon">👨‍👩‍👦</div>
+      <div class="card-title">Dependentes</div>
+      <div class="card-desc">Dependentes com limites de uso e histórico individual.</div>
+      <div class="card-arrow">Abrir →</div>
+    </a>
+    <a href="app/presente.html" class="card gold">
+      <div class="card-icon">🎁</div>
+      <div class="card-title">Enviar presente</div>
+      <div class="card-desc">Gifting de lavagem com seleção de tipo, contato e mensagem.</div>
+      <div class="card-arrow">Abrir →</div>
+    </a>
+    <a href="app/notificacoes.html" class="card">
+      <div class="card-icon">🔔</div>
+      <div class="card-title">Notificações</div>
+      <div class="card-desc">Feed agrupado por data com ação de marcar tudo como lido.</div>
+      <div class="card-arrow">Abrir →</div>
+    </a>
+    <a href="app/notificacoes-config.html" class="card">
+      <div class="card-icon">🔕</div>
+      <div class="card-title">Config. de notificações</div>
+      <div class="card-desc">Toggles por tipo e horário de silêncio noturno.</div>
+      <div class="card-arrow">Abrir →</div>
+    </a>
+    <a href="app/suporte.html" class="card">
+      <div class="card-icon">💬</div>
+      <div class="card-title">Suporte</div>
+      <div class="card-desc">Abrir chamado, tickets abertos e contato via WhatsApp.</div>
+      <div class="card-arrow">Abrir →</div>
+    </a>
+    <a href="app/perfil.html" class="card">
+      <div class="card-icon">✏️</div>
+      <div class="card-title">Editar perfil</div>
+      <div class="card-desc">Nome, e-mail, telefone, plataformas e troca de senha.</div>
+      <div class="card-arrow">Abrir →</div>
+    </a>
+  </div>
+
+  <!-- ADMIN ─────────────────────────────────────────── -->
+  <div class="section-label">🏢 Admin · Matriz</div>
+  <div class="cards">
+    <a href="admin/login.html" class="card">
+      <div class="card-icon">🔐</div>
+      <div class="card-title">Login Admin</div>
+      <div class="card-desc">Seleção de perfil (Matriz/Franqueado/Frota/Usuário) + 2FA.</div>
+      <div class="card-arrow">Abrir →</div>
+    </a>
+    <a href="admin/index.html" class="card red">
+      <div class="card-icon">📊</div>
+      <div class="card-title">Dashboard Matriz</div>
+      <div class="card-desc">KPIs gerais, gráfico de receita semanal, metas por unidade e alertas.</div>
+      <div class="card-arrow">Abrir →</div>
+    </a>
+    <a href="admin/franqueados.html" class="card">
+      <div class="card-icon">🏪</div>
+      <div class="card-title">Franqueados</div>
+      <div class="card-desc">Tabela de 6 franqueados com royalties, status e ações.</div>
+      <div class="card-arrow">Abrir →</div>
+    </a>
+    <a href="admin/planos-precos.html" class="card gold">
+      <div class="card-icon">💳</div>
+      <div class="card-title">Planos & Preços</div>
+      <div class="card-desc">Cards dos planos com MRR e tabela de preços avulsos editável.</div>
+      <div class="card-arrow">Abrir →</div>
+    </a>
+    <a href="admin/promocoes.html" class="card gold">
+      <div class="card-icon">📣</div>
+      <div class="card-title">Promoções</div>
+      <div class="card-desc">Criação e gestão de promoções relâmpago por unidade.</div>
+      <div class="card-arrow">Abrir →</div>
+    </a>
+    <a href="admin/alertas.html" class="card red">
+      <div class="card-icon">🚨</div>
+      <div class="card-title">Alertas</div>
+      <div class="card-desc">10 alertas com drawer de detalhes, resolver, notificar e acionar técnico.</div>
+      <div class="card-arrow">Abrir →</div>
+    </a>
+    <a href="admin/chamados.html" class="card">
+      <div class="card-icon">💬</div>
+      <div class="card-title">Chamados</div>
+      <div class="card-desc">Central de suporte com tabela, filtros, SLA e ações.</div>
+      <div class="card-arrow">Abrir →</div>
+    </a>
+    <a href="admin/relatorios.html" class="card blue">
+      <div class="card-icon">📄</div>
+      <div class="card-title">Relatórios</div>
+      <div class="card-desc">6 relatórios exportáveis (CSV/PDF) com histórico de downloads.</div>
+      <div class="card-arrow">Abrir →</div>
+    </a>
+    <a href="admin/perfil-admin.html" class="card">
+      <div class="card-icon">👤</div>
+      <div class="card-title">Perfil Admin</div>
+      <div class="card-desc">Dados pessoais, segurança, 2FA e preferências de notificação.</div>
+      <div class="card-arrow">Abrir →</div>
+    </a>
+  </div>
+
+  <div class="section-label">🏪 Admin · Franqueado</div>
+  <div class="cards">
+    <a href="admin/franqueado.html" class="card blue">
+      <div class="card-icon">📊</div>
+      <div class="card-title">Dashboard Franqueado</div>
+      <div class="card-desc">KPIs da unidade Mooca, benchmark da rede, pico de horário e últimas lavagens.</div>
+      <div class="card-arrow">Abrir →</div>
+    </a>
+    <a href="admin/franqueado-usuarios.html" class="card blue">
+      <div class="card-icon">👥</div>
+      <div class="card-title">Usuários da unidade</div>
+      <div class="card-desc">312 assinantes com plano, uso, pontos e status.</div>
+      <div class="card-arrow">Abrir →</div>
+    </a>
+    <a href="admin/franqueado-historico.html" class="card blue">
+      <div class="card-icon">🚗</div>
+      <div class="card-title">Histórico de lavagens</div>
+      <div class="card-desc">Todas as lavagens da unidade com filtros e exportação.</div>
+      <div class="card-arrow">Abrir →</div>
+    </a>
+    <a href="admin/franqueado-chamados.html" class="card blue">
+      <div class="card-icon">💬</div>
+      <div class="card-title">Chamados da unidade</div>
+      <div class="card-desc">Urgentes, em andamento e resolvidos da unidade Mooca.</div>
+      <div class="card-arrow">Abrir →</div>
+    </a>
+  </div>
+
+  <div class="section-label">🚛 Admin · Frota</div>
+  <div class="cards">
+    <a href="admin/frota.html" class="card gold">
+      <div class="card-icon">📊</div>
+      <div class="card-title">Dashboard Frota</div>
+      <div class="card-desc">KPIs, uso por veículo, faturas e alertas de limite (Transportes Silva, 12 veículos).</div>
+      <div class="card-arrow">Abrir →</div>
+    </a>
+    <a href="admin/frota-veiculos.html" class="card gold">
+      <div class="card-icon">🚗</div>
+      <div class="card-title">Veículos</div>
+      <div class="card-desc">Tabela com progresso de uso, status e modal de adição.</div>
+      <div class="card-arrow">Abrir →</div>
+    </a>
+    <a href="admin/frota-motoristas.html" class="card gold">
+      <div class="card-icon">👤</div>
+      <div class="card-title">Motoristas</div>
+      <div class="card-desc">Cards de 9 motoristas vinculados com uso e ações.</div>
+      <div class="card-arrow">Abrir →</div>
+    </a>
+    <a href="admin/frota-fatura.html" class="card gold">
+      <div class="card-icon">📄</div>
+      <div class="card-title">Fatura</div>
+      <div class="card-desc">Fatura detalhada com breakdown por veículo e histórico.</div>
+      <div class="card-arrow">Abrir →</div>
+    </a>
+    <a href="admin/frota-chamados.html" class="card gold">
+      <div class="card-icon">💬</div>
+      <div class="card-title">Chamados da frota</div>
+      <div class="card-desc">Tickets de faturamento, acesso e formulário de abertura.</div>
+      <div class="card-arrow">Abrir →</div>
+    </a>
+  </div>
+
+  <div class="section-label">👤 Admin · Usuário</div>
+  <div class="cards">
+    <a href="admin/usuario.html" class="card green">
+      <div class="card-icon">📊</div>
+      <div class="card-title">Painel do usuário</div>
+      <div class="card-desc">KPIs pessoais, plano, fidelidade e histórico recente (Carlos Mendes).</div>
+      <div class="card-arrow">Abrir →</div>
+    </a>
+    <a href="admin/usuario-veiculos.html" class="card green">
+      <div class="card-icon">🚗</div>
+      <div class="card-title">Meus veículos</div>
+      <div class="card-desc">HR-V e Gol com uso comparativo e modal de adição.</div>
+      <div class="card-arrow">Abrir →</div>
+    </a>
+    <a href="admin/usuario-dependentes.html" class="card green">
+      <div class="card-icon">👨‍👩‍👦</div>
+      <div class="card-title">Dependentes</div>
+      <div class="card-desc">Ana Mendes com limites de lavagem/gasto e histórico.</div>
+      <div class="card-arrow">Abrir →</div>
+    </a>
+    <a href="admin/usuario-faturas.html" class="card green">
+      <div class="card-icon">📄</div>
+      <div class="card-title">Faturas</div>
+      <div class="card-desc">Histórico de cobranças com NF-e e forma de pagamento.</div>
+      <div class="card-arrow">Abrir →</div>
+    </a>
+    <a href="admin/usuario-chamados.html" class="card green">
+      <div class="card-icon">💬</div>
+      <div class="card-title">Chamados</div>
+      <div class="card-desc">Ticket em andamento com resposta do suporte e histórico.</div>
+      <div class="card-arrow">Abrir →</div>
+    </a>
+  </div>
+
+</main>
+
+<footer>
+  <span>Uashi · Protótipo visual estático · Junho 2025</span>
+  <span style="color:rgba(255,255,255,.15);">Dados fictícios — apenas para aprovação visual</span>
+</footer>
+
+</body>
+</html>
