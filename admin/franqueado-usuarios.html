@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" /><meta name="viewport" content="width=device-width,initial-scale=1.0" />
+  <title>Usuários — Franqueado Uashi</title>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="./_admin.css" />
+</head>
+<body>
+<div class="admin-layout">
+  <aside class="sidebar">
+    <div class="sidebar-logo"><div class="wordmark">UASHI</div><div class="swoosh"></div></div>
+    <div class="sidebar-profile">
+      <div class="sidebar-avatar" style="background:var(--blue);">R</div>
+      <div><div class="sidebar-name">Ricardo Almeida</div><div class="sidebar-role">🏪 Franqueado · Mooca</div></div>
+    </div>
+    <nav class="sidebar-nav">
+      <div class="nav-section-label">Principal</div>
+      <a href="franqueado.html" class="nav-item"><span class="nav-icon">📊</span>Dashboard</a>
+      <a href="franqueado-usuarios.html" class="nav-item active"><span class="nav-icon">👥</span>Usuários</a>
+      <a href="franqueado-historico.html" class="nav-item"><span class="nav-icon">🚗</span>Histórico</a>
+      <a href="franqueado-chamados.html" class="nav-item"><span class="nav-icon">💬</span>Chamados</a>
+      <div class="nav-section-label">Conta</div>
+      <a href="perfil-admin.html" class="nav-item"><span class="nav-icon">👤</span>Perfil</a>
+    </nav>
+    <div class="sidebar-footer"><a href="login.html" style="font-size:.75rem;color:var(--muted);text-decoration:none;">← Sair</a></div>
+  </aside>
+
+  <div class="main-area">
+    <div class="topbar">
+      <span class="topbar-title">Usuários · Mooca</span>
+      <div class="topbar-actions">
+        <button class="topbar-btn">🔔</button>
+        <div style="width:32px;height:32px;border-radius:8px;background:var(--blue);display:flex;align-items:center;justify-content:center;font-family:var(--font-display);color:#fff;font-size:.9rem;">R</div>
+      </div>
+    </div>
+    <hr class="swoosh" />
+
+    <div class="page-content">
+      <div class="page-header">
+        <div>
+          <h1>USUÁRIOS ATIVOS</h1>
+          <div style="font-size:.8rem;color:var(--muted);">312 assinantes nesta unidade</div>
+        </div>
+      </div>
+
+      <div class="kpi-grid" style="grid-template-columns:repeat(4,1fr);margin-bottom:20px;">
+        <div class="kpi-card highlight">
+          <div class="kpi-val" style="color:var(--gold);">312</div>
+          <div class="kpi-label">Assinantes ativos</div>
+          <div class="kpi-delta up">▲ +18% este mês</div>
+        </div>
+        <div class="kpi-card">
+          <div class="kpi-val" style="color:var(--cream);">198</div>
+          <div class="kpi-label">Plano Pro</div>
+          <div class="kpi-delta" style="color:var(--muted);">63% do total</div>
+        </div>
+        <div class="kpi-card">
+          <div class="kpi-val" style="color:var(--cream);">94</div>
+          <div class="kpi-label">Plano Básico</div>
+          <div class="kpi-delta" style="color:var(--muted);">30% do total</div>
+        </div>
+        <div class="kpi-card">
+          <div class="kpi-val" style="color:var(--cream);">20</div>
+          <div class="kpi-label">Frota</div>
+          <div class="kpi-delta" style="color:var(--muted);">7% do total</div>
+        </div>
+      </div>
+
+      <div class="filter-bar" style="margin-bottom:16px;">
+        <input class="form-input" style="width:260px;" type="text" placeholder="🔍 Buscar usuário..." />
+        <select class="form-input" style="width:auto;">
+          <option>Todos os planos</option>
+          <option>Básico</option>
+          <option>Pro</option>
+          <option>Frota</option>
+        </select>
+        <select class="form-input" style="width:auto;">
+          <option>Todos os status</option>
+          <option>Ativo</option>
+          <option>Inadimplente</option>
+          <option>Cancelado</option>
+        </select>
+      </div>
+
+      <div class="card" style="overflow-x:auto;">
+        <table class="data-table">
+          <thead><tr><th>Usuário</th><th>Plano</th><th>Lavagens/mês</th><th>Último acesso</th><th>Pontos</th><th>Status</th><th>Ações</th></tr></thead>
+          <tbody>
+            <tr>
+              <td>
+                <div style="display:flex;align-items:center;gap:8px;">
+                  <div style="width:28px;height:28px;border-radius:6px;background:var(--red);display:flex;align-items:center;justify-content:center;font-size:.7rem;font-weight:700;">C</div>
+                  <div><div style="font-weight:600;">Carlos Mendes</div><div style="font-size:.7rem;color:var(--muted);">carlos@email.com</div></div>
+                </div>
+              </td>
+              <td><span class="tag tag-gold">Pro ⭐</span></td>
+              <td>14</td>
+              <td style="color:var(--muted);">Hoje 09:38</td>
+              <td style="color:var(--gold);">650 pts</td>
+              <td><span class="tag tag-green">Ativo</span></td>
+              <td><button class="btn-icon" onclick="alert('(protótipo) Ver perfil de Carlos Mendes')">👁</button></td>
+            </tr>
+            <tr>
+              <td>
+                <div style="display:flex;align-items:center;gap:8px;">
+                  <div style="width:28px;height:28px;border-radius:6px;background:var(--blue);display:flex;align-items:center;justify-content:center;font-size:.7rem;font-weight:700;">F</div>
+                  <div><div style="font-weight:600;">Fernanda Silva</div><div style="font-size:.7rem;color:var(--muted);">fernanda@email.com</div></div>
+                </div>
+              </td>
+              <td><span class="tag tag-blue">Básico</span></td>
+              <td>6</td>
+              <td style="color:var(--muted);">Hoje 09:22</td>
+              <td style="color:var(--gold);">210 pts</td>
+              <td><span class="tag tag-green">Ativo</span></td>
+              <td><button class="btn-icon" onclick="alert('(protótipo) Ver perfil')">👁</button></td>
+            </tr>
+            <tr>
+              <td>
+                <div style="display:flex;align-items:center;gap:8px;">
+                  <div style="width:28px;height:28px;border-radius:6px;background:#7c3aed;display:flex;align-items:center;justify-content:center;font-size:.7rem;font-weight:700;">M</div>
+                  <div><div style="font-weight:600;">Marina Lima</div><div style="font-size:.7rem;color:var(--muted);">marina@email.com</div></div>
+                </div>
+              </td>
+              <td><span class="tag tag-gold">Pro ⭐</span></td>
+              <td>22</td>
+              <td style="color:var(--muted);">Ontem 14:10</td>
+              <td style="color:var(--gold);">1.240 pts</td>
+              <td><span class="tag tag-green">Ativo</span></td>
+              <td><button class="btn-icon" onclick="alert('(protótipo) Ver perfil')">👁</button></td>
+            </tr>
+            <tr>
+              <td>
+                <div style="display:flex;align-items:center;gap:8px;">
+                  <div style="width:28px;height:28px;border-radius:6px;background:#0891b2;display:flex;align-items:center;justify-content:center;font-size:.7rem;font-weight:700;">J</div>
+                  <div><div style="font-weight:600;">João Pereira</div><div style="font-size:.7rem;color:var(--muted);">joao@email.com</div></div>
+                </div>
+              </td>
+              <td><span class="tag tag-blue">Básico</span></td>
+              <td>3</td>
+              <td style="color:var(--muted);">08/06 08:05</td>
+              <td style="color:var(--gold);">80 pts</td>
+              <td><span class="tag tag-red">Inadimplente</span></td>
+              <td><button class="btn-icon" onclick="alert('(protótipo) Ver perfil')">👁</button></td>
+            </tr>
+            <tr>
+              <td>
+                <div style="display:flex;align-items:center;gap:8px;">
+                  <div style="width:28px;height:28px;border-radius:6px;background:var(--gold);color:#0A0A0A;display:flex;align-items:center;justify-content:center;font-size:.7rem;font-weight:700;">A</div>
+                  <div><div style="font-weight:600;">Ana Costa</div><div style="font-size:.7rem;color:var(--muted);">ana@email.com</div></div>
+                </div>
+              </td>
+              <td><span class="tag tag-gold">Pro ⭐</span></td>
+              <td>18</td>
+              <td style="color:var(--muted);">07/06 07:30</td>
+              <td style="color:var(--gold);">900 pts</td>
+              <td><span class="tag tag-green">Ativo</span></td>
+              <td><button class="btn-icon" onclick="alert('(protótipo) Ver perfil')">👁</button></td>
+            </tr>
+          </tbody>
+        </table>
+        <div style="padding:12px 16px;border-top:1px solid rgba(255,255,255,.06);display:flex;justify-content:space-between;align-items:center;">
+          <span style="font-size:.75rem;color:var(--muted);">Mostrando 5 de 312 usuários</span>
+          <div style="display:flex;gap:8px;">
+            <button class="btn-secondary" style="font-size:.72rem;padding:6px 12px;">← Anterior</button>
+            <button class="btn-secondary" style="font-size:.72rem;padding:6px 12px;">Próximo →</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</body></html>

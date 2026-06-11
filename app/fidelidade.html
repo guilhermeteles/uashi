@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" /><meta name="viewport" content="width=device-width,initial-scale=1.0" />
+  <title>Fidelidade — Uashi</title>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="./_shell.css" />
+  <style>
+    .level-card { border-radius:16px;padding:20px;text-align:center;opacity:.4;transition:opacity .2s; }
+    .level-card.active { opacity:1; }
+    .pts-row { display:flex;justify-content:space-between;align-items:center;padding:12px 0;border-bottom:1px solid rgba(255,255,255,.05); }
+    .pts-row:last-child { border-bottom:none; }
+  </style>
+</head>
+<body>
+<div class="app-frame" style="max-width:390px;margin:0 auto;">
+  <div class="status-bar"><span class="status-time">09:41</span><div class="status-icons"><span>●●●</span><span>WiFi</span><span>🔋</span></div></div>
+  <div class="top-bar">
+    <a href="index.html" class="top-bar-back">←</a>
+    <span class="top-bar-title">Fidelidade</span>
+  </div>
+  <hr class="swoosh" />
+
+  <div class="app-content">
+    <div class="app-content-inner" style="display:flex;flex-direction:column;gap:16px;">
+
+      <!-- Nível atual hero -->
+      <div style="background:linear-gradient(135deg,rgba(245,168,0,.2),rgba(232,50,26,.1)),var(--surface);border:1px solid rgba(245,168,0,.3);border-radius:20px;padding:24px;text-align:center;">
+        <div style="font-size:3rem;margin-bottom:8px;">🥇</div>
+        <div style="font-family:var(--font-display);font-size:2rem;color:var(--gold);letter-spacing:.08em;margin-bottom:4px;">NÍVEL OURO</div>
+        <div style="font-size:.8rem;color:var(--muted);margin-bottom:16px;">Carlos M. · Membro desde jan/2025</div>
+        <div style="display:flex;justify-content:space-between;font-size:.8rem;color:var(--muted);margin-bottom:6px;">
+          <span>650 pts</span><span>1000 pts · Diamante</span>
+        </div>
+        <div class="progress-track" style="height:8px;">
+          <div class="progress-fill" style="width:65%;background:linear-gradient(90deg,var(--red),var(--gold));"></div>
+        </div>
+        <div style="font-size:.75rem;color:var(--muted);margin-top:8px;">Faltam 350 pts para o Diamante</div>
+      </div>
+
+      <!-- Benefícios do nível -->
+      <div class="card" style="padding:16px;">
+        <div style="font-size:.72rem;font-weight:600;color:var(--muted);text-transform:uppercase;letter-spacing:.08em;margin-bottom:12px;">Seus benefícios (Ouro)</div>
+        <div style="display:flex;flex-direction:column;gap:8px;">
+          <div style="display:flex;gap:10px;align-items:center;font-size:.85rem;color:var(--cream);"><span style="color:var(--gold);">★</span> +50% de pontos em toda lavagem</div>
+          <div style="display:flex;gap:10px;align-items:center;font-size:.85rem;color:var(--cream);"><span style="color:var(--gold);">★</span> Fila preferencial em horário de pico</div>
+          <div style="display:flex;gap:10px;align-items:center;font-size:.85rem;color:var(--cream);"><span style="color:var(--gold);">★</span> 1 lavagem completa grátis/mês</div>
+          <div style="display:flex;gap:10px;align-items:center;font-size:.85rem;color:var(--muted);"><span style="color:rgba(107,107,107,.5);">★</span> <span style="color:var(--muted);">Suporte prioritário (Diamante)</span></div>
+        </div>
+      </div>
+
+      <!-- Jornada de níveis -->
+      <div>
+        <div style="font-size:.72rem;font-weight:600;color:var(--muted);text-transform:uppercase;letter-spacing:.08em;margin-bottom:10px;">Jornada de níveis</div>
+        <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:8px;">
+          <div class="level-card" style="background:rgba(180,130,70,.15);border:1px solid rgba(180,130,70,.2);">
+            <div style="font-size:1.6rem;">🥉</div>
+            <div style="font-family:var(--font-display);font-size:.8rem;color:#B48246;margin-top:4px;">BRONZE</div>
+            <div style="font-size:.65rem;color:var(--muted);">0–199</div>
+          </div>
+          <div class="level-card" style="background:rgba(180,190,200,.1);border:1px solid rgba(180,190,200,.15);">
+            <div style="font-size:1.6rem;">🥈</div>
+            <div style="font-family:var(--font-display);font-size:.8rem;color:#B4BEBE;margin-top:4px;">PRATA</div>
+            <div style="font-size:.65rem;color:var(--muted);">200–499</div>
+          </div>
+          <div class="level-card active" style="background:rgba(245,168,0,.12);border:2px solid rgba(245,168,0,.4);">
+            <div style="font-size:1.6rem;">🥇</div>
+            <div style="font-family:var(--font-display);font-size:.8rem;color:var(--gold);margin-top:4px;">OURO</div>
+            <div style="font-size:.65rem;color:var(--muted);">500–999</div>
+          </div>
+          <div class="level-card" style="background:rgba(100,200,255,.08);border:1px solid rgba(100,200,255,.1);">
+            <div style="font-size:1.6rem;">💎</div>
+            <div style="font-family:var(--font-display);font-size:.8rem;color:#64C8FF;margin-top:4px;">DIAMANTE</div>
+            <div style="font-size:.65rem;color:var(--muted);">1000+</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Histórico de pontos -->
+      <div class="card" style="padding:16px;">
+        <div style="font-size:.72rem;font-weight:600;color:var(--muted);text-transform:uppercase;letter-spacing:.08em;margin-bottom:12px;">Histórico de pontos</div>
+        <div class="pts-row">
+          <div style="display:flex;gap:10px;align-items:center;">
+            <div style="width:36px;height:36px;border-radius:10px;background:rgba(34,197,94,.1);display:flex;align-items:center;justify-content:center;font-size:1rem;">🚗</div>
+            <div><div style="font-size:.875rem;font-weight:600;color:var(--cream);">Lavagem Completa</div><div style="font-size:.72rem;color:var(--muted);">Hoje, 08:15 · Mooca</div></div>
+          </div>
+          <div style="font-family:var(--font-display);font-size:1.1rem;color:#22c55e;">+25</div>
+        </div>
+        <div class="pts-row">
+          <div style="display:flex;gap:10px;align-items:center;">
+            <div style="width:36px;height:36px;border-radius:10px;background:rgba(34,197,94,.1);display:flex;align-items:center;justify-content:center;font-size:1rem;">🚗</div>
+            <div><div style="font-size:.875rem;font-weight:600;color:var(--cream);">Lavagem Completa</div><div style="font-size:.72rem;color:var(--muted);">Ontem, 07:50 · Tatuapé</div></div>
+          </div>
+          <div style="font-family:var(--font-display);font-size:1.1rem;color:#22c55e;">+25</div>
+        </div>
+        <div class="pts-row">
+          <div style="display:flex;gap:10px;align-items:center;">
+            <div style="width:36px;height:36px;border-radius:10px;background:rgba(26,111,212,.1);display:flex;align-items:center;justify-content:center;font-size:1rem;">♾️</div>
+            <div><div style="font-size:.875rem;font-weight:600;color:var(--cream);">Renovação Plano Pro</div><div style="font-size:.72rem;color:var(--muted);">10/06/2025</div></div>
+          </div>
+          <div style="font-family:var(--font-display);font-size:1.1rem;color:#22c55e;">+100</div>
+        </div>
+        <div class="pts-row">
+          <div style="display:flex;gap:10px;align-items:center;">
+            <div style="width:36px;height:36px;border-radius:10px;background:rgba(245,168,0,.1);display:flex;align-items:center;justify-content:center;font-size:1rem;">🎁</div>
+            <div><div style="font-size:.875rem;font-weight:600;color:var(--cream);">Resgate — 1 lavagem grátis</div><div style="font-size:.72rem;color:var(--muted);">08/06/2025</div></div>
+          </div>
+          <div style="font-family:var(--font-display);font-size:1.1rem;color:var(--red);">-100</div>
+        </div>
+        <div class="pts-row">
+          <div style="display:flex;gap:10px;align-items:center;">
+            <div style="width:36px;height:36px;border-radius:10px;background:rgba(34,197,94,.1);display:flex;align-items:center;justify-content:center;font-size:1rem;">🚗</div>
+            <div><div style="font-size:.875rem;font-weight:600;color:var(--cream);">Lavagem Premium</div><div style="font-size:.72rem;color:var(--muted);">07/06/2025 · Santo André</div></div>
+          </div>
+          <div style="font-family:var(--font-display);font-size:1.1rem;color:#22c55e;">+35</div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <nav class="tab-bar">
+    <a href="index.html" class="tab-item"><span class="tab-icon">🏠</span><span class="tab-label">Home</span></a>
+    <a href="mapa.html" class="tab-item"><span class="tab-icon">📍</span><span class="tab-label">Lojas</span></a>
+    <a href="qrcode.html" class="tab-qr"><div class="tab-qr-btn">🔲</div></a>
+    <a href="historico.html" class="tab-item"><span class="tab-icon">📋</span><span class="tab-label">Histórico</span></a>
+    <a href="conta.html" class="tab-item"><span class="tab-icon">👤</span><span class="tab-label">Conta</span></a>
+  </nav>
+</div>
+</body></html>

@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" /><meta name="viewport" content="width=device-width,initial-scale=1.0" />
+  <title>QR Code — Uashi</title>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="./_shell.css" />
+  <style>
+    .qr-screen { background:#fff; border-radius:20px; padding:20px; display:flex; align-items:center; justify-content:center; }
+    .qr-grid { display:grid; grid-template-columns:repeat(9,1fr); gap:3px; width:180px; height:180px; }
+    .qr-cell { border-radius:2px; }
+    @keyframes pulse { 0%,100%{opacity:1} 50%{opacity:.6} }
+    .pulse { animation:pulse 2s infinite; }
+    .timer-bar { height:4px; border-radius:2px; background:var(--red); transition:width 1s linear; }
+  </style>
+</head>
+<body>
+<div class="app-frame" style="max-width:390px;margin:0 auto;">
+
+  <!-- Status bar -->
+  <div class="status-bar" style="background:#fff;"><span class="status-time" style="color:#0A0A0A;">09:41</span><div class="status-icons" style="color:#0A0A0A;"><span>●●●</span><span>WiFi</span><span>🔋</span></div></div>
+
+  <!-- Top bar light -->
+  <div class="top-bar" style="background:#fff;border-bottom:1px solid #eee;">
+    <a href="index.html" class="top-bar-back" style="background:#f5f5f5;color:#0A0A0A;">←</a>
+    <span class="top-bar-title" style="color:#0A0A0A;">QR Code</span>
+    <a href="#" class="top-bar-action" style="color:#6B6B6B;" onclick="openShare()">↗</a>
+  </div>
+
+  <!-- Content (light bg for scanner) -->
+  <div style="background:#fff;flex:1;padding:24px 20px;display:flex;flex-direction:column;align-items:center;min-height:calc(100vh - 44px - 56px - 68px);">
+
+    <div style="text-align:center;margin-bottom:20px;">
+      <span class="tag tag-green" style="margin-bottom:8px;display:inline-block;">Válido por <span id="timer">28:43</span></span>
+      <h2 style="font-family:'Bebas Neue',sans-serif;font-size:1.4rem;color:#0A0A0A;margin-bottom:4px;">LAVAGEM COMPLETA</h2>
+      <p style="font-size:.8rem;color:#6B6B6B;">SUV / Pickup · Honda HR-V</p>
+    </div>
+
+    <!-- Timer bar -->
+    <div style="width:100%;max-width:220px;height:4px;background:#eee;border-radius:2px;margin-bottom:24px;overflow:hidden;">
+      <div class="timer-bar" id="timerBar" style="width:96%;"></div>
+    </div>
+
+    <!-- QR Code visual -->
+    <div class="qr-screen pulse" style="margin-bottom:24px;">
+      <div class="qr-grid" id="qrGrid"></div>
+    </div>
+
+    <div style="text-align:center;margin-bottom:24px;">
+      <div style="font-size:.75rem;color:#6B6B6B;margin-bottom:4px;">Código</div>
+      <div style="font-family:monospace;font-size:1.1rem;font-weight:700;color:#0A0A0A;letter-spacing:.1em;">UAW-2847-XK</div>
+    </div>
+
+    <hr style="width:100%;height:1px;background:#eee;border:none;margin-bottom:20px;" />
+
+    <!-- Enviar de presente -->
+    <div style="width:100%;background:#f8f8f8;border-radius:14px;padding:14px 16px;display:flex;justify-content:space-between;align-items:center;">
+      <div>
+        <div style="font-size:.8rem;font-weight:600;color:#0A0A0A;">🎁 Enviar como presente</div>
+        <div style="font-size:.72rem;color:#6B6B6B;">Buscar por telefone ou e-mail</div>
+      </div>
+      <a href="presente.html" style="background:#E8321A;color:#fff;font-size:.75rem;font-weight:700;padding:8px 14px;border-radius:8px;text-decoration:none;text-transform:uppercase;letter-spacing:.04em;">Enviar</a>
+    </div>
+
+    <p style="font-size:.72rem;color:#999;margin-top:16px;text-align:center;">
+      Aponte este código para o leitor na entrada da esteira.<br/>Permaneça no veículo com o câmbio no ponto morto.
+    </p>
+  </div>
+
+  <!-- Tab bar -->
+  <nav class="tab-bar">
+    <a href="index.html" class="tab-item"><span class="tab-icon">🏠</span><span class="tab-label">Home</span></a>
+    <a href="mapa.html" class="tab-item"><span class="tab-icon">📍</span><span class="tab-label">Lojas</span></a>
+    <a href="qrcode.html" class="tab-qr"><div class="tab-qr-btn" style="background:var(--surface-2);border:2px solid var(--red);">🔲</div></a>
+    <a href="historico.html" class="tab-item"><span class="tab-icon">📋</span><span class="tab-label">Histórico</span></a>
+    <a href="conta.html" class="tab-item"><span class="tab-icon">👤</span><span class="tab-label">Conta</span></a>
+  </nav>
+
+</div>
+<script>
+  // Generate QR visual
+  const pattern = [1,1,1,1,1,1,1,0,0,1,0,0,0,1,1,0,1,1,1,0,1,0,1,0,1,0,1,1,1,0,1,1,0,0,0,0,0,1,1,1,1,1,1,1,0,0,0,0,0,0,0,0,1,0,1,0,1,0,1,1,0,1,0,0,1,0,0,0,1,0,0,0,0,1,1,1,0,0,1,1,0,0,0,0,0,1,0,0,0,0,1,0,1,0,1,0,0,0,1,0,1,0,1,1,1,0,1,0,1,0,1,1,0,0,1,0,0,0,0,0,0,1,0,1,0,1,1,1,0,1,1,0,0,1,0,1,0,0,1,0,1,0,1,0,1,1,1,1,1,1,1,0,1,0,1,0,1,0,1,0,0,1,0,0,0,1,0,0,0,0,1,0,0,0,1,0,0,1,0,1,1,0,0,1,0,0,1,1,1,1,1,1,1,0,0,1,0,1,0,1,0,0,0,0,1,0,0,1,0,0,0,1,1,1,0,1,1,0,0,0,1,1,0,0,0,0,0,1,1,1,1,1,1,1,0,0,1,0,1,0,1,0,1];
+  const grid = document.getElementById('qrGrid');
+  grid.style.gridTemplateColumns = 'repeat(15,1fr)';
+  grid.style.width = '180px'; grid.style.height = '180px';
+  pattern.forEach(b => {
+    const d = document.createElement('div');
+    d.className = 'qr-cell';
+    d.style.background = b ? '#0A0A0A' : '#fff';
+    grid.appendChild(d);
+  });
+
+  // Timer countdown
+  let secs = 28*60+43;
+  const timerEl = document.getElementById('timer');
+  const barEl = document.getElementById('timerBar');
+  const total = 30*60;
+  setInterval(() => {
+    if (secs > 0) secs--;
+    const m = Math.floor(secs/60), s = secs%60;
+    timerEl.textContent = m+':'+(s<10?'0':'')+s;
+    barEl.style.width = (secs/total*100)+'%';
+  }, 1000);
+
+  function openShare() { alert('(protótipo) Compartilhar QR code por WhatsApp'); }
+</script>
+</body></html>

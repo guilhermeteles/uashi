@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" /><meta name="viewport" content="width=device-width,initial-scale=1.0" />
+  <title>Dependentes — Uashi</title>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="./_shell.css" />
+  <style>
+    .dep-card { background:var(--surface);border:1px solid rgba(255,255,255,.06);border-radius:16px;padding:16px; }
+    .toggle-sw { position:relative;width:44px;height:24px;cursor:pointer;flex-shrink:0; }
+    .toggle-sw input { opacity:0;width:0;height:0; }
+    .toggle-sw .sw { position:absolute;inset:0;background:rgba(255,255,255,.15);border-radius:12px;transition:.3s; }
+    .toggle-sw .sw::before { content:'';position:absolute;width:18px;height:18px;border-radius:50%;background:#fff;top:3px;left:3px;transition:.3s; }
+    .toggle-sw input:checked + .sw { background:var(--red); }
+    .toggle-sw input:checked + .sw::before { transform:translateX(20px); }
+    .stat-mini { background:var(--surface-2);border-radius:10px;padding:10px;text-align:center;flex:1; }
+  </style>
+</head>
+<body>
+<div class="app-frame" style="max-width:390px;margin:0 auto;">
+  <div class="status-bar"><span class="status-time">09:41</span><div class="status-icons"><span>●●●</span><span>WiFi</span><span>🔋</span></div></div>
+  <div class="top-bar">
+    <a href="conta.html" class="top-bar-back">←</a>
+    <span class="top-bar-title">Dependentes</span>
+    <button class="top-bar-action" onclick="showInvite()" style="font-size:1.4rem;color:var(--gold);">+</button>
+  </div>
+  <hr class="swoosh" />
+
+  <div class="app-content">
+    <div class="app-content-inner" style="display:flex;flex-direction:column;gap:16px;">
+
+      <p style="font-size:.8rem;color:var(--muted);">Gerencie quem pode usar seu plano. Defina limites de frequência e valor por dependente.</p>
+
+      <!-- Dependente ativo -->
+      <div class="dep-card">
+        <div style="display:flex;align-items:center;gap:12px;margin-bottom:14px;">
+          <div style="width:44px;height:44px;border-radius:14px;background:rgba(26,111,212,.15);display:flex;align-items:center;justify-content:center;font-size:1.2rem;flex-shrink:0;">👩</div>
+          <div style="flex:1;">
+            <div style="font-weight:700;font-size:.95rem;color:var(--cream);">Ana Mendes</div>
+            <div style="font-size:.75rem;color:var(--muted);">ana@email.com · Filha</div>
+          </div>
+          <label class="toggle-sw"><input type="checkbox" checked /><span class="sw"></span></label>
+        </div>
+
+        <!-- Uso do mês -->
+        <div style="display:flex;gap:8px;margin-bottom:14px;">
+          <div class="stat-mini">
+            <div style="font-family:var(--font-display);font-size:1.2rem;color:var(--cream);">4</div>
+            <div style="font-size:.62rem;color:var(--muted);">lavagens / mês</div>
+          </div>
+          <div class="stat-mini">
+            <div style="font-family:var(--font-display);font-size:1.2rem;color:var(--gold);">R$ 28</div>
+            <div style="font-size:.62rem;color:var(--muted);">gasto / mês</div>
+          </div>
+        </div>
+
+        <!-- Limites -->
+        <div style="display:flex;flex-direction:column;gap:10px;margin-bottom:14px;">
+          <div>
+            <div style="display:flex;justify-content:space-between;font-size:.75rem;color:var(--muted);margin-bottom:4px;">
+              <span>Frequência: 4 / 8 por mês</span>
+              <span>50%</span>
+            </div>
+            <div class="progress-track"><div class="progress-fill" style="width:50%;background:var(--blue);"></div></div>
+          </div>
+          <div>
+            <div style="display:flex;justify-content:space-between;font-size:.75rem;color:var(--muted);margin-bottom:4px;">
+              <span>Valor: R$ 28 / R$ 80</span>
+              <span>35%</span>
+            </div>
+            <div class="progress-track"><div class="progress-fill" style="width:35%;background:var(--gold);"></div></div>
+          </div>
+        </div>
+
+        <div style="display:flex;gap:8px;">
+          <button onclick="showLimitsModal()" style="flex:1;background:var(--surface-2);border:1px solid rgba(255,255,255,.1);border-radius:10px;padding:10px;color:var(--cream);font-family:var(--font-body);font-size:.8rem;cursor:pointer;">✏️ Editar limites</button>
+          <button onclick="alert('(protótipo) Notificações de uso enviadas')" style="flex:1;background:var(--surface-2);border:1px solid rgba(255,255,255,.1);border-radius:10px;padding:10px;color:var(--cream);font-family:var(--font-body);font-size:.8rem;cursor:pointer;">📜 Ver histórico</button>
+        </div>
+      </div>
+
+      <!-- Convidar novo -->
+      <button onclick="showInvite()" style="border:2px dashed rgba(255,255,255,.12);background:transparent;border-radius:16px;padding:20px;width:100%;display:flex;align-items:center;justify-content:center;gap:10px;color:var(--muted);font-family:var(--font-body);font-size:.875rem;cursor:pointer;">
+        <span style="font-size:1.4rem;">👥</span> Convidar dependente
+      </button>
+
+      <div class="card" style="padding:14px 16px;">
+        <div style="font-size:.75rem;font-weight:600;color:var(--muted);text-transform:uppercase;letter-spacing:.08em;margin-bottom:8px;">Como funciona</div>
+        <div style="font-size:.8rem;color:var(--muted);display:flex;flex-direction:column;gap:6px;">
+          <div>• O dependente baixa o app e usa o próprio QR code</div>
+          <div>• Você recebe push a cada uso deles</div>
+          <div>• Ao atingir o limite, o acesso é bloqueado automaticamente</div>
+          <div>• Você pode bloquear e desbloquear manualmente</div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Modal convidar -->
+  <div id="invite-modal" style="display:none;position:fixed;inset:0;background:rgba(0,0,0,.75);z-index:200;align-items:flex-end;justify-content:center;" onclick="if(event.target===this)hideInvite()">
+    <div style="background:var(--surface);border-radius:24px 24px 0 0;padding:24px 20px;width:100%;max-width:390px;display:flex;flex-direction:column;gap:14px;">
+      <div style="text-align:center;margin-bottom:4px;">
+        <div style="width:40px;height:4px;background:rgba(255,255,255,.15);border-radius:2px;margin:0 auto 16px;"></div>
+        <div style="font-family:var(--font-display);font-size:1.4rem;color:var(--cream);">CONVIDAR DEPENDENTE</div>
+      </div>
+      <div class="form-group"><label class="form-label">Nome</label><input type="text" class="form-input" placeholder="Nome do dependente" /></div>
+      <div class="form-group"><label class="form-label">E-mail ou telefone</label><input type="text" class="form-input" placeholder="Email ou WhatsApp" /></div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;">
+        <div class="form-group"><label class="form-label">Limite frequência</label><select class="form-input"><option>3x/semana</option><option>5x/semana</option><option>1x/dia</option><option>Sem limite</option></select></div>
+        <div class="form-group"><label class="form-label">Limite valor/mês</label><select class="form-input"><option>R$ 50</option><option>R$ 80</option><option>R$ 120</option><option>Sem limite</option></select></div>
+      </div>
+      <div style="display:flex;gap:10px;">
+        <button onclick="hideInvite()" class="btn-secondary" style="flex:1;">Cancelar</button>
+        <button onclick="hideInvite();alert('(protótipo) Convite enviado!')" class="btn-primary" style="flex:2;">Enviar convite</button>
+      </div>
+    </div>
+  </div>
+
+  <nav class="tab-bar">
+    <a href="index.html" class="tab-item"><span class="tab-icon">🏠</span><span class="tab-label">Home</span></a>
+    <a href="mapa.html" class="tab-item"><span class="tab-icon">📍</span><span class="tab-label">Lojas</span></a>
+    <a href="qrcode.html" class="tab-qr"><div class="tab-qr-btn">🔲</div></a>
+    <a href="historico.html" class="tab-item"><span class="tab-icon">📋</span><span class="tab-label">Histórico</span></a>
+    <a href="conta.html" class="tab-item active"><span class="tab-icon">👤</span><span class="tab-label">Conta</span></a>
+  </nav>
+</div>
+<script>
+  function showInvite(){ const m=document.getElementById('invite-modal'); m.style.display='flex'; }
+  function hideInvite(){ document.getElementById('invite-modal').style.display='none'; }
+  function showLimitsModal(){ alert('(protótipo) Modal de edição de limites'); }
+</script>
+</body></html>

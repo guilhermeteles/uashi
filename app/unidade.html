@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" /><meta name="viewport" content="width=device-width,initial-scale=1.0" />
+  <title>Uashi Mooca — Detalhe</title>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="./_shell.css" />
+  <style>
+    .hour-row { display:flex;justify-content:space-between;padding:8px 0;border-bottom:1px solid rgba(255,255,255,.05);font-size:.85rem; }
+    .hour-row:last-child { border-bottom:none; }
+  </style>
+</head>
+<body>
+<div class="app-frame" style="max-width:390px;margin:0 auto;">
+  <div class="status-bar"><span class="status-time">09:41</span><div class="status-icons"><span>●●●</span><span>WiFi</span><span>🔋</span></div></div>
+  <div class="top-bar">
+    <a href="mapa.html" class="top-bar-back">←</a>
+    <span class="top-bar-title">Uashi Mooca</span>
+    <button class="top-bar-action" onclick="alert('(protótipo) Favoritar unidade')">♡</button>
+  </div>
+  <hr class="swoosh" />
+
+  <!-- Map mini -->
+  <div style="height:180px;overflow:hidden;">
+    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3657.5!2d-46.6001!3d-23.5489!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94ce59c8da0aa315%3A0xd59f9431f2c9776a!2sMooca%2C%20São%20Paulo!5e0!3m2!1spt-BR!2sbr!4v1718000000000"
+      style="width:100%;height:100%;border:0;" loading="lazy"></iframe>
+  </div>
+
+  <div class="app-content">
+    <div class="app-content-inner" style="display:flex;flex-direction:column;gap:14px;">
+
+      <!-- Status + endereço -->
+      <div class="card" style="padding:16px;">
+        <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:10px;">
+          <div>
+            <div style="font-family:var(--font-display);font-size:1.4rem;color:var(--cream);margin-bottom:4px;">UASHI MOOCA</div>
+            <div style="font-size:.8rem;color:var(--muted);">R. da Mooca, 1420 · São Paulo/SP</div>
+          </div>
+          <span class="tag tag-green">Aberta</span>
+        </div>
+        <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px;margin-top:12px;">
+          <div style="background:var(--surface-2);border-radius:10px;padding:10px;text-align:center;">
+            <div style="font-family:var(--font-display);font-size:1.2rem;color:var(--cream);">~3 min</div>
+            <div style="font-size:.65rem;color:var(--muted);">fila atual</div>
+          </div>
+          <div style="background:var(--surface-2);border-radius:10px;padding:10px;text-align:center;">
+            <div style="font-family:var(--font-display);font-size:1.2rem;color:var(--cream);">24h</div>
+            <div style="font-size:.65rem;color:var(--muted);">horário</div>
+          </div>
+          <div style="background:var(--surface-2);border-radius:10px;padding:10px;text-align:center;">
+            <div style="font-family:var(--font-display);font-size:1.2rem;color:var(--cream);">1.2 km</div>
+            <div style="font-size:.65rem;color:var(--muted);">de você</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Horários pico -->
+      <div class="card" style="padding:16px;">
+        <div style="font-size:.72rem;font-weight:600;color:var(--muted);text-transform:uppercase;letter-spacing:.08em;margin-bottom:10px;">Horários de pico hoje</div>
+        <div style="display:flex;align-items:flex-end;gap:3px;height:50px;margin-bottom:8px;">
+          <!-- Bar chart simulation -->
+          <div style="flex:1;background:rgba(245,168,0,.2);border-radius:3px 3px 0 0;" title="6h"></div>
+          <div style="flex:1;height:55%;background:rgba(245,168,0,.3);border-radius:3px 3px 0 0;" title="7h"></div>
+          <div style="flex:1;height:80%;background:rgba(232,50,26,.6);border-radius:3px 3px 0 0;" title="8h"></div>
+          <div style="flex:1;height:100%;background:var(--red);border-radius:3px 3px 0 0;" title="9h"></div>
+          <div style="flex:1;height:75%;background:rgba(232,50,26,.5);border-radius:3px 3px 0 0;" title="10h"></div>
+          <div style="flex:1;height:40%;background:rgba(245,168,0,.3);border-radius:3px 3px 0 0;" title="11h"></div>
+          <div style="flex:1;height:30%;background:rgba(245,168,0,.2);border-radius:3px 3px 0 0;" title="12h"></div>
+          <div style="flex:1;height:50%;background:rgba(245,168,0,.3);border-radius:3px 3px 0 0;" title="13h"></div>
+          <div style="flex:1;height:60%;background:rgba(245,168,0,.4);border-radius:3px 3px 0 0;" title="14h"></div>
+          <div style="flex:1;height:35%;background:rgba(245,168,0,.25);border-radius:3px 3px 0 0;" title="15h"></div>
+          <div style="flex:1;height:25%;background:rgba(26,111,212,.3);border-radius:3px 3px 0 0;" title="16h"></div>
+          <div style="flex:1;height:70%;background:rgba(232,50,26,.5);border-radius:3px 3px 0 0;" title="17h"></div>
+          <div style="flex:1;height:85%;background:var(--red);border-radius:3px 3px 0 0;" title="18h"></div>
+          <div style="flex:1;height:60%;background:rgba(245,168,0,.4);border-radius:3px 3px 0 0;" title="19h"></div>
+          <div style="flex:1;height:30%;background:rgba(245,168,0,.2);border-radius:3px 3px 0 0;" title="20h"></div>
+        </div>
+        <div style="display:flex;justify-content:space-between;font-size:.65rem;color:var(--muted);">
+          <span>6h</span><span>9h</span><span>12h</span><span>15h</span><span>18h</span><span>20h</span>
+        </div>
+        <p style="font-size:.75rem;color:var(--muted);margin-top:8px;">💡 Melhor horário agora: <strong style="color:#22c55e;">06h–07h30 ou 15h–16h30</strong></p>
+      </div>
+
+      <!-- Horário de funcionamento -->
+      <div class="card" style="padding:16px;">
+        <div style="font-size:.72rem;font-weight:600;color:var(--muted);text-transform:uppercase;letter-spacing:.08em;margin-bottom:4px;">Funcionamento</div>
+        <div class="hour-row"><span style="color:var(--cream);font-weight:600;">Seg a Sex</span><span style="color:#22c55e;">24 horas</span></div>
+        <div class="hour-row"><span style="color:var(--cream);font-weight:600;">Sábado</span><span style="color:var(--cream);">06:00 – 22:00</span></div>
+        <div class="hour-row"><span style="color:var(--cream);font-weight:600;">Domingo</span><span style="color:var(--cream);">08:00 – 20:00</span></div>
+        <div class="hour-row"><span style="color:var(--cream);font-weight:600;">Feriados</span><span style="color:var(--muted);">Ver app</span></div>
+      </div>
+
+      <!-- CTAs -->
+      <a href="comprar.html" class="btn-primary" style="border-radius:14px;">Lavar aqui agora</a>
+      <a href="https://maps.google.com" target="_blank" class="btn-secondary">Abrir no Google Maps</a>
+
+    </div>
+  </div>
+
+  <nav class="tab-bar">
+    <a href="index.html" class="tab-item"><span class="tab-icon">🏠</span><span class="tab-label">Home</span></a>
+    <a href="mapa.html" class="tab-item active"><span class="tab-icon">📍</span><span class="tab-label">Lojas</span></a>
+    <a href="qrcode.html" class="tab-qr"><div class="tab-qr-btn">🔲</div></a>
+    <a href="historico.html" class="tab-item"><span class="tab-icon">📋</span><span class="tab-label">Histórico</span></a>
+    <a href="conta.html" class="tab-item"><span class="tab-icon">👤</span><span class="tab-label">Conta</span></a>
+  </nav>
+</div>
+</body></html>

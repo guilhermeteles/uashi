@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Uashi Admin — Alertas</title>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="./_admin.css" />
+  <style>
+    .nav-badge { background: var(--red); color: #fff; font-size: .6rem; font-weight: 700; border-radius: 99px; padding: 1px 6px; margin-left: auto; }
+    .topbar-avatar { width: 36px; height: 36px; border-radius: 10px; background: var(--surface-2); border: 1.5px solid rgba(255,255,255,.1); display: flex; align-items: center; justify-content: center; font-size: .75rem; font-weight: 700; color: var(--cream); cursor: pointer; }
+    .section-label { font-family: var(--font-display); font-size: 1.1rem; letter-spacing: .05em; color: var(--cream); margin-bottom: 14px; display: flex; align-items: center; gap: 10px; }
+    .section-label::after { content: ''; flex: 1; height: 1px; background: rgba(255,255,255,.07); }
+    .alert-stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-bottom: 24px; }
+    .alert-stat { background: var(--surface); border: 1px solid rgba(255,255,255,.06); border-radius: 12px; padding: 16px 20px; }
+    .alert-stat .val { font-family: var(--font-display); font-size: 1.8rem; color: var(--cream); line-height: 1; }
+    .alert-stat .lbl { font-size: .72rem; color: var(--muted); text-transform: uppercase; letter-spacing: .06em; margin-top: 4px; }
+    .filter-chips { display: flex; gap: 8px; margin-bottom: 20px; }
+    .chip { padding: 6px 16px; border-radius: 99px; font-size: .78rem; font-weight: 600; cursor: pointer; border: 1.5px solid transparent; transition: all .2s; }
+    .chip.all { background: var(--surface-2); border-color: rgba(255,255,255,.1); color: var(--cream); }
+    .chip.critical { background: rgba(232,50,26,.15); border-color: rgba(232,50,26,.3); color: var(--red); }
+    .chip.warning { background: rgba(245,168,0,.15); border-color: rgba(245,168,0,.3); color: var(--gold); }
+    .chip.info { background: rgba(26,111,212,.15); border-color: rgba(26,111,212,.3); color: var(--blue); }
+    .alert-list { display: flex; flex-direction: column; gap: 10px; }
+    .alert-card { background: var(--surface); border: 1px solid rgba(255,255,255,.06); border-radius: 12px; padding: 16px; display: flex; gap: 14px; align-items: flex-start; }
+    .alert-card.critical { border-color: rgba(232,50,26,.3); background: rgba(232,50,26,.04); }
+    .alert-card.warning { border-color: rgba(245,168,0,.25); background: rgba(245,168,0,.03); }
+    .alert-card.info { border-color: rgba(26,111,212,.2); background: rgba(26,111,212,.02); }
+    .alert-icon { width: 40px; height: 40px; border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 1.2rem; flex-shrink: 0; }
+    .alert-icon.critical { background: rgba(232,50,26,.2); }
+    .alert-icon.warning { background: rgba(245,168,0,.15); }
+    .alert-icon.info { background: rgba(26,111,212,.15); }
+    .alert-meta { font-size: .72rem; color: var(--muted); display: flex; gap: 12px; margin-top: 6px; flex-wrap: wrap; align-items: center; }
+    .alert-actions { display: flex; gap: 8px; margin-top: 10px; }
+  </style>
+</head>
+<body>
+<div class="admin-layout">
+
+  <!-- SIDEBAR -->
+  <aside class="sidebar">
+    <div class="sidebar-logo">
+      <div class="wordmark">UASHI</div>
+      <div class="swoosh"></div>
+    </div>
+    <div class="sidebar-profile">
+      <div class="sidebar-avatar">AM</div>
+      <div>
+        <div class="sidebar-name">Admin Matriz</div>
+        <div class="sidebar-role">Acesso total</div>
+      </div>
+    </div>
+    <nav class="sidebar-nav">
+      <div class="nav-section-label">Principal</div>
+      <a href="./index.html" class="nav-item">
+        <span class="nav-icon">&#9642;</span> Dashboard
+      </a>
+      <a href="./franqueados.html" class="nav-item">
+        <span class="nav-icon">🏪</span> Franqueados
+      </a>
+      <a href="./planos.html" class="nav-item">
+        <span class="nav-icon">💳</span> Planos / Preços
+      </a>
+      <a href="./promocoes.html" class="nav-item">
+        <span class="nav-icon">⚡</span> Promoções
+      </a>
+      <div class="nav-section-label">Operações</div>
+      <a href="./alertas.html" class="nav-item active">
+        <span class="nav-icon">🔔</span> Alertas
+        <span class="nav-badge">5</span>
+      </a>
+      <a href="./chamados.html" class="nav-item">
+        <span class="nav-icon">🎫</span> Chamados
+        <span class="nav-badge">12</span>
+      </a>
+      <a href="./relatorios.html" class="nav-item">
+        <span class="nav-icon">📊</span> Relatórios
+      </a>
+      <div class="nav-section-label">Conta</div>
+      <a href="./perfil.html" class="nav-item">
+        <span class="nav-icon">👤</span> Perfil
+      </a>
+    </nav>
+    <div class="sidebar-footer">
+      <a href="#" class="nav-item" style="padding: 8px 0; font-size:.78rem;">
+        <span class="nav-icon">🚪</span> Sair
+      </a>
+    </div>
+  </aside>
+
+  <!-- MAIN -->
+  <div class="main-area">
+
+    <!-- TOPBAR -->
+    <header class="topbar">
+      <span class="topbar-title">Alertas e Anomalias</span>
+      <div class="topbar-actions">
+        <button class="topbar-btn" title="Alertas">🔔<span class="topbar-dot"></span></button>
+        <div class="topbar-avatar">AM</div>
+        <a href="#" class="btn-secondary" style="padding:7px 14px;font-size:.75rem;">Sair</a>
+      </div>
+    </header>
+
+    <!-- PAGE CONTENT -->
+    <main class="page-content">
+
+      <div class="page-header">
+        <div>
+          <h1>Alertas</h1>
+          <p style="color:var(--muted);font-size:.82rem;margin-top:4px;">Monitoramento em tempo real · Última atualização: agora</p>
+        </div>
+        <button class="btn-secondary">✓ Resolver todos lidos</button>
+      </div>
+
+      <!-- STATS -->
+      <div class="alert-stats">
+        <div class="alert-stat" style="border-color:rgba(232,50,26,.3);">
+          <div class="val" style="color:var(--red);">3</div>
+          <div class="lbl">Alertas críticos</div>
+        </div>
+        <div class="alert-stat" style="border-color:rgba(245,168,0,.25);">
+          <div class="val" style="color:var(--gold);">4</div>
+          <div class="lbl">Avisos ativos</div>
+        </div>
+        <div class="alert-stat" style="border-color:rgba(34,197,94,.2);">
+          <div class="val" style="color:#22c55e;">18</div>
+          <div class="lbl">Resolvidos hoje</div>
+        </div>
+      </div>
+
+      <!-- FILTER CHIPS -->
+      <div class="filter-chips">
+        <span class="chip all">Todos (10)</span>
+        <span class="chip critical">Crítico (3)</span>
+        <span class="chip warning">Aviso (4)</span>
+        <span class="chip info">Info (3)</span>
+      </div>
+
+      <!-- ALERTS LIST -->
+      <div class="alert-list">
+
+        <!-- CRÍTICO 1 -->
+        <div class="alert-card critical">
+          <div class="alert-icon critical">🚨</div>
+          <div style="flex:1;">
+            <div style="display:flex;justify-content:space-between;align-items:flex-start;gap:8px;">
+              <div style="font-size:.9rem;font-weight:700;color:var(--cream);">QR code usado 2x seguidas · Mooca</div>
+              <span class="tag tag-red">Crítico</span>
+            </div>
+            <div style="font-size:.8rem;color:var(--muted);margin-top:4px;line-height:1.5;">O QR #M-4821 foi acionado duas vezes em menos de 4 minutos pelo mesmo dispositivo (ID: usr_8821). Possível tentativa de fraude ou clonagem de sessão.</div>
+            <div class="alert-meta">
+              <span>📍 Mooca · SP</span>
+              <span>🕐 Hoje, 14:32</span>
+              <span>👤 usr_8821</span>
+            </div>
+            <div class="alert-actions">
+              <button class="btn-secondary" style="padding:5px 14px;font-size:.75rem;">Ver detalhes</button>
+              <button class="btn-primary" style="padding:5px 14px;font-size:.75rem;">Resolver</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- CRÍTICO 2 -->
+        <div class="alert-card critical">
+          <div class="alert-icon critical">💰</div>
+          <div style="flex:1;">
+            <div style="display:flex;justify-content:space-between;align-items:flex-start;gap:8px;">
+              <div style="font-size:.9rem;font-weight:700;color:var(--cream);">Inadimplência de royalties · Guarulhos</div>
+              <span class="tag tag-red">Crítico</span>
+            </div>
+            <div style="font-size:.8rem;color:var(--muted);margin-top:4px;line-height:1.5;">Franqueado Rafael Torres (Guarulhos) não efetuou o pagamento de royalties há 12 dias. Valor pendente: R$3.240. Segundo aviso enviado por e-mail.</div>
+            <div class="alert-meta">
+              <span>📍 Guarulhos · SP</span>
+              <span>🕐 Ontem, 09:15</span>
+              <span>💳 R$3.240 pendente</span>
+            </div>
+            <div class="alert-actions">
+              <button class="btn-secondary" style="padding:5px 14px;font-size:.75rem;">Ver contrato</button>
+              <button class="btn-primary" style="padding:5px 14px;font-size:.75rem;">Notificar franqueado</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- CRÍTICO 3 -->
+        <div class="alert-card critical">
+          <div class="alert-icon critical">⚙️</div>
+          <div style="flex:1;">
+            <div style="display:flex;justify-content:space-between;align-items:flex-start;gap:8px;">
+              <div style="font-size:.9rem;font-weight:700;color:var(--cream);">Falha na baia 3 · Osasco</div>
+              <span class="tag tag-red">Crítico</span>
+            </div>
+            <div style="font-size:.8rem;color:var(--muted);margin-top:4px;line-height:1.5;">A baia 3 da unidade Osasco reportou erro de sensor E-14 às 10:08. A baia está bloqueada automaticamente. Técnico não foi acionado ainda.</div>
+            <div class="alert-meta">
+              <span>📍 Osasco · SP</span>
+              <span>🕐 Hoje, 10:08</span>
+              <span>🔧 Baia #3 bloqueada</span>
+            </div>
+            <div class="alert-actions">
+              <button class="btn-secondary" style="padding:5px 14px;font-size:.75rem;">Ver logs</button>
+              <button class="btn-primary" style="padding:5px 14px;font-size:.75rem;">Acionar técnico</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- AVISO 1 -->
+        <div class="alert-card warning">
+          <div class="alert-icon warning">⚠️</div>
+          <div style="flex:1;">
+            <div style="display:flex;justify-content:space-between;align-items:flex-start;gap:8px;">
+              <div style="font-size:.9rem;font-weight:700;color:var(--cream);">Pico acima de 40% · Tatuapé (Sex 18h)</div>
+              <span class="tag tag-gold">Aviso</span>
+            </div>
+            <div style="font-size:.8rem;color:var(--muted);margin-top:4px;line-height:1.5;">Fila de 7 usuários aguardando baias na unidade Tatuapé. Pico de demanda 42% acima do padrão para este horário. Considere notificar usuários sobre tempo de espera.</div>
+            <div class="alert-meta">
+              <span>📍 Tatuapé · SP</span>
+              <span>🕐 Hoje, 18:05</span>
+              <span>📈 +42% do padrão</span>
+            </div>
+            <div class="alert-actions">
+              <button class="btn-secondary" style="padding:5px 14px;font-size:.75rem;">Ver detalhes</button>
+              <button class="btn-secondary" style="padding:5px 14px;font-size:.75rem;">Resolver</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- AVISO 2 -->
+        <div class="alert-card warning">
+          <div class="alert-icon warning">💤</div>
+          <div style="flex:1;">
+            <div style="display:flex;justify-content:space-between;align-items:flex-start;gap:8px;">
+              <div style="font-size:.9rem;font-weight:700;color:var(--cream);">Idle time acima de 30% · Santo André (Qui manhã)</div>
+              <span class="tag tag-gold">Aviso</span>
+            </div>
+            <div style="font-size:.8rem;color:var(--muted);margin-top:4px;line-height:1.5;">Baias da unidade Santo André ficaram ociosas por 32% do tempo na quinta-feira manhã (07h-12h). Média histórica é de 18%. Pode indicar necessidade de ação promocional.</div>
+            <div class="alert-meta">
+              <span>📍 Santo André · SP</span>
+              <span>🕐 Qui, 12:00</span>
+              <span>📉 32% idle vs 18% médio</span>
+            </div>
+            <div class="alert-actions">
+              <button class="btn-secondary" style="padding:5px 14px;font-size:.75rem;">Ver relatório</button>
+              <a href="./promocoes.html" class="btn-gold" style="padding:5px 14px;font-size:.75rem;display:inline-flex;align-items:center;gap:6px;">⚡ Criar promoção</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- AVISO 3 -->
+        <div class="alert-card warning">
+          <div class="alert-icon warning">📲</div>
+          <div style="flex:1;">
+            <div style="display:flex;justify-content:space-between;align-items:flex-start;gap:8px;">
+              <div style="font-size:.9rem;font-weight:700;color:var(--cream);">Queda na taxa de conversão do app · Campinas</div>
+              <span class="tag tag-gold">Aviso</span>
+            </div>
+            <div style="font-size:.8rem;color:var(--muted);margin-top:4px;line-height:1.5;">Taxa de conversão de visitantes do app para lavagem caiu de 34% para 21% nos últimos 3 dias em Campinas Centro. Possível problema de UX ou conexão.</div>
+            <div class="alert-meta">
+              <span>📍 Campinas · SP</span>
+              <span>🕐 Hoje, 08:30</span>
+              <span>📲 Conversão: 21% (-13pp)</span>
+            </div>
+            <div class="alert-actions">
+              <button class="btn-secondary" style="padding:5px 14px;font-size:.75rem;">Ver detalhes</button>
+              <button class="btn-secondary" style="padding:5px 14px;font-size:.75rem;">Resolver</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- AVISO 4 -->
+        <div class="alert-card warning">
+          <div class="alert-icon warning">⭐</div>
+          <div style="flex:1;">
+            <div style="display:flex;justify-content:space-between;align-items:flex-start;gap:8px;">
+              <div style="font-size:.9rem;font-weight:700;color:var(--cream);">Queda no NPS · Osasco (-8pts em 7 dias)</div>
+              <span class="tag tag-gold">Aviso</span>
+            </div>
+            <div style="font-size:.8rem;color:var(--muted);margin-top:4px;line-height:1.5;">NPS da unidade Osasco caiu de 82 para 74 nos últimos 7 dias. 4 avaliações negativas relacionadas ao "tempo de espera no caixa". Franqueado notificado.</div>
+            <div class="alert-meta">
+              <span>📍 Osasco · SP</span>
+              <span>🕐 Ontem, 20:00</span>
+              <span>⭐ NPS: 74 (-8pts)</span>
+            </div>
+            <div class="alert-actions">
+              <button class="btn-secondary" style="padding:5px 14px;font-size:.75rem;">Ver avaliações</button>
+              <button class="btn-secondary" style="padding:5px 14px;font-size:.75rem;">Resolver</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- INFO 1 -->
+        <div class="alert-card info">
+          <div class="alert-icon info">🔧</div>
+          <div style="flex:1;">
+            <div style="display:flex;justify-content:space-between;align-items:flex-start;gap:8px;">
+              <div style="font-size:.9rem;font-weight:700;color:var(--cream);">Manutenção preventiva agendada · Mooca</div>
+              <span class="tag tag-blue">Info</span>
+            </div>
+            <div style="font-size:.8rem;color:var(--muted);margin-top:4px;line-height:1.5;">Manutenção preventiva do sistema de bombas agendada para 08/06 às 06h. Previsão de duração: 2 horas. Baias 1 e 2 ficarão offline.</div>
+            <div class="alert-meta">
+              <span>📍 Mooca · SP</span>
+              <span>🕐 Agendado: 08/06 06h</span>
+            </div>
+            <div class="alert-actions">
+              <button class="btn-secondary" style="padding:5px 14px;font-size:.75rem;">Ver detalhes</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- INFO 2 -->
+        <div class="alert-card info">
+          <div class="alert-icon info">📦</div>
+          <div style="flex:1;">
+            <div style="display:flex;justify-content:space-between;align-items:flex-start;gap:8px;">
+              <div style="font-size:.9rem;font-weight:700;color:var(--cream);">Estoque de insumos baixo · Tatuapé</div>
+              <span class="tag tag-blue">Info</span>
+            </div>
+            <div style="font-size:.8rem;color:var(--muted);margin-top:4px;line-height:1.5;">Shampoo concentrado abaixo do nível mínimo (8L restantes, mínimo: 20L). Pedido de reposição não foi efetuado pelo franqueado. Prazo estimado: 3 dias.</div>
+            <div class="alert-meta">
+              <span>📍 Tatuapé · SP</span>
+              <span>🕐 Hoje, 07:15</span>
+            </div>
+            <div class="alert-actions">
+              <button class="btn-secondary" style="padding:5px 14px;font-size:.75rem;">Notificar franqueado</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- INFO 3 -->
+        <div class="alert-card info">
+          <div class="alert-icon info">📋</div>
+          <div style="flex:1;">
+            <div style="display:flex;justify-content:space-between;align-items:flex-start;gap:8px;">
+              <div style="font-size:.9rem;font-weight:700;color:var(--cream);">Nova franquia aprovada · Pinheiros</div>
+              <span class="tag tag-blue">Info</span>
+            </div>
+            <div style="font-size:.8rem;color:var(--muted);margin-top:4px;line-height:1.5;">Contrato de franquia Pinheiros foi assinado digitalmente por Bruno Alves. Previsão de abertura: 25/06. Setup inicial: R$48.000. Em análise pelo jurídico.</div>
+            <div class="alert-meta">
+              <span>📍 Pinheiros · SP</span>
+              <span>🕐 Hoje, 11:40</span>
+            </div>
+            <div class="alert-actions">
+              <a href="./franqueados.html" class="btn-secondary" style="padding:5px 14px;font-size:.75rem;display:inline-flex;align-items:center;">Ver franqueados</a>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </main>
+  </div>
+</div>
+</body>
+</html>

@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" /><meta name="viewport" content="width=device-width,initial-scale=1.0" />
+  <title>Fatura — Frota Uashi</title>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="./_admin.css" />
+</head>
+<body>
+<div class="admin-layout">
+  <aside class="sidebar">
+    <div class="sidebar-logo"><div class="wordmark">UASHI</div><div class="swoosh"></div></div>
+    <div class="sidebar-profile">
+      <div class="sidebar-avatar" style="background:var(--gold);color:#0A0A0A;">T</div>
+      <div><div class="sidebar-name">Transportes Silva</div><div class="sidebar-role">🚛 Frota · 12 veículos</div></div>
+    </div>
+    <nav class="sidebar-nav">
+      <div class="nav-section-label">Frota</div>
+      <a href="frota.html" class="nav-item"><span class="nav-icon">📊</span>Dashboard</a>
+      <a href="frota-veiculos.html" class="nav-item"><span class="nav-icon">🚗</span>Veículos</a>
+      <a href="frota-motoristas.html" class="nav-item"><span class="nav-icon">👤</span>Motoristas</a>
+      <a href="frota-fatura.html" class="nav-item active"><span class="nav-icon">📄</span>Faturas</a>
+      <a href="frota-chamados.html" class="nav-item"><span class="nav-icon">💬</span>Chamados</a>
+      <div class="nav-section-label">Conta</div>
+      <a href="perfil-admin.html" class="nav-item"><span class="nav-icon">👤</span>Perfil</a>
+    </nav>
+    <div class="sidebar-footer"><a href="login.html" style="font-size:.75rem;color:var(--muted);text-decoration:none;">← Sair</a></div>
+  </aside>
+
+  <div class="main-area">
+    <div class="topbar">
+      <span class="topbar-title">Faturas · Frota</span>
+      <div class="topbar-actions">
+        <button class="topbar-btn">🔔</button>
+        <div style="width:32px;height:32px;border-radius:8px;background:var(--gold);display:flex;align-items:center;justify-content:center;font-family:var(--font-display);color:#0A0A0A;font-size:.9rem;">T</div>
+      </div>
+    </div>
+    <hr class="swoosh" />
+
+    <div class="page-content">
+      <div class="page-header">
+        <div>
+          <h1>FATURA DE JUNHO 2025</h1>
+          <div style="font-size:.8rem;color:var(--muted);">Transportes Silva Ltda · CNPJ 00.000.000/0001-00</div>
+        </div>
+        <div style="display:flex;gap:10px;">
+          <button class="btn-secondary" onclick="alert('(protótipo) Baixar PDF')">⬇ PDF</button>
+          <button class="btn-gold" onclick="alert('(protótipo) Pagar via Pix')">Pagar agora →</button>
+        </div>
+      </div>
+
+      <!-- Fatura em aberto -->
+      <div class="card" style="padding:24px;margin-bottom:20px;border-color:rgba(245,168,0,.3);">
+        <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:20px;">
+          <div>
+            <div style="font-size:.72rem;font-weight:600;color:var(--muted);text-transform:uppercase;letter-spacing:.08em;margin-bottom:6px;">Total da fatura</div>
+            <div style="font-family:var(--font-display);font-size:2.8rem;color:var(--gold);">R$ 1.068,00</div>
+            <div style="font-size:.8rem;color:var(--muted);margin-top:4px;">Vencimento: 20/06/2025</div>
+          </div>
+          <span class="tag tag-gold" style="font-size:.8rem;padding:6px 14px;">Em aberto</span>
+        </div>
+        <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:16px;padding:16px;background:var(--surface-2);border-radius:10px;">
+          <div>
+            <div style="font-size:.7rem;color:var(--muted);text-transform:uppercase;letter-spacing:.06em;margin-bottom:4px;">Assinatura base</div>
+            <div style="font-weight:600;color:var(--cream);">12 veículos × R$89</div>
+            <div style="font-size:.8rem;color:var(--cream);">R$ 1.068,00</div>
+          </div>
+          <div>
+            <div style="font-size:.7rem;color:var(--muted);text-transform:uppercase;letter-spacing:.06em;margin-bottom:4px;">Lavagens extras</div>
+            <div style="font-weight:600;color:var(--cream);">JKL-3456 (+1)</div>
+            <div style="font-size:.8rem;color:var(--muted);">Incluído no plano</div>
+          </div>
+          <div>
+            <div style="font-size:.7rem;color:var(--muted);text-transform:uppercase;letter-spacing:.06em;margin-bottom:4px;">Desconto</div>
+            <div style="font-weight:600;color:#22c55e;">—</div>
+            <div style="font-size:.8rem;color:var(--muted);">Sem promoções ativas</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Breakdown por veículo -->
+      <div class="card" style="margin-bottom:20px;">
+        <div class="card-header"><span class="card-title">CONSUMO POR VEÍCULO</span></div>
+        <div style="overflow-x:auto;">
+          <table class="data-table">
+            <thead><tr><th>Placa</th><th>Modelo</th><th>Motorista</th><th>Lavagens</th><th>Tipo mais usado</th><th>Custo</th></tr></thead>
+            <tbody>
+              <tr><td style="font-family:var(--font-display);">ABC-1234</td><td>Fiat Strada</td><td>João S.</td><td>28</td><td><span class="tag tag-gold">Completa</span></td><td>R$ 89,00</td></tr>
+              <tr><td style="font-family:var(--font-display);">DEF-5678</td><td>VW Delivery</td><td>Maria L.</td><td>22</td><td><span class="tag tag-blue">Simples</span></td><td>R$ 89,00</td></tr>
+              <tr><td style="font-family:var(--font-display);">GHI-9012</td><td>Ford Transit</td><td>Pedro M.</td><td>18</td><td><span class="tag tag-blue">Simples</span></td><td>R$ 89,00</td></tr>
+              <tr><td style="font-family:var(--font-display);">JKL-3456</td><td>Renault Master</td><td>Ana C.</td><td style="color:var(--red);font-weight:700;">31</td><td><span class="tag tag-gold">Completa</span></td><td>R$ 89,00</td></tr>
+              <tr><td style="font-family:var(--font-display);">MNO-7890</td><td>Mercedes Sprinter</td><td>Lucas F.</td><td>14</td><td><span class="tag tag-gold">Completa</span></td><td>R$ 89,00</td></tr>
+              <tr><td style="color:var(--muted);">+ 7 veículos</td><td>—</td><td>—</td><td>—</td><td>—</td><td>R$ 623,00</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- Histórico -->
+      <div class="card">
+        <div class="card-header"><span class="card-title">HISTÓRICO DE FATURAS</span></div>
+        <div class="card-body" style="display:flex;flex-direction:column;gap:12px;">
+          <div class="stat-row">
+            <div><div style="font-weight:600;color:var(--cream);">Junho 2025</div><div style="font-size:.72rem;color:var(--muted);">248 lavagens · 12 veículos</div></div>
+            <div style="text-align:right;"><div style="font-weight:700;color:var(--cream);">R$ 1.068</div><span class="tag tag-gold">Em aberto</span></div>
+          </div>
+          <div class="stat-row">
+            <div><div style="font-weight:600;color:var(--cream);">Maio 2025</div><div style="font-size:.72rem;color:var(--muted);">217 lavagens · 12 veículos</div></div>
+            <div style="text-align:right;"><div style="font-weight:700;color:var(--cream);">R$ 1.068</div><div style="display:flex;align-items:center;gap:6px;justify-content:flex-end;"><span class="tag tag-green">Pago</span><button class="btn-icon" onclick="alert('(protótipo) Download NF-e')">⬇</button></div></div>
+          </div>
+          <div class="stat-row">
+            <div><div style="font-weight:600;color:var(--cream);">Abril 2025</div><div style="font-size:.72rem;color:var(--muted);">198 lavagens · 10 veículos</div></div>
+            <div style="text-align:right;"><div style="font-weight:700;color:var(--cream);">R$ 890</div><div style="display:flex;align-items:center;gap:6px;justify-content:flex-end;"><span class="tag tag-green">Pago</span><button class="btn-icon" onclick="alert('(protótipo) Download NF-e')">⬇</button></div></div>
+          </div>
+          <div class="stat-row">
+            <div><div style="font-weight:600;color:var(--cream);">Março 2025</div><div style="font-size:.72rem;color:var(--muted);">176 lavagens · 10 veículos</div></div>
+            <div style="text-align:right;"><div style="font-weight:700;color:var(--cream);">R$ 890</div><div style="display:flex;align-items:center;gap:6px;justify-content:flex-end;"><span class="tag tag-green">Pago</span><button class="btn-icon" onclick="alert('(protótipo) Download NF-e')">⬇</button></div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</body></html>

@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" /><meta name="viewport" content="width=device-width,initial-scale=1.0" />
+  <title>Chamados — Uashi</title>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="./_admin.css" />
+</head>
+<body>
+<div class="admin-layout">
+  <aside class="sidebar">
+    <div class="sidebar-logo"><div class="wordmark">UASHI</div><div class="swoosh"></div></div>
+    <div class="sidebar-profile">
+      <div class="sidebar-avatar" style="background:var(--red);">C</div>
+      <div><div class="sidebar-name">Carlos Mendes</div><div class="sidebar-role">👤 Usuário · Plano Pro</div></div>
+    </div>
+    <nav class="sidebar-nav">
+      <div class="nav-section-label">Minha conta</div>
+      <a href="usuario.html" class="nav-item"><span class="nav-icon">📊</span>Resumo</a>
+      <a href="usuario-veiculos.html" class="nav-item"><span class="nav-icon">🚗</span>Meus veículos</a>
+      <a href="usuario-dependentes.html" class="nav-item"><span class="nav-icon">👨‍👩‍👦</span>Dependentes</a>
+      <a href="usuario-faturas.html" class="nav-item"><span class="nav-icon">📄</span>Faturas</a>
+      <a href="usuario-chamados.html" class="nav-item active"><span class="nav-icon">💬</span>Chamados</a>
+      <div class="nav-section-label">Conta</div>
+      <a href="perfil-admin.html" class="nav-item"><span class="nav-icon">👤</span>Perfil</a>
+    </nav>
+    <div class="sidebar-footer">
+      <a href="../app/index.html" style="font-size:.75rem;color:var(--blue);text-decoration:none;">← Voltar ao app</a>
+    </div>
+  </aside>
+
+  <div class="main-area">
+    <div class="topbar">
+      <span class="topbar-title">Chamados de Suporte</span>
+      <div class="topbar-actions">
+        <button class="topbar-btn">🔔</button>
+        <div style="width:32px;height:32px;border-radius:8px;background:var(--red);display:flex;align-items:center;justify-content:center;font-family:var(--font-display);color:#fff;font-size:.9rem;">C</div>
+      </div>
+    </div>
+    <hr class="swoosh" />
+
+    <div class="page-content">
+      <div class="page-header">
+        <div>
+          <h1>MEUS CHAMADOS</h1>
+          <div style="font-size:.8rem;color:var(--muted);">1 em andamento</div>
+        </div>
+        <button class="btn-primary" onclick="document.getElementById('new-ticket').style.display='block';this.style.display='none'">+ Abrir chamado</button>
+      </div>
+
+      <!-- Formulário novo chamado (oculto) -->
+      <div id="new-ticket" style="display:none;" class="card" style="margin-bottom:16px;">
+        <div class="card-header">
+          <span class="card-title">NOVO CHAMADO</span>
+          <button class="btn-icon" onclick="document.getElementById('new-ticket').style.display='none';document.querySelector('.btn-primary').style.display='inline-flex'">✕</button>
+        </div>
+        <div class="card-body" style="display:flex;flex-direction:column;gap:14px;">
+          <div class="form-group">
+            <label class="form-label">Categoria</label>
+            <select class="form-input">
+              <option>Cobrança indevida</option>
+              <option>Lavagem não registrada</option>
+              <option>Problema com QR Code</option>
+              <option>Problema no app</option>
+              <option>Cancelamento de plano</option>
+              <option>Outro</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Descrição</label>
+            <textarea class="form-input" rows="3" placeholder="Descreva o problema em detalhes..."></textarea>
+          </div>
+          <div>
+            <button class="btn-primary" onclick="alert('(protótipo) Chamado aberto! Aguarde resposta em até 24h.')">Enviar chamado</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Chamados -->
+      <div style="display:flex;flex-direction:column;gap:12px;margin-bottom:20px;">
+
+        <div class="card" style="padding:16px;border-color:rgba(245,168,0,.2);">
+          <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:8px;">
+            <div style="display:flex;gap:8px;align-items:center;">
+              <span style="font-size:.7rem;color:var(--muted);">#C-0023</span>
+              <span class="tag tag-gold">Em andamento</span>
+              <span class="tag tag-muted">Cobrança</span>
+            </div>
+            <span style="font-size:.72rem;color:var(--muted);">Ontem 14:20</span>
+          </div>
+          <div style="font-weight:600;color:var(--cream);margin-bottom:4px;">Cobrança duplicada em 09/06</div>
+          <div style="font-size:.8rem;color:var(--muted);margin-bottom:8px;">Fui cobrado duas vezes de R$19 na lavagem simples do dia 09/06 às 06:40 na unidade Mooca.</div>
+          <div style="background:var(--surface-2);border-radius:8px;padding:10px 12px;font-size:.8rem;margin-bottom:12px;">
+            <div style="font-size:.7rem;color:var(--blue);font-weight:600;margin-bottom:4px;">Resposta do suporte</div>
+            <div style="color:var(--cream);">Identificamos a cobrança duplicada. O estorno de R$19 foi solicitado e deve aparecer em até 5 dias úteis no seu cartão.</div>
+            <div style="font-size:.7rem;color:var(--muted);margin-top:4px;">Hoje 09:15</div>
+          </div>
+          <div style="display:flex;gap:8px;">
+            <button class="btn-secondary" style="font-size:.72rem;" onclick="alert('(protótipo) Marcar como resolvido')">Marcar como resolvido</button>
+          </div>
+        </div>
+
+        <div style="font-size:.8rem;font-weight:600;color:var(--muted);text-transform:uppercase;letter-spacing:.06em;">Resolvidos</div>
+
+        <div class="card" style="padding:14px;opacity:.7;">
+          <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:4px;">
+            <div style="display:flex;gap:8px;align-items:center;">
+              <span style="font-size:.7rem;color:var(--muted);">#C-0019</span>
+              <span class="tag tag-green">Resolvido</span>
+              <span style="font-size:.8rem;color:var(--cream);">QR Code não abria a cancela</span>
+            </div>
+            <span style="font-size:.72rem;color:var(--muted);">02/06 · 2h resolução</span>
+          </div>
+          <div style="font-size:.75rem;color:var(--muted);">App foi atualizado e o problema foi corrigido na versão 2.4.1.</div>
+        </div>
+
+        <div class="card" style="padding:14px;opacity:.7;">
+          <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:4px;">
+            <div style="display:flex;gap:8px;align-items:center;">
+              <span style="font-size:.7rem;color:var(--muted);">#C-0015</span>
+              <span class="tag tag-green">Resolvido</span>
+              <span style="font-size:.8rem;color:var(--cream);">Pontos não creditados após lavagem</span>
+            </div>
+            <span style="font-size:.72rem;color:var(--muted);">18/05 · 4h resolução</span>
+          </div>
+          <div style="font-size:.75rem;color:var(--muted);">50 pontos foram creditados manualmente.</div>
+        </div>
+
+      </div>
+
+      <!-- Contatos rápidos -->
+      <div class="card" style="padding:16px;">
+        <div style="font-size:.75rem;font-weight:600;color:var(--muted);text-transform:uppercase;letter-spacing:.06em;margin-bottom:12px;">Contato rápido</div>
+        <div style="display:flex;gap:10px;">
+          <button class="btn-gold" style="font-size:.78rem;" onclick="alert('(protótipo) Abrir WhatsApp')">💬 WhatsApp</button>
+          <button class="btn-secondary" style="font-size:.78rem;" onclick="alert('(protótipo) Enviar e-mail')">✉️ suporte@uashi.com.br</button>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+</body></html>

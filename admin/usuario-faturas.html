@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" /><meta name="viewport" content="width=device-width,initial-scale=1.0" />
+  <title>Faturas — Uashi</title>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="./_admin.css" />
+</head>
+<body>
+<div class="admin-layout">
+  <aside class="sidebar">
+    <div class="sidebar-logo"><div class="wordmark">UASHI</div><div class="swoosh"></div></div>
+    <div class="sidebar-profile">
+      <div class="sidebar-avatar" style="background:var(--red);">C</div>
+      <div><div class="sidebar-name">Carlos Mendes</div><div class="sidebar-role">👤 Usuário · Plano Pro</div></div>
+    </div>
+    <nav class="sidebar-nav">
+      <div class="nav-section-label">Minha conta</div>
+      <a href="usuario.html" class="nav-item"><span class="nav-icon">📊</span>Resumo</a>
+      <a href="usuario-veiculos.html" class="nav-item"><span class="nav-icon">🚗</span>Meus veículos</a>
+      <a href="usuario-dependentes.html" class="nav-item"><span class="nav-icon">👨‍👩‍👦</span>Dependentes</a>
+      <a href="usuario-faturas.html" class="nav-item active"><span class="nav-icon">📄</span>Faturas</a>
+      <a href="usuario-chamados.html" class="nav-item"><span class="nav-icon">💬</span>Chamados</a>
+      <div class="nav-section-label">Conta</div>
+      <a href="perfil-admin.html" class="nav-item"><span class="nav-icon">👤</span>Perfil</a>
+    </nav>
+    <div class="sidebar-footer">
+      <a href="../app/index.html" style="font-size:.75rem;color:var(--blue);text-decoration:none;">← Voltar ao app</a>
+    </div>
+  </aside>
+
+  <div class="main-area">
+    <div class="topbar">
+      <span class="topbar-title">Faturas & Pagamentos</span>
+      <div class="topbar-actions">
+        <button class="topbar-btn">🔔</button>
+        <div style="width:32px;height:32px;border-radius:8px;background:var(--red);display:flex;align-items:center;justify-content:center;font-family:var(--font-display);color:#fff;font-size:.9rem;">C</div>
+      </div>
+    </div>
+    <hr class="swoosh" />
+
+    <div class="page-content">
+      <div class="page-header">
+        <div>
+          <h1>FATURAS & PAGAMENTOS</h1>
+          <div style="font-size:.8rem;color:var(--muted);">Próxima cobrança: 29/06/2025</div>
+        </div>
+      </div>
+
+      <!-- Plano atual + próxima cobrança -->
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:20px;">
+        <div class="card" style="padding:20px;border-color:rgba(245,168,0,.3);">
+          <div style="font-size:.72rem;font-weight:600;color:var(--muted);text-transform:uppercase;letter-spacing:.08em;margin-bottom:8px;">Plano ativo</div>
+          <div style="font-family:var(--font-display);font-size:1.6rem;color:var(--gold);">PRO · MOTORISTA</div>
+          <div style="font-size:.8rem;color:var(--muted);margin-bottom:12px;">R$ 149/mês · Renova em 18 dias</div>
+          <div>
+            <div style="display:flex;justify-content:space-between;font-size:.8rem;color:var(--muted);margin-bottom:4px;"><span>Uso do mês</span><span style="color:var(--cream);">14 de 30 lavagens</span></div>
+            <div class="progress-track"><div class="progress-fill" style="width:47%;background:linear-gradient(90deg,var(--red),var(--gold));"></div></div>
+          </div>
+        </div>
+        <div class="card" style="padding:20px;">
+          <div style="font-size:.72rem;font-weight:600;color:var(--muted);text-transform:uppercase;letter-spacing:.08em;margin-bottom:8px;">Forma de pagamento</div>
+          <div style="display:flex;align-items:center;gap:10px;margin-bottom:12px;">
+            <div style="width:36px;height:24px;background:var(--surface-2);border:1px solid rgba(255,255,255,.1);border-radius:4px;display:flex;align-items:center;justify-content:center;font-size:.65rem;font-weight:700;color:var(--blue);">VISA</div>
+            <div>
+              <div style="font-size:.85rem;color:var(--cream);">•••• •••• •••• 4242</div>
+              <div style="font-size:.72rem;color:var(--muted);">Vence 08/2027</div>
+            </div>
+          </div>
+          <button class="btn-secondary" style="font-size:.72rem;" onclick="alert('(protótipo) Trocar cartão')">Trocar cartão</button>
+        </div>
+      </div>
+
+      <!-- Histórico de faturas -->
+      <div class="card">
+        <div class="card-header"><span class="card-title">HISTÓRICO DE COBRANÇAS</span></div>
+        <div style="overflow-x:auto;">
+          <table class="data-table">
+            <thead><tr><th>Período</th><th>Descrição</th><th>Valor</th><th>Status</th><th>NF</th></tr></thead>
+            <tbody>
+              <tr>
+                <td style="color:var(--muted);">Junho 2025</td>
+                <td>
+                  <div style="font-weight:600;">Plano Pro · Motorista</div>
+                  <div style="font-size:.72rem;color:var(--muted);">Renovação automática · 14 lavagens usadas</div>
+                </td>
+                <td>R$ 149,00</td>
+                <td><span class="tag tag-gold">Em aberto</span></td>
+                <td><button class="btn-icon" onclick="alert('(protótipo) Fatura em aberto — sem NF ainda')">—</button></td>
+              </tr>
+              <tr>
+                <td style="color:var(--muted);">Maio 2025</td>
+                <td>
+                  <div style="font-weight:600;">Plano Pro · Motorista</div>
+                  <div style="font-size:.72rem;color:var(--muted);">30 lavagens utilizadas</div>
+                </td>
+                <td>R$ 149,00</td>
+                <td><span class="tag tag-green">Pago</span></td>
+                <td><button class="btn-icon" onclick="alert('(protótipo) Download NF-e')">⬇</button></td>
+              </tr>
+              <tr>
+                <td style="color:var(--muted);">Maio 2025</td>
+                <td>
+                  <div style="font-weight:600;">Créditos extras</div>
+                  <div style="font-size:.72rem;color:var(--muted);">Recarga de R$100 em créditos</div>
+                </td>
+                <td>R$ 100,00</td>
+                <td><span class="tag tag-green">Pago</span></td>
+                <td><button class="btn-icon" onclick="alert('(protótipo) Download NF-e')">⬇</button></td>
+              </tr>
+              <tr>
+                <td style="color:var(--muted);">Abril 2025</td>
+                <td>
+                  <div style="font-weight:600;">Plano Pro · Motorista</div>
+                  <div style="font-size:.72rem;color:var(--muted);">28 lavagens utilizadas</div>
+                </td>
+                <td>R$ 149,00</td>
+                <td><span class="tag tag-green">Pago</span></td>
+                <td><button class="btn-icon" onclick="alert('(protótipo) Download NF-e')">⬇</button></td>
+              </tr>
+              <tr>
+                <td style="color:var(--muted);">Março 2025</td>
+                <td>
+                  <div style="font-weight:600;">Plano Pro · Motorista</div>
+                  <div style="font-size:.72rem;color:var(--muted);">22 lavagens utilizadas</div>
+                </td>
+                <td>R$ 149,00</td>
+                <td><span class="tag tag-green">Pago</span></td>
+                <td><button class="btn-icon" onclick="alert('(protótipo) Download NF-e')">⬇</button></td>
+              </tr>
+              <tr>
+                <td style="color:var(--muted);">Fevereiro 2025</td>
+                <td>
+                  <div style="font-weight:600;">Plano Básico (upgrade para Pro em mar)</div>
+                  <div style="font-size:.72rem;color:var(--muted);">18 lavagens utilizadas</div>
+                </td>
+                <td>R$ 79,00</td>
+                <td><span class="tag tag-green">Pago</span></td>
+                <td><button class="btn-icon" onclick="alert('(protótipo) Download NF-e')">⬇</button></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <div style="padding:12px 16px;border-top:1px solid rgba(255,255,255,.06);display:flex;justify-content:space-between;align-items:center;">
+          <span style="font-size:.75rem;color:var(--muted);">Total pago: <strong style="color:var(--cream);">R$ 675,00</strong></span>
+          <button class="btn-secondary" style="font-size:.72rem;padding:6px 12px;" onclick="alert('(protótipo) Exportar extrato completo')">⬇ Exportar extrato</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</body></html>

@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" /><meta name="viewport" content="width=device-width,initial-scale=1.0" />
+  <title>Checkout — Uashi</title>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="./_shell.css" />
+  <style>
+    .pay-opt { background:var(--surface-2);border:2px solid rgba(255,255,255,.06);border-radius:12px;padding:14px 16px;cursor:pointer;display:flex;align-items:center;gap:12px;transition:all .2s; }
+    .pay-opt.active { border-color:var(--blue);background:rgba(26,111,212,.06); }
+    .card-input { background:var(--surface-2);border:1.5px solid rgba(255,255,255,.08);border-radius:10px;color:var(--cream);font-family:var(--font-body);font-size:.9rem;padding:12px 14px;outline:none;width:100%;transition:border-color .2s; }
+    .card-input:focus { border-color:var(--blue); }
+    .card-input::placeholder { color:var(--muted); }
+    #pix-section { display:none; }
+    #card-section { display:block; }
+  </style>
+</head>
+<body>
+<div class="app-frame" style="max-width:390px;margin:0 auto;">
+  <div class="status-bar"><span class="status-time">09:41</span><div class="status-icons"><span>●●●</span><span>WiFi</span><span>🔋</span></div></div>
+  <div class="top-bar">
+    <a href="comprar.html" class="top-bar-back">←</a>
+    <span class="top-bar-title">Pagamento</span>
+  </div>
+  <hr class="swoosh" />
+
+  <div class="app-content">
+    <div class="app-content-inner" style="display:flex;flex-direction:column;gap:18px;">
+
+      <!-- Resumo do pedido -->
+      <div style="background:rgba(232,50,26,.06);border:1px solid rgba(232,50,26,.2);border-radius:14px;padding:14px 16px;">
+        <div style="font-size:.72rem;font-weight:600;color:rgba(232,50,26,.8);text-transform:uppercase;letter-spacing:.08em;margin-bottom:8px;">Resumo</div>
+        <div style="display:flex;justify-content:space-between;font-size:.85rem;margin-bottom:4px;"><span style="color:var(--muted);">Lavagem Completa · Honda HR-V</span><span style="color:var(--cream);">R$ 35,00</span></div>
+        <div style="display:flex;justify-content:space-between;font-size:.85rem;margin-bottom:4px;"><span style="color:var(--muted);">Unidade</span><span style="color:var(--cream);">Uashi Mooca</span></div>
+        <hr style="border:none;border-top:1px solid rgba(255,255,255,.08);margin:10px 0;" />
+        <div style="display:flex;justify-content:space-between;align-items:center;">
+          <span style="font-weight:700;color:var(--cream);">Total</span>
+          <span style="font-family:var(--font-display);font-size:1.6rem;color:var(--gold);">R$&nbsp;35,00</span>
+        </div>
+      </div>
+
+      <!-- Métodos de pagamento -->
+      <div>
+        <div style="font-size:.72rem;font-weight:600;color:var(--muted);text-transform:uppercase;letter-spacing:.08em;margin-bottom:10px;">Forma de pagamento</div>
+        <div style="display:flex;flex-direction:column;gap:8px;">
+          <div class="pay-opt active" onclick="selectPay(this,'card')">
+            <span style="font-size:1.4rem;">💳</span>
+            <div style="flex:1;"><div style="font-weight:600;font-size:.875rem;color:var(--cream);">Cartão de crédito</div></div>
+            <div class="radio-check" style="width:20px;height:20px;border-radius:50%;border:2px solid var(--blue);display:flex;align-items:center;justify-content:center;"><div style="width:10px;height:10px;border-radius:50%;background:var(--blue);"></div></div>
+          </div>
+          <div class="pay-opt" onclick="selectPay(this,'pix')">
+            <span style="font-size:1.4rem;">🟢</span>
+            <div style="flex:1;"><div style="font-weight:600;font-size:.875rem;color:var(--cream);">Pix</div><div style="font-size:.72rem;color:var(--muted);">Aprovação em segundos</div></div>
+            <div class="radio-check" style="width:20px;height:20px;border-radius:50%;border:2px solid rgba(255,255,255,.2);"></div>
+          </div>
+          <div class="pay-opt" onclick="selectPay(this,'saldo')">
+            <span style="font-size:1.4rem;">💰</span>
+            <div style="flex:1;"><div style="font-weight:600;font-size:.875rem;color:var(--cream);">Saldo de créditos</div><div style="font-size:.72rem;color:var(--muted);">R$ 120,00 disponíveis</div></div>
+            <div class="radio-check" style="width:20px;height:20px;border-radius:50%;border:2px solid rgba(255,255,255,.2);"></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Form cartão -->
+      <div id="card-section">
+        <div style="font-size:.72rem;font-weight:600;color:var(--muted);text-transform:uppercase;letter-spacing:.08em;margin-bottom:10px;">Dados do cartão</div>
+        <div style="display:flex;flex-direction:column;gap:10px;">
+          <input class="card-input" type="text" placeholder="0000 0000 0000 0000" value="5500 0000 0000 4444" />
+          <input class="card-input" type="text" placeholder="Nome no cartão" value="CARLOS MENDES" />
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;">
+            <input class="card-input" type="text" placeholder="MM/AA" value="04/28" />
+            <input class="card-input" type="text" placeholder="CVV" value="123" />
+          </div>
+          <label style="display:flex;gap:8px;align-items:center;font-size:.8rem;color:var(--muted);cursor:pointer;">
+            <input type="checkbox" checked style="accent-color:var(--blue);" />
+            Salvar cartão para próximas compras
+          </label>
+        </div>
+      </div>
+
+      <!-- PIX section -->
+      <div id="pix-section">
+        <div style="text-align:center;padding:20px;background:var(--surface);border-radius:14px;">
+          <div style="width:140px;height:140px;background:#fff;border-radius:12px;margin:0 auto 16px;display:flex;align-items:center;justify-content:center;font-size:4rem;">🟢</div>
+          <div style="font-family:var(--font-display);font-size:1rem;color:var(--cream);margin-bottom:8px;">CÓDIGO PIX COPIADO</div>
+          <div style="font-size:.75rem;color:var(--muted);font-family:monospace;word-break:break-all;background:var(--surface-2);padding:10px;border-radius:8px;">00020126580014BR.GOV.BCB.PIX01364d3e...</div>
+          <button onclick="alert('Código PIX copiado!')" style="margin-top:10px;background:var(--surface-2);border:1px solid rgba(255,255,255,.1);border-radius:8px;color:var(--blue);font-size:.8rem;padding:8px 16px;cursor:pointer;">Copiar código</button>
+        </div>
+      </div>
+
+      <button class="btn-primary" id="pay-btn" onclick="confirmPay()" style="border-radius:14px;padding:16px;font-size:.95rem;">
+        Pagar R$ 35,00
+      </button>
+
+      <p style="text-align:center;font-size:.72rem;color:var(--muted);">🔒 Pagamento seguro via Stripe</p>
+
+    </div>
+  </div>
+
+  <nav class="tab-bar">
+    <a href="index.html" class="tab-item"><span class="tab-icon">🏠</span><span class="tab-label">Home</span></a>
+    <a href="mapa.html" class="tab-item"><span class="tab-icon">📍</span><span class="tab-label">Lojas</span></a>
+    <a href="qrcode.html" class="tab-qr"><div class="tab-qr-btn">🔲</div></a>
+    <a href="historico.html" class="tab-item"><span class="tab-icon">📋</span><span class="tab-label">Histórico</span></a>
+    <a href="conta.html" class="tab-item"><span class="tab-icon">👤</span><span class="tab-label">Conta</span></a>
+  </nav>
+</div>
+<script>
+  let currentPay = 'card';
+  function selectPay(el, type) {
+    currentPay = type;
+    document.querySelectorAll('.pay-opt').forEach(p => {
+      p.classList.remove('active');
+      const rc = p.querySelector('.radio-check');
+      if(rc){ rc.innerHTML=''; rc.style.borderColor='rgba(255,255,255,.2)'; }
+    });
+    el.classList.add('active');
+    const rc = el.querySelector('.radio-check');
+    if(rc){ rc.style.borderColor='var(--blue)'; rc.innerHTML='<div style="width:10px;height:10px;border-radius:50%;background:var(--blue);"></div>'; }
+    document.getElementById('card-section').style.display = type==='card' ? 'block' : 'none';
+    document.getElementById('pix-section').style.display = type==='pix' ? 'block' : 'none';
+    if(type==='saldo'){ document.getElementById('card-section').style.display='none'; document.getElementById('pix-section').style.display='none'; }
+  }
+  function confirmPay() {
+    document.getElementById('pay-btn').textContent = '⏳ Processando...';
+    setTimeout(() => window.location.href = 'qrcode.html', 1500);
+  }
+</script>
+</body></html>

@@ -1,0 +1,251 @@
+/* Uashi App — Mobile Shell Styles */
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;500;600;700&display=swap');
+
+:root {
+  --bg:        #0A0A0A;
+  --surface:   #141414;
+  --surface-2: #1E1E1E;
+  --red:       #E8321A;
+  --gold:      #F5A800;
+  --blue:      #1A6FD4;
+  --cream:     #F0E8D0;
+  --muted:     #6B6B6B;
+  --swoosh:    linear-gradient(90deg, #E8321A 0%, #F5A800 50%, #1A6FD4 100%);
+  --font-display: 'Bebas Neue', sans-serif;
+  --font-body:    'Inter', sans-serif;
+  --tab-h: 68px;
+  --topbar-h: 56px;
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { -webkit-font-smoothing: antialiased; }
+
+body {
+  background: var(--bg);
+  color: var(--cream);
+  font-family: var(--font-body);
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+/* ── Phone frame ── */
+.app-frame {
+  width: 100%;
+  max-width: 390px;
+  min-height: 100vh;
+  background: var(--bg);
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+/* ── Status bar ── */
+.status-bar {
+  height: 44px;
+  background: var(--bg);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 20px;
+  flex-shrink: 0;
+}
+.status-time { font-size: .8rem; font-weight: 700; color: var(--cream); }
+.status-icons { display: flex; align-items: center; gap: 6px; color: var(--cream); font-size: .75rem; }
+
+/* ── Top bar ── */
+.top-bar {
+  height: var(--topbar-h);
+  background: var(--surface);
+  display: flex;
+  align-items: center;
+  padding: 0 16px;
+  gap: 12px;
+  border-bottom: 1px solid rgba(255,255,255,.06);
+  flex-shrink: 0;
+}
+.top-bar-back {
+  width: 36px; height: 36px;
+  border-radius: 10px;
+  background: var(--surface-2);
+  border: none;
+  color: var(--cream);
+  display: flex; align-items: center; justify-content: center;
+  cursor: pointer;
+  text-decoration: none;
+  font-size: 1rem;
+  flex-shrink: 0;
+}
+.top-bar-title {
+  font-family: var(--font-display);
+  font-size: 1.1rem;
+  letter-spacing: .05em;
+  color: var(--cream);
+  flex: 1;
+}
+.top-bar-action {
+  width: 36px; height: 36px;
+  border-radius: 10px;
+  background: transparent;
+  border: none;
+  color: var(--muted);
+  display: flex; align-items: center; justify-content: center;
+  cursor: pointer;
+  font-size: 1.1rem;
+  flex-shrink: 0;
+  text-decoration: none;
+}
+
+/* ── Scrollable content ── */
+.app-content {
+  flex: 1;
+  overflow-y: auto;
+  padding-bottom: calc(var(--tab-h) + 12px);
+}
+.app-content.no-pad { padding-bottom: 0; }
+.app-content-inner { padding: 16px; }
+
+/* ── Bottom tab bar ── */
+.tab-bar {
+  height: var(--tab-h);
+  background: var(--surface);
+  border-top: 1px solid rgba(255,255,255,.06);
+  display: flex;
+  align-items: center;
+  position: fixed;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100%;
+  max-width: 390px;
+  z-index: 100;
+}
+.tab-item {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  text-decoration: none;
+  color: var(--muted);
+  transition: color .2s;
+  height: 100%;
+  cursor: pointer;
+}
+.tab-item.active { color: var(--red); }
+.tab-item:hover  { color: var(--cream); }
+.tab-icon { font-size: 1.3rem; line-height: 1; }
+.tab-label { font-size: .62rem; font-weight: 600; letter-spacing: .04em; text-transform: uppercase; }
+
+/* ── QR tab (center, elevated) ── */
+.tab-qr {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0;
+  position: relative;
+  text-decoration: none;
+  cursor: pointer;
+}
+.tab-qr-btn {
+  width: 52px; height: 52px;
+  border-radius: 16px;
+  background: var(--red);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 1.5rem;
+  box-shadow: 0 4px 20px rgba(232,50,26,.5);
+  margin-top: -20px;
+}
+
+/* ── Cards / surfaces ── */
+.card     { background: var(--surface); border-radius: 16px; border: 1px solid rgba(255,255,255,.06); }
+.card-sm  { background: var(--surface); border-radius: 12px; border: 1px solid rgba(255,255,255,.06); }
+.card-2   { background: var(--surface-2); border-radius: 12px; }
+
+/* ── Typography ── */
+.font-display { font-family: var(--font-display); }
+h1,h2,h3 { font-family: var(--font-display); letter-spacing: .02em; line-height: 1.05; }
+
+/* ── Swoosh ── */
+.swoosh    { height: 3px; background: var(--swoosh); border: none; width: 100%; display: block; }
+.swoosh-sm { height: 3px; background: var(--swoosh); width: 40px; display: block; border-radius: 2px; }
+
+/* ── Buttons ── */
+.btn-primary {
+  display: flex; align-items: center; justify-content: center; gap: 8px;
+  background: var(--red); color: #fff;
+  font-family: var(--font-body); font-weight: 700; font-size: .875rem;
+  padding: 14px 20px; border-radius: 12px; border: none;
+  cursor: pointer; text-decoration: none; width: 100%;
+  transition: filter .2s; letter-spacing: .03em; text-transform: uppercase;
+}
+.btn-primary:hover { filter: brightness(1.1); }
+.btn-secondary {
+  display: flex; align-items: center; justify-content: center; gap: 8px;
+  background: var(--surface-2); color: var(--cream);
+  font-family: var(--font-body); font-weight: 600; font-size: .875rem;
+  padding: 13px 20px; border-radius: 12px; border: 1.5px solid rgba(255,255,255,.1);
+  cursor: pointer; text-decoration: none; width: 100%;
+  transition: border-color .2s; letter-spacing: .03em; text-transform: uppercase;
+}
+.btn-secondary:hover { border-color: rgba(255,255,255,.3); }
+.btn-gold {
+  display: flex; align-items: center; justify-content: center; gap: 8px;
+  background: var(--gold); color: #0A0A0A;
+  font-family: var(--font-body); font-weight: 700; font-size: .875rem;
+  padding: 14px 20px; border-radius: 12px; border: none;
+  cursor: pointer; text-decoration: none; width: 100%;
+  transition: filter .2s; letter-spacing: .03em; text-transform: uppercase;
+}
+.btn-gold:hover { filter: brightness(1.08); }
+
+/* ── Tags ── */
+.tag { display: inline-block; font-size: .65rem; font-weight: 700; padding: 3px 8px; border-radius: 99px; letter-spacing: .06em; text-transform: uppercase; }
+.tag-gold  { background: rgba(245,168,0,.15);  color: var(--gold); border: 1px solid rgba(245,168,0,.3); }
+.tag-red   { background: rgba(232,50,26,.15);   color: var(--red);  border: 1px solid rgba(232,50,26,.3); }
+.tag-blue  { background: rgba(26,111,212,.15);  color: var(--blue); border: 1px solid rgba(26,111,212,.3); }
+.tag-green { background: rgba(34,197,94,.15);   color: #22c55e;     border: 1px solid rgba(34,197,94,.3); }
+
+/* ── Form ── */
+.form-group  { display: flex; flex-direction: column; gap: 6px; }
+.form-label  { font-size: .72rem; font-weight: 600; color: var(--muted); letter-spacing: .05em; text-transform: uppercase; }
+.form-input  {
+  background: var(--surface-2); border: 1.5px solid rgba(255,255,255,.08);
+  border-radius: 10px; color: var(--cream); font-family: var(--font-body);
+  font-size: .9rem; padding: 13px 14px; outline: none;
+  transition: border-color .2s; width: 100%;
+}
+.form-input:focus { border-color: var(--red); }
+.form-input::placeholder { color: var(--muted); }
+
+/* ── List rows ── */
+.list-row {
+  display: flex; align-items: center; gap: 12px;
+  padding: 14px 16px;
+  border-bottom: 1px solid rgba(255,255,255,.05);
+  text-decoration: none; color: var(--cream);
+  transition: background .15s;
+}
+.list-row:last-child { border-bottom: none; }
+.list-row:hover { background: rgba(255,255,255,.03); }
+.list-row-icon {
+  width: 40px; height: 40px; border-radius: 12px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 1.1rem; flex-shrink: 0;
+}
+
+/* ── Progress bar ── */
+.progress-track { height: 6px; background: rgba(255,255,255,.08); border-radius: 3px; overflow: hidden; }
+.progress-fill  { height: 100%; border-radius: 3px; transition: width .4s; }
+
+/* ── Divider ── */
+.divider { height: 1px; background: rgba(255,255,255,.06); margin: 4px 0; }
+
+/* ── Empty state ── */
+.empty-state { text-align: center; padding: 48px 24px; }
+.empty-icon  { font-size: 3rem; margin-bottom: 12px; }

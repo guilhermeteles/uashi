@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" /><meta name="viewport" content="width=device-width,initial-scale=1.0" />
+  <title>Lojas — Uashi</title>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="./_shell.css" />
+  <style>
+    .unit-card { background:var(--surface);border:1px solid rgba(255,255,255,.06);border-radius:14px;padding:14px 16px;display:flex;gap:12px;align-items:center;text-decoration:none;transition:background .2s; }
+    .unit-card:hover { background:var(--surface-2); }
+    .unit-card.nearby { border-color:rgba(34,197,94,.3); }
+  </style>
+</head>
+<body>
+<div class="app-frame" style="max-width:390px;margin:0 auto;">
+  <div class="status-bar"><span class="status-time">09:41</span><div class="status-icons"><span>●●●</span><span>WiFi</span><span>🔋</span></div></div>
+  <div class="top-bar">
+    <span class="top-bar-title">Lojas</span>
+    <button class="top-bar-action" onclick="alert('(protótipo) Filtros')">⚙</button>
+  </div>
+  <hr class="swoosh" />
+
+  <!-- Map embed -->
+  <div style="height:220px;position:relative;overflow:hidden;">
+    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d58992.89!2d-46.6388!3d-23.5489!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94ce59c8da0aa315%3A0xd59f9431f2c9776a!2sSão%20Paulo%2C%20SP!5e0!3m2!1spt-BR!2sbr!4v1718000000000"
+      style="width:100%;height:100%;border:0;" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+    <!-- Overlay tag -->
+    <div style="position:absolute;bottom:10px;left:10px;background:rgba(10,10,10,.85);backdrop-filter:blur(8px);border-radius:8px;padding:6px 10px;font-size:.72rem;color:var(--cream);">
+      📍 8 unidades · São Paulo e ABC
+    </div>
+  </div>
+
+  <div class="app-content" style="padding-bottom:80px;">
+    <div class="app-content-inner" style="display:flex;flex-direction:column;gap:10px;">
+
+      <div style="font-size:.72rem;font-weight:600;color:var(--muted);text-transform:uppercase;letter-spacing:.08em;margin-bottom:2px;">Próximas de você</div>
+
+      <a href="unidade.html" class="unit-card nearby">
+        <div style="width:44px;height:44px;border-radius:14px;background:rgba(34,197,94,.1);border:1px solid rgba(34,197,94,.2);display:flex;align-items:center;justify-content:center;font-size:1.2rem;flex-shrink:0;">🏢</div>
+        <div style="flex:1;">
+          <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:3px;">
+            <div style="font-weight:700;font-size:.9rem;color:var(--cream);">Uashi Mooca</div>
+            <span class="tag tag-green">1.2 km</span>
+          </div>
+          <div style="font-size:.75rem;color:var(--muted);">R. da Mooca, 1420 · Aberta</div>
+          <div style="font-size:.72rem;color:#22c55e;margin-top:2px;">~3 min de fila · 24h</div>
+        </div>
+      </a>
+
+      <a href="unidade.html" class="unit-card">
+        <div style="width:44px;height:44px;border-radius:14px;background:rgba(34,197,94,.1);border:1px solid rgba(34,197,94,.2);display:flex;align-items:center;justify-content:center;font-size:1.2rem;flex-shrink:0;">🏢</div>
+        <div style="flex:1;">
+          <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:3px;">
+            <div style="font-weight:700;font-size:.9rem;color:var(--cream);">Uashi Tatuapé</div>
+            <span class="tag tag-green">2.8 km</span>
+          </div>
+          <div style="font-size:.75rem;color:var(--muted);">Av. Radial Leste, 3200 · Aberta</div>
+          <div style="font-size:.72rem;color:#22c55e;margin-top:2px;">~6 min de fila · 24h</div>
+        </div>
+      </a>
+
+      <a href="unidade.html" class="unit-card">
+        <div style="width:44px;height:44px;border-radius:14px;background:rgba(34,197,94,.1);border:1px solid rgba(34,197,94,.2);display:flex;align-items:center;justify-content:center;font-size:1.2rem;flex-shrink:0;">🏢</div>
+        <div style="flex:1;">
+          <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:3px;">
+            <div style="font-weight:700;font-size:.9rem;color:var(--cream);">Uashi Santo André</div>
+            <span style="font-size:.65rem;color:var(--muted);background:var(--surface-2);border-radius:99px;padding:2px 8px;">4.1 km</span>
+          </div>
+          <div style="font-size:.75rem;color:var(--muted);">Av. Industrial, 880 · Aberta</div>
+          <div style="font-size:.72rem;color:#22c55e;margin-top:2px;">~2 min de fila · 24h</div>
+        </div>
+      </a>
+
+      <a href="unidade.html" class="unit-card">
+        <div style="width:44px;height:44px;border-radius:14px;background:rgba(232,50,26,.08);border:1px solid rgba(232,50,26,.15);display:flex;align-items:center;justify-content:center;font-size:1.2rem;flex-shrink:0;">🏢</div>
+        <div style="flex:1;">
+          <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:3px;">
+            <div style="font-weight:700;font-size:.9rem;color:var(--cream);">Uashi Guarulhos</div>
+            <span style="font-size:.65rem;color:var(--muted);background:var(--surface-2);border-radius:99px;padding:2px 8px;">6.5 km</span>
+          </div>
+          <div style="font-size:.75rem;color:var(--muted);">R. Sete de Setembro, 610</div>
+          <div style="font-size:.72rem;color:var(--red);margin-top:2px;">Fechada · Abre às 06:00</div>
+        </div>
+      </a>
+
+      <a href="unidade.html" class="unit-card">
+        <div style="width:44px;height:44px;border-radius:14px;background:rgba(34,197,94,.1);border:1px solid rgba(34,197,94,.2);display:flex;align-items:center;justify-content:center;font-size:1.2rem;flex-shrink:0;">🏢</div>
+        <div style="flex:1;">
+          <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:3px;">
+            <div style="font-weight:700;font-size:.9rem;color:var(--cream);">Uashi Osasco</div>
+            <span style="font-size:.65rem;color:var(--muted);background:var(--surface-2);border-radius:99px;padding:2px 8px;">8.2 km</span>
+          </div>
+          <div style="font-size:.75rem;color:var(--muted);">Av. Presidente Vargas, 540 · Aberta</div>
+          <div style="font-size:.72rem;color:#22c55e;margin-top:2px;">~5 min de fila · 24h</div>
+        </div>
+      </a>
+
+    </div>
+  </div>
+
+  <nav class="tab-bar">
+    <a href="index.html" class="tab-item"><span class="tab-icon">🏠</span><span class="tab-label">Home</span></a>
+    <a href="mapa.html" class="tab-item active"><span class="tab-icon">📍</span><span class="tab-label">Lojas</span></a>
+    <a href="qrcode.html" class="tab-qr"><div class="tab-qr-btn">🔲</div></a>
+    <a href="historico.html" class="tab-item"><span class="tab-icon">📋</span><span class="tab-label">Histórico</span></a>
+    <a href="conta.html" class="tab-item"><span class="tab-icon">👤</span><span class="tab-label">Conta</span></a>
+  </nav>
+</div>
+</body></html>

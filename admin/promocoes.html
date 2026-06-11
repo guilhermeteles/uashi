@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Uashi Admin — Promoções Relâmpago</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="./_admin.css" />
+  <style>
+    .nav-badge { background: var(--red); color: #fff; font-size: .6rem; font-weight: 700; border-radius: 99px; padding: 1px 6px; margin-left: auto; }
+    .topbar-avatar { width: 36px; height: 36px; border-radius: 10px; background: var(--surface-2); border: 1.5px solid rgba(255,255,255,.1); display: flex; align-items: center; justify-content: center; font-size: .75rem; font-weight: 700; color: var(--cream); cursor: pointer; }
+    .section-label { font-family: var(--font-display); font-size: 1.1rem; letter-spacing: .05em; color: var(--cream); margin-bottom: 14px; display: flex; align-items: center; gap: 10px; }
+    .section-label::after { content: ''; flex: 1; height: 1px; background: rgba(255,255,255,.07); }
+    .promo-stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-bottom: 24px; }
+    .promo-stat { background: var(--surface); border: 1px solid rgba(255,255,255,.06); border-radius: 12px; padding: 16px 20px; }
+    .promo-stat .val { font-family: var(--font-display); font-size: 1.8rem; color: var(--cream); line-height: 1; }
+    .promo-stat .lbl { font-size: .72rem; color: var(--muted); text-transform: uppercase; letter-spacing: .06em; margin-top: 4px; }
+    .form-panel { background: var(--surface); border: 1px solid rgba(245,168,0,.2); border-radius: 16px; padding: 24px; margin-bottom: 24px; }
+    .multiselect { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 8px; }
+    .ms-chip { background: var(--surface-2); border: 1.5px solid rgba(255,255,255,.1); border-radius: 6px; padding: 5px 12px; font-size: .78rem; color: var(--muted); cursor: pointer; transition: all .2s; user-select: none; }
+    .ms-chip.selected { background: rgba(245,168,0,.15); border-color: var(--gold); color: var(--gold); }
+  </style>
+</head>
+<body>
+<div class="admin-layout">
+
+  <!-- SIDEBAR -->
+  <aside class="sidebar">
+    <div class="sidebar-logo">
+      <div class="wordmark">UASHI</div>
+      <div class="swoosh"></div>
+    </div>
+    <div class="sidebar-profile">
+      <div class="sidebar-avatar">AM</div>
+      <div>
+        <div class="sidebar-name">Admin Matriz</div>
+        <div class="sidebar-role">Acesso total</div>
+      </div>
+    </div>
+    <nav class="sidebar-nav">
+      <div class="nav-section-label">Principal</div>
+      <a href="./index.html" class="nav-item">
+        <span class="nav-icon">▪</span> Dashboard
+      </a>
+      <a href="./franqueados.html" class="nav-item">
+        <span class="nav-icon">🏪</span> Franqueados
+      </a>
+      <a href="./planos.html" class="nav-item">
+        <span class="nav-icon">💳</span> Planos / Preços
+      </a>
+      <a href="./promocoes.html" class="nav-item active">
+        <span class="nav-icon">⚡</span> Promoções
+      </a>
+      <div class="nav-section-label">Operações</div>
+      <a href="./alertas.html" class="nav-item">
+        <span class="nav-icon">🔔</span> Alertas
+        <span class="nav-badge">5</span>
+      </a>
+      <a href="./chamados.html" class="nav-item">
+        <span class="nav-icon">🎫</span> Chamados
+        <span class="nav-badge">12</span>
+      </a>
+      <a href="./relatorios.html" class="nav-item">
+        <span class="nav-icon">📊</span> Relatórios
+      </a>
+      <div class="nav-section-label">Conta</div>
+      <a href="./perfil.html" class="nav-item">
+        <span class="nav-icon">👤</span> Perfil
+      </a>
+    </nav>
+    <div class="sidebar-footer">
+      <a href="#" class="nav-item" style="padding: 8px 0; font-size:.78rem;">
+        <span class="nav-icon">🚪</span> Sair
+      </a>
+    </div>
+  </aside>
+
+  <!-- MAIN -->
+  <div class="main-area">
+
+    <!-- TOPBAR -->
+    <header class="topbar">
+      <span class="topbar-title">Promoções Relâmpago</span>
+      <div class="topbar-actions">
+        <button class="topbar-btn" title="Alertas">🔔<span class="topbar-dot"></span></button>
+        <div class="topbar-avatar">AM</div>
+        <a href="#" class="btn-secondary" style="padding:7px 14px;font-size:.75rem;">Sair</a>
+      </div>
+    </header>
+
+    <!-- PAGE CONTENT -->
+    <main class="page-content">
+
+      <!-- PAGE HEADER -->
+      <div class="page-header">
+        <div>
+          <h1>Promoções Relâmpago</h1>
+          <p style="color:var(--muted);font-size:.82rem;margin-top:4px;">Gerencie campanhas e descontos da rede</p>
+        </div>
+        <button class="btn-gold" onclick="document.getElementById('form-promo').style.display=document.getElementById('form-promo').style.display==='none'?'block':'none'">⚡ Nova promoção</button>
+      </div>
+
+      <!-- STATS -->
+      <div class="promo-stats">
+        <div class="promo-stat" style="border-color:rgba(34,197,94,.2);">
+          <div class="val" style="color:#22c55e;">2</div>
+          <div class="lbl">Promoções ativas agora</div>
+        </div>
+        <div class="promo-stat" style="border-color:rgba(26,111,212,.2);">
+          <div class="val" style="color:var(--blue);">8.340</div>
+          <div class="lbl">Usuários alcançados</div>
+        </div>
+        <div class="promo-stat" style="border-color:rgba(245,168,0,.2);">
+          <div class="val" style="color:var(--gold);">23%</div>
+          <div class="lbl">Conversão média</div>
+        </div>
+      </div>
+
+      <!-- FORM CRIAR PROMOÇÃO -->
+      <div id="form-promo" style="display:none;" class="form-panel">
+        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:20px;">
+          <div>
+            <div style="font-family:var(--font-display);font-size:1.2rem;letter-spacing:.05em;">Criar nova promoção</div>
+            <div style="font-size:.75rem;color:var(--muted);margin-top:2px;">Preencha os campos e publique para a rede</div>
+          </div>
+          <button class="btn-icon" onclick="document.getElementById('form-promo').style.display='none'">✕</button>
+        </div>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;">
+          <div class="form-group">
+            <label class="form-label">Nome da promoção</label>
+            <input class="form-input" type="text" placeholder="Ex: Sexta Relâmpago" />
+          </div>
+          <div class="form-group">
+            <label class="form-label">Tipo de desconto</label>
+            <select class="form-input">
+              <option>Percentual (%)</option>
+              <option>Valor fixo (R$)</option>
+              <option>Lavagem grátis</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Desconto</label>
+            <input class="form-input" type="number" placeholder="Ex: 30" />
+          </div>
+          <div class="form-group">
+            <label class="form-label">Raio de geolocalização (km)</label>
+            <input class="form-input" type="number" placeholder="Ex: 5" value="5" />
+          </div>
+          <div class="form-group">
+            <label class="form-label">Data/hora início</label>
+            <input class="form-input" type="datetime-local" />
+          </div>
+          <div class="form-group">
+            <label class="form-label">Data/hora fim</label>
+            <input class="form-input" type="datetime-local" />
+          </div>
+        </div>
+        <div class="form-group" style="margin-top:16px;">
+          <label class="form-label">Unidades participantes</label>
+          <div class="multiselect" id="unidades-chips">
+            <div class="ms-chip selected" onclick="this.classList.toggle('selected')">Mooca</div>
+            <div class="ms-chip selected" onclick="this.classList.toggle('selected')">Tatuapé</div>
+            <div class="ms-chip" onclick="this.classList.toggle('selected')">Santo André</div>
+            <div class="ms-chip" onclick="this.classList.toggle('selected')">Osasco</div>
+            <div class="ms-chip" onclick="this.classList.toggle('selected')">Guarulhos</div>
+            <div class="ms-chip" onclick="this.classList.toggle('selected')">Campinas Centro</div>
+          </div>
+        </div>
+        <div style="display:flex;gap:10px;margin-top:20px;">
+          <button class="btn-gold">⚡ Publicar promoção</button>
+          <button class="btn-secondary">Salvar rascunho</button>
+          <button class="btn-secondary" onclick="document.getElementById('form-promo').style.display='none'">Cancelar</button>
+        </div>
+      </div>
+
+      <!-- TABLE -->
+      <div class="section-label">Todas as promoções</div>
+      <div class="card" style="overflow-x:auto;margin-bottom:24px;">
+        <table class="data-table">
+          <thead>
+            <tr>
+              <th>Nome</th>
+              <th>Unidades</th>
+              <th>Tipo</th>
+              <th>Desconto</th>
+              <th>Período</th>
+              <th>Alcance</th>
+              <th>Status</th>
+              <th>Ações</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>
+                <div style="font-weight:600;">Sexta Relâmpago</div>
+                <div style="font-size:.72rem;color:var(--muted);">Criada por Admin Matriz</div>
+              </td>
+              <td style="font-size:.82rem;">Mooca, Tatuapé</td>
+              <td><span class="tag tag-gold">% Percentual</span></td>
+              <td style="color:var(--gold);font-weight:700;">30%</td>
+              <td style="font-size:.78rem;">06/06 17h → 20h</td>
+              <td>3.420 usuários</td>
+              <td><span class="tag tag-green">Ativa</span></td>
+              <td>
+                <div style="display:flex;gap:8px;">
+                  <a href="#" style="color:var(--blue);font-size:.78rem;text-decoration:none;font-weight:600;">Ver</a>
+                  <a href="#" style="color:var(--red);font-size:.78rem;text-decoration:none;font-weight:600;">Encerrar</a>
+                </div>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <div style="font-weight:600;">Lavagem Grátis Aniversário</div>
+                <div style="font-size:.72rem;color:var(--muted);">Criada por Admin Matriz</div>
+              </td>
+              <td style="font-size:.82rem;">Guarulhos</td>
+              <td><span class="tag tag-blue">Lavagem grátis</span></td>
+              <td style="color:#22c55e;font-weight:700;">100%</td>
+              <td style="font-size:.78rem;">05/06 09h → 18h</td>
+              <td>1.280 usuários</td>
+              <td><span class="tag tag-green">Ativa</span></td>
+              <td>
+                <div style="display:flex;gap:8px;">
+                  <a href="#" style="color:var(--blue);font-size:.78rem;text-decoration:none;font-weight:600;">Ver</a>
+                  <a href="#" style="color:var(--red);font-size:.78rem;text-decoration:none;font-weight:600;">Encerrar</a>
+                </div>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <div style="font-weight:600;">Promoção Inverno</div>
+                <div style="font-size:.72rem;color:var(--muted);">Criada por Admin Matriz</div>
+              </td>
+              <td style="font-size:.82rem;">Todas as unidades</td>
+              <td><span class="tag tag-gold">% Percentual</span></td>
+              <td style="color:var(--gold);font-weight:700;">20%</td>
+              <td style="font-size:.78rem;">10/06 → 20/06</td>
+              <td>5.640 usuários</td>
+              <td><span class="tag tag-blue">Agendada</span></td>
+              <td>
+                <div style="display:flex;gap:8px;">
+                  <a href="#" style="color:var(--blue);font-size:.78rem;text-decoration:none;font-weight:600;">Editar</a>
+                  <a href="#" style="color:var(--red);font-size:.78rem;text-decoration:none;font-weight:600;">Cancelar</a>
+                </div>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <div style="font-weight:600;">Terça Econômica</div>
+                <div style="font-size:.72rem;color:var(--muted);">Criada por Ana Souza</div>
+              </td>
+              <td style="font-size:.82rem;">Tatuapé</td>
+              <td><span class="tag tag-muted">Valor fixo</span></td>
+              <td style="color:var(--muted);font-weight:700;">R$5 off</td>
+              <td style="font-size:.78rem;">30/05 → 01/06</td>
+              <td>920 usuários</td>
+              <td><span class="tag tag-muted">Encerrada</span></td>
+              <td>
+                <div style="display:flex;gap:8px;">
+                  <a href="#" style="color:var(--blue);font-size:.78rem;text-decoration:none;font-weight:600;">Relatório</a>
+                </div>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+    </main>
+  </div>
+</div>
+</body>
+</html>

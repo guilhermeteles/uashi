@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" /><meta name="viewport" content="width=device-width,initial-scale=1.0" />
+  <title>Motoristas — Frota Uashi</title>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="./_admin.css" />
+</head>
+<body>
+<div class="admin-layout">
+  <aside class="sidebar">
+    <div class="sidebar-logo"><div class="wordmark">UASHI</div><div class="swoosh"></div></div>
+    <div class="sidebar-profile">
+      <div class="sidebar-avatar" style="background:var(--gold);color:#0A0A0A;">T</div>
+      <div><div class="sidebar-name">Transportes Silva</div><div class="sidebar-role">🚛 Frota · 12 veículos</div></div>
+    </div>
+    <nav class="sidebar-nav">
+      <div class="nav-section-label">Frota</div>
+      <a href="frota.html" class="nav-item"><span class="nav-icon">📊</span>Dashboard</a>
+      <a href="frota-veiculos.html" class="nav-item"><span class="nav-icon">🚗</span>Veículos</a>
+      <a href="frota-motoristas.html" class="nav-item active"><span class="nav-icon">👤</span>Motoristas</a>
+      <a href="frota-fatura.html" class="nav-item"><span class="nav-icon">📄</span>Faturas</a>
+      <a href="frota-chamados.html" class="nav-item"><span class="nav-icon">💬</span>Chamados</a>
+      <div class="nav-section-label">Conta</div>
+      <a href="perfil-admin.html" class="nav-item"><span class="nav-icon">👤</span>Perfil</a>
+    </nav>
+    <div class="sidebar-footer"><a href="login.html" style="font-size:.75rem;color:var(--muted);text-decoration:none;">← Sair</a></div>
+  </aside>
+
+  <div class="main-area">
+    <div class="topbar">
+      <span class="topbar-title">Motoristas</span>
+      <div class="topbar-actions">
+        <button class="topbar-btn">🔔</button>
+        <div style="width:32px;height:32px;border-radius:8px;background:var(--gold);display:flex;align-items:center;justify-content:center;font-family:var(--font-display);color:#0A0A0A;font-size:.9rem;">T</div>
+      </div>
+    </div>
+    <hr class="swoosh" />
+
+    <div class="page-content">
+      <div class="page-header">
+        <div>
+          <h1>MOTORISTAS VINCULADOS</h1>
+          <div style="font-size:.8rem;color:var(--muted);">9 motoristas · 3 veículos sem motorista</div>
+        </div>
+        <button class="btn-primary" onclick="alert('(protótipo) Convidar motorista')">+ Convidar motorista</button>
+      </div>
+
+      <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-bottom:20px;">
+
+        <div class="card" style="padding:16px;">
+          <div style="display:flex;align-items:center;gap:10px;margin-bottom:12px;">
+            <div style="width:36px;height:36px;border-radius:10px;background:var(--red);display:flex;align-items:center;justify-content:center;font-weight:700;font-size:.9rem;">J</div>
+            <div>
+              <div style="font-weight:600;color:var(--cream);">João Santos</div>
+              <div style="font-size:.7rem;color:var(--muted);">ABC-1234 · Fiat Strada</div>
+            </div>
+          </div>
+          <div style="display:flex;gap:8px;font-size:.75rem;color:var(--muted);margin-bottom:8px;">
+            <div><span style="color:var(--cream);font-weight:600;">28</span> lavagens</div>
+            <div>·</div>
+            <div><span style="color:var(--gold);">93%</span> uso</div>
+          </div>
+          <div class="progress-track" style="margin-bottom:12px;"><div class="progress-fill" style="width:93%;background:var(--red);"></div></div>
+          <div style="display:flex;gap:6px;">
+            <button class="btn-secondary" style="flex:1;font-size:.7rem;padding:5px;" onclick="alert('(protótipo) Ver motorista')">Ver</button>
+            <button class="btn-icon" onclick="alert('(protótipo) Desvincular')">🔗</button>
+          </div>
+        </div>
+
+        <div class="card" style="padding:16px;">
+          <div style="display:flex;align-items:center;gap:10px;margin-bottom:12px;">
+            <div style="width:36px;height:36px;border-radius:10px;background:var(--blue);display:flex;align-items:center;justify-content:center;font-weight:700;font-size:.9rem;">M</div>
+            <div>
+              <div style="font-weight:600;color:var(--cream);">Maria Lima</div>
+              <div style="font-size:.7rem;color:var(--muted);">DEF-5678 · VW Delivery</div>
+            </div>
+          </div>
+          <div style="display:flex;gap:8px;font-size:.75rem;color:var(--muted);margin-bottom:8px;">
+            <div><span style="color:var(--cream);font-weight:600;">22</span> lavagens</div>
+            <div>·</div>
+            <div><span style="color:var(--gold);">73%</span> uso</div>
+          </div>
+          <div class="progress-track" style="margin-bottom:12px;"><div class="progress-fill" style="width:73%;background:var(--gold);"></div></div>
+          <div style="display:flex;gap:6px;">
+            <button class="btn-secondary" style="flex:1;font-size:.7rem;padding:5px;" onclick="alert('(protótipo) Ver motorista')">Ver</button>
+            <button class="btn-icon" onclick="alert('(protótipo) Desvincular')">🔗</button>
+          </div>
+        </div>
+
+        <div class="card" style="padding:16px;">
+          <div style="display:flex;align-items:center;gap:10px;margin-bottom:12px;">
+            <div style="width:36px;height:36px;border-radius:10px;background:#7c3aed;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:.9rem;">P</div>
+            <div>
+              <div style="font-weight:600;color:var(--cream);">Pedro Melo</div>
+              <div style="font-size:.7rem;color:var(--muted);">GHI-9012 · Ford Transit</div>
+            </div>
+          </div>
+          <div style="display:flex;gap:8px;font-size:.75rem;color:var(--muted);margin-bottom:8px;">
+            <div><span style="color:var(--cream);font-weight:600;">18</span> lavagens</div>
+            <div>·</div>
+            <div><span style="color:var(--blue);">60%</span> uso</div>
+          </div>
+          <div class="progress-track" style="margin-bottom:12px;"><div class="progress-fill" style="width:60%;background:var(--blue);"></div></div>
+          <div style="display:flex;gap:6px;">
+            <button class="btn-secondary" style="flex:1;font-size:.7rem;padding:5px;" onclick="alert('(protótipo) Ver motorista')">Ver</button>
+            <button class="btn-icon" onclick="alert('(protótipo) Desvincular')">🔗</button>
+          </div>
+        </div>
+
+        <div class="card" style="padding:16px;border-color:rgba(232,50,26,.3);">
+          <div style="display:flex;align-items:center;gap:10px;margin-bottom:12px;">
+            <div style="width:36px;height:36px;border-radius:10px;background:var(--red);display:flex;align-items:center;justify-content:center;font-weight:700;font-size:.9rem;">A</div>
+            <div>
+              <div style="font-weight:600;color:var(--cream);">Ana Costa</div>
+              <div style="font-size:.7rem;color:var(--muted);">JKL-3456 · Renault Master</div>
+            </div>
+          </div>
+          <div style="display:flex;gap:8px;font-size:.75rem;color:var(--muted);margin-bottom:8px;">
+            <div><span style="color:var(--red);font-weight:600;">31</span> lavagens</div>
+            <div>·</div>
+            <div><span style="color:var(--red);">Bloqueado</span></div>
+          </div>
+          <div class="progress-track" style="margin-bottom:12px;"><div class="progress-fill" style="width:100%;background:var(--red);"></div></div>
+          <div style="display:flex;gap:6px;">
+            <button class="btn-primary" style="flex:1;font-size:.7rem;padding:5px;" onclick="alert('(protótipo) Liberar crédito extra')">Liberar</button>
+            <button class="btn-icon">🔗</button>
+          </div>
+        </div>
+
+        <div class="card" style="padding:16px;">
+          <div style="display:flex;align-items:center;gap:10px;margin-bottom:12px;">
+            <div style="width:36px;height:36px;border-radius:10px;background:var(--gold);color:#0A0A0A;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:.9rem;">L</div>
+            <div>
+              <div style="font-weight:600;color:var(--cream);">Lucas Ferreira</div>
+              <div style="font-size:.7rem;color:var(--muted);">MNO-7890 · Mercedes Sprinter</div>
+            </div>
+          </div>
+          <div style="display:flex;gap:8px;font-size:.75rem;color:var(--muted);margin-bottom:8px;">
+            <div><span style="color:var(--cream);font-weight:600;">14</span> lavagens</div>
+            <div>·</div>
+            <div><span style="color:var(--blue);">47%</span> uso</div>
+          </div>
+          <div class="progress-track" style="margin-bottom:12px;"><div class="progress-fill" style="width:47%;background:var(--blue);"></div></div>
+          <div style="display:flex;gap:6px;">
+            <button class="btn-secondary" style="flex:1;font-size:.7rem;padding:5px;" onclick="alert('(protótipo) Ver motorista')">Ver</button>
+            <button class="btn-icon">🔗</button>
+          </div>
+        </div>
+
+        <div class="card" style="padding:16px;display:flex;align-items:center;justify-content:center;border-style:dashed;cursor:pointer;" onclick="alert('(protótipo) Convidar novo motorista')">
+          <div style="text-align:center;color:var(--muted);">
+            <div style="font-size:1.5rem;margin-bottom:6px;">+</div>
+            <div style="font-size:.78rem;">Convidar motorista</div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>
+</body></html>

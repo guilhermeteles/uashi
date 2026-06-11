@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" /><meta name="viewport" content="width=device-width,initial-scale=1.0" />
+  <title>Dependentes — Uashi</title>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="./_admin.css" />
+</head>
+<body>
+<div class="admin-layout">
+  <aside class="sidebar">
+    <div class="sidebar-logo"><div class="wordmark">UASHI</div><div class="swoosh"></div></div>
+    <div class="sidebar-profile">
+      <div class="sidebar-avatar" style="background:var(--red);">C</div>
+      <div><div class="sidebar-name">Carlos Mendes</div><div class="sidebar-role">👤 Usuário · Plano Pro</div></div>
+    </div>
+    <nav class="sidebar-nav">
+      <div class="nav-section-label">Minha conta</div>
+      <a href="usuario.html" class="nav-item"><span class="nav-icon">📊</span>Resumo</a>
+      <a href="usuario-veiculos.html" class="nav-item"><span class="nav-icon">🚗</span>Meus veículos</a>
+      <a href="usuario-dependentes.html" class="nav-item active"><span class="nav-icon">👨‍👩‍👦</span>Dependentes</a>
+      <a href="usuario-faturas.html" class="nav-item"><span class="nav-icon">📄</span>Faturas</a>
+      <a href="usuario-chamados.html" class="nav-item"><span class="nav-icon">💬</span>Chamados</a>
+      <div class="nav-section-label">Conta</div>
+      <a href="perfil-admin.html" class="nav-item"><span class="nav-icon">👤</span>Perfil</a>
+    </nav>
+    <div class="sidebar-footer">
+      <a href="../app/index.html" style="font-size:.75rem;color:var(--blue);text-decoration:none;">← Voltar ao app</a>
+    </div>
+  </aside>
+
+  <div class="main-area">
+    <div class="topbar">
+      <span class="topbar-title">Dependentes</span>
+      <div class="topbar-actions">
+        <button class="topbar-btn">🔔</button>
+        <div style="width:32px;height:32px;border-radius:8px;background:var(--red);display:flex;align-items:center;justify-content:center;font-family:var(--font-display);color:#fff;font-size:.9rem;">C</div>
+      </div>
+    </div>
+    <hr class="swoosh" />
+
+    <div class="page-content">
+      <div class="page-header">
+        <div>
+          <h1>DEPENDENTES</h1>
+          <div style="font-size:.8rem;color:var(--muted);">1 dependente ativo · Plano Pro permite até 2</div>
+        </div>
+        <button class="btn-primary" onclick="document.getElementById('invite-modal').style.display='flex'">+ Convidar dependente</button>
+      </div>
+
+      <!-- Dependente ativo -->
+      <div class="card" style="margin-bottom:16px;padding:20px;border-color:rgba(34,197,94,.2);">
+        <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:16px;">
+          <div style="display:flex;align-items:center;gap:12px;">
+            <div style="width:44px;height:44px;border-radius:12px;background:#22c55e22;border:1px solid rgba(34,197,94,.3);display:flex;align-items:center;justify-content:center;font-size:1.1rem;font-weight:700;color:#22c55e;">A</div>
+            <div>
+              <div style="font-weight:700;color:var(--cream);font-size:.95rem;">Ana Mendes</div>
+              <div style="font-size:.75rem;color:var(--muted);">Filha · ana.mendes@email.com</div>
+            </div>
+          </div>
+          <div style="display:flex;align-items:center;gap:10px;">
+            <span class="tag tag-green">Ativo</span>
+            <label style="display:flex;align-items:center;gap:6px;cursor:pointer;">
+              <div style="width:36px;height:20px;background:#22c55e;border-radius:10px;position:relative;cursor:pointer;">
+                <div style="width:14px;height:14px;background:#fff;border-radius:50%;position:absolute;top:3px;right:3px;"></div>
+              </div>
+            </label>
+          </div>
+        </div>
+
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:16px;">
+          <div>
+            <div style="font-size:.72rem;color:var(--muted);margin-bottom:6px;text-transform:uppercase;letter-spacing:.06em;">Lavagens este mês</div>
+            <div style="display:flex;justify-content:space-between;font-size:.8rem;margin-bottom:4px;"><span style="color:var(--cream);">4 de 8 usadas</span><span style="color:var(--muted);">50%</span></div>
+            <div class="progress-track"><div class="progress-fill" style="width:50%;background:var(--blue);"></div></div>
+          </div>
+          <div>
+            <div style="font-size:.72rem;color:var(--muted);margin-bottom:6px;text-transform:uppercase;letter-spacing:.06em;">Gasto este mês</div>
+            <div style="display:flex;justify-content:space-between;font-size:.8rem;margin-bottom:4px;"><span style="color:var(--cream);">R$ 28 de R$ 80</span><span style="color:var(--muted);">35%</span></div>
+            <div class="progress-track"><div class="progress-fill" style="width:35%;background:var(--gold);"></div></div>
+          </div>
+        </div>
+
+        <div style="display:flex;gap:8px;">
+          <button class="btn-secondary" style="font-size:.72rem;" onclick="alert('(protótipo) Editar limites de Ana Mendes')">Editar limites</button>
+          <button class="btn-secondary" style="font-size:.72rem;" onclick="alert('(protótipo) Ver histórico de Ana Mendes')">📊 Histórico</button>
+          <button class="btn-icon" onclick="if(confirm('Remover dependente Ana Mendes?')) alert('(protótipo) Removido')">🗑</button>
+        </div>
+      </div>
+
+      <!-- Slot disponível -->
+      <div class="card" style="padding:20px;display:flex;align-items:center;justify-content:center;border-style:dashed;min-height:120px;cursor:pointer;margin-bottom:20px;" onclick="document.getElementById('invite-modal').style.display='flex'">
+        <div style="text-align:center;color:var(--muted);">
+          <div style="font-size:1.8rem;margin-bottom:8px;">👤+</div>
+          <div style="font-size:.85rem;font-weight:600;">Adicionar 2º dependente</div>
+          <div style="font-size:.75rem;margin-top:4px;">Incluso no Plano Pro</div>
+        </div>
+      </div>
+
+      <!-- Histórico de uso dos dependentes -->
+      <div class="card">
+        <div class="card-header"><span class="card-title">HISTÓRICO DE ANA MENDES</span></div>
+        <div style="overflow-x:auto;">
+          <table class="data-table">
+            <thead><tr><th>Data</th><th>Tipo</th><th>Veículo</th><th>Unidade</th><th>Valor</th></tr></thead>
+            <tbody>
+              <tr><td style="color:var(--muted);">10/06 10:15</td><td><span class="tag tag-gold">Completa</span></td><td>Honda HR-V</td><td>Mooca</td><td style="color:var(--muted);">Plano Pro</td></tr>
+              <tr><td style="color:var(--muted);">08/06 08:30</td><td><span class="tag tag-blue">Simples</span></td><td>VW Gol</td><td>Tatuapé</td><td>R$ 19</td></tr>
+              <tr><td style="color:var(--muted);">06/06 07:50</td><td><span class="tag tag-blue">Simples</span></td><td>VW Gol</td><td>Mooca</td><td>R$ 19</td></tr>
+              <tr><td style="color:var(--muted);">03/06 09:10</td><td><span class="tag tag-gold">Completa</span></td><td>Honda HR-V</td><td>Mooca</td><td style="color:var(--muted);">Plano Pro</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Modal convidar dependente -->
+<div id="invite-modal" style="display:none;position:fixed;inset:0;background:rgba(0,0,0,.7);z-index:100;align-items:center;justify-content:center;">
+  <div style="background:var(--surface);border:1px solid rgba(255,255,255,.08);border-radius:16px;padding:24px;width:420px;max-width:calc(100vw - 40px);">
+    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:20px;">
+      <span style="font-family:var(--font-display);font-size:1.2rem;color:var(--cream);">CONVIDAR DEPENDENTE</span>
+      <button onclick="document.getElementById('invite-modal').style.display='none'" style="background:none;border:none;color:var(--muted);font-size:1.2rem;cursor:pointer;">✕</button>
+    </div>
+    <div style="display:flex;flex-direction:column;gap:14px;">
+      <div class="form-group"><label class="form-label">Nome</label><input class="form-input" type="text" placeholder="Nome do dependente" /></div>
+      <div class="form-group"><label class="form-label">E-mail</label><input class="form-input" type="email" placeholder="email@exemplo.com" /></div>
+      <div class="form-group"><label class="form-label">Limite de lavagens/mês</label><input class="form-input" type="number" value="8" min="1" max="30" /></div>
+      <div class="form-group"><label class="form-label">Limite de gasto/mês (R$)</label><input class="form-input" type="number" value="80" min="0" /></div>
+    </div>
+    <div style="display:flex;gap:10px;margin-top:20px;">
+      <button class="btn-primary" onclick="alert('(protótipo) Convite enviado por e-mail!');document.getElementById('invite-modal').style.display='none'">Enviar convite</button>
+      <button class="btn-secondary" onclick="document.getElementById('invite-modal').style.display='none'">Cancelar</button>
+    </div>
+  </div>
+</div>
+</body></html>

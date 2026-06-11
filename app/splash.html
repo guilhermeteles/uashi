@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" /><meta name="viewport" content="width=device-width,initial-scale=1.0" />
+  <title>Uashi — Bem-vindo</title>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="./_shell.css" />
+  <style>
+    body { background: var(--bg); overflow: hidden; }
+    .slide { display:none; flex-direction:column; align-items:center; justify-content:space-between; min-height:100vh; padding:60px 32px 40px; text-align:center; }
+    .slide.active { display:flex; }
+    .slide-visual { flex:1; display:flex; align-items:center; justify-content:center; }
+    .slide-icon { font-size:6rem; filter:drop-shadow(0 0 40px rgba(232,50,26,.3)); }
+    .dots { display:flex; gap:8px; justify-content:center; margin-bottom:20px; }
+    .dot { width:8px; height:8px; border-radius:4px; background:rgba(255,255,255,.2); transition:all .3s; }
+    .dot.active { width:24px; background:var(--red); }
+    .swipe-hint { font-size:.75rem; color:var(--muted); margin-bottom:8px; }
+  </style>
+</head>
+<body>
+<div class="app-frame" style="max-width:390px;margin:0 auto;">
+
+  <!-- Slide 1 -->
+  <div class="slide active" id="s1" style="background:radial-gradient(ellipse 80% 60% at 50% 30%,rgba(232,50,26,.12) 0%,transparent 70%),var(--bg);">
+    <div>
+      <div style="font-family:var(--font-display);font-size:2.4rem;color:var(--cream);letter-spacing:.05em;margin-bottom:6px;">UASHI</div>
+      <span style="height:3px;background:var(--swoosh);width:48px;display:block;margin:0 auto;border-radius:2px;"></span>
+    </div>
+    <div class="slide-visual">
+      <div>
+        <div class="slide-icon">🚗💨</div>
+        <h2 style="font-family:var(--font-display);font-size:2.8rem;color:var(--cream);margin-top:24px;margin-bottom:12px;line-height:1.05;">VELOCIDADE<br/>QUE VOCÊ NUNCA<br/><span style="color:var(--red);">VIU ANTES</span></h2>
+        <p style="color:var(--muted);font-size:.95rem;max-width:280px;margin:0 auto;">Carro limpo em menos de 5 minutos. Sem fila, sem demora, sem sair do veículo.</p>
+      </div>
+    </div>
+    <div>
+      <div class="dots"><div class="dot active"></div><div class="dot"></div><div class="dot"></div></div>
+      <button class="btn-primary" onclick="goSlide(2)" style="border-radius:14px;">Próximo →</button>
+    </div>
+  </div>
+
+  <!-- Slide 2 -->
+  <div class="slide" id="s2" style="background:radial-gradient(ellipse 80% 60% at 50% 30%,rgba(26,111,212,.10) 0%,transparent 70%),var(--bg);">
+    <div>
+      <div style="font-family:var(--font-display);font-size:2.4rem;color:var(--cream);letter-spacing:.05em;margin-bottom:6px;">UASHI</div>
+      <span style="height:3px;background:var(--swoosh);width:48px;display:block;margin:0 auto;border-radius:2px;"></span>
+    </div>
+    <div class="slide-visual">
+      <div>
+        <div class="slide-icon">🔲</div>
+        <h2 style="font-family:var(--font-display);font-size:2.8rem;color:var(--cream);margin-top:24px;margin-bottom:12px;line-height:1.05;">TECNOLOGIA<br/>NO SEU<br/><span style="color:var(--blue);">BOLSO</span></h2>
+        <p style="color:var(--muted);font-size:.95rem;max-width:280px;margin:0 auto;">Gere o QR code no app, aponte para o leitor na esteira e pronto. Tudo em 10 segundos.</p>
+      </div>
+    </div>
+    <div>
+      <div class="dots"><div class="dot"></div><div class="dot active"></div><div class="dot"></div></div>
+      <div style="display:flex;gap:10px;">
+        <button class="btn-secondary" onclick="goSlide(1)" style="border-radius:14px;flex:1;">← Voltar</button>
+        <button class="btn-primary" onclick="goSlide(3)" style="border-radius:14px;flex:2;">Próximo →</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Slide 3 -->
+  <div class="slide" id="s3" style="background:radial-gradient(ellipse 80% 60% at 50% 30%,rgba(245,168,0,.10) 0%,transparent 70%),var(--bg);">
+    <div>
+      <div style="font-family:var(--font-display);font-size:2.4rem;color:var(--cream);letter-spacing:.05em;margin-bottom:6px;">UASHI</div>
+      <span style="height:3px;background:var(--swoosh);width:48px;display:block;margin:0 auto;border-radius:2px;"></span>
+    </div>
+    <div class="slide-visual">
+      <div>
+        <div class="slide-icon">⭐</div>
+        <h2 style="font-family:var(--font-display);font-size:2.8rem;color:var(--cream);margin-top:24px;margin-bottom:12px;line-height:1.05;">PRATICIDADE<br/>PARA QUEM<br/><span style="color:var(--gold);">VIVE NA RUA</span></h2>
+        <p style="color:var(--muted);font-size:.95rem;max-width:280px;margin:0 auto;">Planos para taxistas, motoristas de app e frotas. 1 lavagem completa por dia no plano Pro.</p>
+      </div>
+    </div>
+    <div>
+      <div class="dots"><div class="dot"></div><div class="dot"></div><div class="dot active"></div></div>
+      <a href="login.html" class="btn-gold" style="border-radius:14px;margin-bottom:12px;">Começar agora</a>
+      <a href="login.html" style="display:block;text-align:center;font-size:.8rem;color:var(--muted);text-decoration:none;">Já tenho conta · Entrar</a>
+    </div>
+  </div>
+
+</div>
+<script>
+  function goSlide(n) {
+    document.querySelectorAll('.slide').forEach(s => s.classList.remove('active'));
+    document.getElementById('s'+n).classList.add('active');
+  }
+  // Swipe support
+  let startX = 0;
+  document.addEventListener('touchstart', e => startX = e.touches[0].clientX);
+  document.addEventListener('touchend', e => {
+    const diff = startX - e.changedTouches[0].clientX;
+    const cur = +document.querySelector('.slide.active').id.slice(1);
+    if (diff > 50 && cur < 3) goSlide(cur + 1);
+    if (diff < -50 && cur > 1) goSlide(cur - 1);
+  });
+</script>
+</body></html>

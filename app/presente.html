@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" /><meta name="viewport" content="width=device-width,initial-scale=1.0" />
+  <title>Enviar Presente — Uashi</title>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="./_shell.css" />
+</head>
+<body>
+<div class="app-frame">
+  <div class="status-bar">
+    <span>9:41</span>
+    <span>●●● 5G ■</span>
+  </div>
+
+  <div class="top-bar">
+    <a href="qrcode.html" class="top-bar-back">←</a>
+    <span style="font-family:var(--font-display);letter-spacing:.06em;">ENVIAR PRESENTE</span>
+    <div style="width:36px;"></div>
+  </div>
+
+  <div class="app-content" style="padding-bottom:40px;">
+
+    <!-- Hero -->
+    <div style="text-align:center;padding:32px 20px 24px;">
+      <div style="font-size:3rem;margin-bottom:12px;">🎁</div>
+      <div style="font-family:var(--font-display);font-size:1.8rem;color:var(--cream);margin-bottom:6px;">PRESENTE DE LAVAGEM</div>
+      <div style="font-size:.85rem;color:var(--muted);">Presenteie alguém com uma lavagem gratuita na Uashi</div>
+    </div>
+
+    <!-- Tipos de presente -->
+    <div style="padding:0 16px;margin-bottom:24px;">
+      <div style="font-size:.72rem;font-weight:600;color:var(--muted);text-transform:uppercase;letter-spacing:.08em;margin-bottom:12px;">Escolha o presente</div>
+      <div style="display:flex;flex-direction:column;gap:10px;">
+
+        <div class="card-sm" id="gift-simples" onclick="selectGift('simples')" style="padding:14px;display:flex;align-items:center;gap:12px;cursor:pointer;border:1.5px solid rgba(26,111,212,.4);">
+          <div style="width:40px;height:40px;border-radius:10px;background:rgba(26,111,212,.15);display:flex;align-items:center;justify-content:center;font-size:1.2rem;flex-shrink:0;">🚿</div>
+          <div style="flex:1;">
+            <div style="font-weight:600;color:var(--cream);">Lavagem Simples</div>
+            <div style="font-size:.75rem;color:var(--muted);">Exterior · até Sedan</div>
+          </div>
+          <div style="text-align:right;">
+            <div style="font-family:var(--font-display);color:var(--blue);font-size:1.1rem;">R$ 19</div>
+            <div style="font-size:.65rem;color:var(--muted);">do seu saldo</div>
+          </div>
+        </div>
+
+        <div class="card-sm" id="gift-completa" onclick="selectGift('completa')" style="padding:14px;display:flex;align-items:center;gap:12px;cursor:pointer;">
+          <div style="width:40px;height:40px;border-radius:10px;background:rgba(245,168,0,.12);display:flex;align-items:center;justify-content:center;font-size:1.2rem;flex-shrink:0;">✨</div>
+          <div style="flex:1;">
+            <div style="font-weight:600;color:var(--cream);">Lavagem Completa</div>
+            <div style="font-size:.75rem;color:var(--muted);">Interior + Exterior · até SUV</div>
+          </div>
+          <div style="text-align:right;">
+            <div style="font-family:var(--font-display);color:var(--gold);font-size:1.1rem;">R$ 29</div>
+            <div style="font-size:.65rem;color:var(--muted);">do seu saldo</div>
+          </div>
+        </div>
+
+        <div class="card-sm" id="gift-premium" onclick="selectGift('premium')" style="padding:14px;display:flex;align-items:center;gap:12px;cursor:pointer;">
+          <div style="width:40px;height:40px;border-radius:10px;background:rgba(232,50,26,.1);display:flex;align-items:center;justify-content:center;font-size:1.2rem;flex-shrink:0;">💎</div>
+          <div style="flex:1;">
+            <div style="font-weight:600;color:var(--cream);">Lavagem Premium</div>
+            <div style="font-size:.75rem;color:var(--muted);">Polimento + Cristalização</div>
+          </div>
+          <div style="text-align:right;">
+            <div style="font-family:var(--font-display);color:var(--cream);font-size:1.1rem;">R$ 49</div>
+            <div style="font-size:.65rem;color:var(--muted);">do seu saldo</div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- Para quem -->
+    <div style="padding:0 16px;margin-bottom:20px;">
+      <div style="font-size:.72rem;font-weight:600;color:var(--muted);text-transform:uppercase;letter-spacing:.08em;margin-bottom:12px;">Para quem?</div>
+
+      <!-- Contatos recentes -->
+      <div style="display:flex;gap:10px;overflow-x:auto;padding-bottom:4px;margin-bottom:14px;">
+        <div style="flex-shrink:0;text-align:center;cursor:pointer;" onclick="selectContact('Ana Mendes')">
+          <div style="width:48px;height:48px;border-radius:12px;background:#22c55e22;border:1px solid rgba(34,197,94,.3);display:flex;align-items:center;justify-content:center;font-weight:700;color:#22c55e;font-size:1rem;margin-bottom:4px;">A</div>
+          <div style="font-size:.65rem;color:var(--muted);white-space:nowrap;">Ana</div>
+        </div>
+        <div style="flex-shrink:0;text-align:center;cursor:pointer;" onclick="selectContact('Ricardo S.')">
+          <div style="width:48px;height:48px;border-radius:12px;background:rgba(26,111,212,.2);border:1px solid rgba(26,111,212,.3);display:flex;align-items:center;justify-content:center;font-weight:700;color:var(--blue);font-size:1rem;margin-bottom:4px;">R</div>
+          <div style="font-size:.65rem;color:var(--muted);white-space:nowrap;">Ricardo</div>
+        </div>
+        <div style="flex-shrink:0;text-align:center;cursor:pointer;" onclick="selectContact('Marcos T.')">
+          <div style="width:48px;height:48px;border-radius:12px;background:rgba(245,168,0,.15);border:1px solid rgba(245,168,0,.3);display:flex;align-items:center;justify-content:center;font-weight:700;color:var(--gold);font-size:1rem;margin-bottom:4px;">M</div>
+          <div style="font-size:.65rem;color:var(--muted);white-space:nowrap;">Marcos</div>
+        </div>
+        <div style="flex-shrink:0;text-align:center;cursor:pointer;" onclick="selectContact('')">
+          <div style="width:48px;height:48px;border-radius:12px;background:var(--surface-2);border:1px dashed rgba(255,255,255,.15);display:flex;align-items:center;justify-content:center;font-size:1.2rem;color:var(--muted);margin-bottom:4px;">+</div>
+          <div style="font-size:.65rem;color:var(--muted);white-space:nowrap;">Outro</div>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label class="form-label">Celular ou e-mail do destinatário</label>
+        <input id="recipient-input" class="form-input" type="text" placeholder="(11) 99999-0000 ou email@..." />
+      </div>
+    </div>
+
+    <!-- Mensagem -->
+    <div style="padding:0 16px;margin-bottom:24px;">
+      <div class="form-group">
+        <label class="form-label">Mensagem personalizada (opcional)</label>
+        <textarea class="form-input" rows="2" placeholder="Ex: Presente pra você! 🎉" style="resize:none;"></textarea>
+      </div>
+    </div>
+
+    <!-- Resumo -->
+    <div id="summary-box" style="display:none;margin:0 16px 24px;padding:14px;background:rgba(245,168,0,.06);border:1px solid rgba(245,168,0,.2);border-radius:12px;">
+      <div style="font-size:.72rem;font-weight:600;color:var(--muted);text-transform:uppercase;letter-spacing:.06em;margin-bottom:8px;">Resumo do presente</div>
+      <div style="display:flex;justify-content:space-between;font-size:.85rem;margin-bottom:4px;">
+        <span style="color:var(--muted);">Tipo</span>
+        <span id="summary-type" style="color:var(--cream);font-weight:600;">—</span>
+      </div>
+      <div style="display:flex;justify-content:space-between;font-size:.85rem;margin-bottom:4px;">
+        <span style="color:var(--muted);">Para</span>
+        <span id="summary-to" style="color:var(--cream);font-weight:600;">—</span>
+      </div>
+      <div style="display:flex;justify-content:space-between;font-size:.85rem;">
+        <span style="color:var(--muted);">Debitado do saldo</span>
+        <span id="summary-val" style="color:var(--gold);font-weight:700;">—</span>
+      </div>
+    </div>
+
+    <!-- Saldo disponível -->
+    <div style="margin:0 16px 24px;padding:12px 14px;background:var(--surface-2);border-radius:10px;display:flex;justify-content:space-between;align-items:center;">
+      <span style="font-size:.8rem;color:var(--muted);">Seu saldo disponível</span>
+      <span style="font-family:var(--font-display);font-size:1.2rem;color:var(--cream);">R$ 120</span>
+    </div>
+
+    <!-- CTA -->
+    <div style="padding:0 16px;">
+      <button class="btn-primary" style="width:100%;justify-content:center;font-size:1rem;padding:14px;" onclick="sendGift()">
+        Enviar presente 🎁
+      </button>
+    </div>
+
+  </div>
+</div>
+
+<!-- Success overlay -->
+<div id="success-overlay" style="display:none;position:fixed;inset:0;background:rgba(0,0,0,.9);z-index:100;align-items:center;justify-content:center;flex-direction:column;text-align:center;padding:32px;">
+  <div style="font-size:4rem;margin-bottom:16px;">🎁</div>
+  <div style="font-family:var(--font-display);font-size:2rem;color:var(--cream);margin-bottom:8px;">PRESENTE ENVIADO!</div>
+  <div style="font-size:.9rem;color:var(--muted);margin-bottom:32px;max-width:280px;">A lavagem foi enviada com sucesso. <span id="success-name">O destinatário</span> receberá uma notificação agora.</div>
+  <a href="index.html" class="btn-primary" style="justify-content:center;padding:14px 32px;">Voltar ao início</a>
+</div>
+
+<script>
+  let selectedGift = null;
+  const prices = { simples: { label: 'Lavagem Simples', val: 'R$ 19' }, completa: { label: 'Lavagem Completa', val: 'R$ 29' }, premium: { label: 'Lavagem Premium', val: 'R$ 49' } };
+
+  function selectGift(type) {
+    selectedGift = type;
+    document.querySelectorAll('[id^=gift-]').forEach(el => el.style.borderColor = 'rgba(255,255,255,.06)');
+    document.getElementById('gift-' + type).style.borderColor = 'rgba(245,168,0,.5)';
+    updateSummary();
+  }
+
+  function selectContact(name) {
+    if (name) document.getElementById('recipient-input').value = name;
+    updateSummary();
+  }
+
+  function updateSummary() {
+    const box = document.getElementById('summary-box');
+    const recipient = document.getElementById('recipient-input').value;
+    if (selectedGift && recipient) {
+      box.style.display = 'block';
+      document.getElementById('summary-type').textContent = prices[selectedGift].label;
+      document.getElementById('summary-to').textContent = recipient;
+      document.getElementById('summary-val').textContent = prices[selectedGift].val;
+    }
+  }
+
+  document.getElementById('recipient-input').addEventListener('input', updateSummary);
+
+  function sendGift() {
+    if (!selectedGift) { alert('Escolha o tipo de lavagem'); return; }
+    const rec = document.getElementById('recipient-input').value;
+    if (!rec) { alert('Informe o destinatário'); return; }
+    const overlay = document.getElementById('success-overlay');
+    document.getElementById('success-name').textContent = rec;
+    overlay.style.display = 'flex';
+  }
+</script>
+</body></html>

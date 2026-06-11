@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" /><meta name="viewport" content="width=device-width,initial-scale=1.0" />
+  <title>Chamados — Frota Uashi</title>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="./_admin.css" />
+</head>
+<body>
+<div class="admin-layout">
+  <aside class="sidebar">
+    <div class="sidebar-logo"><div class="wordmark">UASHI</div><div class="swoosh"></div></div>
+    <div class="sidebar-profile">
+      <div class="sidebar-avatar" style="background:var(--gold);color:#0A0A0A;">T</div>
+      <div><div class="sidebar-name">Transportes Silva</div><div class="sidebar-role">🚛 Frota · 12 veículos</div></div>
+    </div>
+    <nav class="sidebar-nav">
+      <div class="nav-section-label">Frota</div>
+      <a href="frota.html" class="nav-item"><span class="nav-icon">📊</span>Dashboard</a>
+      <a href="frota-veiculos.html" class="nav-item"><span class="nav-icon">🚗</span>Veículos</a>
+      <a href="frota-motoristas.html" class="nav-item"><span class="nav-icon">👤</span>Motoristas</a>
+      <a href="frota-fatura.html" class="nav-item"><span class="nav-icon">📄</span>Faturas</a>
+      <a href="frota-chamados.html" class="nav-item active"><span class="nav-icon">💬</span>Chamados</a>
+      <div class="nav-section-label">Conta</div>
+      <a href="perfil-admin.html" class="nav-item"><span class="nav-icon">👤</span>Perfil</a>
+    </nav>
+    <div class="sidebar-footer"><a href="login.html" style="font-size:.75rem;color:var(--muted);text-decoration:none;">← Sair</a></div>
+  </aside>
+
+  <div class="main-area">
+    <div class="topbar">
+      <span class="topbar-title">Chamados · Frota</span>
+      <div class="topbar-actions">
+        <button class="topbar-btn">🔔<span class="topbar-dot"></span></button>
+        <div style="width:32px;height:32px;border-radius:8px;background:var(--gold);display:flex;align-items:center;justify-content:center;font-family:var(--font-display);color:#0A0A0A;font-size:.9rem;">T</div>
+      </div>
+    </div>
+    <hr class="swoosh" />
+
+    <div class="page-content">
+      <div class="page-header">
+        <div>
+          <h1>SUPORTE DA FROTA</h1>
+          <div style="font-size:.8rem;color:var(--muted);">2 em aberto</div>
+        </div>
+        <button class="btn-primary" onclick="alert('(protótipo) Abrir chamado')">+ Novo chamado</button>
+      </div>
+
+      <div style="display:flex;flex-direction:column;gap:12px;margin-bottom:24px;">
+
+        <div class="card" style="padding:16px;border-color:rgba(245,168,0,.25);">
+          <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:8px;">
+            <div style="display:flex;gap:8px;align-items:center;">
+              <span style="font-size:.7rem;color:var(--muted);">#T-0018</span>
+              <span class="tag tag-gold">Em andamento</span>
+              <span class="tag tag-muted">Faturamento</span>
+            </div>
+            <span style="font-size:.72rem;color:var(--muted);">Hoje 08:30</span>
+          </div>
+          <div style="font-weight:600;color:var(--cream);margin-bottom:4px;">Cobrança errada em abril — 10 veículos cobrados em vez de 12</div>
+          <div style="font-size:.8rem;color:var(--muted);margin-bottom:12px;">Fatura de abril 2025 foi gerada para 10 veículos. No entanto, 2 veículos foram adicionados em 28/03. Solicito revisão e geração de fatura complementar.</div>
+          <div style="display:flex;gap:8px;">
+            <button class="btn-secondary" style="font-size:.72rem;padding:6px 14px;" onclick="alert('(protótipo) Ver mensagens')">Ver conversa</button>
+          </div>
+        </div>
+
+        <div class="card" style="padding:16px;border-color:rgba(245,168,0,.25);">
+          <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:8px;">
+            <div style="display:flex;gap:8px;align-items:center;">
+              <span style="font-size:.7rem;color:var(--muted);">#T-0016</span>
+              <span class="tag tag-gold">Aguardando</span>
+              <span class="tag tag-muted">Acesso</span>
+            </div>
+            <span style="font-size:.72rem;color:var(--muted);">Ontem 15:00</span>
+          </div>
+          <div style="font-weight:600;color:var(--cream);margin-bottom:4px;">Motorista Beatriz não consegue acessar o app</div>
+          <div style="font-size:.8rem;color:var(--muted);margin-bottom:12px;">A motorista Beatriz Nunes (placa STU-5678) não consegue fazer login no app Uashi. Erro: "usuário não encontrado". CPF foi cadastrado corretamente na frota.</div>
+          <div style="display:flex;gap:8px;">
+            <button class="btn-secondary" style="font-size:.72rem;padding:6px 14px;" onclick="alert('(protótipo) Ver conversa')">Ver conversa</button>
+          </div>
+        </div>
+
+        <div style="font-size:.8rem;font-weight:600;color:var(--muted);text-transform:uppercase;letter-spacing:.06em;margin-top:4px;">Resolvidos</div>
+
+        <div class="card" style="padding:14px;opacity:.7;">
+          <div style="display:flex;justify-content:space-between;align-items:center;">
+            <div style="display:flex;gap:8px;align-items:center;">
+              <span style="font-size:.7rem;color:var(--muted);">#T-0014</span>
+              <span class="tag tag-green">Resolvido</span>
+              <span style="font-size:.8rem;color:var(--cream);">QR de veículo vencendo antes do prazo</span>
+            </div>
+            <span style="font-size:.72rem;color:var(--muted);">05/06 · 1h</span>
+          </div>
+        </div>
+
+        <div class="card" style="padding:14px;opacity:.7;">
+          <div style="display:flex;justify-content:space-between;align-items:center;">
+            <div style="display:flex;gap:8px;align-items:center;">
+              <span style="font-size:.7rem;color:var(--muted);">#T-0012</span>
+              <span class="tag tag-green">Resolvido</span>
+              <span style="font-size:.8rem;color:var(--cream);">Solicitação de NF-e mês de março</span>
+            </div>
+            <span style="font-size:.72rem;color:var(--muted);">01/06 · 30min</span>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Formulário novo chamado -->
+      <div class="card">
+        <div class="card-header"><span class="card-title">ABRIR NOVO CHAMADO</span></div>
+        <div class="card-body" style="display:flex;flex-direction:column;gap:14px;">
+          <div class="form-group">
+            <label class="form-label">Categoria</label>
+            <select class="form-input">
+              <option>Faturamento</option>
+              <option>Acesso / Login</option>
+              <option>Veículo bloqueado indevidamente</option>
+              <option>Lavagem não registrada</option>
+              <option>Outro</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Veículo relacionado (opcional)</label>
+            <select class="form-input">
+              <option value="">Não se aplica</option>
+              <option>ABC-1234 · João S.</option>
+              <option>DEF-5678 · Maria L.</option>
+              <option>JKL-3456 · Ana C.</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Descrição</label>
+            <textarea class="form-input" rows="3" placeholder="Descreva o problema..."></textarea>
+          </div>
+          <div>
+            <button class="btn-primary" onclick="alert('(protótipo) Chamado aberto! Aguarde resposta em até 4h.')">Abrir chamado</button>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+</body></html>

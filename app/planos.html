@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" /><meta name="viewport" content="width=device-width,initial-scale=1.0" />
+  <title>Planos — Uashi</title>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="./_shell.css" />
+  <style>
+    .plan-card { background:var(--surface);border:2px solid rgba(255,255,255,.06);border-radius:20px;overflow:hidden;transition:transform .2s; }
+    .plan-card.current { border-color:var(--gold); }
+    .plan-card.featured { border-color:rgba(26,111,212,.4); }
+    .plan-head { padding:20px 20px 16px; }
+    .plan-body { padding:0 20px 20px; }
+    .check-item { display:flex;align-items:center;gap:10px;font-size:.85rem;color:var(--cream);padding:5px 0; }
+    .toggle-wrap { display:flex;background:var(--surface-2);border-radius:10px;padding:3px;margin-bottom:20px; }
+    .toggle-opt { flex:1;text-align:center;padding:8px;border-radius:8px;font-size:.8rem;font-weight:600;cursor:pointer;transition:background .2s,color .2s;color:var(--muted); }
+    .toggle-opt.active { background:var(--surface);color:var(--cream); }
+  </style>
+</head>
+<body>
+<div class="app-frame" style="max-width:390px;margin:0 auto;">
+  <div class="status-bar"><span class="status-time">09:41</span><div class="status-icons"><span>●●●</span><span>WiFi</span><span>🔋</span></div></div>
+  <div class="top-bar">
+    <a href="index.html" class="top-bar-back">←</a>
+    <span class="top-bar-title">Planos</span>
+    <a href="gerenciar-plano.html" class="top-bar-action" style="font-size:.7rem;color:var(--blue);">Gerenciar</a>
+  </div>
+  <hr class="swoosh" />
+
+  <div class="app-content">
+    <div class="app-content-inner" style="display:flex;flex-direction:column;gap:16px;">
+
+      <!-- Plano atual -->
+      <div style="background:rgba(245,168,0,.08);border:1px solid rgba(245,168,0,.25);border-radius:14px;padding:14px 16px;display:flex;justify-content:space-between;align-items:center;">
+        <div>
+          <div style="font-size:.72rem;color:rgba(245,168,0,.7);text-transform:uppercase;letter-spacing:.08em;margin-bottom:2px;">Plano atual</div>
+          <div style="font-family:var(--font-display);font-size:1.2rem;color:var(--gold);">PRO · MOTORISTA</div>
+        </div>
+        <div style="text-align:right;">
+          <div style="font-size:.8rem;color:var(--muted);">Renova em</div>
+          <div style="font-weight:700;color:var(--cream);">18 dias</div>
+        </div>
+      </div>
+
+      <!-- Toggle mensal/anual -->
+      <div class="toggle-wrap">
+        <div class="toggle-opt active" onclick="setToggle(this)">Mensal</div>
+        <div class="toggle-opt" onclick="setToggle(this)">Anual <span style="color:#22c55e;font-size:.65rem;"> -20%</span></div>
+      </div>
+
+      <!-- Básico -->
+      <div class="plan-card">
+        <div class="plan-head">
+          <span class="tag tag-blue" style="margin-bottom:10px;display:inline-block;">Básico</span>
+          <div style="display:flex;align-items:flex-end;gap:4px;">
+            <div style="font-family:var(--font-display);font-size:2.4rem;color:var(--cream);line-height:1;">R$ 79</div>
+            <div style="font-size:.8rem;color:var(--muted);padding-bottom:4px;">/mês</div>
+          </div>
+          <p style="font-size:.8rem;color:var(--muted);margin-top:4px;">Para uso pessoal casual.</p>
+        </div>
+        <div class="plan-body">
+          <div class="check-item"><span style="color:#22c55e;">✓</span> 8 lavagens simples/mês</div>
+          <div class="check-item"><span style="color:#22c55e;">✓</span> Todas as unidades</div>
+          <div class="check-item"><span style="color:var(--muted);">–</span> <span style="color:var(--muted);">Horário estendido</span></div>
+          <div class="check-item"><span style="color:var(--muted);">–</span> <span style="color:var(--muted);">Dependentes</span></div>
+          <button class="btn-secondary" style="margin-top:14px;" onclick="confirmPlan('Básico','R$ 79')">Mudar para Básico</button>
+        </div>
+      </div>
+
+      <!-- Pro — atual -->
+      <div class="plan-card current" style="position:relative;">
+        <div style="position:absolute;top:-12px;left:50%;transform:translateX(-50%);">
+          <span class="tag tag-gold">✓ Plano atual</span>
+        </div>
+        <div class="plan-head" style="padding-top:24px;background:rgba(245,168,0,.04);">
+          <span class="tag tag-gold" style="margin-bottom:10px;display:inline-block;">Pro · Motorista</span>
+          <div style="display:flex;align-items:flex-end;gap:4px;">
+            <div style="font-family:var(--font-display);font-size:2.4rem;color:var(--gold);line-height:1;">R$ 149</div>
+            <div style="font-size:.8rem;color:var(--muted);padding-bottom:4px;">/mês</div>
+          </div>
+          <p style="font-size:.8rem;color:var(--muted);margin-top:4px;">Para motoristas de app e taxistas.</p>
+        </div>
+        <div class="plan-body">
+          <div class="check-item"><span style="color:#22c55e;">✓</span> <strong>1 lavagem completa/dia</strong></div>
+          <div class="check-item"><span style="color:#22c55e;">✓</span> Horário estendido (5h–23h)</div>
+          <div class="check-item"><span style="color:#22c55e;">✓</span> Fila preferencial</div>
+          <div class="check-item"><span style="color:#22c55e;">✓</span> Pontos em dobro</div>
+          <button class="btn-secondary" style="margin-top:14px;opacity:.5;cursor:not-allowed;">Plano atual</button>
+        </div>
+      </div>
+
+      <!-- Frota -->
+      <div class="plan-card featured">
+        <div class="plan-head" style="border-top:3px solid var(--blue);">
+          <span class="tag tag-blue" style="margin-bottom:10px;display:inline-block;">Frota · B2B</span>
+          <div style="display:flex;align-items:flex-end;gap:4px;">
+            <div style="font-family:var(--font-display);font-size:2.4rem;color:var(--blue);line-height:1;">R$ 89</div>
+            <div style="font-size:.8rem;color:var(--muted);padding-bottom:4px;">/veículo/mês</div>
+          </div>
+          <p style="font-size:.8rem;color:var(--muted);margin-top:4px;">Empresas · mín. 5 veículos.</p>
+        </div>
+        <div class="plan-body">
+          <div class="check-item"><span style="color:#22c55e;">✓</span> 1 lavagem completa/veículo/dia</div>
+          <div class="check-item"><span style="color:#22c55e;">✓</span> Painel admin dedicado</div>
+          <div class="check-item"><span style="color:#22c55e;">✓</span> Nota fiscal + fatura mensal</div>
+          <div class="check-item"><span style="color:#22c55e;">✓</span> Limite por motorista</div>
+          <button class="btn-secondary" style="margin-top:14px;border-color:var(--blue);color:var(--blue);" onclick="alert('(protótipo) Falar com comercial')">Falar com Comercial</button>
+        </div>
+      </div>
+
+      <a href="gerenciar-plano.html" style="display:block;text-align:center;font-size:.8rem;color:var(--muted);text-decoration:none;padding:4px 0 8px;">Cancelar assinatura</a>
+
+    </div>
+  </div>
+
+  <nav class="tab-bar">
+    <a href="index.html" class="tab-item"><span class="tab-icon">🏠</span><span class="tab-label">Home</span></a>
+    <a href="mapa.html" class="tab-item"><span class="tab-icon">📍</span><span class="tab-label">Lojas</span></a>
+    <a href="qrcode.html" class="tab-qr"><div class="tab-qr-btn">🔲</div></a>
+    <a href="historico.html" class="tab-item"><span class="tab-icon">📋</span><span class="tab-label">Histórico</span></a>
+    <a href="conta.html" class="tab-item"><span class="tab-icon">👤</span><span class="tab-label">Conta</span></a>
+  </nav>
+</div>
+<script>
+  function setToggle(el) {
+    document.querySelectorAll('.toggle-opt').forEach(o => o.classList.remove('active'));
+    el.classList.add('active');
+  }
+  function confirmPlan(name, price) {
+    if(confirm('Mudar para o plano ' + name + ' por ' + price + '/mês?')) alert('(protótipo) Plano alterado com sucesso!');
+  }
+</script>
+</body></html>

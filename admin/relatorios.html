@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" /><meta name="viewport" content="width=device-width,initial-scale=1.0" />
+  <title>Relatórios — Admin Uashi</title>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="./_admin.css" />
+  <style>
+    .report-card { background:var(--surface);border:1px solid rgba(255,255,255,.06);border-radius:14px;padding:20px;cursor:pointer;transition:transform .2s,box-shadow .2s;text-decoration:none;display:block; }
+    .report-card:hover { transform:translateY(-3px);box-shadow:0 10px 30px rgba(0,0,0,.4); }
+    .report-icon { width:48px;height:48px;border-radius:14px;display:flex;align-items:center;justify-content:center;font-size:1.4rem;margin-bottom:12px; }
+  </style>
+</head>
+<body>
+<div class="admin-layout">
+  <!-- Sidebar -->
+  <aside class="sidebar">
+    <div class="sidebar-logo"><div class="wordmark">UASHI</div><div class="swoosh"></div></div>
+    <div class="sidebar-profile">
+      <div class="sidebar-avatar">A</div>
+      <div><div class="sidebar-name">Admin Matriz</div><div class="sidebar-role">🏢 Matriz</div></div>
+    </div>
+    <nav class="sidebar-nav">
+      <div class="nav-section-label">Principal</div>
+      <a href="index.html" class="nav-item"><span class="nav-icon">📊</span>Dashboard</a>
+      <a href="franqueados.html" class="nav-item"><span class="nav-icon">🏪</span>Franqueados</a>
+      <a href="planos-precos.html" class="nav-item"><span class="nav-icon">💳</span>Planos & Preços</a>
+      <a href="promocoes.html" class="nav-item"><span class="nav-icon">📣</span>Promoções</a>
+      <div class="nav-section-label">Suporte</div>
+      <a href="alertas.html" class="nav-item"><span class="nav-icon">🚨</span>Alertas</a>
+      <a href="chamados.html" class="nav-item"><span class="nav-icon">💬</span>Chamados</a>
+      <a href="relatorios.html" class="nav-item active"><span class="nav-icon">📄</span>Relatórios</a>
+      <div class="nav-section-label">Conta</div>
+      <a href="perfil-admin.html" class="nav-item"><span class="nav-icon">👤</span>Perfil</a>
+    </nav>
+    <div class="sidebar-footer"><a href="login.html" style="font-size:.75rem;color:var(--muted);text-decoration:none;">← Sair</a></div>
+  </aside>
+
+  <div class="main-area">
+    <div class="topbar">
+      <span class="topbar-title">Relatórios</span>
+      <div class="topbar-actions">
+        <button class="topbar-btn">🔔<span class="topbar-dot"></span></button>
+        <div style="width:32px;height:32px;border-radius:8px;background:var(--red);display:flex;align-items:center;justify-content:center;font-family:var(--font-display);color:#fff;font-size:.9rem;">A</div>
+      </div>
+    </div>
+    <hr class="swoosh" />
+
+    <div class="page-content">
+      <!-- Filtros de período -->
+      <div class="filter-bar" style="margin-bottom:24px;">
+        <select class="form-input" style="width:auto;min-width:140px;">
+          <option>Junho 2025</option><option>Maio 2025</option><option>Abril 2025</option>
+        </select>
+        <select class="form-input" style="width:auto;min-width:140px;">
+          <option>Todas as unidades</option><option>Mooca</option><option>Tatuapé</option><option>Santo André</option>
+        </select>
+        <button class="btn-secondary">Aplicar filtros</button>
+      </div>
+
+      <!-- Quick stats -->
+      <div class="kpi-grid" style="margin-bottom:24px;">
+        <div class="kpi-card">
+          <div class="kpi-val" style="color:var(--gold);">R$&nbsp;224K</div>
+          <div class="kpi-label">Receita total</div>
+          <div class="kpi-delta up">▲ +12% vs mês anterior</div>
+        </div>
+        <div class="kpi-card">
+          <div class="kpi-val" style="color:var(--cream);">7.840</div>
+          <div class="kpi-label">Lavagens</div>
+          <div class="kpi-delta up">▲ +8%</div>
+        </div>
+        <div class="kpi-card">
+          <div class="kpi-val" style="color:var(--cream);">4.320</div>
+          <div class="kpi-label">Assinantes</div>
+          <div class="kpi-delta up">▲ +22%</div>
+        </div>
+        <div class="kpi-card">
+          <div class="kpi-val" style="color:var(--cream);">R$&nbsp;28,60</div>
+          <div class="kpi-label">Ticket médio</div>
+          <div class="kpi-delta up">▲ +3%</div>
+        </div>
+      </div>
+
+      <!-- Grid de relatórios disponíveis -->
+      <div style="font-family:var(--font-display);font-size:1.3rem;color:var(--cream);letter-spacing:.04em;margin-bottom:16px;">EXPORTAR RELATÓRIOS</div>
+      <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:16px;margin-bottom:32px;">
+
+        <div class="report-card" onclick="downloadReport('Receita por unidade')">
+          <div class="report-icon" style="background:rgba(245,168,0,.12);">💰</div>
+          <div style="font-weight:700;font-size:.9rem;color:var(--cream);margin-bottom:4px;">Receita por unidade</div>
+          <div style="font-size:.75rem;color:var(--muted);margin-bottom:12px;">Faturamento detalhado por franqueado, período e modalidade.</div>
+          <div style="display:flex;gap:6px;">
+            <span class="tag tag-gold">CSV</span><span class="tag tag-muted">PDF</span>
+          </div>
+        </div>
+
+        <div class="report-card" onclick="downloadReport('Lavagens por período')">
+          <div class="report-icon" style="background:rgba(26,111,212,.12);">🚗</div>
+          <div style="font-weight:700;font-size:.9rem;color:var(--cream);margin-bottom:4px;">Lavagens por período</div>
+          <div style="font-size:.75rem;color:var(--muted);margin-bottom:12px;">Volume de lavagens por tipo, unidade e horário.</div>
+          <div style="display:flex;gap:6px;"><span class="tag tag-blue">CSV</span><span class="tag tag-muted">PDF</span></div>
+        </div>
+
+        <div class="report-card" onclick="downloadReport('Assinaturas e planos')">
+          <div class="report-icon" style="background:rgba(232,50,26,.12);">♾️</div>
+          <div style="font-weight:700;font-size:.9rem;color:var(--cream);margin-bottom:4px;">Assinaturas e planos</div>
+          <div style="font-size:.75rem;color:var(--muted);margin-bottom:12px;">Churn, retenção, MRR, novos assinantes por plano.</div>
+          <div style="display:flex;gap:6px;"><span class="tag tag-red">CSV</span><span class="tag tag-muted">PDF</span></div>
+        </div>
+
+        <div class="report-card" onclick="downloadReport('Usuários e fidelidade')">
+          <div class="report-icon" style="background:rgba(34,197,94,.12);">⭐</div>
+          <div style="font-weight:700;font-size:.9rem;color:var(--cream);margin-bottom:4px;">Usuários e fidelidade</div>
+          <div style="font-size:.75rem;color:var(--muted);margin-bottom:12px;">Distribuição por nível, pontos acumulados, resgates.</div>
+          <div style="display:flex;gap:6px;"><span class="tag tag-green">CSV</span><span class="tag tag-muted">PDF</span></div>
+        </div>
+
+        <div class="report-card" onclick="downloadReport('Royalties franqueados')">
+          <div class="report-icon" style="background:rgba(245,168,0,.12);">🏪</div>
+          <div style="font-weight:700;font-size:.9rem;color:var(--cream);margin-bottom:4px;">Royalties franqueados</div>
+          <div style="font-size:.75rem;color:var(--muted);margin-bottom:12px;">Tabela consolidada de royalties e fundo de marketing por unidade.</div>
+          <div style="display:flex;gap:6px;"><span class="tag tag-gold">CSV</span><span class="tag tag-muted">PDF</span></div>
+        </div>
+
+        <div class="report-card" onclick="downloadReport('Chamados de suporte')">
+          <div class="report-icon" style="background:rgba(107,107,107,.12);">💬</div>
+          <div style="font-weight:700;font-size:.9rem;color:var(--cream);margin-bottom:4px;">Chamados de suporte</div>
+          <div style="font-size:.75rem;color:var(--muted);margin-bottom:12px;">SLA, categorias, tempo de resolução e satisfação.</div>
+          <div style="display:flex;gap:6px;"><span class="tag tag-muted">CSV</span><span class="tag tag-muted">PDF</span></div>
+        </div>
+
+      </div>
+
+      <!-- Histórico de exportações -->
+      <div class="card">
+        <div class="card-header"><span class="card-title">EXPORTAÇÕES RECENTES</span></div>
+        <div style="overflow-x:auto;">
+          <table class="data-table">
+            <thead><tr><th>Relatório</th><th>Período</th><th>Formato</th><th>Gerado em</th><th>Ações</th></tr></thead>
+            <tbody>
+              <tr><td>Receita por unidade</td><td>Maio 2025</td><td><span class="tag tag-gold">CSV</span></td><td style="color:var(--muted);">11/06/2025 09:12</td><td><button class="btn-icon" onclick="alert('(protótipo) Download')">⬇</button></td></tr>
+              <tr><td>Assinaturas e planos</td><td>Maio 2025</td><td><span class="tag tag-muted">PDF</span></td><td style="color:var(--muted);">10/06/2025 14:45</td><td><button class="btn-icon" onclick="alert('(protótipo) Download')">⬇</button></td></tr>
+              <tr><td>Lavagens por período</td><td>Abril 2025</td><td><span class="tag tag-blue">CSV</span></td><td style="color:var(--muted);">02/05/2025 10:30</td><td><button class="btn-icon" onclick="alert('(protótipo) Download')">⬇</button></td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+<script>
+  function downloadReport(name) { alert('(protótipo) Gerando relatório: ' + name + '\nO arquivo será enviado para admin@uashi.com.br'); }
+</script>
+</body></html>
