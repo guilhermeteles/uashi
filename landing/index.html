@@ -1,0 +1,873 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Uashi — Lava-Jato Self Service em Esteira</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="../_shared.css" />
+  <style>
+    /* ── Hero gradient overlay ── */
+    .hero-bg {
+      background:
+        radial-gradient(ellipse 80% 60% at 70% 40%, rgba(232,50,26,0.12) 0%, transparent 70%),
+        radial-gradient(ellipse 60% 50% at 20% 80%, rgba(26,111,212,0.10) 0%, transparent 60%),
+        var(--bg);
+    }
+
+    /* ── Step number circles ── */
+    .step-num {
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      background: var(--surface-2);
+      border: 2px solid rgba(232,50,26,0.4);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: var(--font-display);
+      font-size: 1.4rem;
+      color: var(--red);
+      flex-shrink: 0;
+    }
+
+    /* ── Price cards ── */
+    .price-card {
+      background: var(--surface);
+      border: 1px solid rgba(255,255,255,0.06);
+      border-radius: 16px;
+      padding: 28px 24px;
+      text-align: center;
+      transition: transform 0.2s, box-shadow 0.2s;
+      position: relative;
+    }
+    .price-card:hover { transform: translateY(-6px); box-shadow: 0 16px 48px rgba(0,0,0,0.5); }
+    .price-card.featured {
+      border-color: var(--gold);
+      box-shadow: 0 0 0 1px rgba(245,168,0,0.3);
+    }
+
+    /* ── Plan cards ── */
+    .plan-card {
+      background: var(--surface);
+      border: 1px solid rgba(255,255,255,0.06);
+      border-radius: 16px;
+      overflow: hidden;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+    .plan-card:hover { transform: translateY(-6px); box-shadow: 0 16px 48px rgba(0,0,0,0.5); }
+    .plan-card.featured { border-color: var(--gold); }
+    .plan-header { padding: 28px 28px 20px; border-bottom: 1px solid rgba(255,255,255,0.06); }
+    .plan-body   { padding: 24px 28px 28px; }
+
+    /* ── Map placeholder ── */
+    .map-wrap {
+      border-radius: 16px;
+      overflow: hidden;
+      border: 1px solid rgba(255,255,255,0.08);
+      height: 420px;
+    }
+    .map-wrap iframe { width: 100%; height: 100%; border: 0; display: block; }
+
+    /* ── FAQ accordion ── */
+    .faq-item { border-bottom: 1px solid rgba(255,255,255,0.07); }
+    .faq-btn {
+      width: 100%;
+      text-align: left;
+      background: transparent;
+      border: none;
+      cursor: pointer;
+      color: var(--cream);
+      font-family: var(--font-body);
+      font-size: 1rem;
+      font-weight: 600;
+      padding: 20px 0;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 16px;
+    }
+    .faq-answer {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.35s ease, padding 0.35s ease;
+    }
+    .faq-answer.open { max-height: 400px; padding-bottom: 20px; }
+    .faq-icon { font-size: 1.4rem; color: var(--red); flex-shrink: 0; transition: transform 0.3s; }
+    .faq-icon.open { transform: rotate(45deg); }
+
+    /* ── Nav ── */
+    .nav-link {
+      color: var(--muted);
+      text-decoration: none;
+      font-size: 0.875rem;
+      font-weight: 500;
+      transition: color 0.2s;
+    }
+    .nav-link:hover { color: var(--cream); }
+
+    /* ── Unit status dot ── */
+    .dot-open   { width:8px; height:8px; border-radius:50%; background:#22c55e; display:inline-block; }
+    .dot-closed { width:8px; height:8px; border-radius:50%; background:var(--red); display:inline-block; }
+
+    /* ── Mockup phone ── */
+    .phone-mockup {
+      width: 220px;
+      height: 440px;
+      background: var(--surface);
+      border-radius: 36px;
+      border: 2px solid rgba(255,255,255,0.1);
+      position: relative;
+      overflow: hidden;
+      box-shadow: 0 32px 80px rgba(0,0,0,0.6), 0 0 0 1px rgba(255,255,255,0.05);
+    }
+    .phone-screen {
+      position: absolute;
+      inset: 6px;
+      background: #0d0d0d;
+      border-radius: 31px;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    /* ── Glowing swoosh accents ── */
+    .glow-red  { text-shadow: 0 0 32px rgba(232,50,26,0.4); }
+    .glow-gold { text-shadow: 0 0 32px rgba(245,168,0,0.4); }
+  </style>
+</head>
+<body>
+
+<!-- ════════════════════════════════════════════════════════════
+     NAV
+════════════════════════════════════════════════════════════ -->
+<nav id="nav" style="position:sticky;top:0;z-index:50;background:rgba(10,10,10,0.88);backdrop-filter:blur(14px);border-bottom:1px solid rgba(255,255,255,0.06);">
+  <div class="container" style="display:flex;align-items:center;justify-content:space-between;height:64px;gap:16px;">
+    <!-- Logo -->
+    <a href="index.html" style="text-decoration:none;display:flex;align-items:center;gap:10px;flex-shrink:0;">
+      <div style="display:flex;flex-direction:column;gap:3px;">
+        <span style="font-family:var(--font-display);font-size:1.75rem;color:var(--cream);letter-spacing:0.05em;line-height:1;">UASHI</span>
+        <span class="swoosh" style="width:48px;"></span>
+      </div>
+    </a>
+
+    <!-- Links (hidden on mobile) -->
+    <div style="display:flex;align-items:center;gap:28px;" class="hidden md:flex">
+      <a href="#como-funciona" class="nav-link">Como Funciona</a>
+      <a href="#precos" class="nav-link">Preços</a>
+      <a href="#planos" class="nav-link">Planos</a>
+      <a href="#lojas" class="nav-link">Lojas</a>
+      <a href="franquia.html" class="nav-link" style="color:var(--gold);">Franquia</a>
+    </div>
+
+    <!-- CTA -->
+    <a href="#app" class="btn-primary" style="font-size:0.8rem;padding:10px 20px;">
+      Baixar App
+    </a>
+  </div>
+</nav>
+
+<hr class="swoosh" />
+
+<!-- ════════════════════════════════════════════════════════════
+     HERO
+════════════════════════════════════════════════════════════ -->
+<section class="hero-bg section" style="padding-top:100px;padding-bottom:100px;">
+  <div class="container" style="display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:center;">
+    <!-- Copy -->
+    <div>
+      <span class="tag tag-red" style="margin-bottom:16px;display:inline-block;">Novo em São Paulo</span>
+      <h1 style="font-size:clamp(3rem,7vw,5rem);color:var(--cream);margin-bottom:20px;">
+        LAVA CARRO<br/>
+        <span style="color:var(--red);" class="glow-red">SEM SAIR</span><br/>
+        DO VEÍCULO
+      </h1>
+      <p style="color:var(--muted);font-size:1.1rem;max-width:420px;margin-bottom:8px;">
+        Gere o QR code no app, passe pela esteira e siga viagem.
+        Menos de 5 minutos. Sem fila. Sem complicação.
+      </p>
+      <p style="color:var(--muted);font-size:0.875rem;margin-bottom:36px;">
+        Planos especiais para <strong style="color:var(--gold);">taxistas, motoristas de app e frotas.</strong>
+      </p>
+
+      <div style="display:flex;flex-wrap:wrap;gap:12px;margin-bottom:40px;">
+        <!-- iOS Badge -->
+        <a href="#app" class="store-badge">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="var(--cream)">
+            <path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/>
+          </svg>
+          <div>
+            <span class="store-label">Disponível na</span>
+            <span class="store-name">App Store</span>
+          </div>
+        </a>
+        <!-- Android Badge -->
+        <a href="#app" class="store-badge">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="var(--cream)">
+            <path d="M17.523 15.341 21 8.538l-3.477 6.803zM2.977 8.538l3.5 6.803L3 8.538zM13 6h-2l-8 15.5h18L13 6zm-.5-4.5A.5.5 0 0 1 13 1a.5.5 0 0 1 .5.5v1A.5.5 0 0 1 13 3a.5.5 0 0 1-.5-.5v-1zM8.28 3.22l.7-.7.7.7-.7.7-.7-.7zm6.44 0 .7.7-.7.7-.7-.7.7-.7z"/>
+          </svg>
+          <div>
+            <span class="store-label">Disponível no</span>
+            <span class="store-name">Google Play</span>
+          </div>
+        </a>
+        <!-- Find store -->
+        <a href="#lojas" class="btn-secondary">
+          Encontrar Loja
+        </a>
+      </div>
+
+      <!-- Social proof -->
+      <div style="display:flex;gap:24px;flex-wrap:wrap;">
+        <div style="text-align:center;">
+          <div style="font-family:var(--font-display);font-size:2.2rem;color:var(--gold);" class="glow-gold">12K+</div>
+          <div style="font-size:0.75rem;color:var(--muted);">Usuários ativos</div>
+        </div>
+        <div style="width:1px;background:rgba(255,255,255,0.08);"></div>
+        <div style="text-align:center;">
+          <div style="font-family:var(--font-display);font-size:2.2rem;color:var(--gold);" class="glow-gold">8</div>
+          <div style="font-size:0.75rem;color:var(--muted);">Unidades abertas</div>
+        </div>
+        <div style="width:1px;background:rgba(255,255,255,0.08);"></div>
+        <div style="text-align:center;">
+          <div style="font-family:var(--font-display);font-size:2.2rem;color:var(--gold);" class="glow-gold">4.8★</div>
+          <div style="font-size:0.75rem;color:var(--muted);">Avaliação nas lojas</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Phone mockup -->
+    <div style="display:flex;justify-content:center;align-items:center;position:relative;">
+      <!-- Glow halo -->
+      <div style="position:absolute;width:300px;height:300px;border-radius:50%;background:radial-gradient(circle,rgba(232,50,26,0.18) 0%,transparent 70%);pointer-events:none;"></div>
+      <div class="phone-mockup">
+        <div class="phone-screen">
+          <!-- Simulated QR screen -->
+          <div style="text-align:center;padding:20px;">
+            <div style="font-family:var(--font-display);font-size:0.85rem;color:var(--muted);letter-spacing:0.1em;margin-bottom:16px;">SEU QR CODE</div>
+            <!-- Fake QR -->
+            <div style="width:140px;height:140px;background:#fff;border-radius:12px;margin:0 auto 16px;display:grid;grid-template-columns:repeat(7,1fr);padding:10px;gap:2px;">
+              <!-- Just visual squares to mimic a QR -->
+              <script>
+                document.currentScript.previousElementSibling.innerHTML = (() => {
+                  const p = [1,1,1,1,1,1,1,1,0,0,0,0,0,1,1,0,1,1,1,0,1,1,0,1,0,0,1,1,1,0,1,1,1,0,1,1,0,0,0,0,0,1,1,1,1,1,1,1,1,0,0,0,0,0,0,0,1,0,1,0,1,0,1,1,1,0,0,1,0,1,0,0,0,1,0,0,1,1,1,0,0,0,1,1,0,1,0,0,1,0,1,0,1,0,1,0,0,0,0,0,0,0,1,0,1,0,1,1,1,0,1,1,0,1,0,1,0,0,1,0,1,0,1,1,1,0,1,1,0,0,1,0,1,0,0,1,0,0,1,0,1,0,1,0,1,1,1,1,1,1,1];
+                  return p.map(b=>`<div style="background:${b?'#0a0a0a':'#fff'};border-radius:1px;"></div>`).join('');
+                })();
+              </script>
+            </div>
+            <div style="font-family:var(--font-display);font-size:1.3rem;color:var(--cream);margin-bottom:4px;">LAVAGEM COMPLETA</div>
+            <div style="font-size:0.75rem;color:var(--muted);">Válido por 30 min · SUV</div>
+            <hr class="swoosh" style="margin:14px 0;" />
+            <div style="font-size:0.7rem;color:var(--muted);">Carlos M. · Plano Ouro</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="swoosh" />
+
+<!-- ════════════════════════════════════════════════════════════
+     COMO FUNCIONA
+════════════════════════════════════════════════════════════ -->
+<section id="como-funciona" class="section">
+  <div class="container">
+    <div style="text-align:center;margin-bottom:56px;">
+      <span class="tag tag-red" style="margin-bottom:12px;">Simples assim</span>
+      <h2 style="font-size:clamp(2.2rem,5vw,3.5rem);color:var(--cream);">COMO FUNCIONA</h2>
+    </div>
+
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:24px;position:relative;">
+
+      <!-- Step connector line (decorative) -->
+      <div style="position:absolute;top:24px;left:10%;right:10%;height:2px;background:linear-gradient(90deg,var(--red),var(--gold),var(--blue));opacity:0.25;pointer-events:none;" class="hidden lg:block"></div>
+
+      <!-- 1 -->
+      <div style="text-align:center;padding:28px 20px;background:var(--surface);border-radius:16px;border:1px solid rgba(255,255,255,0.06);">
+        <div class="step-num" style="margin:0 auto 16px;">1</div>
+        <div style="font-size:2rem;margin-bottom:12px;">🚗</div>
+        <h3 style="font-size:1rem;font-family:var(--font-display);letter-spacing:0.05em;margin-bottom:8px;color:var(--cream);">CHEGOU</h3>
+        <p style="font-size:0.85rem;color:var(--muted);">Dirija até uma unidade Uashi. Sem agendamento, sem fila.</p>
+      </div>
+
+      <!-- 2 -->
+      <div style="text-align:center;padding:28px 20px;background:var(--surface);border-radius:16px;border:1px solid rgba(255,255,255,0.06);">
+        <div class="step-num" style="margin:0 auto 16px;">2</div>
+        <div style="font-size:2rem;margin-bottom:12px;">📱</div>
+        <h3 style="font-size:1rem;font-family:var(--font-display);letter-spacing:0.05em;margin-bottom:8px;color:var(--cream);">ABRIU O APP</h3>
+        <p style="font-size:0.85rem;color:var(--muted);">Selecione o tipo de lavagem e seu veículo no app.</p>
+      </div>
+
+      <!-- 3 -->
+      <div style="text-align:center;padding:28px 20px;background:var(--surface);border-radius:16px;border:1px solid rgba(255,255,255,0.06);border-color:rgba(232,50,26,0.3);">
+        <div class="step-num" style="margin:0 auto 16px;">3</div>
+        <div style="font-size:2rem;margin-bottom:12px;">🔲</div>
+        <h3 style="font-size:1rem;font-family:var(--font-display);letter-spacing:0.05em;margin-bottom:8px;color:var(--cream);">GEROU O QR</h3>
+        <p style="font-size:0.85rem;color:var(--muted);">Mostre o QR code para o leitor na entrada da esteira.</p>
+      </div>
+
+      <!-- 4 -->
+      <div style="text-align:center;padding:28px 20px;background:var(--surface);border-radius:16px;border:1px solid rgba(255,255,255,0.06);">
+        <div class="step-num" style="margin:0 auto 16px;">4</div>
+        <div style="font-size:2rem;margin-bottom:12px;">🏎️</div>
+        <h3 style="font-size:1rem;font-family:var(--font-display);letter-spacing:0.05em;margin-bottom:8px;color:var(--cream);">PASSOU PELA ESTEIRA</h3>
+        <p style="font-size:0.85rem;color:var(--muted);">Mantenha o ponto morto. A esteira cuida do resto.</p>
+      </div>
+
+      <!-- 5 -->
+      <div style="text-align:center;padding:28px 20px;background:var(--surface);border-radius:16px;border:1px solid rgba(255,255,255,0.06);">
+        <div class="step-num" style="margin:0 auto 16px;">5</div>
+        <div style="font-size:2rem;margin-bottom:12px;">✅</div>
+        <h3 style="font-size:1rem;font-family:var(--font-display);letter-spacing:0.05em;margin-bottom:8px;color:var(--cream);">FOI EMBORA</h3>
+        <p style="font-size:0.85rem;color:var(--muted);">Carro limpo em menos de 5 minutos. Pronto!</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="swoosh" />
+
+<!-- ════════════════════════════════════════════════════════════
+     PREÇOS — LAVAGEM AVULSA
+════════════════════════════════════════════════════════════ -->
+<section id="precos" class="section">
+  <div class="container">
+    <div style="text-align:center;margin-bottom:56px;">
+      <span class="tag tag-gold" style="margin-bottom:12px;">Sem mensalidade</span>
+      <h2 style="font-size:clamp(2.2rem,5vw,3.5rem);color:var(--cream);">LAVAGEM AVULSA</h2>
+      <p style="color:var(--muted);margin-top:12px;max-width:480px;margin-left:auto;margin-right:auto;">Pague só quando usar. Escolha o tipo de lavagem para seu veículo.</p>
+    </div>
+
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:20px;">
+
+      <!-- Hatch -->
+      <div class="price-card">
+        <div style="font-size:2.5rem;margin-bottom:12px;">🚗</div>
+        <h3 style="font-family:var(--font-display);font-size:1.4rem;color:var(--cream);margin-bottom:4px;">HATCH / SEDAN</h3>
+        <p style="font-size:0.8rem;color:var(--muted);margin-bottom:20px;">Gol, Onix, Corolla...</p>
+        <hr style="border:none;border-top:1px solid rgba(255,255,255,0.07);margin-bottom:20px;" />
+        <div style="display:flex;flex-direction:column;gap:10px;">
+          <div style="display:flex;justify-content:space-between;align-items:center;">
+            <span style="font-size:0.85rem;color:var(--muted);">Simples</span>
+            <span style="font-family:var(--font-display);font-size:1.4rem;color:var(--cream);">R$&nbsp;19</span>
+          </div>
+          <div style="display:flex;justify-content:space-between;align-items:center;">
+            <span style="font-size:0.85rem;color:var(--muted);">Completa</span>
+            <span style="font-family:var(--font-display);font-size:1.4rem;color:var(--gold);">R$&nbsp;29</span>
+          </div>
+          <div style="display:flex;justify-content:space-between;align-items:center;">
+            <span style="font-size:0.85rem;color:var(--muted);">Premium</span>
+            <span style="font-family:var(--font-display);font-size:1.4rem;color:var(--blue);">R$&nbsp;39</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- SUV — destaque -->
+      <div class="price-card featured">
+        <span class="tag tag-gold" style="position:absolute;top:16px;right:16px;">Mais popular</span>
+        <div style="font-size:2.5rem;margin-bottom:12px;">🚙</div>
+        <h3 style="font-family:var(--font-display);font-size:1.4rem;color:var(--cream);margin-bottom:4px;">SUV / PICKUP</h3>
+        <p style="font-size:0.8rem;color:var(--muted);margin-bottom:20px;">Compass, Hilux, SW4...</p>
+        <hr style="border:none;border-top:1px solid rgba(245,168,0,0.2);margin-bottom:20px;" />
+        <div style="display:flex;flex-direction:column;gap:10px;">
+          <div style="display:flex;justify-content:space-between;align-items:center;">
+            <span style="font-size:0.85rem;color:var(--muted);">Simples</span>
+            <span style="font-family:var(--font-display);font-size:1.4rem;color:var(--cream);">R$&nbsp;25</span>
+          </div>
+          <div style="display:flex;justify-content:space-between;align-items:center;">
+            <span style="font-size:0.85rem;color:var(--muted);">Completa</span>
+            <span style="font-family:var(--font-display);font-size:1.4rem;color:var(--gold);">R$&nbsp;35</span>
+          </div>
+          <div style="display:flex;justify-content:space-between;align-items:center;">
+            <span style="font-size:0.85rem;color:var(--muted);">Premium</span>
+            <span style="font-family:var(--font-display);font-size:1.4rem;color:var(--blue);">R$&nbsp;48</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Van -->
+      <div class="price-card">
+        <div style="font-size:2.5rem;margin-bottom:12px;">🚐</div>
+        <h3 style="font-family:var(--font-display);font-size:1.4rem;color:var(--cream);margin-bottom:4px;">VAN / MINIVAN</h3>
+        <p style="font-size:0.8rem;color:var(--muted);margin-bottom:20px;">Sprinter, Master, Jumper...</p>
+        <hr style="border:none;border-top:1px solid rgba(255,255,255,0.07);margin-bottom:20px;" />
+        <div style="display:flex;flex-direction:column;gap:10px;">
+          <div style="display:flex;justify-content:space-between;align-items:center;">
+            <span style="font-size:0.85rem;color:var(--muted);">Simples</span>
+            <span style="font-family:var(--font-display);font-size:1.4rem;color:var(--cream);">R$&nbsp;35</span>
+          </div>
+          <div style="display:flex;justify-content:space-between;align-items:center;">
+            <span style="font-size:0.85rem;color:var(--muted);">Completa</span>
+            <span style="font-family:var(--font-display);font-size:1.4rem;color:var(--gold);">R$&nbsp;48</span>
+          </div>
+          <div style="display:flex;justify-content:space-between;align-items:center;">
+            <span style="font-size:0.85rem;color:var(--muted);">Premium</span>
+            <span style="font-family:var(--font-display);font-size:1.4rem;color:var(--blue);">R$&nbsp;65</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Moto -->
+      <div class="price-card">
+        <div style="font-size:2.5rem;margin-bottom:12px;">🏍️</div>
+        <h3 style="font-family:var(--font-display);font-size:1.4rem;color:var(--cream);margin-bottom:4px;">MOTO</h3>
+        <p style="font-size:0.8rem;color:var(--muted);margin-bottom:20px;">Qualquer cilindrada</p>
+        <hr style="border:none;border-top:1px solid rgba(255,255,255,0.07);margin-bottom:20px;" />
+        <div style="display:flex;flex-direction:column;gap:10px;">
+          <div style="display:flex;justify-content:space-between;align-items:center;">
+            <span style="font-size:0.85rem;color:var(--muted);">Simples</span>
+            <span style="font-family:var(--font-display);font-size:1.4rem;color:var(--cream);">R$&nbsp;12</span>
+          </div>
+          <div style="display:flex;justify-content:space-between;align-items:center;">
+            <span style="font-size:0.85rem;color:var(--muted);">Completa</span>
+            <span style="font-family:var(--font-display);font-size:1.4rem;color:var(--gold);">R$&nbsp;18</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <p style="text-align:center;color:var(--muted);font-size:0.8rem;margin-top:24px;">
+      * Valores ilustrativos para aprovação do protótipo. Preços reais a definir.
+    </p>
+  </div>
+</section>
+
+<hr class="swoosh" />
+
+<!-- ════════════════════════════════════════════════════════════
+     PLANOS DE ASSINATURA
+════════════════════════════════════════════════════════════ -->
+<section id="planos" class="section">
+  <div class="container">
+    <div style="text-align:center;margin-bottom:56px;">
+      <span class="tag tag-blue" style="margin-bottom:12px;">Economize todo mês</span>
+      <h2 style="font-size:clamp(2.2rem,5vw,3.5rem);color:var(--cream);">PLANOS DE ASSINATURA</h2>
+      <p style="color:var(--muted);margin-top:12px;max-width:520px;margin-left:auto;margin-right:auto;">
+        Lave todo dia se quiser. Planos pensados para quem vive na estrada.
+      </p>
+    </div>
+
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:24px;">
+
+      <!-- Básico -->
+      <div class="plan-card">
+        <div class="plan-header">
+          <span class="tag tag-blue" style="margin-bottom:12px;">Básico</span>
+          <div style="font-family:var(--font-display);font-size:3rem;color:var(--cream);line-height:1;">R$&nbsp;79</div>
+          <div style="font-size:0.8rem;color:var(--muted);">/mês · cobrado mensalmente</div>
+          <p style="font-size:0.85rem;color:var(--muted);margin-top:12px;">Ideal para uso pessoal regular.</p>
+        </div>
+        <div class="plan-body">
+          <ul style="list-style:none;display:flex;flex-direction:column;gap:10px;margin-bottom:24px;">
+            <li style="display:flex;gap:10px;font-size:0.875rem;color:var(--cream);"><span style="color:#22c55e;">✓</span> 8 lavagens simples / mês</li>
+            <li style="display:flex;gap:10px;font-size:0.875rem;color:var(--cream);"><span style="color:#22c55e;">✓</span> Válido em todas as unidades</li>
+            <li style="display:flex;gap:10px;font-size:0.875rem;color:var(--cream);"><span style="color:#22c55e;">✓</span> App + QR code</li>
+            <li style="display:flex;gap:10px;font-size:0.875rem;color:var(--muted);"><span style="color:var(--muted);">–</span> Horário estendido</li>
+            <li style="display:flex;gap:10px;font-size:0.875rem;color:var(--muted);"><span style="color:var(--muted);">–</span> Dependentes</li>
+          </ul>
+          <a href="cadastro.html" class="btn-secondary" style="width:100%;justify-content:center;">Assinar Básico</a>
+        </div>
+      </div>
+
+      <!-- Pro / Motorista — destaque -->
+      <div class="plan-card featured" style="position:relative;">
+        <div style="position:absolute;top:-14px;left:50%;transform:translateX(-50%);white-space:nowrap;">
+          <span class="tag tag-gold">⭐ Mais escolhido</span>
+        </div>
+        <div class="plan-header" style="border-top:3px solid var(--gold);padding-top:32px;">
+          <span class="tag tag-gold" style="margin-bottom:12px;">Pro · Motorista</span>
+          <div style="font-family:var(--font-display);font-size:3rem;color:var(--gold);line-height:1;">R$&nbsp;149</div>
+          <div style="font-size:0.8rem;color:var(--muted);">/mês · cobrado mensalmente</div>
+          <p style="font-size:0.85rem;color:var(--muted);margin-top:12px;">Uber, 99, iFood, InDriver e taxistas.</p>
+        </div>
+        <div class="plan-body">
+          <ul style="list-style:none;display:flex;flex-direction:column;gap:10px;margin-bottom:24px;">
+            <li style="display:flex;gap:10px;font-size:0.875rem;color:var(--cream);"><span style="color:#22c55e;">✓</span> <strong>1 lavagem completa por dia</strong></li>
+            <li style="display:flex;gap:10px;font-size:0.875rem;color:var(--cream);"><span style="color:#22c55e;">✓</span> Horário estendido (5h–23h)</li>
+            <li style="display:flex;gap:10px;font-size:0.875rem;color:var(--cream);"><span style="color:#22c55e;">✓</span> Fila preferencial</li>
+            <li style="display:flex;gap:10px;font-size:0.875rem;color:var(--cream);"><span style="color:#22c55e;">✓</span> Todas as unidades</li>
+            <li style="display:flex;gap:10px;font-size:0.875rem;color:var(--cream);"><span style="color:#22c55e;">✓</span> Pontos em dobro (fidelidade)</li>
+          </ul>
+          <a href="cadastro.html" class="btn-gold" style="width:100%;justify-content:center;">Assinar Pro</a>
+        </div>
+      </div>
+
+      <!-- Frota -->
+      <div class="plan-card" style="border-color:rgba(26,111,212,0.4);">
+        <div class="plan-header" style="border-top:3px solid var(--blue);">
+          <span class="tag tag-blue" style="margin-bottom:12px;">Frota · B2B</span>
+          <div style="font-family:var(--font-display);font-size:3rem;color:var(--blue);line-height:1;">R$&nbsp;89</div>
+          <div style="font-size:0.8rem;color:var(--muted);">/veículo/mês · fatura consolidada</div>
+          <p style="font-size:0.85rem;color:var(--muted);margin-top:12px;">Empresas, aplicativos e transportadoras.</p>
+        </div>
+        <div class="plan-body">
+          <ul style="list-style:none;display:flex;flex-direction:column;gap:10px;margin-bottom:24px;">
+            <li style="display:flex;gap:10px;font-size:0.875rem;color:var(--cream);"><span style="color:#22c55e;">✓</span> A partir de 5 veículos</li>
+            <li style="display:flex;gap:10px;font-size:0.875rem;color:var(--cream);"><span style="color:#22c55e;">✓</span> <strong>1 lavagem completa / veículo / dia</strong></li>
+            <li style="display:flex;gap:10px;font-size:0.875rem;color:var(--cream);"><span style="color:#22c55e;">✓</span> Painel admin dedicado</li>
+            <li style="display:flex;gap:10px;font-size:0.875rem;color:var(--cream);"><span style="color:#22c55e;">✓</span> Nota fiscal por frota</li>
+            <li style="display:flex;gap:10px;font-size:0.875rem;color:var(--cream);"><span style="color:#22c55e;">✓</span> Limite por motorista</li>
+          </ul>
+          <a href="cadastro.html" class="btn-secondary" style="width:100%;justify-content:center;border-color:var(--blue);color:var(--blue);">Falar com Comercial</a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<hr class="swoosh" />
+
+<!-- ════════════════════════════════════════════════════════════
+     MAPA — ENCONTRE UMA UNIDADE
+════════════════════════════════════════════════════════════ -->
+<section id="lojas" class="section">
+  <div class="container">
+    <div style="display:grid;grid-template-columns:1fr 2fr;gap:40px;align-items:start;">
+      <!-- List -->
+      <div>
+        <span class="tag tag-green" style="margin-bottom:12px;">8 unidades abertas</span>
+        <h2 style="font-size:clamp(2rem,4vw,3rem);color:var(--cream);margin-bottom:20px;">ENCONTRE UMA UNIDADE</h2>
+        <p style="color:var(--muted);font-size:0.9rem;margin-bottom:28px;">Todas as unidades operam 24h durante a semana. Finais de semana até as 22h.</p>
+
+        <div style="display:flex;flex-direction:column;gap:10px;">
+
+          <!-- Units list -->
+          <div style="background:var(--surface);border-radius:12px;padding:14px 16px;display:flex;justify-content:space-between;align-items:center;border:1px solid rgba(255,255,255,0.06);">
+            <div>
+              <div style="font-weight:600;font-size:0.9rem;color:var(--cream);">Mooca</div>
+              <div style="font-size:0.75rem;color:var(--muted);">R. da Mooca, 1420</div>
+            </div>
+            <div style="display:flex;align-items:center;gap:6px;font-size:0.75rem;color:#22c55e;">
+              <span class="dot-open"></span> Aberta · ~3 min
+            </div>
+          </div>
+
+          <div style="background:var(--surface);border-radius:12px;padding:14px 16px;display:flex;justify-content:space-between;align-items:center;border:1px solid rgba(255,255,255,0.06);">
+            <div>
+              <div style="font-weight:600;font-size:0.9rem;color:var(--cream);">Tatuapé</div>
+              <div style="font-size:0.75rem;color:var(--muted);">Av. Radial Leste, 3200</div>
+            </div>
+            <div style="display:flex;align-items:center;gap:6px;font-size:0.75rem;color:#22c55e;">
+              <span class="dot-open"></span> Aberta · ~6 min
+            </div>
+          </div>
+
+          <div style="background:var(--surface);border-radius:12px;padding:14px 16px;display:flex;justify-content:space-between;align-items:center;border:1px solid rgba(255,255,255,0.06);">
+            <div>
+              <div style="font-weight:600;font-size:0.9rem;color:var(--cream);">Santo André</div>
+              <div style="font-size:0.75rem;color:var(--muted);">Av. Industrial, 880</div>
+            </div>
+            <div style="display:flex;align-items:center;gap:6px;font-size:0.75rem;color:#22c55e;">
+              <span class="dot-open"></span> Aberta · ~2 min
+            </div>
+          </div>
+
+          <div style="background:var(--surface);border-radius:12px;padding:14px 16px;display:flex;justify-content:space-between;align-items:center;border:1px solid rgba(255,255,255,0.06);">
+            <div>
+              <div style="font-weight:600;font-size:0.9rem;color:var(--cream);">Guarulhos Centro</div>
+              <div style="font-size:0.75rem;color:var(--muted);">R. Sete de Setembro, 610</div>
+            </div>
+            <div style="display:flex;align-items:center;gap:6px;font-size:0.75rem;color:var(--red);">
+              <span class="dot-closed"></span> Fechada agora
+            </div>
+          </div>
+
+          <div style="background:var(--surface);border-radius:12px;padding:14px 16px;display:flex;justify-content:space-between;align-items:center;border:1px solid rgba(255,255,255,0.06);">
+            <div>
+              <div style="font-weight:600;font-size:0.9rem;color:var(--cream);">Osasco</div>
+              <div style="font-size:0.75rem;color:var(--muted);">Av. Presidente Vargas, 540</div>
+            </div>
+            <div style="display:flex;align-items:center;gap:6px;font-size:0.75rem;color:#22c55e;">
+              <span class="dot-open"></span> Aberta · ~5 min
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- Map -->
+      <div class="map-wrap">
+        <iframe
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d117967.95068890978!2d-46.73337779902344!3d-23.588880099999996!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94ce59c8da0aa315%3A0xd59f9431f2c9776a!2sSão%20Paulo%2C%20SP!5e0!3m2!1spt-BR!2sbr!4v1718000000000"
+          allowfullscreen=""
+          loading="lazy"
+          referrerpolicy="no-referrer-when-downgrade">
+        </iframe>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="swoosh" />
+
+<!-- ════════════════════════════════════════════════════════════
+     BAIXAR O APP
+════════════════════════════════════════════════════════════ -->
+<section id="app" class="section" style="background:var(--surface);">
+  <div class="container" style="display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:center;">
+    <!-- Mockup -->
+    <div style="display:flex;justify-content:center;gap:24px;">
+      <!-- Phone 1 -->
+      <div class="phone-mockup" style="margin-top:40px;">
+        <div class="phone-screen" style="background:var(--bg);">
+          <div style="padding:16px;width:100%;">
+            <div style="font-family:var(--font-display);font-size:0.7rem;color:var(--muted);letter-spacing:0.1em;margin-bottom:8px;">BOM DIA, CARLOS!</div>
+            <div style="background:var(--surface-2);border-radius:10px;padding:12px;margin-bottom:8px;">
+              <div style="font-size:0.65rem;color:var(--muted);">Créditos</div>
+              <div style="font-family:var(--font-display);font-size:1.6rem;color:var(--gold);">R$ 120,00</div>
+              <div style="font-size:0.6rem;color:var(--muted);">Plano Pro ativo · renovação em 18 dias</div>
+            </div>
+            <a href="../app/qrcode.html" style="display:block;background:var(--red);border-radius:10px;padding:12px;text-align:center;text-decoration:none;">
+              <div style="font-family:var(--font-display);font-size:1rem;color:#fff;letter-spacing:0.05em;">GERAR QR CODE</div>
+            </a>
+          </div>
+        </div>
+      </div>
+      <!-- Phone 2 -->
+      <div class="phone-mockup" style="margin-top:0px;">
+        <div class="phone-screen" style="background:var(--bg);">
+          <div style="padding:16px;width:100%;">
+            <div style="font-family:var(--font-display);font-size:0.7rem;color:var(--muted);letter-spacing:0.1em;margin-bottom:8px;">FIDELIDADE</div>
+            <div style="text-align:center;margin-bottom:10px;">
+              <div style="font-family:var(--font-display);font-size:1rem;color:var(--gold);">NÍVEL OURO</div>
+              <div style="background:var(--surface-2);border-radius:6px;height:8px;margin:6px 0;overflow:hidden;">
+                <div style="width:65%;height:100%;background:var(--swoosh);background:linear-gradient(90deg,var(--red),var(--gold));border-radius:6px;"></div>
+              </div>
+              <div style="font-size:0.6rem;color:var(--muted);">650/1000 pts para Diamante</div>
+            </div>
+            <div style="background:var(--surface-2);border-radius:10px;padding:10px;">
+              <div style="font-size:0.65rem;color:var(--muted);margin-bottom:6px;">Últimas lavagens</div>
+              <div style="font-size:0.7rem;color:var(--cream);display:flex;justify-content:space-between;padding:4px 0;border-bottom:1px solid rgba(255,255,255,0.05);">
+                <span>Mooca</span><span style="color:var(--gold);">+25 pts</span>
+              </div>
+              <div style="font-size:0.7rem;color:var(--cream);display:flex;justify-content:space-between;padding:4px 0;">
+                <span>Tatuapé</span><span style="color:var(--gold);">+25 pts</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Copy -->
+    <div>
+      <span class="tag tag-red" style="margin-bottom:16px;display:inline-block;">Disponível agora</span>
+      <h2 style="font-size:clamp(2.2rem,4vw,3.5rem);color:var(--cream);margin-bottom:16px;">BAIXE O APP<br/>UASHI</h2>
+      <p style="color:var(--muted);margin-bottom:32px;font-size:1rem;">
+        Gerencie lavagens, créditos, dependentes e muito mais. iOS e Android, instalável como app nativo.
+      </p>
+      <div style="display:flex;flex-wrap:wrap;gap:12px;margin-bottom:28px;">
+        <a href="#" class="store-badge">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="var(--cream)"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>
+          <div>
+            <span class="store-label">Disponível na</span>
+            <span class="store-name">App Store</span>
+          </div>
+        </a>
+        <a href="#" class="store-badge">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="var(--cream)"><path d="M3 20.5v-17c0-.83 1-.97 1.4-.4l16 8c.46.23.46.87 0 1.1l-16 8c-.4.57-1.4.13-1.4-.7z"/></svg>
+          <div>
+            <span class="store-label">Disponível no</span>
+            <span class="store-name">Google Play</span>
+          </div>
+        </a>
+      </div>
+      <div style="display:flex;gap:16px;flex-wrap:wrap;">
+        <div style="display:flex;align-items:center;gap:8px;font-size:0.85rem;color:var(--muted);">
+          <span style="color:#22c55e;">✓</span> Push notifications
+        </div>
+        <div style="display:flex;align-items:center;gap:8px;font-size:0.85rem;color:var(--muted);">
+          <span style="color:#22c55e;">✓</span> Instalável (PWA)
+        </div>
+        <div style="display:flex;align-items:center;gap:8px;font-size:0.85rem;color:var(--muted);">
+          <span style="color:#22c55e;">✓</span> iOS 16.4+ / Android
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="swoosh" />
+
+<!-- ════════════════════════════════════════════════════════════
+     FAQ
+════════════════════════════════════════════════════════════ -->
+<section id="faq" class="section">
+  <div class="container" style="max-width:760px;">
+    <div style="text-align:center;margin-bottom:48px;">
+      <h2 style="font-size:clamp(2.2rem,5vw,3.5rem);color:var(--cream);">PERGUNTAS FREQUENTES</h2>
+    </div>
+
+    <div class="faq-item">
+      <button class="faq-btn" onclick="toggleFaq(this)">
+        <span>Preciso sair do carro durante a lavagem?</span>
+        <span class="faq-icon">+</span>
+      </button>
+      <div class="faq-answer">
+        <p style="color:var(--muted);font-size:0.9rem;">Não. O Uashi é um lava-jato em esteira self service — você permanece dentro do veículo durante todo o processo. Basta colocar o câmbio no ponto morto e deixar a esteira fazer o trabalho.</p>
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <button class="faq-btn" onclick="toggleFaq(this)">
+        <span>Como funciona o QR code?</span>
+        <span class="faq-icon">+</span>
+      </button>
+      <div class="faq-answer">
+        <p style="color:var(--muted);font-size:0.9rem;">Você gera o QR code no app antes de entrar na fila. O leitor na entrada da esteira valida o código e libera a passagem automaticamente. O QR tem validade de 30 minutos a partir da geração.</p>
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <button class="faq-btn" onclick="toggleFaq(this)">
+        <span>O plano mensal inclui quantas lavagens?</span>
+        <span class="faq-icon">+</span>
+      </button>
+      <div class="faq-answer">
+        <p style="color:var(--muted);font-size:0.9rem;">Depende do plano. O Básico inclui 8 lavagens/mês. O Pro (ideal para motoristas de app) permite 1 lavagem completa por dia — são até 30 lavagens/mês. O plano Frota tem limite configurável por veículo e motorista.</p>
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <button class="faq-btn" onclick="toggleFaq(this)">
+        <span>Posso usar em qualquer unidade?</span>
+        <span class="faq-icon">+</span>
+      </button>
+      <div class="faq-answer">
+        <p style="color:var(--muted);font-size:0.9rem;">Sim! Todos os planos são válidos em qualquer unidade Uashi — em São Paulo e Grande ABC. Basta abrir o app e gerar o QR code normalmente.</p>
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <button class="faq-btn" onclick="toggleFaq(this)">
+        <span>Como funciona o programa de dependentes?</span>
+        <span class="faq-icon">+</span>
+      </button>
+      <div class="faq-answer">
+        <p style="color:var(--muted);font-size:0.9rem;">Você pode convidar dependentes (familiar, empregado) para usar seu plano. É possível definir limite de frequência (ex: máx 3x/semana) e limite de valor mensal. Você recebe uma notificação a cada uso e pode bloquear temporariamente.</p>
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <button class="faq-btn" onclick="toggleFaq(this)">
+        <span>Quais formas de pagamento são aceitas?</span>
+        <span class="faq-icon">+</span>
+      </button>
+      <div class="faq-answer">
+        <p style="color:var(--muted);font-size:0.9rem;">Cartão de crédito, débito e Pix — tudo pelo app. Para frotas, emitimos fatura mensal consolidada com nota fiscal.</p>
+      </div>
+    </div>
+
+    <div class="faq-item" style="border-bottom:none;">
+      <button class="faq-btn" onclick="toggleFaq(this)">
+        <span>Tenho interesse em abrir uma franquia Uashi. Por onde começo?</span>
+        <span class="faq-icon">+</span>
+      </button>
+      <div class="faq-answer">
+        <p style="color:var(--muted);font-size:0.9rem;">Acesse nossa <a href="franquia.html" style="color:var(--blue);">página de franquia</a> e preencha o formulário de interesse. Nossa equipe comercial retorna em até 48h com uma apresentação completa do modelo de negócio.</p>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<hr class="swoosh" />
+
+<!-- ════════════════════════════════════════════════════════════
+     FOOTER
+════════════════════════════════════════════════════════════ -->
+<footer style="background:var(--surface);padding:56px 0 24px;">
+  <div class="container">
+    <div style="display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:40px;margin-bottom:48px;">
+
+      <!-- Brand -->
+      <div>
+        <div style="font-family:var(--font-display);font-size:2rem;color:var(--cream);letter-spacing:0.05em;margin-bottom:8px;">UASHI</div>
+        <span class="swoosh-sm" style="margin-bottom:16px;"></span>
+        <p style="color:var(--muted);font-size:0.875rem;max-width:280px;margin-top:8px;">
+          Lava-jato self service em esteira. Tecnologia e agilidade para quem vive na estrada.
+        </p>
+        <div style="display:flex;gap:12px;margin-top:20px;">
+          <a href="#" style="width:36px;height:36px;background:var(--surface-2);border-radius:8px;display:flex;align-items:center;justify-content:center;color:var(--muted);text-decoration:none;font-size:0.9rem;transition:color 0.2s;" onmouseover="this.style.color='var(--cream)'" onmouseout="this.style.color='var(--muted)'">ig</a>
+          <a href="#" style="width:36px;height:36px;background:var(--surface-2);border-radius:8px;display:flex;align-items:center;justify-content:center;color:var(--muted);text-decoration:none;font-size:0.9rem;transition:color 0.2s;" onmouseover="this.style.color='var(--cream)'" onmouseout="this.style.color='var(--muted)'">fb</a>
+          <a href="#" style="width:36px;height:36px;background:var(--surface-2);border-radius:8px;display:flex;align-items:center;justify-content:center;color:var(--muted);text-decoration:none;font-size:0.9rem;transition:color 0.2s;" onmouseover="this.style.color='var(--cream)'" onmouseout="this.style.color='var(--muted)'">tk</a>
+        </div>
+      </div>
+
+      <!-- App -->
+      <div>
+        <h4 style="font-family:var(--font-display);font-size:1rem;letter-spacing:0.08em;color:var(--cream);margin-bottom:16px;">APP</h4>
+        <ul style="list-style:none;display:flex;flex-direction:column;gap:10px;">
+          <li><a href="#app" class="nav-link" style="font-size:0.875rem;">Baixar iOS</a></li>
+          <li><a href="#app" class="nav-link" style="font-size:0.875rem;">Baixar Android</a></li>
+          <li><a href="cadastro.html" class="nav-link" style="font-size:0.875rem;">Criar conta</a></li>
+          <li><a href="#planos" class="nav-link" style="font-size:0.875rem;">Planos</a></li>
+        </ul>
+      </div>
+
+      <!-- Empresa -->
+      <div>
+        <h4 style="font-family:var(--font-display);font-size:1rem;letter-spacing:0.08em;color:var(--cream);margin-bottom:16px;">EMPRESA</h4>
+        <ul style="list-style:none;display:flex;flex-direction:column;gap:10px;">
+          <li><a href="#como-funciona" class="nav-link" style="font-size:0.875rem;">Como funciona</a></li>
+          <li><a href="#lojas" class="nav-link" style="font-size:0.875rem;">Nossas unidades</a></li>
+          <li><a href="franquia.html" class="nav-link" style="font-size:0.875rem;color:var(--gold);">Seja franqueado</a></li>
+          <li><a href="#faq" class="nav-link" style="font-size:0.875rem;">FAQ</a></li>
+        </ul>
+      </div>
+
+      <!-- Contato -->
+      <div>
+        <h4 style="font-family:var(--font-display);font-size:1rem;letter-spacing:0.08em;color:var(--cream);margin-bottom:16px;">CONTATO</h4>
+        <ul style="list-style:none;display:flex;flex-direction:column;gap:10px;">
+          <li><a href="mailto:oi@uashi.com.br" class="nav-link" style="font-size:0.875rem;">oi@uashi.com.br</a></li>
+          <li><a href="tel:+5511000000000" class="nav-link" style="font-size:0.875rem;">(11) 0000-0000</a></li>
+          <li><a href="#" class="nav-link" style="font-size:0.875rem;">Suporte no App</a></li>
+          <li><a href="../admin/index.html" class="nav-link" style="font-size:0.7rem;color:rgba(107,107,107,0.5);">Área restrita</a></li>
+        </ul>
+      </div>
+
+    </div>
+
+    <hr style="border:none;border-top:1px solid rgba(255,255,255,0.07);margin-bottom:20px;" />
+
+    <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px;">
+      <p style="font-size:0.75rem;color:var(--muted);">© 2025 Uashi Tecnologia LTDA. Todos os direitos reservados.</p>
+      <div style="display:flex;gap:20px;">
+        <a href="#" style="font-size:0.75rem;color:var(--muted);text-decoration:none;" onmouseover="this.style.color='var(--cream)'" onmouseout="this.style.color='var(--muted)'">Termos de uso</a>
+        <a href="#" style="font-size:0.75rem;color:var(--muted);text-decoration:none;" onmouseover="this.style.color='var(--cream)'" onmouseout="this.style.color='var(--muted)'">Privacidade</a>
+        <a href="#" style="font-size:0.75rem;color:var(--muted);text-decoration:none;" onmouseover="this.style.color='var(--cream)'" onmouseout="this.style.color='var(--muted)'">Cookies</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<!-- ════════════════════════════════════════════════════════════
+     JS — FAQ accordion
+════════════════════════════════════════════════════════════ -->
+<script>
+  function toggleFaq(btn) {
+    const answer = btn.nextElementSibling;
+    const icon = btn.querySelector('.faq-icon');
+    const isOpen = answer.classList.contains('open');
+
+    // Close all
+    document.querySelectorAll('.faq-answer.open').forEach(el => el.classList.remove('open'));
+    document.querySelectorAll('.faq-icon.open').forEach(el => el.classList.remove('open'));
+
+    if (!isOpen) {
+      answer.classList.add('open');
+      icon.classList.add('open');
+    }
+  }
+</script>
+
+</body>
+</html>
