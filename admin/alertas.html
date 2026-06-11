@@ -33,6 +33,27 @@
     .alert-icon.info { background: rgba(26,111,212,.15); }
     .alert-meta { font-size: .72rem; color: var(--muted); display: flex; gap: 12px; margin-top: 6px; flex-wrap: wrap; align-items: center; }
     .alert-actions { display: flex; gap: 8px; margin-top: 10px; }
+  /* ── drawer ── */
+  .drawer-overlay { display:none;position:fixed;inset:0;background:rgba(0,0,0,.55);z-index:200;backdrop-filter:blur(2px); }
+  .drawer { position:fixed;top:0;right:-480px;width:460px;max-width:100vw;height:100vh;background:var(--surface);border-left:1px solid rgba(255,255,255,.08);z-index:201;overflow-y:auto;transition:right .28s cubic-bezier(.4,0,.2,1);padding:28px 24px 40px; }
+  .drawer.open { right:0; }
+  .drawer-close { position:absolute;top:18px;right:20px;background:none;border:none;color:var(--muted);font-size:1.3rem;cursor:pointer;line-height:1; }
+  .drawer-title { font-family:var(--font-display);font-size:1.25rem;color:var(--cream);margin-bottom:4px;padding-right:32px; }
+  .drawer-sub { font-size:.78rem;color:var(--muted);margin-bottom:20px; }
+  .drawer-section { margin-bottom:18px; }
+  .drawer-section-label { font-size:.68rem;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:.08em;margin-bottom:8px; }
+  .drawer-row { display:flex;justify-content:space-between;font-size:.82rem;padding:7px 0;border-bottom:1px solid rgba(255,255,255,.05); }
+  .drawer-row:last-child { border:none; }
+  .log-line { font-family:monospace;font-size:.75rem;color:var(--muted);padding:5px 10px;background:rgba(255,255,255,.03);border-radius:4px;margin-bottom:4px;line-height:1.5; }
+  .log-line.err { color:var(--red); }
+  .log-line.warn { color:var(--gold); }
+  /* ── toast ── */
+  .toast { position:fixed;bottom:28px;left:50%;transform:translateX(-50%) translateY(80px);background:var(--surface-2);border:1px solid rgba(255,255,255,.1);border-radius:12px;padding:12px 20px;font-size:.85rem;color:var(--cream);z-index:300;transition:transform .3s ease,opacity .3s ease;opacity:0;white-space:nowrap; }
+  .toast.show { transform:translateX(-50%) translateY(0);opacity:1; }
+  /* ── resolved card ── */
+  .alert-card.resolved { opacity:.4;pointer-events:none; }
+  .alert-card.resolved::after { content:'✓ Resolvido';position:absolute;right:16px;top:16px;background:rgba(34,197,94,.15);border:1px solid rgba(34,197,94,.3);color:#22c55e;font-size:.7rem;font-weight:700;padding:3px 10px;border-radius:99px; }
+  .alert-card { position:relative; }
   </style>
 </head>
 <body>
@@ -141,7 +162,7 @@
       <div class="alert-list">
 
         <!-- CRÍTICO 1 -->
-        <div class="alert-card critical">
+        <div class="alert-card critical" id="a1">
           <div class="alert-icon critical">🚨</div>
           <div style="flex:1;">
             <div style="display:flex;justify-content:space-between;align-items:flex-start;gap:8px;">
@@ -150,19 +171,17 @@
             </div>
             <div style="font-size:.8rem;color:var(--muted);margin-top:4px;line-height:1.5;">O QR #M-4821 foi acionado duas vezes em menos de 4 minutos pelo mesmo dispositivo (ID: usr_8821). Possível tentativa de fraude ou clonagem de sessão.</div>
             <div class="alert-meta">
-              <span>📍 Mooca · SP</span>
-              <span>🕐 Hoje, 14:32</span>
-              <span>👤 usr_8821</span>
+              <span>📍 Mooca · SP</span><span>🕐 Hoje, 14:32</span><span>👤 usr_8821</span>
             </div>
             <div class="alert-actions">
-              <button class="btn-secondary" style="padding:5px 14px;font-size:.75rem;">Ver detalhes</button>
-              <button class="btn-primary" style="padding:5px 14px;font-size:.75rem;">Resolver</button>
+              <button class="btn-secondary" style="padding:5px 14px;font-size:.75rem;" onclick="openDrawer('qr')">Ver detalhes</button>
+              <button class="btn-primary" style="padding:5px 14px;font-size:.75rem;" onclick="resolve('a1',this)">Resolver</button>
             </div>
           </div>
         </div>
 
         <!-- CRÍTICO 2 -->
-        <div class="alert-card critical">
+        <div class="alert-card critical" id="a2">
           <div class="alert-icon critical">💰</div>
           <div style="flex:1;">
             <div style="display:flex;justify-content:space-between;align-items:flex-start;gap:8px;">
@@ -171,19 +190,17 @@
             </div>
             <div style="font-size:.8rem;color:var(--muted);margin-top:4px;line-height:1.5;">Franqueado Rafael Torres (Guarulhos) não efetuou o pagamento de royalties há 12 dias. Valor pendente: R$3.240. Segundo aviso enviado por e-mail.</div>
             <div class="alert-meta">
-              <span>📍 Guarulhos · SP</span>
-              <span>🕐 Ontem, 09:15</span>
-              <span>💳 R$3.240 pendente</span>
+              <span>📍 Guarulhos · SP</span><span>🕐 Ontem, 09:15</span><span>💳 R$3.240 pendente</span>
             </div>
             <div class="alert-actions">
-              <button class="btn-secondary" style="padding:5px 14px;font-size:.75rem;">Ver contrato</button>
-              <button class="btn-primary" style="padding:5px 14px;font-size:.75rem;">Notificar franqueado</button>
+              <button class="btn-secondary" style="padding:5px 14px;font-size:.75rem;" onclick="openDrawer('contrato')">Ver contrato</button>
+              <button class="btn-primary" style="padding:5px 14px;font-size:.75rem;" onclick="notificar('Rafael Torres','Guarulhos','a2')">Notificar franqueado</button>
             </div>
           </div>
         </div>
 
         <!-- CRÍTICO 3 -->
-        <div class="alert-card critical">
+        <div class="alert-card critical" id="a3">
           <div class="alert-icon critical">⚙️</div>
           <div style="flex:1;">
             <div style="display:flex;justify-content:space-between;align-items:flex-start;gap:8px;">
@@ -192,19 +209,17 @@
             </div>
             <div style="font-size:.8rem;color:var(--muted);margin-top:4px;line-height:1.5;">A baia 3 da unidade Osasco reportou erro de sensor E-14 às 10:08. A baia está bloqueada automaticamente. Técnico não foi acionado ainda.</div>
             <div class="alert-meta">
-              <span>📍 Osasco · SP</span>
-              <span>🕐 Hoje, 10:08</span>
-              <span>🔧 Baia #3 bloqueada</span>
+              <span>📍 Osasco · SP</span><span>🕐 Hoje, 10:08</span><span>🔧 Baia #3 bloqueada</span>
             </div>
             <div class="alert-actions">
-              <button class="btn-secondary" style="padding:5px 14px;font-size:.75rem;">Ver logs</button>
-              <button class="btn-primary" style="padding:5px 14px;font-size:.75rem;">Acionar técnico</button>
+              <button class="btn-secondary" style="padding:5px 14px;font-size:.75rem;" onclick="openDrawer('logs')">Ver logs</button>
+              <button class="btn-primary" style="padding:5px 14px;font-size:.75rem;" onclick="acionarTecnico('a3',this)">Acionar técnico</button>
             </div>
           </div>
         </div>
 
         <!-- AVISO 1 -->
-        <div class="alert-card warning">
+        <div class="alert-card warning" id="a4">
           <div class="alert-icon warning">⚠️</div>
           <div style="flex:1;">
             <div style="display:flex;justify-content:space-between;align-items:flex-start;gap:8px;">
@@ -213,19 +228,17 @@
             </div>
             <div style="font-size:.8rem;color:var(--muted);margin-top:4px;line-height:1.5;">Fila de 7 usuários aguardando baias na unidade Tatuapé. Pico de demanda 42% acima do padrão para este horário. Considere notificar usuários sobre tempo de espera.</div>
             <div class="alert-meta">
-              <span>📍 Tatuapé · SP</span>
-              <span>🕐 Hoje, 18:05</span>
-              <span>📈 +42% do padrão</span>
+              <span>📍 Tatuapé · SP</span><span>🕐 Hoje, 18:05</span><span>📈 +42% do padrão</span>
             </div>
             <div class="alert-actions">
-              <button class="btn-secondary" style="padding:5px 14px;font-size:.75rem;">Ver detalhes</button>
-              <button class="btn-secondary" style="padding:5px 14px;font-size:.75rem;">Resolver</button>
+              <button class="btn-secondary" style="padding:5px 14px;font-size:.75rem;" onclick="openDrawer('pico')">Ver detalhes</button>
+              <button class="btn-secondary" style="padding:5px 14px;font-size:.75rem;" onclick="resolve('a4',this)">Resolver</button>
             </div>
           </div>
         </div>
 
         <!-- AVISO 2 -->
-        <div class="alert-card warning">
+        <div class="alert-card warning" id="a5">
           <div class="alert-icon warning">💤</div>
           <div style="flex:1;">
             <div style="display:flex;justify-content:space-between;align-items:flex-start;gap:8px;">
@@ -234,19 +247,17 @@
             </div>
             <div style="font-size:.8rem;color:var(--muted);margin-top:4px;line-height:1.5;">Baias da unidade Santo André ficaram ociosas por 32% do tempo na quinta-feira manhã (07h-12h). Média histórica é de 18%. Pode indicar necessidade de ação promocional.</div>
             <div class="alert-meta">
-              <span>📍 Santo André · SP</span>
-              <span>🕐 Qui, 12:00</span>
-              <span>📉 32% idle vs 18% médio</span>
+              <span>📍 Santo André · SP</span><span>🕐 Qui, 12:00</span><span>📉 32% idle vs 18% médio</span>
             </div>
             <div class="alert-actions">
-              <button class="btn-secondary" style="padding:5px 14px;font-size:.75rem;">Ver relatório</button>
+              <button class="btn-secondary" style="padding:5px 14px;font-size:.75rem;" onclick="openDrawer('idle')">Ver relatório</button>
               <a href="./promocoes.html" class="btn-gold" style="padding:5px 14px;font-size:.75rem;display:inline-flex;align-items:center;gap:6px;">⚡ Criar promoção</a>
             </div>
           </div>
         </div>
 
         <!-- AVISO 3 -->
-        <div class="alert-card warning">
+        <div class="alert-card warning" id="a6">
           <div class="alert-icon warning">📲</div>
           <div style="flex:1;">
             <div style="display:flex;justify-content:space-between;align-items:flex-start;gap:8px;">
@@ -255,19 +266,17 @@
             </div>
             <div style="font-size:.8rem;color:var(--muted);margin-top:4px;line-height:1.5;">Taxa de conversão de visitantes do app para lavagem caiu de 34% para 21% nos últimos 3 dias em Campinas Centro. Possível problema de UX ou conexão.</div>
             <div class="alert-meta">
-              <span>📍 Campinas · SP</span>
-              <span>🕐 Hoje, 08:30</span>
-              <span>📲 Conversão: 21% (-13pp)</span>
+              <span>📍 Campinas · SP</span><span>🕐 Hoje, 08:30</span><span>📲 Conversão: 21% (-13pp)</span>
             </div>
             <div class="alert-actions">
-              <button class="btn-secondary" style="padding:5px 14px;font-size:.75rem;">Ver detalhes</button>
-              <button class="btn-secondary" style="padding:5px 14px;font-size:.75rem;">Resolver</button>
+              <button class="btn-secondary" style="padding:5px 14px;font-size:.75rem;" onclick="openDrawer('conversao')">Ver detalhes</button>
+              <button class="btn-secondary" style="padding:5px 14px;font-size:.75rem;" onclick="resolve('a6',this)">Resolver</button>
             </div>
           </div>
         </div>
 
         <!-- AVISO 4 -->
-        <div class="alert-card warning">
+        <div class="alert-card warning" id="a7">
           <div class="alert-icon warning">⭐</div>
           <div style="flex:1;">
             <div style="display:flex;justify-content:space-between;align-items:flex-start;gap:8px;">
@@ -276,19 +285,17 @@
             </div>
             <div style="font-size:.8rem;color:var(--muted);margin-top:4px;line-height:1.5;">NPS da unidade Osasco caiu de 82 para 74 nos últimos 7 dias. 4 avaliações negativas relacionadas ao "tempo de espera no caixa". Franqueado notificado.</div>
             <div class="alert-meta">
-              <span>📍 Osasco · SP</span>
-              <span>🕐 Ontem, 20:00</span>
-              <span>⭐ NPS: 74 (-8pts)</span>
+              <span>📍 Osasco · SP</span><span>🕐 Ontem, 20:00</span><span>⭐ NPS: 74 (-8pts)</span>
             </div>
             <div class="alert-actions">
-              <button class="btn-secondary" style="padding:5px 14px;font-size:.75rem;">Ver avaliações</button>
-              <button class="btn-secondary" style="padding:5px 14px;font-size:.75rem;">Resolver</button>
+              <button class="btn-secondary" style="padding:5px 14px;font-size:.75rem;" onclick="openDrawer('nps')">Ver avaliações</button>
+              <button class="btn-secondary" style="padding:5px 14px;font-size:.75rem;" onclick="resolve('a7',this)">Resolver</button>
             </div>
           </div>
         </div>
 
         <!-- INFO 1 -->
-        <div class="alert-card info">
+        <div class="alert-card info" id="a8">
           <div class="alert-icon info">🔧</div>
           <div style="flex:1;">
             <div style="display:flex;justify-content:space-between;align-items:flex-start;gap:8px;">
@@ -297,17 +304,16 @@
             </div>
             <div style="font-size:.8rem;color:var(--muted);margin-top:4px;line-height:1.5;">Manutenção preventiva do sistema de bombas agendada para 08/06 às 06h. Previsão de duração: 2 horas. Baias 1 e 2 ficarão offline.</div>
             <div class="alert-meta">
-              <span>📍 Mooca · SP</span>
-              <span>🕐 Agendado: 08/06 06h</span>
+              <span>📍 Mooca · SP</span><span>🕐 Agendado: 08/06 06h</span>
             </div>
             <div class="alert-actions">
-              <button class="btn-secondary" style="padding:5px 14px;font-size:.75rem;">Ver detalhes</button>
+              <button class="btn-secondary" style="padding:5px 14px;font-size:.75rem;" onclick="openDrawer('manutencao')">Ver detalhes</button>
             </div>
           </div>
         </div>
 
         <!-- INFO 2 -->
-        <div class="alert-card info">
+        <div class="alert-card info" id="a9">
           <div class="alert-icon info">📦</div>
           <div style="flex:1;">
             <div style="display:flex;justify-content:space-between;align-items:flex-start;gap:8px;">
@@ -316,17 +322,16 @@
             </div>
             <div style="font-size:.8rem;color:var(--muted);margin-top:4px;line-height:1.5;">Shampoo concentrado abaixo do nível mínimo (8L restantes, mínimo: 20L). Pedido de reposição não foi efetuado pelo franqueado. Prazo estimado: 3 dias.</div>
             <div class="alert-meta">
-              <span>📍 Tatuapé · SP</span>
-              <span>🕐 Hoje, 07:15</span>
+              <span>📍 Tatuapé · SP</span><span>🕐 Hoje, 07:15</span>
             </div>
             <div class="alert-actions">
-              <button class="btn-secondary" style="padding:5px 14px;font-size:.75rem;">Notificar franqueado</button>
+              <button class="btn-secondary" style="padding:5px 14px;font-size:.75rem;" onclick="notificar('Ana Souza','Tatuapé','a9')">Notificar franqueado</button>
             </div>
           </div>
         </div>
 
         <!-- INFO 3 -->
-        <div class="alert-card info">
+        <div class="alert-card info" id="a10">
           <div class="alert-icon info">📋</div>
           <div style="flex:1;">
             <div style="display:flex;justify-content:space-between;align-items:flex-start;gap:8px;">
@@ -335,8 +340,7 @@
             </div>
             <div style="font-size:.8rem;color:var(--muted);margin-top:4px;line-height:1.5;">Contrato de franquia Pinheiros foi assinado digitalmente por Bruno Alves. Previsão de abertura: 25/06. Setup inicial: R$48.000. Em análise pelo jurídico.</div>
             <div class="alert-meta">
-              <span>📍 Pinheiros · SP</span>
-              <span>🕐 Hoje, 11:40</span>
+              <span>📍 Pinheiros · SP</span><span>🕐 Hoje, 11:40</span>
             </div>
             <div class="alert-actions">
               <a href="./franqueados.html" class="btn-secondary" style="padding:5px 14px;font-size:.75rem;display:inline-flex;align-items:center;">Ver franqueados</a>
@@ -348,5 +352,280 @@
     </main>
   </div>
 </div>
+
+<!-- ── OVERLAY ── -->
+<div class="drawer-overlay" id="overlay" onclick="closeDrawer()"></div>
+
+<!-- ── DRAWER ── -->
+<div class="drawer" id="drawer">
+  <button class="drawer-close" onclick="closeDrawer()">✕</button>
+  <div id="drawer-body"></div>
+</div>
+
+<!-- ── TOAST ── -->
+<div class="toast" id="toast"></div>
+
+<script>
+// ── Conteúdo dos drawers ────────────────────────────────────────────────────
+const DRAWERS = {
+  qr: {
+    title: 'QR code usado 2x · Mooca',
+    sub: 'Possível fraude · Hoje 14:32 · usr_8821',
+    html: `
+      <div class="drawer-section">
+        <div class="drawer-section-label">Detalhes do evento</div>
+        <div class="drawer-row"><span style="color:var(--muted)">QR Code</span><span>#M-4821</span></div>
+        <div class="drawer-row"><span style="color:var(--muted)">Usuário</span><span>Carlos Mendes (usr_8821)</span></div>
+        <div class="drawer-row"><span style="color:var(--muted)">Dispositivo</span><span>iPhone 13 · iOS 17.2</span></div>
+        <div class="drawer-row"><span style="color:var(--muted)">1ª utilização</span><span style="color:var(--cream)">14:31:08</span></div>
+        <div class="drawer-row"><span style="color:var(--muted)">2ª utilização</span><span style="color:var(--red)">14:34:52 (+3min44s)</span></div>
+        <div class="drawer-row"><span style="color:var(--muted)">Baia</span><span>#2</span></div>
+        <div class="drawer-row"><span style="color:var(--muted)">IP</span><span>177.38.xx.xx</span></div>
+      </div>
+      <div class="drawer-section">
+        <div class="drawer-section-label">Histórico do usuário</div>
+        <div class="drawer-row"><span style="color:var(--muted)">Membro desde</span><span>Jan/2025</span></div>
+        <div class="drawer-row"><span style="color:var(--muted)">Plano</span><span>Pro · Motorista</span></div>
+        <div class="drawer-row"><span style="color:var(--muted)">Alertas anteriores</span><span style="color:#22c55e">Nenhum</span></div>
+        <div class="drawer-row"><span style="color:var(--muted)">Lavagens este mês</span><span>14</span></div>
+      </div>
+      <div class="drawer-section">
+        <div class="drawer-section-label">Ação recomendada</div>
+        <p style="font-size:.82rem;color:var(--muted);line-height:1.6;margin-bottom:12px;">O intervalo de 3min44s é suspeito mas pode ser falha de leitura. Recomenda-se bloquear temporariamente o QR e solicitar confirmação ao usuário antes de reativar.</p>
+        <div style="display:flex;gap:8px;flex-wrap:wrap;">
+          <button class="btn-primary" style="font-size:.75rem;" onclick="toast('🔒 QR #M-4821 bloqueado temporariamente');closeDrawer()">Bloquear QR</button>
+          <button class="btn-secondary" style="font-size:.75rem;" onclick="toast('📧 E-mail enviado para Carlos Mendes');closeDrawer()">Contatar usuário</button>
+          <button class="btn-secondary" style="font-size:.75rem;" onclick="resolve('a1');closeDrawer()">Ignorar e resolver</button>
+        </div>
+      </div>`
+  },
+  contrato: {
+    title: 'Contrato · Rafael Torres · Guarulhos',
+    sub: 'Royalties em atraso há 12 dias · R$3.240',
+    html: `
+      <div class="drawer-section">
+        <div class="drawer-section-label">Dados do contrato</div>
+        <div class="drawer-row"><span style="color:var(--muted)">Franqueado</span><span>Rafael Torres</span></div>
+        <div class="drawer-row"><span style="color:var(--muted)">Unidade</span><span>Guarulhos · SP</span></div>
+        <div class="drawer-row"><span style="color:var(--muted)">Contrato nº</span><span>FR-2024-008</span></div>
+        <div class="drawer-row"><span style="color:var(--muted)">Assinado em</span><span>15/03/2024</span></div>
+        <div class="drawer-row"><span style="color:var(--muted)">Royalties</span><span>8% sobre faturamento</span></div>
+        <div class="drawer-row"><span style="color:var(--muted)">Vencimento mensal</span><span>Todo dia 1º</span></div>
+      </div>
+      <div class="drawer-section">
+        <div class="drawer-section-label">Situação financeira</div>
+        <div class="drawer-row"><span style="color:var(--muted)">Maio/2025 (pago)</span><span style="color:#22c55e">R$ 4.850 ✓</span></div>
+        <div class="drawer-row"><span style="color:var(--muted)">Junho/2025 (vencido)</span><span style="color:var(--red)">R$ 3.240 ⚠</span></div>
+        <div class="drawer-row"><span style="color:var(--muted)">Dias em atraso</span><span style="color:var(--red)">12 dias</span></div>
+        <div class="drawer-row"><span style="color:var(--muted)">Avisos enviados</span><span>2 (e-mail)</span></div>
+      </div>
+      <div style="display:flex;gap:8px;flex-wrap:wrap;margin-top:4px;">
+        <button class="btn-primary" style="font-size:.75rem;" onclick="notificar('Rafael Torres','Guarulhos','a2');closeDrawer()">Enviar 3º aviso</button>
+        <button class="btn-secondary" style="font-size:.75rem;" onclick="toast('⚖️ Chamado jurídico aberto');closeDrawer()">Acionar jurídico</button>
+        <button class="btn-secondary" style="font-size:.75rem;" onclick="toast('🔒 Acesso suspenso temporariamente');resolve('a2');closeDrawer()">Suspender unidade</button>
+      </div>`
+  },
+  logs: {
+    title: 'Logs · Baia #3 · Osasco',
+    sub: 'Erro E-14 — sensor de pressão',
+    html: `
+      <div class="drawer-section">
+        <div class="drawer-section-label">Log do sistema</div>
+        <div class="log-line">[10:05:12] INFO  baia_3: sessão iniciada, usuário #9921</div>
+        <div class="log-line">[10:05:44] INFO  baia_3: bomba 1 ativada — 4.2 bar</div>
+        <div class="log-line warn">[10:06:11] WARN  baia_3: pressão abaixo do mínimo — 2.1 bar (min: 3.0)</div>
+        <div class="log-line warn">[10:07:02] WARN  baia_3: retry bomba 1 — tentativa 1/3</div>
+        <div class="log-line err"> [10:07:48] ERROR baia_3: SENSOR E-14 — falha crítica no regulador de pressão</div>
+        <div class="log-line err"> [10:08:01] ERROR baia_3: baia bloqueada automaticamente pelo sistema de segurança</div>
+        <div class="log-line">[10:08:03] INFO  baia_3: sessão encerrada — reembolso automático enviado ao usuário</div>
+        <div class="log-line">[10:08:05] INFO  sistema: alerta E-14 gerado e enviado ao painel admin</div>
+      </div>
+      <div class="drawer-section">
+        <div class="drawer-section-label">Diagnóstico</div>
+        <div class="drawer-row"><span style="color:var(--muted)">Código</span><span style="color:var(--red)">E-14</span></div>
+        <div class="drawer-row"><span style="color:var(--muted)">Componente</span><span>Regulador de pressão — Bomba 1</span></div>
+        <div class="drawer-row"><span style="color:var(--muted)">Último serviço</span><span>22/04/2025</span></div>
+        <div class="drawer-row"><span style="color:var(--muted)">Peça estimada</span><span>R$ 380 + mão de obra</span></div>
+      </div>
+      <div style="display:flex;gap:8px;flex-wrap:wrap;margin-top:4px;">
+        <button class="btn-primary" style="font-size:.75rem;" onclick="acionarTecnico('a3');closeDrawer()">Acionar técnico agora</button>
+        <button class="btn-secondary" style="font-size:.75rem;" onclick="toast('📋 Log exportado para PDF');closeDrawer()">Exportar log</button>
+      </div>`
+  },
+  pico: {
+    title: 'Pico de demanda · Tatuapé · Sex 18h',
+    sub: '+42% acima do padrão · 7 usuários na fila',
+    html: `
+      <div class="drawer-section">
+        <div class="drawer-section-label">Situação atual</div>
+        <div class="drawer-row"><span style="color:var(--muted)">Fila de espera</span><span style="color:var(--red)">7 usuários</span></div>
+        <div class="drawer-row"><span style="color:var(--muted)">Baias ativas</span><span>3 de 3</span></div>
+        <div class="drawer-row"><span style="color:var(--muted)">Tempo médio de espera</span><span>~18 minutos</span></div>
+        <div class="drawer-row"><span style="color:var(--muted)">Demanda vs padrão</span><span style="color:var(--red)">+42%</span></div>
+      </div>
+      <div class="drawer-section">
+        <div class="drawer-section-label">Histórico de sextas 18h</div>
+        <div class="drawer-row"><span style="color:var(--muted)">Semana anterior</span><span>4 usuários (padrão)</span></div>
+        <div class="drawer-row"><span style="color:var(--muted)">Há 2 semanas</span><span>5 usuários</span></div>
+        <div class="drawer-row"><span style="color:var(--muted)">Média do mês</span><span>4,8 usuários</span></div>
+      </div>
+      <div style="display:flex;gap:8px;flex-wrap:wrap;margin-top:4px;">
+        <button class="btn-primary" style="font-size:.75rem;" onclick="toast('📲 Push enviado: "Tatuapé com fila, tente outra unidade"');resolve('a4');closeDrawer()">Notificar usuários próximos</button>
+        <button class="btn-secondary" style="font-size:.75rem;" onclick="resolve('a4');closeDrawer()">Monitorar e resolver</button>
+      </div>`
+  },
+  idle: {
+    title: 'Relatório de ociosidade · Santo André',
+    sub: 'Qui manhã 07h–12h · 32% idle',
+    html: `
+      <div class="drawer-section">
+        <div class="drawer-section-label">Ocupação por hora (qui)</div>
+        <div class="drawer-row"><span style="color:var(--muted)">07h – 08h</span><span style="color:var(--red)">18% ocupação</span></div>
+        <div class="drawer-row"><span style="color:var(--muted)">08h – 09h</span><span style="color:var(--gold)">41% ocupação</span></div>
+        <div class="drawer-row"><span style="color:var(--muted)">09h – 10h</span><span style="color:var(--gold)">55% ocupação</span></div>
+        <div class="drawer-row"><span style="color:var(--muted)">10h – 11h</span><span style="color:var(--red)">22% ocupação</span></div>
+        <div class="drawer-row"><span style="color:var(--muted)">11h – 12h</span><span style="color:var(--red)">16% ocupação</span></div>
+        <div class="drawer-row"><span style="color:var(--muted)">Média histórica</span><span>48% ocupação</span></div>
+      </div>
+      <div class="drawer-section">
+        <div class="drawer-section-label">Sugestão</div>
+        <p style="font-size:.82rem;color:var(--muted);line-height:1.6;">Uma promoção relâmpago de "Lavagem Simples por R$12 das 7h às 10h" poderia elevar ocupação em ~30% nas quintas. Veja o histórico de promoções similares aplicadas em Mooca.</p>
+      </div>
+      <div style="display:flex;gap:8px;flex-wrap:wrap;margin-top:4px;">
+        <a href="./promocoes.html" class="btn-gold" style="font-size:.75rem;padding:6px 14px;display:inline-flex;align-items:center;gap:6px;">⚡ Criar promoção</a>
+        <button class="btn-secondary" style="font-size:.75rem;" onclick="toast('📧 Relatório enviado para admin@uashi.com.br');closeDrawer()">Exportar relatório</button>
+      </div>`
+  },
+  conversao: {
+    title: 'Queda de conversão · Campinas',
+    sub: '34% → 21% nos últimos 3 dias',
+    html: `
+      <div class="drawer-section">
+        <div class="drawer-section-label">Funil de conversão</div>
+        <div class="drawer-row"><span style="color:var(--muted)">Aberturas do app</span><span>1.240 / dia</span></div>
+        <div class="drawer-row"><span style="color:var(--muted)">Chegaram à tela de QR</span><span style="color:var(--gold)">520 (42%)</span></div>
+        <div class="drawer-row"><span style="color:var(--muted)">Geraram QR</span><span style="color:var(--red)">260 (21%)</span></div>
+        <div class="drawer-row"><span style="color:var(--muted)">Concluíram lavagem</span><span style="color:var(--red)">248 (20%)</span></div>
+        <div class="drawer-row"><span style="color:var(--muted)">Baseline semana anterior</span><span>34%</span></div>
+      </div>
+      <div class="drawer-section">
+        <div class="drawer-section-label">Possíveis causas</div>
+        <div class="drawer-row"><span style="color:var(--muted)">Instabilidade de rede local</span><span style="color:var(--red)">Alta probabilidade</span></div>
+        <div class="drawer-row"><span style="color:var(--muted)">Sensor de baia offline</span><span style="color:var(--gold)">Média</span></div>
+        <div class="drawer-row"><span style="color:var(--muted)">Atualização do app v2.4</span><span style="color:var(--gold)">Média</span></div>
+      </div>
+      <div style="display:flex;gap:8px;flex-wrap:wrap;margin-top:4px;">
+        <button class="btn-primary" style="font-size:.75rem;" onclick="toast('🔍 Diagnóstico remoto iniciado em Campinas');closeDrawer()">Iniciar diagnóstico</button>
+        <button class="btn-secondary" style="font-size:.75rem;" onclick="notificar('Marina Oliveira','Campinas','a6');closeDrawer()">Avisar franqueado</button>
+      </div>`
+  },
+  nps: {
+    title: 'Avaliações negativas · Osasco',
+    sub: 'NPS caiu de 82 → 74 · 4 avaliações recentes',
+    html: `
+      <div class="drawer-section">
+        <div class="drawer-section-label">Avaliações recentes (1–3 estrelas)</div>
+        ${[
+          ['★★☆☆☆','Fila enorme na sexta à tarde, esperei 25 min. O espaço é bom mas precisa de mais baias.','Rodrigo F. · 09/06'],
+          ['★★★☆☆','Lavagem boa mas o caixa demorou pra liberar meu QR. Fiquei uns 10 min tentando.','Juliana M. · 08/06'],
+          ['★★☆☆☆','Segunda vez que venho e a fila demora. Meu plano pro deveria ter fila prioritária.','Carlos A. · 07/06'],
+          ['★★☆☆☆','Sistema travou e precisei sair sem lavar. Me pediram pra voltar depois. Péssimo.','Fernando T. · 06/06'],
+        ].map(([stars,text,author]) => `
+          <div style="background:var(--surface-2);border-radius:8px;padding:10px 12px;margin-bottom:8px;">
+            <div style="color:var(--gold);font-size:.8rem;margin-bottom:4px;">${stars}</div>
+            <div style="font-size:.8rem;color:var(--cream);line-height:1.5;margin-bottom:4px;">"${text}"</div>
+            <div style="font-size:.7rem;color:var(--muted);">${author}</div>
+          </div>`).join('')}
+      </div>
+      <div style="display:flex;gap:8px;flex-wrap:wrap;margin-top:4px;">
+        <button class="btn-primary" style="font-size:.75rem;" onclick="notificar('Lúcia Mendes','Osasco','a7');closeDrawer()">Notificar franqueado</button>
+        <button class="btn-secondary" style="font-size:.75rem;" onclick="resolve('a7');closeDrawer()">Marcar como analisado</button>
+      </div>`
+  },
+  manutencao: {
+    title: 'Manutenção preventiva · Mooca',
+    sub: 'Agendado para 08/06 às 06h',
+    html: `
+      <div class="drawer-section">
+        <div class="drawer-section-label">Detalhes do agendamento</div>
+        <div class="drawer-row"><span style="color:var(--muted)">Data</span><span>08/06/2025 às 06:00</span></div>
+        <div class="drawer-row"><span style="color:var(--muted)">Duração prevista</span><span>2 horas</span></div>
+        <div class="drawer-row"><span style="color:var(--muted)">Baias afetadas</span><span>Baia 1 e Baia 2</span></div>
+        <div class="drawer-row"><span style="color:var(--muted)">Tipo</span><span>Preventiva — sistema de bombas</span></div>
+        <div class="drawer-row"><span style="color:var(--muted)">Técnico</span><span>Equipe Hidromec SP</span></div>
+        <div class="drawer-row"><span style="color:var(--muted)">Custo estimado</span><span>R$ 1.200</span></div>
+      </div>
+      <div class="drawer-section">
+        <div class="drawer-section-label">Impacto estimado</div>
+        <div class="drawer-row"><span style="color:var(--muted)">Lavagens perdidas</span><span>~18 (média 06h–08h)</span></div>
+        <div class="drawer-row"><span style="color:var(--muted)">Receita impactada</span><span>~R$ 520</span></div>
+        <div class="drawer-row"><span style="color:var(--muted)">Usuários notificados</span><span style="color:#22c55e">Sim — push enviado</span></div>
+      </div>
+      <div style="display:flex;gap:8px;flex-wrap:wrap;margin-top:4px;">
+        <button class="btn-secondary" style="font-size:.75rem;" onclick="toast('📧 Relatório de manutenção exportado');closeDrawer()">Exportar relatório</button>
+        <button class="btn-secondary" style="font-size:.75rem;" onclick="resolve('a8');closeDrawer()">Ciente · Fechar alerta</button>
+      </div>`
+  }
+};
+
+// ── Contador de resolvidos ──────────────────────────────────────────────────
+let resolved = 0;
+
+function resolve(id, btn) {
+  const card = document.getElementById(id);
+  if (!card || card.classList.contains('resolved')) return;
+  card.classList.add('resolved');
+  resolved++;
+  // atualiza contador "resolvidos hoje"
+  const el = document.querySelector('.alert-stat:last-child .val');
+  if (el) el.textContent = String(18 + resolved);
+  toast('✓ Alerta marcado como resolvido');
+}
+
+// ── Drawer ──────────────────────────────────────────────────────────────────
+function openDrawer(key) {
+  const d = DRAWERS[key];
+  if (!d) return;
+  document.getElementById('drawer-body').innerHTML =
+    `<div class="drawer-title">${d.title}</div>
+     <div class="drawer-sub">${d.sub}</div>
+     ${d.html}`;
+  document.getElementById('drawer').classList.add('open');
+  document.getElementById('overlay').style.display = 'block';
+}
+
+function closeDrawer() {
+  document.getElementById('drawer').classList.remove('open');
+  document.getElementById('overlay').style.display = 'none';
+}
+
+// ── Ações específicas ───────────────────────────────────────────────────────
+function notificar(nome, unidade, id) {
+  toast(`📧 Notificação enviada para ${nome} (${unidade})`);
+  setTimeout(() => resolve(id), 1200);
+}
+
+function acionarTecnico(id, btn) {
+  if (btn) btn.disabled = true, btn.textContent = 'Acionado ✓';
+  toast('🔧 Técnico acionado — previsão de chegada em 90 min');
+  setTimeout(() => resolve(id), 1400);
+}
+
+// ── Toast ────────────────────────────────────────────────────────────────────
+let toastTimer;
+function toast(msg) {
+  const el = document.getElementById('toast');
+  el.textContent = msg;
+  el.classList.add('show');
+  clearTimeout(toastTimer);
+  toastTimer = setTimeout(() => el.classList.remove('show'), 3000);
+}
+
+// ── Resolver todos ───────────────────────────────────────────────────────────
+document.querySelector('button.btn-secondary').addEventListener('click', () => {
+  ['a1','a2','a3','a4','a5','a6','a7','a8','a9'].forEach(id => resolve(id));
+  toast('✓ Todos os alertas marcados como resolvidos');
+});
+</script>
 </body>
 </html>
