@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Uashi Admin — Dashboard Matriz</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="./_admin.css" />
+  <style>
+    .nav-badge { background: var(--red); color: #fff; font-size: .6rem; font-weight: 700; border-radius: 99px; padding: 1px 6px; margin-left: auto; }
+    .topbar-avatar { width: 36px; height: 36px; border-radius: 10px; background: var(--surface-2); border: 1.5px solid rgba(255,255,255,.1); display: flex; align-items: center; justify-content: center; font-size: .75rem; font-weight: 700; color: var(--cream); cursor: pointer; }
+    .section-label { font-family: var(--font-display); font-size: 1.1rem; letter-spacing: .05em; color: var(--cream); margin-bottom: 14px; display: flex; align-items: center; gap: 10px; }
+    .section-label::after { content: ''; flex: 1; height: 1px; background: rgba(255,255,255,.07); }
+    .unit-meta { font-size: .72rem; color: var(--muted); }
+    .bar-label { font-size: .65rem; color: var(--muted); text-align: center; margin-top: 4px; }
+    .progress-fill.red  { background: var(--red); }
+    .progress-fill.gold { background: var(--gold); }
+    .progress-fill.blue { background: var(--blue); }
+    .progress-fill.green { background: #22c55e; }
+  </style>
+</head>
+<body>
+<div class="admin-layout">
+
+  <!-- SIDEBAR -->
+  <aside class="sidebar">
+    <div class="sidebar-logo">
+      <div class="wordmark">UASHI</div>
+      <div class="swoosh"></div>
+    </div>
+    <div class="sidebar-profile">
+      <div class="sidebar-avatar">AM</div>
+      <div>
+        <div class="sidebar-name">Admin Matriz</div>
+        <div class="sidebar-role">Acesso total</div>
+      </div>
+    </div>
+    <nav class="sidebar-nav">
+      <div class="nav-section-label">Principal</div>
+      <a href="./index.html" class="nav-item active">
+        <span class="nav-icon">▪</span> Dashboard
+      </a>
+      <a href="./franqueados.html" class="nav-item">
+        <span class="nav-icon">🏪</span> Franqueados
+      </a>
+      <a href="./planos.html" class="nav-item">
+        <span class="nav-icon">💳</span> Planos / Preços
+      </a>
+      <a href="./promocoes.html" class="nav-item">
+        <span class="nav-icon">⚡</span> Promoções
+      </a>
+      <div class="nav-section-label">Operações</div>
+      <a href="./alertas.html" class="nav-item">
+        <span class="nav-icon">🔔</span> Alertas
+        <span class="nav-badge">5</span>
+      </a>
+      <a href="./chamados.html" class="nav-item">
+        <span class="nav-icon">🎫</span> Chamados
+        <span class="nav-badge">12</span>
+      </a>
+      <a href="./relatorios.html" class="nav-item">
+        <span class="nav-icon">📊</span> Relatórios
+      </a>
+      <div class="nav-section-label">Conta</div>
+      <a href="./perfil.html" class="nav-item">
+        <span class="nav-icon">👤</span> Perfil
+      </a>
+    </nav>
+    <div class="sidebar-footer">
+      <a href="#" class="nav-item" style="padding: 8px 0; font-size:.78rem;">
+        <span class="nav-icon">🚪</span> Sair
+      </a>
+    </div>
+  </aside>
+
+  <!-- MAIN -->
+  <div class="main-area">
+
+    <!-- TOPBAR -->
+    <header class="topbar">
+      <span class="topbar-title">Dashboard · Matriz</span>
+      <div class="topbar-actions">
+        <button class="topbar-btn" title="Alertas">
+          🔔
+          <span class="topbar-dot"></span>
+        </button>
+        <div class="topbar-avatar">AM</div>
+        <a href="#" class="btn-secondary" style="padding:7px 14px;font-size:.75rem;">Sair</a>
+      </div>
+    </header>
+
+    <!-- PAGE CONTENT -->
+    <main class="page-content">
+
+      <!-- PAGE HEADER -->
+      <div class="page-header">
+        <div>
+          <h1>Dashboard</h1>
+          <p style="color:var(--muted);font-size:.82rem;margin-top:4px;">Visão geral da rede · Junho 2025</p>
+        </div>
+        <div style="display:flex;gap:10px;">
+          <select class="form-input" style="width:auto;font-size:.8rem;padding:8px 12px;">
+            <option>Últimos 30 dias</option>
+            <option>Últimos 7 dias</option>
+            <option>Este mês</option>
+          </select>
+          <button class="btn-primary">↓ Exportar</button>
+        </div>
+      </div>
+
+      <!-- KPI GRID -->
+      <div class="kpi-grid">
+        <div class="kpi-card highlight">
+          <div class="kpi-val" style="color:var(--gold);">R$224K</div>
+          <div class="kpi-label">Receita total / mês</div>
+          <div class="kpi-delta up">▲ +12% vs mês anterior</div>
+        </div>
+        <div class="kpi-card">
+          <div class="kpi-val">7.840</div>
+          <div class="kpi-label">Lavagens / mês</div>
+          <div class="kpi-delta up">▲ +8% vs mês anterior</div>
+        </div>
+        <div class="kpi-card">
+          <div class="kpi-val">12.480</div>
+          <div class="kpi-label">Usuários ativos</div>
+          <div class="kpi-delta up">▲ +15% vs mês anterior</div>
+        </div>
+        <div class="kpi-card">
+          <div class="kpi-val">4.320</div>
+          <div class="kpi-label">Planos ativos</div>
+          <div class="kpi-delta up">▲ +22% vs mês anterior</div>
+        </div>
+        <div class="kpi-card">
+          <div class="kpi-val" style="color:var(--blue);">R$28,60</div>
+          <div class="kpi-label">Ticket médio</div>
+          <div class="kpi-delta up">▲ +3% vs mês anterior</div>
+        </div>
+        <div class="kpi-card">
+          <div class="kpi-val" style="color:#22c55e;">87</div>
+          <div class="kpi-label">NPS</div>
+          <div class="kpi-delta up">▲ +5 pts vs mês anterior</div>
+        </div>
+      </div>
+
+      <!-- CHARTS ROW -->
+      <div style="display:grid;grid-template-columns:2fr 1fr;gap:16px;margin-bottom:24px;">
+
+        <!-- BAR CHART -->
+        <div class="card">
+          <div class="card-header">
+            <span class="card-title">Receita dos últimos 7 dias</span>
+            <span style="font-size:.75rem;color:var(--muted);">Todas as unidades</span>
+          </div>
+          <div class="card-body">
+            <div style="display:flex;align-items:flex-end;gap:8px;height:130px;padding-bottom:4px;">
+              <div style="flex:1;display:flex;flex-direction:column;align-items:center;gap:4px;height:100%;justify-content:flex-end;">
+                <span style="font-size:.65rem;color:var(--muted);">R$28k</span>
+                <div style="width:100%;height:55%;background:var(--red);border-radius:4px 4px 0 0;opacity:.85;"></div>
+                <span class="bar-label">Seg</span>
+              </div>
+              <div style="flex:1;display:flex;flex-direction:column;align-items:center;gap:4px;height:100%;justify-content:flex-end;">
+                <span style="font-size:.65rem;color:var(--muted);">R$31k</span>
+                <div style="width:100%;height:62%;background:var(--red);border-radius:4px 4px 0 0;opacity:.85;"></div>
+                <span class="bar-label">Ter</span>
+              </div>
+              <div style="flex:1;display:flex;flex-direction:column;align-items:center;gap:4px;height:100%;justify-content:flex-end;">
+                <span style="font-size:.65rem;color:var(--muted);">R$34k</span>
+                <div style="width:100%;height:70%;background:var(--red);border-radius:4px 4px 0 0;opacity:.85;"></div>
+                <span class="bar-label">Qua</span>
+              </div>
+              <div style="flex:1;display:flex;flex-direction:column;align-items:center;gap:4px;height:100%;justify-content:flex-end;">
+                <span style="font-size:.65rem;color:var(--muted);">R$42k</span>
+                <div style="width:100%;height:85%;background:var(--gold);border-radius:4px 4px 0 0;"></div>
+                <span class="bar-label">Qui</span>
+              </div>
+              <div style="flex:1;display:flex;flex-direction:column;align-items:center;gap:4px;height:100%;justify-content:flex-end;">
+                <span style="font-size:.65rem;color:var(--muted);">R$50k</span>
+                <div style="width:100%;height:100%;background:var(--gold);border-radius:4px 4px 0 0;"></div>
+                <span class="bar-label" style="color:var(--gold);font-weight:700;">Sex</span>
+              </div>
+              <div style="flex:1;display:flex;flex-direction:column;align-items:center;gap:4px;height:100%;justify-content:flex-end;">
+                <span style="font-size:.65rem;color:var(--muted);">R$38k</span>
+                <div style="width:100%;height:76%;background:var(--blue);border-radius:4px 4px 0 0;opacity:.85;"></div>
+                <span class="bar-label">Sáb</span>
+              </div>
+              <div style="flex:1;display:flex;flex-direction:column;align-items:center;gap:4px;height:100%;justify-content:flex-end;">
+                <span style="font-size:.65rem;color:var(--muted);">R$22k</span>
+                <div style="width:100%;height:44%;background:var(--surface-2);border-radius:4px 4px 0 0;border:1px solid rgba(255,255,255,.1);"></div>
+                <span class="bar-label">Dom</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- MINI STATS -->
+        <div class="card">
+          <div class="card-header">
+            <span class="card-title">Distribuição por plano</span>
+          </div>
+          <div class="card-body" style="padding-top:12px;">
+            <div class="stat-row">
+              <span style="font-size:.82rem;">Básico · R$29/mês</span>
+              <span style="color:var(--muted);font-size:.82rem;">1.840</span>
+            </div>
+            <div style="margin:4px 0 10px;">
+              <div class="progress-track"><div class="progress-fill red" style="width:43%;"></div></div>
+            </div>
+            <div class="stat-row">
+              <span style="font-size:.82rem;">Plus · R$49/mês</span>
+              <span style="color:var(--muted);font-size:.82rem;">1.620</span>
+            </div>
+            <div style="margin:4px 0 10px;">
+              <div class="progress-track"><div class="progress-fill gold" style="width:37%;"></div></div>
+            </div>
+            <div class="stat-row">
+              <span style="font-size:.82rem;">Premium · R$79/mês</span>
+              <span style="color:var(--muted);font-size:.82rem;">860</span>
+            </div>
+            <div style="margin:4px 0 10px;">
+              <div class="progress-track"><div class="progress-fill blue" style="width:20%;"></div></div>
+            </div>
+            <div class="stat-row" style="padding-top:14px;border-top:1px solid rgba(255,255,255,.07);border-bottom:none;">
+              <span style="font-size:.78rem;color:var(--muted);">Total de assinantes</span>
+              <span style="font-family:var(--font-display);font-size:1.1rem;color:var(--gold);">4.320</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- TABELA DE UNIDADES -->
+      <div class="section-label">Desempenho por unidade</div>
+      <div class="card" style="margin-bottom:24px;overflow-x:auto;">
+        <table class="data-table">
+          <thead>
+            <tr>
+              <th>Unidade</th>
+              <th>Lavagens / mês</th>
+              <th>Receita</th>
+              <th>Meta</th>
+              <th>Progresso</th>
+              <th>Status</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>
+                <div style="font-weight:600;">Mooca</div>
+                <div class="unit-meta">Franqueado: Carlos Lima</div>
+              </td>
+              <td>1.920</td>
+              <td>R$ 54.912</td>
+              <td>R$ 50.000</td>
+              <td style="min-width:120px;">
+                <div style="font-size:.72rem;color:#22c55e;margin-bottom:4px;">110%</div>
+                <div class="progress-track"><div class="progress-fill green" style="width:100%;"></div></div>
+              </td>
+              <td><span class="tag tag-green">Acima da meta</span></td>
+            </tr>
+            <tr>
+              <td>
+                <div style="font-weight:600;">Tatuapé</div>
+                <div class="unit-meta">Franqueado: Ana Souza</div>
+              </td>
+              <td>1.540</td>
+              <td>R$ 44.044</td>
+              <td>R$ 50.000</td>
+              <td style="min-width:120px;">
+                <div style="font-size:.72rem;color:var(--gold);margin-bottom:4px;">88%</div>
+                <div class="progress-track"><div class="progress-fill gold" style="width:88%;"></div></div>
+              </td>
+              <td><span class="tag tag-gold">No prazo</span></td>
+            </tr>
+            <tr>
+              <td>
+                <div style="font-weight:600;">Santo André</div>
+                <div class="unit-meta">Franqueado: Pedro Costa</div>
+              </td>
+              <td>1.280</td>
+              <td>R$ 36.608</td>
+              <td>R$ 45.000</td>
+              <td style="min-width:120px;">
+                <div style="font-size:.72rem;color:var(--gold);margin-bottom:4px;">81%</div>
+                <div class="progress-track"><div class="progress-fill gold" style="width:81%;"></div></div>
+              </td>
+              <td><span class="tag tag-gold">No prazo</span></td>
+            </tr>
+            <tr>
+              <td>
+                <div style="font-weight:600;">Osasco</div>
+                <div class="unit-meta">Franqueado: Lúcia Mendes</div>
+              </td>
+              <td>980</td>
+              <td>R$ 28.028</td>
+              <td>R$ 40.000</td>
+              <td style="min-width:120px;">
+                <div style="font-size:.72rem;color:var(--red);margin-bottom:4px;">70%</div>
+                <div class="progress-track"><div class="progress-fill red" style="width:70%;"></div></div>
+              </td>
+              <td><span class="tag tag-red">Abaixo</span></td>
+            </tr>
+            <tr>
+              <td>
+                <div style="font-weight:600;">Guarulhos</div>
+                <div class="unit-meta">Franqueado: Rafael Torres</div>
+              </td>
+              <td>2.120</td>
+              <td>R$ 60.620</td>
+              <td>R$ 55.000</td>
+              <td style="min-width:120px;">
+                <div style="font-size:.72rem;color:#22c55e;margin-bottom:4px;">110%</div>
+                <div class="progress-track"><div class="progress-fill green" style="width:100%;"></div></div>
+              </td>
+              <td><span class="tag tag-green">Acima da meta</span></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- ALERTAS RECENTES -->
+      <div class="section-label">Alertas recentes</div>
+      <div style="display:flex;flex-direction:column;gap:10px;margin-bottom:24px;">
+        <div class="alert-item critical">
+          <div style="width:36px;height:36px;border-radius:10px;background:rgba(232,50,26,.2);display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:1.1rem;">🚨</div>
+          <div style="flex:1;">
+            <div style="display:flex;justify-content:space-between;align-items:flex-start;gap:8px;">
+              <div>
+                <div style="font-size:.88rem;font-weight:600;color:var(--cream);margin-bottom:2px;">QR code usado 2x seguidas · Mooca</div>
+                <div style="font-size:.75rem;color:var(--muted);">O QR #M-4821 foi acionado duas vezes em menos de 4 minutos pelo mesmo usuário.</div>
+              </div>
+              <span class="tag tag-red">Crítico</span>
+            </div>
+            <div style="display:flex;gap:10px;margin-top:10px;align-items:center;">
+              <span style="font-size:.72rem;color:var(--muted);">Hoje, 14:32</span>
+              <a href="./alertas.html" class="btn-secondary" style="padding:4px 12px;font-size:.7rem;">Ver detalhes</a>
+            </div>
+          </div>
+        </div>
+        <div class="alert-item warning">
+          <div style="width:36px;height:36px;border-radius:10px;background:rgba(245,168,0,.15);display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:1.1rem;">⚠️</div>
+          <div style="flex:1;">
+            <div style="display:flex;justify-content:space-between;align-items:flex-start;gap:8px;">
+              <div>
+                <div style="font-size:.88rem;font-weight:600;color:var(--cream);margin-bottom:2px;">Pico acima de 40% na Tatuapé — Sex 18h</div>
+                <div style="font-size:.75rem;color:var(--muted);">Fila de 7 usuários aguardando baias. Capacidade máxima atingida.</div>
+              </div>
+              <span class="tag tag-gold">Aviso</span>
+            </div>
+            <div style="display:flex;gap:10px;margin-top:10px;align-items:center;">
+              <span style="font-size:.72rem;color:var(--muted);">Hoje, 18:05</span>
+              <a href="./alertas.html" class="btn-secondary" style="padding:4px 12px;font-size:.7rem;">Ver detalhes</a>
+            </div>
+          </div>
+        </div>
+        <div class="alert-item warning">
+          <div style="width:36px;height:36px;border-radius:10px;background:rgba(245,168,0,.15);display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:1.1rem;">📉</div>
+          <div style="flex:1;">
+            <div style="display:flex;justify-content:space-between;align-items:flex-start;gap:8px;">
+              <div>
+                <div style="font-size:.88rem;font-weight:600;color:var(--cream);margin-bottom:2px;">Inadimplência de royalties · Guarulhos</div>
+                <div style="font-size:.75rem;color:var(--muted);">Franqueado Rafael Torres está em atraso há 12 dias. Valor: R$3.240.</div>
+              </div>
+              <span class="tag tag-gold">Aviso</span>
+            </div>
+            <div style="display:flex;gap:10px;margin-top:10px;align-items:center;">
+              <span style="font-size:.72rem;color:var(--muted);">Ontem, 09:15</span>
+              <a href="./alertas.html" class="btn-secondary" style="padding:4px 12px;font-size:.7rem;">Ver detalhes</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </main>
+  </div>
+</div>
+</body>
+</html>

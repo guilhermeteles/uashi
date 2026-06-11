@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" /><meta name="viewport" content="width=device-width,initial-scale=1.0" />
+  <title>Planos & Preços — Admin Uashi</title>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="./_admin.css" />
+</head>
+<body>
+<div class="admin-layout">
+  <aside class="sidebar">
+    <div class="sidebar-logo"><div class="wordmark">UASHI</div><div class="swoosh"></div></div>
+    <div class="sidebar-profile">
+      <div class="sidebar-avatar">A</div>
+      <div><div class="sidebar-name">Admin Matriz</div><div class="sidebar-role">🏢 Matriz</div></div>
+    </div>
+    <nav class="sidebar-nav">
+      <div class="nav-section-label">Principal</div>
+      <a href="index.html" class="nav-item"><span class="nav-icon">📊</span>Dashboard</a>
+      <a href="franqueados.html" class="nav-item"><span class="nav-icon">🏪</span>Franqueados</a>
+      <a href="planos-precos.html" class="nav-item active"><span class="nav-icon">💳</span>Planos & Preços</a>
+      <a href="promocoes.html" class="nav-item"><span class="nav-icon">📣</span>Promoções</a>
+      <div class="nav-section-label">Suporte</div>
+      <a href="alertas.html" class="nav-item"><span class="nav-icon">🚨</span>Alertas</a>
+      <a href="chamados.html" class="nav-item"><span class="nav-icon">💬</span>Chamados</a>
+      <a href="relatorios.html" class="nav-item"><span class="nav-icon">📄</span>Relatórios</a>
+      <div class="nav-section-label">Conta</div>
+      <a href="perfil-admin.html" class="nav-item"><span class="nav-icon">👤</span>Perfil</a>
+    </nav>
+    <div class="sidebar-footer"><a href="login.html" style="font-size:.75rem;color:var(--muted);text-decoration:none;">← Sair</a></div>
+  </aside>
+
+  <div class="main-area">
+    <div class="topbar">
+      <span class="topbar-title">Planos & Preços</span>
+      <div class="topbar-actions">
+        <button class="topbar-btn">🔔<span class="topbar-dot"></span></button>
+        <div style="width:32px;height:32px;border-radius:8px;background:var(--red);display:flex;align-items:center;justify-content:center;font-family:var(--font-display);color:#fff;font-size:.9rem;">A</div>
+      </div>
+    </div>
+    <hr class="swoosh" />
+
+    <div class="page-content">
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:24px;">
+
+        <!-- Planos de assinatura -->
+        <div>
+          <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:16px;">
+            <h1 style="font-family:var(--font-display);font-size:1.5rem;color:var(--cream);">PLANOS</h1>
+            <button class="btn-primary" onclick="alert('(protótipo) Criar novo plano')">+ Novo plano</button>
+          </div>
+          <div style="display:flex;flex-direction:column;gap:12px;">
+            <!-- Básico -->
+            <div class="card" style="padding:16px;">
+              <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:12px;">
+                <div><span class="tag tag-blue" style="margin-bottom:6px;display:inline-block;">Básico</span><div style="font-family:var(--font-display);font-size:1.6rem;color:var(--cream);">R$ 79/mês</div></div>
+                <div style="display:flex;gap:6px;"><button class="btn-icon" onclick="alert('(protótipo) Editar plano Básico')">✏️</button><button class="btn-icon" onclick="alert('(protótipo) Histórico do plano')">📊</button></div>
+              </div>
+              <div style="display:flex;gap:16px;font-size:.8rem;color:var(--muted);">
+                <div><span style="color:var(--cream);font-weight:700;">1.240</span> assinantes</div>
+                <div><span style="color:var(--cream);font-weight:700;">R$ 98K</span> MRR</div>
+                <div><span style="color:#22c55e;font-weight:700;">84%</span> retenção</div>
+              </div>
+            </div>
+            <!-- Pro -->
+            <div class="card" style="padding:16px;border-color:rgba(245,168,0,.3);">
+              <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:12px;">
+                <div><span class="tag tag-gold" style="margin-bottom:6px;display:inline-block;">Pro · Motorista ⭐</span><div style="font-family:var(--font-display);font-size:1.6rem;color:var(--gold);">R$ 149/mês</div></div>
+                <div style="display:flex;gap:6px;"><button class="btn-icon" onclick="alert('(protótipo) Editar plano Pro')">✏️</button><button class="btn-icon">📊</button></div>
+              </div>
+              <div style="display:flex;gap:16px;font-size:.8rem;color:var(--muted);">
+                <div><span style="color:var(--cream);font-weight:700;">2.580</span> assinantes</div>
+                <div><span style="color:var(--cream);font-weight:700;">R$ 384K</span> MRR</div>
+                <div><span style="color:#22c55e;font-weight:700;">91%</span> retenção</div>
+              </div>
+            </div>
+            <!-- Frota -->
+            <div class="card" style="padding:16px;border-color:rgba(26,111,212,.3);">
+              <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:12px;">
+                <div><span class="tag tag-blue" style="margin-bottom:6px;display:inline-block;">Frota · B2B</span><div style="font-family:var(--font-display);font-size:1.6rem;color:var(--blue);">R$ 89/veíc./mês</div></div>
+                <div style="display:flex;gap:6px;"><button class="btn-icon" onclick="alert('(protótipo) Editar plano Frota')">✏️</button><button class="btn-icon">📊</button></div>
+              </div>
+              <div style="display:flex;gap:16px;font-size:.8rem;color:var(--muted);">
+                <div><span style="color:var(--cream);font-weight:700;">500</span> veículos</div>
+                <div><span style="color:var(--cream);font-weight:700;">R$ 44,5K</span> MRR</div>
+                <div><span style="color:#22c55e;font-weight:700;">96%</span> retenção</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Tabela de preços por tipo de veículo -->
+        <div>
+          <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:16px;">
+            <h1 style="font-family:var(--font-display);font-size:1.5rem;color:var(--cream);">PREÇOS AVULSOS</h1>
+            <button class="btn-secondary" onclick="alert('(protótipo) Editar preços em massa')">Editar em massa</button>
+          </div>
+          <div class="card">
+            <div style="overflow-x:auto;">
+              <table class="data-table">
+                <thead><tr><th>Veículo</th><th>Simples</th><th>Completa</th><th>Premium</th><th></th></tr></thead>
+                <tbody>
+                  <tr>
+                    <td>🚗 Hatch / Sedan</td>
+                    <td><input type="text" value="R$ 19" style="background:var(--surface-2);border:1px solid rgba(255,255,255,.08);border-radius:6px;padding:4px 8px;color:var(--cream);font-size:.8rem;width:60px;" /></td>
+                    <td><input type="text" value="R$ 29" style="background:var(--surface-2);border:1px solid rgba(255,255,255,.08);border-radius:6px;padding:4px 8px;color:var(--cream);font-size:.8rem;width:60px;" /></td>
+                    <td><input type="text" value="R$ 39" style="background:var(--surface-2);border:1px solid rgba(255,255,255,.08);border-radius:6px;padding:4px 8px;color:var(--cream);font-size:.8rem;width:60px;" /></td>
+                    <td><button class="btn-icon" onclick="alert('(protótipo) Salvo!')">💾</button></td>
+                  </tr>
+                  <tr>
+                    <td>🚙 SUV / Pickup</td>
+                    <td><input type="text" value="R$ 25" style="background:var(--surface-2);border:1px solid rgba(255,255,255,.08);border-radius:6px;padding:4px 8px;color:var(--cream);font-size:.8rem;width:60px;" /></td>
+                    <td><input type="text" value="R$ 35" style="background:var(--surface-2);border:1px solid rgba(245,168,0,.2);border-radius:6px;padding:4px 8px;color:var(--gold);font-size:.8rem;width:60px;" /></td>
+                    <td><input type="text" value="R$ 48" style="background:var(--surface-2);border:1px solid rgba(255,255,255,.08);border-radius:6px;padding:4px 8px;color:var(--cream);font-size:.8rem;width:60px;" /></td>
+                    <td><button class="btn-icon" onclick="alert('(protótipo) Salvo!')">💾</button></td>
+                  </tr>
+                  <tr>
+                    <td>🚐 Van / Minivan</td>
+                    <td><input type="text" value="R$ 35" style="background:var(--surface-2);border:1px solid rgba(255,255,255,.08);border-radius:6px;padding:4px 8px;color:var(--cream);font-size:.8rem;width:60px;" /></td>
+                    <td><input type="text" value="R$ 48" style="background:var(--surface-2);border:1px solid rgba(255,255,255,.08);border-radius:6px;padding:4px 8px;color:var(--cream);font-size:.8rem;width:60px;" /></td>
+                    <td><input type="text" value="R$ 65" style="background:var(--surface-2);border:1px solid rgba(255,255,255,.08);border-radius:6px;padding:4px 8px;color:var(--cream);font-size:.8rem;width:60px;" /></td>
+                    <td><button class="btn-icon" onclick="alert('(protótipo) Salvo!')">💾</button></td>
+                  </tr>
+                  <tr>
+                    <td>🏍️ Moto</td>
+                    <td><input type="text" value="R$ 12" style="background:var(--surface-2);border:1px solid rgba(255,255,255,.08);border-radius:6px;padding:4px 8px;color:var(--cream);font-size:.8rem;width:60px;" /></td>
+                    <td><input type="text" value="R$ 18" style="background:var(--surface-2);border:1px solid rgba(255,255,255,.08);border-radius:6px;padding:4px 8px;color:var(--cream);font-size:.8rem;width:60px;" /></td>
+                    <td><input type="text" value="—" style="background:var(--surface-2);border:1px solid rgba(255,255,255,.08);border-radius:6px;padding:4px 8px;color:var(--muted);font-size:.8rem;width:60px;" /></td>
+                    <td><button class="btn-icon" onclick="alert('(protótipo) Salvo!')">💾</button></td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div style="padding:12px 16px;border-top:1px solid rgba(255,255,255,.06);display:flex;justify-content:flex-end;gap:10px;">
+              <button class="btn-secondary">Descartar</button>
+              <button class="btn-primary" onclick="alert('(protótipo) Todos os preços salvos e publicados!')">Salvar tudo</button>
+            </div>
+          </div>
+
+          <!-- MRR total -->
+          <div class="card" style="margin-top:16px;padding:16px;">
+            <div style="font-size:.72rem;font-weight:600;color:var(--muted);text-transform:uppercase;letter-spacing:.08em;margin-bottom:10px;">MRR Total</div>
+            <div style="font-family:var(--font-display);font-size:2.4rem;color:var(--gold);margin-bottom:4px;">R$ 526.500</div>
+            <div style="font-size:.8rem;color:var(--muted);">4.320 assinantes ativos · +22% vs jan/2025</div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>
+</body></html>

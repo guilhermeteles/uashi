@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Uashi Admin — Franqueados</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="./_admin.css" />
+  <style>
+    .nav-badge { background: var(--red); color: #fff; font-size: .6rem; font-weight: 700; border-radius: 99px; padding: 1px 6px; margin-left: auto; }
+    .topbar-avatar { width: 36px; height: 36px; border-radius: 10px; background: var(--surface-2); border: 1.5px solid rgba(255,255,255,.1); display: flex; align-items: center; justify-content: center; font-size: .75rem; font-weight: 700; color: var(--cream); cursor: pointer; }
+    .section-label { font-family: var(--font-display); font-size: 1.1rem; letter-spacing: .05em; color: var(--cream); margin-bottom: 14px; display: flex; align-items: center; gap: 10px; }
+    .section-label::after { content: ''; flex: 1; height: 1px; background: rgba(255,255,255,.07); }
+    .action-link { color: var(--blue); font-size: .78rem; text-decoration: none; font-weight: 600; }
+    .action-link:hover { text-decoration: underline; }
+    .action-link.danger { color: var(--red); }
+    .summary-cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-bottom: 24px; }
+    .summary-card { background: var(--surface); border: 1px solid rgba(255,255,255,.06); border-radius: 12px; padding: 18px 20px; }
+    .summary-card .val { font-family: var(--font-display); font-size: 1.8rem; color: var(--cream); line-height: 1; }
+    .summary-card .lbl { font-size: .72rem; color: var(--muted); text-transform: uppercase; letter-spacing: .06em; margin-top: 4px; }
+  </style>
+</head>
+<body>
+<div class="admin-layout">
+
+  <!-- SIDEBAR -->
+  <aside class="sidebar">
+    <div class="sidebar-logo">
+      <div class="wordmark">UASHI</div>
+      <div class="swoosh"></div>
+    </div>
+    <div class="sidebar-profile">
+      <div class="sidebar-avatar">AM</div>
+      <div>
+        <div class="sidebar-name">Admin Matriz</div>
+        <div class="sidebar-role">Acesso total</div>
+      </div>
+    </div>
+    <nav class="sidebar-nav">
+      <div class="nav-section-label">Principal</div>
+      <a href="./index.html" class="nav-item">
+        <span class="nav-icon">▪</span> Dashboard
+      </a>
+      <a href="./franqueados.html" class="nav-item active">
+        <span class="nav-icon">🏪</span> Franqueados
+      </a>
+      <a href="./planos.html" class="nav-item">
+        <span class="nav-icon">💳</span> Planos / Preços
+      </a>
+      <a href="./promocoes.html" class="nav-item">
+        <span class="nav-icon">⚡</span> Promoções
+      </a>
+      <div class="nav-section-label">Operações</div>
+      <a href="./alertas.html" class="nav-item">
+        <span class="nav-icon">🔔</span> Alertas
+        <span class="nav-badge">5</span>
+      </a>
+      <a href="./chamados.html" class="nav-item">
+        <span class="nav-icon">🎫</span> Chamados
+        <span class="nav-badge">12</span>
+      </a>
+      <a href="./relatorios.html" class="nav-item">
+        <span class="nav-icon">📊</span> Relatórios
+      </a>
+      <div class="nav-section-label">Conta</div>
+      <a href="./perfil.html" class="nav-item">
+        <span class="nav-icon">👤</span> Perfil
+      </a>
+    </nav>
+    <div class="sidebar-footer">
+      <a href="#" class="nav-item" style="padding: 8px 0; font-size:.78rem;">
+        <span class="nav-icon">🚪</span> Sair
+      </a>
+    </div>
+  </aside>
+
+  <!-- MAIN -->
+  <div class="main-area">
+
+    <!-- TOPBAR -->
+    <header class="topbar">
+      <span class="topbar-title">Franqueados</span>
+      <div class="topbar-actions">
+        <button class="topbar-btn" title="Alertas">
+          🔔
+          <span class="topbar-dot"></span>
+        </button>
+        <div class="topbar-avatar">AM</div>
+        <a href="#" class="btn-secondary" style="padding:7px 14px;font-size:.75rem;">Sair</a>
+      </div>
+    </header>
+
+    <!-- PAGE CONTENT -->
+    <main class="page-content">
+
+      <!-- PAGE HEADER -->
+      <div class="page-header">
+        <div>
+          <h1>Gestão de Franqueados</h1>
+          <p style="color:var(--muted);font-size:.82rem;margin-top:4px;">Rede ativa · 6 unidades</p>
+        </div>
+        <button class="btn-primary" onclick="document.getElementById('novo-franqueado').style.display='block'">+ Novo franqueado</button>
+      </div>
+
+      <!-- SUMMARY CARDS -->
+      <div class="summary-cards">
+        <div class="summary-card">
+          <div class="val">6</div>
+          <div class="lbl">Total de franqueados</div>
+        </div>
+        <div class="summary-card" style="border-color:rgba(245,168,0,.25);">
+          <div class="val" style="color:var(--gold);">R$38.400</div>
+          <div class="lbl">Receita de royalties / mês</div>
+        </div>
+        <div class="summary-card">
+          <div class="val">1.307</div>
+          <div class="lbl">Média de lavagens / unidade</div>
+        </div>
+      </div>
+
+      <!-- FILTERS -->
+      <div class="filter-bar">
+        <input class="form-input" style="width:280px;" type="text" placeholder="🔍  Buscar franqueado ou unidade…" />
+        <select class="form-input" style="width:auto;">
+          <option value="">Todos os status</option>
+          <option value="ativo">Ativo</option>
+          <option value="suspenso">Suspenso</option>
+        </select>
+        <select class="form-input" style="width:auto;">
+          <option>Todas as cidades</option>
+          <option>São Paulo</option>
+          <option>Santo André</option>
+          <option>Osasco</option>
+          <option>Guarulhos</option>
+        </select>
+      </div>
+
+      <!-- TABLE -->
+      <div class="card" style="overflow-x:auto;margin-bottom:24px;">
+        <table class="data-table">
+          <thead>
+            <tr>
+              <th>Franqueado</th>
+              <th>Unidade</th>
+              <th>Cidade</th>
+              <th>Lavagens / mês</th>
+              <th>Receita</th>
+              <th>Royalties (8%)</th>
+              <th>Status</th>
+              <th>Ações</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>
+                <div style="display:flex;align-items:center;gap:10px;">
+                  <div style="width:32px;height:32px;border-radius:8px;background:var(--red);display:flex;align-items:center;justify-content:center;font-size:.75rem;font-weight:700;flex-shrink:0;">CL</div>
+                  <div>
+                    <div style="font-weight:600;">Carlos Lima</div>
+                    <div style="font-size:.72rem;color:var(--muted);">carlos@uashi.com.br</div>
+                  </div>
+                </div>
+              </td>
+              <td>Mooca</td>
+              <td>São Paulo · SP</td>
+              <td>1.920</td>
+              <td>R$ 54.912</td>
+              <td style="color:var(--gold);">R$ 4.393</td>
+              <td><span class="tag tag-green">Ativo</span></td>
+              <td>
+                <div style="display:flex;gap:12px;">
+                  <a href="#" class="action-link">Ver</a>
+                  <a href="#" class="action-link">Editar</a>
+                  <a href="#" class="action-link danger">Suspender</a>
+                </div>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <div style="display:flex;align-items:center;gap:10px;">
+                  <div style="width:32px;height:32px;border-radius:8px;background:var(--blue);display:flex;align-items:center;justify-content:center;font-size:.75rem;font-weight:700;flex-shrink:0;">AS</div>
+                  <div>
+                    <div style="font-weight:600;">Ana Souza</div>
+                    <div style="font-size:.72rem;color:var(--muted);">ana@uashi.com.br</div>
+                  </div>
+                </div>
+              </td>
+              <td>Tatuapé</td>
+              <td>São Paulo · SP</td>
+              <td>1.540</td>
+              <td>R$ 44.044</td>
+              <td style="color:var(--gold);">R$ 3.524</td>
+              <td><span class="tag tag-green">Ativo</span></td>
+              <td>
+                <div style="display:flex;gap:12px;">
+                  <a href="#" class="action-link">Ver</a>
+                  <a href="#" class="action-link">Editar</a>
+                  <a href="#" class="action-link danger">Suspender</a>
+                </div>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <div style="display:flex;align-items:center;gap:10px;">
+                  <div style="width:32px;height:32px;border-radius:8px;background:#7c3aed;display:flex;align-items:center;justify-content:center;font-size:.75rem;font-weight:700;flex-shrink:0;">PC</div>
+                  <div>
+                    <div style="font-weight:600;">Pedro Costa</div>
+                    <div style="font-size:.72rem;color:var(--muted);">pedro@uashi.com.br</div>
+                  </div>
+                </div>
+              </td>
+              <td>Santo André</td>
+              <td>Santo André · SP</td>
+              <td>1.280</td>
+              <td>R$ 36.608</td>
+              <td style="color:var(--gold);">R$ 2.929</td>
+              <td><span class="tag tag-green">Ativo</span></td>
+              <td>
+                <div style="display:flex;gap:12px;">
+                  <a href="#" class="action-link">Ver</a>
+                  <a href="#" class="action-link">Editar</a>
+                  <a href="#" class="action-link danger">Suspender</a>
+                </div>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <div style="display:flex;align-items:center;gap:10px;">
+                  <div style="width:32px;height:32px;border-radius:8px;background:#0891b2;display:flex;align-items:center;justify-content:center;font-size:.75rem;font-weight:700;flex-shrink:0;">LM</div>
+                  <div>
+                    <div style="font-weight:600;">Lúcia Mendes</div>
+                    <div style="font-size:.72rem;color:var(--muted);">lucia@uashi.com.br</div>
+                  </div>
+                </div>
+              </td>
+              <td>Osasco</td>
+              <td>Osasco · SP</td>
+              <td>980</td>
+              <td>R$ 28.028</td>
+              <td style="color:var(--red);">R$ 0 ⚠</td>
+              <td><span class="tag tag-red">Suspenso</span></td>
+              <td>
+                <div style="display:flex;gap:12px;">
+                  <a href="#" class="action-link">Ver</a>
+                  <a href="#" class="action-link">Editar</a>
+                  <a href="#" class="action-link" style="color:#22c55e;">Reativar</a>
+                </div>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <div style="display:flex;align-items:center;gap:10px;">
+                  <div style="width:32px;height:32px;border-radius:8px;background:var(--gold);display:flex;align-items:center;justify-content:center;font-size:.75rem;font-weight:700;color:#0A0A0A;flex-shrink:0;">RT</div>
+                  <div>
+                    <div style="font-weight:600;">Rafael Torres</div>
+                    <div style="font-size:.72rem;color:var(--muted);">rafael@uashi.com.br</div>
+                  </div>
+                </div>
+              </td>
+              <td>Guarulhos</td>
+              <td>Guarulhos · SP</td>
+              <td>2.120</td>
+              <td>R$ 60.620</td>
+              <td style="color:var(--gold);">R$ 4.850</td>
+              <td><span class="tag tag-green">Ativo</span></td>
+              <td>
+                <div style="display:flex;gap:12px;">
+                  <a href="#" class="action-link">Ver</a>
+                  <a href="#" class="action-link">Editar</a>
+                  <a href="#" class="action-link danger">Suspender</a>
+                </div>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <div style="display:flex;align-items:center;gap:10px;">
+                  <div style="width:32px;height:32px;border-radius:8px;background:#16a34a;display:flex;align-items:center;justify-content:center;font-size:.75rem;font-weight:700;flex-shrink:0;">MO</div>
+                  <div>
+                    <div style="font-weight:600;">Marina Oliveira</div>
+                    <div style="font-size:.72rem;color:var(--muted);">marina@uashi.com.br</div>
+                  </div>
+                </div>
+              </td>
+              <td>Campinas Centro</td>
+              <td>Campinas · SP</td>
+              <td>1.600</td>
+              <td>R$ 45.760</td>
+              <td style="color:var(--gold);">R$ 3.661</td>
+              <td><span class="tag tag-green">Ativo</span></td>
+              <td>
+                <div style="display:flex;gap:12px;">
+                  <a href="#" class="action-link">Ver</a>
+                  <a href="#" class="action-link">Editar</a>
+                  <a href="#" class="action-link danger">Suspender</a>
+                </div>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- NOVO FRANQUEADO FORM (hidden by default) -->
+      <div id="novo-franqueado" style="display:none;" class="card" style="margin-bottom:24px;">
+        <div class="card-header">
+          <span class="card-title">Novo Franqueado</span>
+          <button class="btn-icon" onclick="document.getElementById('novo-franqueado').style.display='none'">✕</button>
+        </div>
+        <div class="card-body">
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;">
+            <div class="form-group">
+              <label class="form-label">Nome completo</label>
+              <input class="form-input" type="text" placeholder="Ex: João Pereira" />
+            </div>
+            <div class="form-group">
+              <label class="form-label">E-mail</label>
+              <input class="form-input" type="email" placeholder="joao@email.com" />
+            </div>
+            <div class="form-group">
+              <label class="form-label">Nome da unidade</label>
+              <input class="form-input" type="text" placeholder="Ex: Uashi Pinheiros" />
+            </div>
+            <div class="form-group">
+              <label class="form-label">Cidade</label>
+              <input class="form-input" type="text" placeholder="Ex: São Paulo" />
+            </div>
+            <div class="form-group">
+              <label class="form-label">CPF / CNPJ</label>
+              <input class="form-input" type="text" placeholder="000.000.000-00" />
+            </div>
+            <div class="form-group">
+              <label class="form-label">Royalties (%)</label>
+              <input class="form-input" type="number" value="8" min="0" max="20" />
+            </div>
+          </div>
+          <div style="display:flex;gap:10px;margin-top:20px;">
+            <button class="btn-primary">Salvar franqueado</button>
+            <button class="btn-secondary" onclick="document.getElementById('novo-franqueado').style.display='none'">Cancelar</button>
+          </div>
+        </div>
+      </div>
+
+    </main>
+  </div>
+</div>
+</body>
+</html>

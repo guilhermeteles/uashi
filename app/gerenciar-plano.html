@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" /><meta name="viewport" content="width=device-width,initial-scale=1.0" />
+  <title>Gerenciar Plano — Uashi</title>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="./_shell.css" />
+  <style>
+    .invoice-row { display:flex;justify-content:space-between;align-items:center;padding:12px 0;border-bottom:1px solid rgba(255,255,255,.05); }
+    .invoice-row:last-child { border-bottom:none; }
+  </style>
+</head>
+<body>
+<div class="app-frame" style="max-width:390px;margin:0 auto;">
+  <div class="status-bar"><span class="status-time">09:41</span><div class="status-icons"><span>●●●</span><span>WiFi</span><span>🔋</span></div></div>
+  <div class="top-bar">
+    <a href="planos.html" class="top-bar-back">←</a>
+    <span class="top-bar-title">Gerenciar Plano</span>
+  </div>
+  <hr class="swoosh" />
+
+  <div class="app-content">
+    <div class="app-content-inner" style="display:flex;flex-direction:column;gap:16px;">
+
+      <!-- Plano atual -->
+      <div style="background:linear-gradient(135deg,rgba(245,168,0,.15),rgba(232,50,26,.08)),var(--surface);border:1px solid rgba(245,168,0,.3);border-radius:20px;padding:20px;">
+        <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:16px;">
+          <div>
+            <span class="tag tag-gold" style="margin-bottom:8px;display:inline-block;">Plano atual</span>
+            <div style="font-family:var(--font-display);font-size:1.8rem;color:var(--gold);line-height:1;">PRO · MOTORISTA</div>
+          </div>
+          <div style="text-align:right;">
+            <div style="font-family:var(--font-display);font-size:2rem;color:var(--cream);">R$&nbsp;149</div>
+            <div style="font-size:.72rem;color:var(--muted);">/mês</div>
+          </div>
+        </div>
+        <div style="background:rgba(0,0,0,.2);border-radius:10px;padding:10px 14px;display:flex;justify-content:space-between;">
+          <div style="font-size:.8rem;color:var(--muted);">Próxima cobrança</div>
+          <div style="font-size:.8rem;font-weight:700;color:var(--cream);">29/06/2025</div>
+        </div>
+      </div>
+
+      <!-- Uso do mês -->
+      <div class="card" style="padding:16px;">
+        <div style="font-size:.72rem;font-weight:600;color:var(--muted);text-transform:uppercase;letter-spacing:.08em;margin-bottom:12px;">Uso este mês (junho)</div>
+        <div style="display:flex;justify-content:space-between;font-size:.875rem;margin-bottom:6px;"><span style="color:var(--muted);">Lavagens realizadas</span><span style="font-weight:700;color:var(--cream);">14 de 30 disponíveis</span></div>
+        <div class="progress-track" style="margin-bottom:4px;"><div class="progress-fill" style="width:47%;background:linear-gradient(90deg,var(--red),var(--gold));"></div></div>
+        <div style="font-size:.72rem;color:var(--muted);">47% do mês utilizado</div>
+      </div>
+
+      <!-- Método de pagamento -->
+      <div class="card" style="padding:16px;">
+        <div style="font-size:.72rem;font-weight:600;color:var(--muted);text-transform:uppercase;letter-spacing:.08em;margin-bottom:12px;">Método de cobrança</div>
+        <div style="display:flex;align-items:center;gap:12px;">
+          <span style="font-size:1.6rem;">💳</span>
+          <div style="flex:1;"><div style="font-size:.875rem;font-weight:600;color:var(--cream);">Mastercard •••• 4821</div><div style="font-size:.75rem;color:var(--muted);">Vence 04/28</div></div>
+          <button onclick="alert('(protótipo) Alterar cartão')" style="background:var(--surface-2);border:none;border-radius:8px;padding:8px 12px;color:var(--muted);font-size:.75rem;cursor:pointer;">Alterar</button>
+        </div>
+      </div>
+
+      <!-- Histórico de faturas -->
+      <div class="card" style="padding:16px;">
+        <div style="font-size:.72rem;font-weight:600;color:var(--muted);text-transform:uppercase;letter-spacing:.08em;margin-bottom:4px;">Faturas</div>
+        <div class="invoice-row">
+          <div><div style="font-size:.875rem;color:var(--cream);">Junho 2025</div><div style="font-size:.72rem;color:var(--muted);">Plano Pro</div></div>
+          <div style="display:flex;align-items:center;gap:8px;"><span class="tag tag-green">Pago</span><span style="font-weight:600;color:var(--cream);">R$ 149</span></div>
+        </div>
+        <div class="invoice-row">
+          <div><div style="font-size:.875rem;color:var(--cream);">Maio 2025</div><div style="font-size:.72rem;color:var(--muted);">Plano Pro</div></div>
+          <div style="display:flex;align-items:center;gap:8px;"><span class="tag tag-green">Pago</span><span style="font-weight:600;color:var(--cream);">R$ 149</span></div>
+        </div>
+        <div class="invoice-row">
+          <div><div style="font-size:.875rem;color:var(--cream);">Abril 2025</div><div style="font-size:.72rem;color:var(--muted);">Plano Básico</div></div>
+          <div style="display:flex;align-items:center;gap:8px;"><span class="tag tag-green">Pago</span><span style="font-weight:600;color:var(--cream);">R$ 79</span></div>
+        </div>
+      </div>
+
+      <!-- Ações -->
+      <a href="planos.html" class="btn-secondary">Mudar de plano</a>
+      <button onclick="if(confirm('Tem certeza? Você perderá acesso ao plano no final do período pago.'))alert('(protótipo) Assinatura cancelada. Acesso até 29/06/2025.')" style="background:rgba(232,50,26,.08);border:1.5px solid rgba(232,50,26,.2);border-radius:12px;padding:14px;width:100%;color:var(--red);font-family:var(--font-body);font-size:.875rem;font-weight:700;cursor:pointer;text-transform:uppercase;letter-spacing:.04em;">
+        Cancelar assinatura
+      </button>
+
+    </div>
+  </div>
+
+  <nav class="tab-bar">
+    <a href="index.html" class="tab-item"><span class="tab-icon">🏠</span><span class="tab-label">Home</span></a>
+    <a href="mapa.html" class="tab-item"><span class="tab-icon">📍</span><span class="tab-label">Lojas</span></a>
+    <a href="qrcode.html" class="tab-qr"><div class="tab-qr-btn">🔲</div></a>
+    <a href="historico.html" class="tab-item"><span class="tab-icon">📋</span><span class="tab-label">Histórico</span></a>
+    <a href="conta.html" class="tab-item active"><span class="tab-icon">👤</span><span class="tab-label">Conta</span></a>
+  </nav>
+</div>
+</body></html>

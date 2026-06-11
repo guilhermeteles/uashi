@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" /><meta name="viewport" content="width=device-width,initial-scale=1.0" />
+  <title>Perfil — Admin Uashi</title>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="./_admin.css" />
+</head>
+<body>
+<div class="admin-layout">
+  <aside class="sidebar">
+    <div class="sidebar-logo"><div class="wordmark">UASHI</div><div class="swoosh"></div></div>
+    <div class="sidebar-profile">
+      <div class="sidebar-avatar">A</div>
+      <div><div class="sidebar-name">Admin Matriz</div><div class="sidebar-role">🏢 Matriz</div></div>
+    </div>
+    <nav class="sidebar-nav">
+      <div class="nav-section-label">Principal</div>
+      <a href="index.html" class="nav-item"><span class="nav-icon">📊</span>Dashboard</a>
+      <a href="franqueados.html" class="nav-item"><span class="nav-icon">🏪</span>Franqueados</a>
+      <a href="planos-precos.html" class="nav-item"><span class="nav-icon">💳</span>Planos & Preços</a>
+      <a href="promocoes.html" class="nav-item"><span class="nav-icon">📣</span>Promoções</a>
+      <div class="nav-section-label">Suporte</div>
+      <a href="alertas.html" class="nav-item"><span class="nav-icon">🚨</span>Alertas</a>
+      <a href="chamados.html" class="nav-item"><span class="nav-icon">💬</span>Chamados</a>
+      <a href="relatorios.html" class="nav-item"><span class="nav-icon">📄</span>Relatórios</a>
+      <div class="nav-section-label">Conta</div>
+      <a href="perfil-admin.html" class="nav-item active"><span class="nav-icon">👤</span>Perfil</a>
+    </nav>
+    <div class="sidebar-footer"><a href="login.html" style="font-size:.75rem;color:var(--muted);text-decoration:none;">← Sair</a></div>
+  </aside>
+
+  <div class="main-area">
+    <div class="topbar">
+      <span class="topbar-title">Perfil & Configurações</span>
+      <div class="topbar-actions">
+        <button class="topbar-btn">🔔<span class="topbar-dot"></span></button>
+        <div style="width:32px;height:32px;border-radius:8px;background:var(--red);display:flex;align-items:center;justify-content:center;font-family:var(--font-display);color:#fff;font-size:.9rem;">A</div>
+      </div>
+    </div>
+    <hr class="swoosh" />
+
+    <div class="page-content">
+
+      <div style="display:grid;grid-template-columns:280px 1fr;gap:20px;">
+
+        <!-- Coluna esquerda: avatar + info rápida -->
+        <div style="display:flex;flex-direction:column;gap:16px;">
+          <div class="card" style="padding:24px;text-align:center;">
+            <div style="width:72px;height:72px;border-radius:18px;background:var(--red);display:flex;align-items:center;justify-content:center;font-family:var(--font-display);font-size:2rem;color:#fff;margin:0 auto 12px;position:relative;cursor:pointer;" onclick="alert('(protótipo) Alterar foto de perfil')">
+              A
+              <div style="position:absolute;bottom:-4px;right:-4px;width:22px;height:22px;background:var(--blue);border-radius:6px;display:flex;align-items:center;justify-content:center;font-size:.65rem;">✏️</div>
+            </div>
+            <div style="font-family:var(--font-display);font-size:1.2rem;color:var(--cream);">ADMIN MATRIZ</div>
+            <div style="font-size:.75rem;color:var(--muted);margin-top:2px;">admin@uashi.com.br</div>
+            <div style="margin-top:10px;"><span class="tag tag-red">🏢 Acesso total</span></div>
+          </div>
+
+          <div class="card" style="padding:16px;">
+            <div style="font-size:.72rem;font-weight:600;color:var(--muted);text-transform:uppercase;letter-spacing:.08em;margin-bottom:10px;">Atividade recente</div>
+            <div style="display:flex;flex-direction:column;gap:8px;">
+              <div style="font-size:.78rem;color:var(--muted);">Último login: <span style="color:var(--cream);">Hoje 08:42</span></div>
+              <div style="font-size:.78rem;color:var(--muted);">IP: <span style="color:var(--cream);">177.38.xxx.xxx</span></div>
+              <div style="font-size:.78rem;color:var(--muted);">Dispositivo: <span style="color:var(--cream);">Chrome · macOS</span></div>
+            </div>
+          </div>
+
+          <div class="card" style="padding:16px;">
+            <div style="font-size:.72rem;font-weight:600;color:var(--muted);text-transform:uppercase;letter-spacing:.08em;margin-bottom:10px;">Sessões ativas</div>
+            <div style="display:flex;flex-direction:column;gap:8px;">
+              <div style="display:flex;justify-content:space-between;align-items:center;">
+                <div>
+                  <div style="font-size:.78rem;color:var(--cream);">Chrome · macOS</div>
+                  <div style="font-size:.7rem;color:var(--muted);">Esta sessão</div>
+                </div>
+                <span class="tag tag-green" style="font-size:.65rem;">Atual</span>
+              </div>
+              <div style="display:flex;justify-content:space-between;align-items:center;">
+                <div>
+                  <div style="font-size:.78rem;color:var(--cream);">Safari · iPhone</div>
+                  <div style="font-size:.7rem;color:var(--muted);">Ontem 22:10</div>
+                </div>
+                <button class="btn-icon" onclick="alert('(protótipo) Encerrar sessão do iPhone')" style="font-size:.7rem;">✕</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Coluna direita: formulários -->
+        <div style="display:flex;flex-direction:column;gap:16px;">
+
+          <!-- Dados pessoais -->
+          <div class="card">
+            <div class="card-header"><span class="card-title">DADOS PESSOAIS</span></div>
+            <div class="card-body">
+              <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:14px;">
+                <div class="form-group">
+                  <label class="form-label">Nome completo</label>
+                  <input class="form-input" type="text" value="Admin Principal" />
+                </div>
+                <div class="form-group">
+                  <label class="form-label">Cargo</label>
+                  <input class="form-input" type="text" value="Gestor Nacional" />
+                </div>
+                <div class="form-group">
+                  <label class="form-label">E-mail</label>
+                  <input class="form-input" type="email" value="admin@uashi.com.br" />
+                </div>
+                <div class="form-group">
+                  <label class="form-label">Telefone</label>
+                  <input class="form-input" type="text" value="(11) 99999-0000" />
+                </div>
+              </div>
+              <button class="btn-primary" onclick="alert('(protótipo) Dados salvos!')">Salvar alterações</button>
+            </div>
+          </div>
+
+          <!-- Segurança -->
+          <div class="card">
+            <div class="card-header"><span class="card-title">SEGURANÇA</span></div>
+            <div class="card-body" style="display:flex;flex-direction:column;gap:14px;">
+              <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:14px;">
+                <div class="form-group">
+                  <label class="form-label">Senha atual</label>
+                  <input class="form-input" type="password" placeholder="••••••••" />
+                </div>
+                <div class="form-group">
+                  <label class="form-label">Nova senha</label>
+                  <input class="form-input" type="password" placeholder="••••••••" />
+                </div>
+                <div class="form-group">
+                  <label class="form-label">Confirmar</label>
+                  <input class="form-input" type="password" placeholder="••••••••" />
+                </div>
+              </div>
+              <div style="display:flex;align-items:center;justify-content:space-between;padding:12px;background:var(--surface-2);border-radius:10px;">
+                <div>
+                  <div style="font-size:.85rem;font-weight:600;color:var(--cream);">Autenticação de 2 fatores (2FA)</div>
+                  <div style="font-size:.75rem;color:var(--muted);">Código via SMS para cada login</div>
+                </div>
+                <label style="display:flex;align-items:center;gap:6px;cursor:pointer;">
+                  <div style="width:44px;height:24px;background:#22c55e;border-radius:12px;position:relative;">
+                    <div style="width:18px;height:18px;background:#fff;border-radius:50%;position:absolute;top:3px;right:3px;"></div>
+                  </div>
+                  <span style="font-size:.75rem;color:#22c55e;font-weight:600;">Ativo</span>
+                </label>
+              </div>
+              <div>
+                <button class="btn-primary" onclick="alert('(protótipo) Senha alterada com sucesso!')">Alterar senha</button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Notificações -->
+          <div class="card">
+            <div class="card-header"><span class="card-title">PREFERÊNCIAS DE NOTIFICAÇÃO</span></div>
+            <div class="card-body" style="display:flex;flex-direction:column;gap:12px;">
+              <div style="display:flex;justify-content:space-between;align-items:center;padding:10px 12px;background:var(--surface-2);border-radius:8px;">
+                <div>
+                  <div style="font-size:.85rem;color:var(--cream);">Alertas críticos</div>
+                  <div style="font-size:.72rem;color:var(--muted);">QR duplicado, fraudes, problemas</div>
+                </div>
+                <label style="cursor:pointer;"><div style="width:44px;height:24px;background:#22c55e;border-radius:12px;position:relative;"><div style="width:18px;height:18px;background:#fff;border-radius:50%;position:absolute;top:3px;right:3px;"></div></div></label>
+              </div>
+              <div style="display:flex;justify-content:space-between;align-items:center;padding:10px 12px;background:var(--surface-2);border-radius:8px;">
+                <div>
+                  <div style="font-size:.85rem;color:var(--cream);">Novos chamados</div>
+                  <div style="font-size:.72rem;color:var(--muted);">Abertura e respostas</div>
+                </div>
+                <label style="cursor:pointer;"><div style="width:44px;height:24px;background:#22c55e;border-radius:12px;position:relative;"><div style="width:18px;height:18px;background:#fff;border-radius:50%;position:absolute;top:3px;right:3px;"></div></div></label>
+              </div>
+              <div style="display:flex;justify-content:space-between;align-items:center;padding:10px 12px;background:var(--surface-2);border-radius:8px;">
+                <div>
+                  <div style="font-size:.85rem;color:var(--cream);">Relatório semanal</div>
+                  <div style="font-size:.72rem;color:var(--muted);">Resumo toda segunda-feira</div>
+                </div>
+                <label style="cursor:pointer;"><div style="width:44px;height:24px;background:var(--surface);border:1px solid rgba(255,255,255,.15);border-radius:12px;position:relative;"><div style="width:18px;height:18px;background:var(--muted);border-radius:50%;position:absolute;top:3px;left:3px;"></div></div></label>
+              </div>
+              <div style="display:flex;justify-content:space-between;align-items:center;padding:10px 12px;background:var(--surface-2);border-radius:8px;">
+                <div>
+                  <div style="font-size:.85rem;color:var(--cream);">Royalties pendentes</div>
+                  <div style="font-size:.72rem;color:var(--muted);">Alertas de inadimplência</div>
+                </div>
+                <label style="cursor:pointer;"><div style="width:44px;height:24px;background:#22c55e;border-radius:12px;position:relative;"><div style="width:18px;height:18px;background:#fff;border-radius:50%;position:absolute;top:3px;right:3px;"></div></div></label>
+              </div>
+              <div style="margin-top:4px;">
+                <button class="btn-primary" onclick="alert('(protótipo) Preferências salvas!')">Salvar preferências</button>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</body></html>

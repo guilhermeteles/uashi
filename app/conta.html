@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" /><meta name="viewport" content="width=device-width,initial-scale=1.0" />
+  <title>Minha Conta — Uashi</title>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="./_shell.css" />
+</head>
+<body>
+<div class="app-frame" style="max-width:390px;margin:0 auto;">
+  <div class="status-bar"><span class="status-time">09:41</span><div class="status-icons"><span>●●●</span><span>WiFi</span><span>🔋</span></div></div>
+  <div class="top-bar" style="justify-content:space-between;">
+    <span class="top-bar-title">Minha Conta</span>
+    <a href="suporte.html" class="top-bar-action">❓</a>
+  </div>
+  <hr class="swoosh" />
+
+  <div class="app-content">
+    <div class="app-content-inner" style="display:flex;flex-direction:column;gap:16px;">
+
+      <!-- Profile card -->
+      <div class="card" style="padding:20px;display:flex;gap:16px;align-items:center;">
+        <div style="width:60px;height:60px;border-radius:20px;background:var(--red);display:flex;align-items:center;justify-content:center;font-family:var(--font-display);font-size:1.6rem;color:#fff;flex-shrink:0;">C</div>
+        <div style="flex:1;">
+          <div style="font-weight:700;font-size:1rem;color:var(--cream);margin-bottom:2px;">Carlos Mendes</div>
+          <div style="font-size:.8rem;color:var(--muted);margin-bottom:6px;">carlos@email.com · (11) 99999-0000</div>
+          <div style="display:flex;gap:6px;">
+            <span class="tag tag-gold">Plano Pro</span>
+            <span class="tag tag-gold">Nível Ouro</span>
+          </div>
+        </div>
+        <a href="perfil.html" style="color:var(--muted);text-decoration:none;font-size:1.1rem;">✏️</a>
+      </div>
+
+      <!-- Menu -->
+      <div class="card" style="overflow:hidden;">
+        <a href="veiculos.html" class="list-row">
+          <div class="list-row-icon" style="background:rgba(26,111,212,.12);">🚗</div>
+          <div style="flex:1;">
+            <div style="font-size:.875rem;font-weight:600;color:var(--cream);">Meus veículos</div>
+            <div style="font-size:.75rem;color:var(--muted);">2 veículos cadastrados</div>
+          </div>
+          <span style="color:var(--muted);">›</span>
+        </a>
+        <a href="dependentes.html" class="list-row">
+          <div class="list-row-icon" style="background:rgba(245,168,0,.12);">👨‍👩‍👦</div>
+          <div style="flex:1;">
+            <div style="font-size:.875rem;font-weight:600;color:var(--cream);">Dependentes</div>
+            <div style="font-size:.75rem;color:var(--muted);">1 dependente ativo</div>
+          </div>
+          <span style="color:var(--muted);">›</span>
+        </a>
+        <a href="planos.html" class="list-row">
+          <div class="list-row-icon" style="background:rgba(232,50,26,.12);">♾️</div>
+          <div style="flex:1;">
+            <div style="font-size:.875rem;font-weight:600;color:var(--cream);">Plano e assinatura</div>
+            <div style="font-size:.75rem;color:var(--muted);">Pro · Renova em 18 dias</div>
+          </div>
+          <span style="color:var(--muted);">›</span>
+        </a>
+        <a href="creditos.html" class="list-row">
+          <div class="list-row-icon" style="background:rgba(245,168,0,.12);">💳</div>
+          <div style="flex:1;">
+            <div style="font-size:.875rem;font-weight:600;color:var(--cream);">Créditos e pagamentos</div>
+            <div style="font-size:.75rem;color:var(--muted);">Saldo: R$ 120,00</div>
+          </div>
+          <span style="color:var(--muted);">›</span>
+        </a>
+        <a href="fidelidade.html" class="list-row">
+          <div class="list-row-icon" style="background:rgba(245,168,0,.12);">⭐</div>
+          <div style="flex:1;">
+            <div style="font-size:.875rem;font-weight:600;color:var(--cream);">Fidelidade</div>
+            <div style="font-size:.75rem;color:var(--muted);">Nível Ouro · 650 pts</div>
+          </div>
+          <span style="color:var(--muted);">›</span>
+        </a>
+      </div>
+
+      <div class="card" style="overflow:hidden;">
+        <a href="notificacoes-config.html" class="list-row">
+          <div class="list-row-icon" style="background:rgba(26,111,212,.12);">🔔</div>
+          <div style="flex:1;"><div style="font-size:.875rem;font-weight:600;color:var(--cream);">Notificações</div><div style="font-size:.75rem;color:var(--muted);">Push e preferências</div></div>
+          <span style="color:var(--muted);">›</span>
+        </a>
+        <a href="suporte.html" class="list-row">
+          <div class="list-row-icon" style="background:rgba(34,197,94,.12);">💬</div>
+          <div style="flex:1;"><div style="font-size:.875rem;font-weight:600;color:var(--cream);">Suporte</div><div style="font-size:.75rem;color:var(--muted);">Chamados e ajuda</div></div>
+          <span style="color:var(--muted);">›</span>
+        </a>
+        <a href="#" class="list-row">
+          <div class="list-row-icon" style="background:rgba(107,107,107,.12);">📄</div>
+          <div style="flex:1;"><div style="font-size:.875rem;font-weight:600;color:var(--cream);">Termos e privacidade</div></div>
+          <span style="color:var(--muted);">›</span>
+        </a>
+      </div>
+
+      <button onclick="if(confirm('Sair da conta?'))window.location.href='login.html'" style="background:rgba(232,50,26,.08);border:1.5px solid rgba(232,50,26,.2);border-radius:12px;padding:14px;width:100%;color:var(--red);font-family:var(--font-body);font-size:.875rem;font-weight:700;cursor:pointer;text-transform:uppercase;letter-spacing:.04em;">
+        Sair da conta
+      </button>
+
+      <p style="text-align:center;font-size:.7rem;color:rgba(107,107,107,.5);">Uashi v1.0.0 · Protótipo</p>
+
+    </div>
+  </div>
+
+  <nav class="tab-bar">
+    <a href="index.html" class="tab-item"><span class="tab-icon">🏠</span><span class="tab-label">Home</span></a>
+    <a href="mapa.html" class="tab-item"><span class="tab-icon">📍</span><span class="tab-label">Lojas</span></a>
+    <a href="qrcode.html" class="tab-qr"><div class="tab-qr-btn">🔲</div></a>
+    <a href="historico.html" class="tab-item"><span class="tab-icon">📋</span><span class="tab-label">Histórico</span></a>
+    <a href="conta.html" class="tab-item active"><span class="tab-icon">👤</span><span class="tab-label">Conta</span></a>
+  </nav>
+</div>
+</body></html>

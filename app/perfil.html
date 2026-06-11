@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" /><meta name="viewport" content="width=device-width,initial-scale=1.0" />
+  <title>Perfil — Uashi</title>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="./_shell.css" />
+</head>
+<body>
+<div class="app-frame" style="max-width:390px;margin:0 auto;">
+  <div class="status-bar"><span class="status-time">09:41</span><div class="status-icons"><span>●●●</span><span>WiFi</span><span>🔋</span></div></div>
+  <div class="top-bar">
+    <a href="conta.html" class="top-bar-back">←</a>
+    <span class="top-bar-title">Editar Perfil</span>
+    <button class="top-bar-action" onclick="saveProfile()" style="font-size:.75rem;color:var(--gold);font-weight:700;">Salvar</button>
+  </div>
+  <hr class="swoosh" />
+
+  <div class="app-content">
+    <div class="app-content-inner" style="display:flex;flex-direction:column;gap:16px;">
+
+      <!-- Avatar -->
+      <div style="display:flex;flex-direction:column;align-items:center;gap:10px;padding:20px 0;">
+        <div style="position:relative;">
+          <div style="width:80px;height:80px;border-radius:24px;background:var(--red);display:flex;align-items:center;justify-content:center;font-family:var(--font-display);font-size:2rem;color:#fff;">C</div>
+          <button onclick="alert('(protótipo) Alterar foto')" style="position:absolute;bottom:-4px;right:-4px;width:28px;height:28px;border-radius:8px;background:var(--surface-2);border:2px solid var(--bg);display:flex;align-items:center;justify-content:center;cursor:pointer;font-size:.85rem;">✏️</button>
+        </div>
+        <div style="font-size:.75rem;color:var(--muted);">Toque para alterar a foto</div>
+      </div>
+
+      <!-- Form -->
+      <div style="display:flex;flex-direction:column;gap:14px;">
+        <div class="form-group">
+          <label class="form-label">Nome completo</label>
+          <input type="text" class="form-input" value="Carlos Mendes" />
+        </div>
+        <div class="form-group">
+          <label class="form-label">E-mail</label>
+          <input type="email" class="form-input" value="carlos@email.com" />
+        </div>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;">
+          <div class="form-group">
+            <label class="form-label">CPF</label>
+            <input type="text" class="form-input" value="123.456.789-00" disabled style="opacity:.5;cursor:not-allowed;" />
+          </div>
+          <div class="form-group">
+            <label class="form-label">Telefone</label>
+            <input type="tel" class="form-input" value="(11) 99999-0000" />
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="form-label">Tipo de usuário</label>
+          <select class="form-input">
+            <option>Motorista de app</option>
+            <option>Uso pessoal</option>
+            <option>Frota / empresa</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label class="form-label">Plataformas de app</label>
+          <div style="display:flex;flex-wrap:wrap;gap:8px;margin-top:2px;">
+            <span style="background:rgba(245,168,0,.12);border:1.5px solid rgba(245,168,0,.3);border-radius:99px;padding:5px 12px;font-size:.75rem;color:var(--gold);">Uber ✓</span>
+            <span style="background:rgba(245,168,0,.12);border:1.5px solid rgba(245,168,0,.3);border-radius:99px;padding:5px 12px;font-size:.75rem;color:var(--gold);">99 ✓</span>
+            <button onclick="alert('(protótipo) Adicionar plataforma')" style="background:var(--surface-2);border:1.5px dashed rgba(255,255,255,.15);border-radius:99px;padding:5px 12px;font-size:.75rem;color:var(--muted);cursor:pointer;">+ Adicionar</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Alterar senha -->
+      <div class="card" style="padding:16px;">
+        <div style="font-size:.72rem;font-weight:600;color:var(--muted);text-transform:uppercase;letter-spacing:.08em;margin-bottom:12px;">Segurança</div>
+        <div style="display:flex;flex-direction:column;gap:10px;">
+          <div class="form-group"><label class="form-label">Senha atual</label><input type="password" class="form-input" placeholder="••••••••" /></div>
+          <div class="form-group"><label class="form-label">Nova senha</label><input type="password" class="form-input" placeholder="••••••••" /></div>
+        </div>
+      </div>
+
+      <button class="btn-primary" onclick="saveProfile()" style="border-radius:14px;">Salvar alterações</button>
+      <button onclick="if(confirm('Excluir conta permanentemente? Essa ação não pode ser desfeita.'))alert('(protótipo) Conta marcada para exclusão.')" style="background:transparent;border:none;color:var(--muted);font-size:.8rem;text-decoration:underline;cursor:pointer;padding:4px 0 8px;">Excluir minha conta</button>
+
+    </div>
+  </div>
+
+  <nav class="tab-bar">
+    <a href="index.html" class="tab-item"><span class="tab-icon">🏠</span><span class="tab-label">Home</span></a>
+    <a href="mapa.html" class="tab-item"><span class="tab-icon">📍</span><span class="tab-label">Lojas</span></a>
+    <a href="qrcode.html" class="tab-qr"><div class="tab-qr-btn">🔲</div></a>
+    <a href="historico.html" class="tab-item"><span class="tab-icon">📋</span><span class="tab-label">Histórico</span></a>
+    <a href="conta.html" class="tab-item active"><span class="tab-icon">👤</span><span class="tab-label">Conta</span></a>
+  </nav>
+</div>
+<script>
+  function saveProfile(){ alert('(protótipo) Perfil atualizado com sucesso!'); }
+</script>
+</body></html>

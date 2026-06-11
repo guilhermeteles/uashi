@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" /><meta name="viewport" content="width=device-width,initial-scale=1.0" />
+  <title>Meus Veículos — Uashi</title>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="./_admin.css" />
+</head>
+<body>
+<div class="admin-layout">
+  <aside class="sidebar">
+    <div class="sidebar-logo"><div class="wordmark">UASHI</div><div class="swoosh"></div></div>
+    <div class="sidebar-profile">
+      <div class="sidebar-avatar" style="background:var(--red);">C</div>
+      <div><div class="sidebar-name">Carlos Mendes</div><div class="sidebar-role">👤 Usuário · Plano Pro</div></div>
+    </div>
+    <nav class="sidebar-nav">
+      <div class="nav-section-label">Minha conta</div>
+      <a href="usuario.html" class="nav-item"><span class="nav-icon">📊</span>Resumo</a>
+      <a href="usuario-veiculos.html" class="nav-item active"><span class="nav-icon">🚗</span>Meus veículos</a>
+      <a href="usuario-dependentes.html" class="nav-item"><span class="nav-icon">👨‍👩‍👦</span>Dependentes</a>
+      <a href="usuario-faturas.html" class="nav-item"><span class="nav-icon">📄</span>Faturas</a>
+      <a href="usuario-chamados.html" class="nav-item"><span class="nav-icon">💬</span>Chamados</a>
+      <div class="nav-section-label">Conta</div>
+      <a href="perfil-admin.html" class="nav-item"><span class="nav-icon">👤</span>Perfil</a>
+    </nav>
+    <div class="sidebar-footer">
+      <a href="../app/index.html" style="font-size:.75rem;color:var(--blue);text-decoration:none;">← Voltar ao app</a>
+    </div>
+  </aside>
+
+  <div class="main-area">
+    <div class="topbar">
+      <span class="topbar-title">Meus Veículos</span>
+      <div class="topbar-actions">
+        <button class="topbar-btn">🔔</button>
+        <div style="width:32px;height:32px;border-radius:8px;background:var(--red);display:flex;align-items:center;justify-content:center;font-family:var(--font-display);color:#fff;font-size:.9rem;">C</div>
+      </div>
+    </div>
+    <hr class="swoosh" />
+
+    <div class="page-content">
+      <div class="page-header">
+        <div>
+          <h1>MEUS VEÍCULOS</h1>
+          <div style="font-size:.8rem;color:var(--muted);">2 veículos cadastrados · Plano Pro permite até 3</div>
+        </div>
+        <button class="btn-primary" onclick="document.getElementById('add-modal').style.display='flex'">+ Adicionar veículo</button>
+      </div>
+
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:20px;">
+
+        <!-- Veículo principal -->
+        <div class="card" style="padding:20px;border-color:rgba(245,168,0,.3);">
+          <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:16px;">
+            <div>
+              <span class="tag tag-gold" style="margin-bottom:8px;display:inline-block;">Principal ⭐</span>
+              <div style="font-family:var(--font-display);font-size:1.5rem;color:var(--cream);">HONDA HR-V</div>
+              <div style="font-size:.8rem;color:var(--muted);margin-top:2px;">Placa: ABC-1234 · Cinza · 2022</div>
+            </div>
+            <div style="font-size:2rem;">🚙</div>
+          </div>
+          <div style="display:flex;gap:12px;font-size:.8rem;color:var(--muted);margin-bottom:16px;">
+            <div><span style="color:var(--cream);font-weight:700;">14</span> lavagens este mês</div>
+            <div><span style="color:var(--gold);font-weight:700;">650</span> pts acumulados</div>
+          </div>
+          <div style="display:flex;gap:8px;">
+            <button class="btn-secondary" style="flex:1;font-size:.72rem;" onclick="alert('(protótipo) Editar veículo')">Editar</button>
+            <button class="btn-secondary" style="font-size:.72rem;" onclick="alert('(protótipo) Ver histórico de lavagens')">📊 Histórico</button>
+          </div>
+        </div>
+
+        <!-- Veículo secundário -->
+        <div class="card" style="padding:20px;">
+          <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:16px;">
+            <div>
+              <span class="tag tag-blue" style="margin-bottom:8px;display:inline-block;">Secundário</span>
+              <div style="font-family:var(--font-display);font-size:1.5rem;color:var(--cream);">VW GOL</div>
+              <div style="font-size:.8rem;color:var(--muted);margin-top:2px;">Placa: DEF-5678 · Branco · 2019</div>
+            </div>
+            <div style="font-size:2rem;">🚗</div>
+          </div>
+          <div style="display:flex;gap:12px;font-size:.8rem;color:var(--muted);margin-bottom:16px;">
+            <div><span style="color:var(--cream);font-weight:700;">3</span> lavagens este mês</div>
+            <div><span style="color:var(--gold);font-weight:700;">90</span> pts acumulados</div>
+          </div>
+          <div style="display:flex;gap:8px;">
+            <button class="btn-secondary" style="flex:1;font-size:.72rem;" onclick="alert('(protótipo) Editar veículo')">Editar</button>
+            <button class="btn-secondary" style="font-size:.72rem;" onclick="alert('(protótipo) Definir como principal')">⭐ Principal</button>
+            <button class="btn-icon" onclick="if(confirm('Remover VW Gol?')) alert('(protótipo) Veículo removido')">🗑</button>
+          </div>
+        </div>
+
+        <!-- Slot disponível -->
+        <div class="card" style="padding:20px;display:flex;align-items:center;justify-content:center;border-style:dashed;min-height:140px;cursor:pointer;" onclick="document.getElementById('add-modal').style.display='flex'">
+          <div style="text-align:center;color:var(--muted);">
+            <div style="font-size:2rem;margin-bottom:8px;">+</div>
+            <div style="font-size:.85rem;font-weight:600;">Adicionar 3º veículo</div>
+            <div style="font-size:.75rem;margin-top:4px;">Incluso no Plano Pro</div>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Histórico comparativo -->
+      <div class="card">
+        <div class="card-header"><span class="card-title">USO COMPARATIVO · JUNHO 2025</span></div>
+        <div class="card-body">
+          <div style="display:flex;flex-direction:column;gap:12px;">
+            <div>
+              <div style="display:flex;justify-content:space-between;font-size:.8rem;margin-bottom:4px;"><span style="color:var(--cream);">Honda HR-V</span><span style="color:var(--muted);">14 lavagens</span></div>
+              <div class="progress-track"><div class="progress-fill" style="width:47%;background:linear-gradient(90deg,var(--red),var(--gold));"></div></div>
+            </div>
+            <div>
+              <div style="display:flex;justify-content:space-between;font-size:.8rem;margin-bottom:4px;"><span style="color:var(--cream);">VW Gol</span><span style="color:var(--muted);">3 lavagens</span></div>
+              <div class="progress-track"><div class="progress-fill" style="width:10%;background:var(--blue);"></div></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Modal adicionar veículo -->
+<div id="add-modal" style="display:none;position:fixed;inset:0;background:rgba(0,0,0,.7);z-index:100;align-items:center;justify-content:center;">
+  <div style="background:var(--surface);border:1px solid rgba(255,255,255,.08);border-radius:16px;padding:24px;width:420px;max-width:calc(100vw - 40px);">
+    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:20px;">
+      <span style="font-family:var(--font-display);font-size:1.2rem;color:var(--cream);">ADICIONAR VEÍCULO</span>
+      <button onclick="document.getElementById('add-modal').style.display='none'" style="background:none;border:none;color:var(--muted);font-size:1.2rem;cursor:pointer;">✕</button>
+    </div>
+    <div style="display:flex;flex-direction:column;gap:14px;">
+      <div class="form-group"><label class="form-label">Placa</label><input class="form-input" type="text" placeholder="AAA-0000" /></div>
+      <div class="form-group"><label class="form-label">Modelo</label><input class="form-input" type="text" placeholder="Ex: Toyota Corolla 2023" /></div>
+      <div class="form-group">
+        <label class="form-label">Categoria</label>
+        <select class="form-input">
+          <option>Hatch / Sedan</option><option>SUV / Pickup</option><option>Van / Minivan</option><option>Moto</option>
+        </select>
+      </div>
+    </div>
+    <div style="display:flex;gap:10px;margin-top:20px;">
+      <button class="btn-primary" onclick="alert('(protótipo) Veículo adicionado!');document.getElementById('add-modal').style.display='none'">Salvar</button>
+      <button class="btn-secondary" onclick="document.getElementById('add-modal').style.display='none'">Cancelar</button>
+    </div>
+  </div>
+</div>
+</body></html>

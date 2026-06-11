@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" /><meta name="viewport" content="width=device-width,initial-scale=1.0" />
+  <title>Histórico — Uashi</title>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="./_shell.css" />
+  <style>
+    .filter-pill { background:var(--surface-2);border:1.5px solid rgba(255,255,255,.08);border-radius:99px;padding:6px 14px;font-size:.75rem;font-weight:600;color:var(--muted);cursor:pointer;white-space:nowrap;transition:all .2s; }
+    .filter-pill.active { border-color:var(--red);color:var(--red);background:rgba(232,50,26,.08); }
+    .wash-row { display:flex;align-items:center;gap:12px;padding:14px 0;border-bottom:1px solid rgba(255,255,255,.05);text-decoration:none; }
+    .wash-row:last-child { border-bottom:none; }
+    .wash-icon { width:44px;height:44px;border-radius:14px;display:flex;align-items:center;justify-content:center;font-size:1.2rem;flex-shrink:0; }
+  </style>
+</head>
+<body>
+<div class="app-frame" style="max-width:390px;margin:0 auto;">
+  <div class="status-bar"><span class="status-time">09:41</span><div class="status-icons"><span>●●●</span><span>WiFi</span><span>🔋</span></div></div>
+  <div class="top-bar">
+    <a href="index.html" class="top-bar-back">←</a>
+    <span class="top-bar-title">Histórico</span>
+    <button class="top-bar-action" onclick="alert('(protótipo) Exportar PDF')">⬇</button>
+  </div>
+  <hr class="swoosh" />
+
+  <div class="app-content">
+    <div class="app-content-inner" style="display:flex;flex-direction:column;gap:16px;">
+
+      <!-- Resumo do mês -->
+      <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:10px;">
+        <div style="background:var(--surface);border-radius:12px;padding:12px;text-align:center;border:1px solid rgba(255,255,255,.06);">
+          <div style="font-family:var(--font-display);font-size:1.6rem;color:var(--cream);">14</div>
+          <div style="font-size:.65rem;color:var(--muted);text-transform:uppercase;letter-spacing:.06em;">Lavagens</div>
+        </div>
+        <div style="background:var(--surface);border-radius:12px;padding:12px;text-align:center;border:1px solid rgba(255,255,255,.06);">
+          <div style="font-family:var(--font-display);font-size:1.6rem;color:var(--gold);">R$&nbsp;0</div>
+          <div style="font-size:.65rem;color:var(--muted);text-transform:uppercase;letter-spacing:.06em;">Gasto (plano)</div>
+        </div>
+        <div style="background:var(--surface);border-radius:12px;padding:12px;text-align:center;border:1px solid rgba(255,255,255,.06);">
+          <div style="font-family:var(--font-display);font-size:1.6rem;color:#22c55e;">350</div>
+          <div style="font-size:.65rem;color:var(--muted);text-transform:uppercase;letter-spacing:.06em;">Pontos</div>
+        </div>
+      </div>
+
+      <!-- Filtros -->
+      <div style="display:flex;gap:8px;overflow-x:auto;padding-bottom:4px;-webkit-overflow-scrolling:touch;">
+        <button class="filter-pill active" onclick="filterWash(this,'all')">Todas</button>
+        <button class="filter-pill" onclick="filterWash(this,'simples')">Simples</button>
+        <button class="filter-pill" onclick="filterWash(this,'completa')">Completa</button>
+        <button class="filter-pill" onclick="filterWash(this,'premium')">Premium</button>
+      </div>
+
+      <!-- Lista -->
+      <div>
+        <!-- Junho 2025 -->
+        <div style="font-size:.72rem;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:.08em;padding:8px 0 4px;">Junho 2025</div>
+
+        <a href="detalhe-lavagem.html" class="wash-row">
+          <div class="wash-icon" style="background:rgba(34,197,94,.1);">✅</div>
+          <div style="flex:1;">
+            <div style="font-size:.875rem;font-weight:600;color:var(--cream);">Lavagem Completa</div>
+            <div style="font-size:.75rem;color:var(--muted);">Hoje, 08:15 · Mooca · Honda HR-V</div>
+          </div>
+          <div style="text-align:right;">
+            <div style="font-size:.75rem;color:var(--muted);">Plano Pro</div>
+            <div style="font-size:.7rem;color:#22c55e;">+25 pts</div>
+          </div>
+        </a>
+        <a href="detalhe-lavagem.html" class="wash-row">
+          <div class="wash-icon" style="background:rgba(34,197,94,.1);">✅</div>
+          <div style="flex:1;">
+            <div style="font-size:.875rem;font-weight:600;color:var(--cream);">Lavagem Completa</div>
+            <div style="font-size:.75rem;color:var(--muted);">Ontem, 07:50 · Tatuapé · Honda HR-V</div>
+          </div>
+          <div style="text-align:right;">
+            <div style="font-size:.75rem;color:var(--muted);">Plano Pro</div>
+            <div style="font-size:.7rem;color:#22c55e;">+25 pts</div>
+          </div>
+        </a>
+        <a href="detalhe-lavagem.html" class="wash-row">
+          <div class="wash-icon" style="background:rgba(26,111,212,.1);">💎</div>
+          <div style="flex:1;">
+            <div style="font-size:.875rem;font-weight:600;color:var(--cream);">Lavagem Premium</div>
+            <div style="font-size:.75rem;color:var(--muted);">09/06 · 06:40 · Mooca · Honda HR-V</div>
+          </div>
+          <div style="text-align:right;">
+            <div style="font-size:.75rem;color:var(--muted);">Plano Pro</div>
+            <div style="font-size:.7rem;color:#22c55e;">+35 pts</div>
+          </div>
+        </a>
+        <a href="detalhe-lavagem.html" class="wash-row">
+          <div class="wash-icon" style="background:rgba(34,197,94,.1);">✅</div>
+          <div style="flex:1;">
+            <div style="font-size:.875rem;font-weight:600;color:var(--cream);">Lavagem Completa</div>
+            <div style="font-size:.75rem;color:var(--muted);">08/06 · 08:05 · Santo André · HR-V</div>
+          </div>
+          <div style="text-align:right;">
+            <div style="font-size:.75rem;color:var(--muted);">Plano Pro</div>
+            <div style="font-size:.7rem;color:#22c55e;">+25 pts</div>
+          </div>
+        </a>
+        <a href="detalhe-lavagem.html" class="wash-row">
+          <div class="wash-icon" style="background:rgba(34,197,94,.1);">✅</div>
+          <div style="flex:1;">
+            <div style="font-size:.875rem;font-weight:600;color:var(--cream);">Lavagem Simples</div>
+            <div style="font-size:.75rem;color:var(--muted);">07/06 · 08:20 · Osasco · VW Gol</div>
+          </div>
+          <div style="text-align:right;">
+            <div style="font-size:.75rem;color:var(--muted);">R$ 19,00</div>
+            <div style="font-size:.7rem;color:#22c55e;">+15 pts</div>
+          </div>
+        </a>
+
+        <!-- Maio 2025 -->
+        <div style="font-size:.72rem;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:.08em;padding:16px 0 4px;">Maio 2025</div>
+        <a href="detalhe-lavagem.html" class="wash-row">
+          <div class="wash-icon" style="background:rgba(34,197,94,.1);">✅</div>
+          <div style="flex:1;">
+            <div style="font-size:.875rem;font-weight:600;color:var(--cream);">Lavagem Completa</div>
+            <div style="font-size:.75rem;color:var(--muted);">31/05 · 07:55 · Mooca · Honda HR-V</div>
+          </div>
+          <div style="text-align:right;">
+            <div style="font-size:.75rem;color:var(--muted);">Plano Pro</div>
+            <div style="font-size:.7rem;color:#22c55e;">+25 pts</div>
+          </div>
+        </a>
+        <div style="text-align:center;padding:16px 0;">
+          <button style="background:none;border:1.5px solid rgba(255,255,255,.1);border-radius:99px;color:var(--muted);font-size:.8rem;padding:8px 20px;cursor:pointer;" onclick="alert('(protótipo) Carregando mais...')">Carregar mais</button>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <nav class="tab-bar">
+    <a href="index.html" class="tab-item"><span class="tab-icon">🏠</span><span class="tab-label">Home</span></a>
+    <a href="mapa.html" class="tab-item"><span class="tab-icon">📍</span><span class="tab-label">Lojas</span></a>
+    <a href="qrcode.html" class="tab-qr"><div class="tab-qr-btn">🔲</div></a>
+    <a href="historico.html" class="tab-item active"><span class="tab-icon">📋</span><span class="tab-label">Histórico</span></a>
+    <a href="conta.html" class="tab-item"><span class="tab-icon">👤</span><span class="tab-label">Conta</span></a>
+  </nav>
+</div>
+<script>
+  function filterWash(el, type) {
+    document.querySelectorAll('.filter-pill').forEach(p => p.classList.remove('active'));
+    el.classList.add('active');
+  }
+</script>
+</body></html>

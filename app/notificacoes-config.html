@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" /><meta name="viewport" content="width=device-width,initial-scale=1.0" />
+  <title>Config. Notificações — Uashi</title>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="./_shell.css" />
+  <style>
+    .toggle-sw { position:relative;width:44px;height:24px;cursor:pointer;flex-shrink:0; }
+    .toggle-sw input { opacity:0;width:0;height:0; }
+    .toggle-sw .sw { position:absolute;inset:0;background:rgba(255,255,255,.15);border-radius:12px;transition:.3s; }
+    .toggle-sw .sw::before { content:'';position:absolute;width:18px;height:18px;border-radius:50%;background:#fff;top:3px;left:3px;transition:.3s; }
+    .toggle-sw input:checked + .sw { background:var(--red); }
+    .toggle-sw input:checked + .sw::before { transform:translateX(20px); }
+    .config-row { display:flex;align-items:center;gap:12px;padding:14px 0;border-bottom:1px solid rgba(255,255,255,.05); }
+    .config-row:last-child { border-bottom:none; }
+  </style>
+</head>
+<body>
+<div class="app-frame" style="max-width:390px;margin:0 auto;">
+  <div class="status-bar"><span class="status-time">09:41</span><div class="status-icons"><span>●●●</span><span>WiFi</span><span>🔋</span></div></div>
+  <div class="top-bar">
+    <a href="conta.html" class="top-bar-back">←</a>
+    <span class="top-bar-title">Notificações</span>
+  </div>
+  <hr class="swoosh" />
+
+  <div class="app-content">
+    <div class="app-content-inner" style="display:flex;flex-direction:column;gap:16px;">
+
+      <!-- Push global -->
+      <div class="card" style="padding:16px;">
+        <div class="config-row" style="border-bottom:none;">
+          <div style="flex:1;">
+            <div style="font-weight:700;font-size:.95rem;color:var(--cream);margin-bottom:2px;">Notificações push</div>
+            <div style="font-size:.75rem;color:var(--muted);">Habilitar push no dispositivo</div>
+          </div>
+          <label class="toggle-sw"><input type="checkbox" checked /><span class="sw"></span></label>
+        </div>
+      </div>
+
+      <!-- Tipos -->
+      <div class="card" style="padding:16px;">
+        <div style="font-size:.72rem;font-weight:600;color:var(--muted);text-transform:uppercase;letter-spacing:.08em;margin-bottom:4px;">Tipos de notificação</div>
+
+        <div class="config-row">
+          <div style="font-size:1.2rem;width:32px;text-align:center;">✅</div>
+          <div style="flex:1;"><div style="font-size:.875rem;font-weight:600;color:var(--cream);">Lavagem concluída</div><div style="font-size:.72rem;color:var(--muted);">Confirmação após passar pela esteira</div></div>
+          <label class="toggle-sw"><input type="checkbox" checked /><span class="sw"></span></label>
+        </div>
+
+        <div class="config-row">
+          <div style="font-size:1.2rem;width:32px;text-align:center;">👨‍👩‍👦</div>
+          <div style="flex:1;"><div style="font-size:.875rem;font-weight:600;color:var(--cream);">Uso de dependente</div><div style="font-size:.72rem;color:var(--muted);">A cada lavagem dos seus dependentes</div></div>
+          <label class="toggle-sw"><input type="checkbox" checked /><span class="sw"></span></label>
+        </div>
+
+        <div class="config-row">
+          <div style="font-size:1.2rem;width:32px;text-align:center;">⛔</div>
+          <div style="flex:1;"><div style="font-size:.875rem;font-weight:600;color:var(--cream);">Limite atingido</div><div style="font-size:.72rem;color:var(--muted);">Quando dependente bate o limite</div></div>
+          <label class="toggle-sw"><input type="checkbox" checked /><span class="sw"></span></label>
+        </div>
+
+        <div class="config-row">
+          <div style="font-size:1.2rem;width:32px;text-align:center;">📣</div>
+          <div style="flex:1;"><div style="font-size:.875rem;font-weight:600;color:var(--cream);">Promoções relâmpago</div><div style="font-size:.72rem;color:var(--muted);">Geolocalizado quando você estiver próximo</div></div>
+          <label class="toggle-sw"><input type="checkbox" checked /><span class="sw"></span></label>
+        </div>
+
+        <div class="config-row">
+          <div style="font-size:1.2rem;width:32px;text-align:center;">💳</div>
+          <div style="flex:1;"><div style="font-size:.875rem;font-weight:600;color:var(--cream);">Créditos baixos</div><div style="font-size:.72rem;color:var(--muted);">Quando saldo ficar abaixo de R$ 30</div></div>
+          <label class="toggle-sw"><input type="checkbox" checked /><span class="sw"></span></label>
+        </div>
+
+        <div class="config-row">
+          <div style="font-size:1.2rem;width:32px;text-align:center;">🔄</div>
+          <div style="flex:1;"><div style="font-size:.875rem;font-weight:600;color:var(--cream);">Plano vencendo</div><div style="font-size:.72rem;color:var(--muted);">Aviso 7 dias antes da renovação</div></div>
+          <label class="toggle-sw"><input type="checkbox" checked /><span class="sw"></span></label>
+        </div>
+
+        <div class="config-row">
+          <div style="font-size:1.2rem;width:32px;text-align:center;">🎁</div>
+          <div style="flex:1;"><div style="font-size:.875rem;font-weight:600;color:var(--cream);">Novidades e marketing</div><div style="font-size:.72rem;color:var(--muted);">Lançamentos e comunicados gerais</div></div>
+          <label class="toggle-sw"><input type="checkbox" /><span class="sw"></span></label>
+        </div>
+      </div>
+
+      <div class="card" style="padding:14px 16px;">
+        <div style="font-size:.72rem;font-weight:600;color:var(--muted);text-transform:uppercase;letter-spacing:.08em;margin-bottom:8px;">Horário de silêncio</div>
+        <div style="display:flex;gap:12px;align-items:center;">
+          <div style="flex:1;">
+            <div style="font-size:.8rem;color:var(--muted);margin-bottom:4px;">Das</div>
+            <input type="time" class="form-input" value="22:00" style="font-size:.875rem;" />
+          </div>
+          <div style="padding-top:20px;color:var(--muted);">–</div>
+          <div style="flex:1;">
+            <div style="font-size:.8rem;color:var(--muted);margin-bottom:4px;">Às</div>
+            <input type="time" class="form-input" value="07:00" style="font-size:.875rem;" />
+          </div>
+        </div>
+      </div>
+
+      <a href="conta.html" class="btn-primary" style="border-radius:14px;">Salvar configurações</a>
+
+    </div>
+  </div>
+
+  <nav class="tab-bar">
+    <a href="index.html" class="tab-item"><span class="tab-icon">🏠</span><span class="tab-label">Home</span></a>
+    <a href="mapa.html" class="tab-item"><span class="tab-icon">📍</span><span class="tab-label">Lojas</span></a>
+    <a href="qrcode.html" class="tab-qr"><div class="tab-qr-btn">🔲</div></a>
+    <a href="historico.html" class="tab-item"><span class="tab-icon">📋</span><span class="tab-label">Histórico</span></a>
+    <a href="conta.html" class="tab-item active"><span class="tab-icon">👤</span><span class="tab-label">Conta</span></a>
+  </nav>
+</div>
+</body></html>

@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" /><meta name="viewport" content="width=device-width,initial-scale=1.0" />
+  <title>Detalhe da Lavagem — Uashi</title>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="./_shell.css" />
+  <style>
+    .info-row { display:flex;justify-content:space-between;align-items:center;padding:12px 0;border-bottom:1px solid rgba(255,255,255,.05); }
+    .info-row:last-child { border-bottom:none; }
+  </style>
+</head>
+<body>
+<div class="app-frame" style="max-width:390px;margin:0 auto;">
+  <div class="status-bar"><span class="status-time">09:41</span><div class="status-icons"><span>●●●</span><span>WiFi</span><span>🔋</span></div></div>
+  <div class="top-bar">
+    <a href="historico.html" class="top-bar-back">←</a>
+    <span class="top-bar-title">Detalhe da Lavagem</span>
+    <button class="top-bar-action" onclick="alert('(protótipo) Compartilhar comprovante')">↗</button>
+  </div>
+  <hr class="swoosh" />
+
+  <div class="app-content">
+    <div class="app-content-inner" style="display:flex;flex-direction:column;gap:16px;">
+
+      <!-- Status hero -->
+      <div style="background:rgba(34,197,94,.08);border:1px solid rgba(34,197,94,.25);border-radius:20px;padding:24px;text-align:center;">
+        <div style="font-size:3rem;margin-bottom:8px;">✅</div>
+        <div style="font-family:var(--font-display);font-size:1.6rem;color:#22c55e;letter-spacing:.05em;margin-bottom:4px;">LAVAGEM CONCLUÍDA</div>
+        <div style="font-size:.8rem;color:var(--muted);">Hoje, 11 de junho de 2025 às 08:15</div>
+      </div>
+
+      <!-- Infos -->
+      <div class="card" style="padding:16px;">
+        <div style="font-size:.72rem;font-weight:600;color:var(--muted);text-transform:uppercase;letter-spacing:.08em;margin-bottom:4px;">Detalhes</div>
+        <div class="info-row">
+          <span style="font-size:.875rem;color:var(--muted);">Tipo de lavagem</span>
+          <span style="font-size:.875rem;font-weight:600;color:var(--cream);">Completa</span>
+        </div>
+        <div class="info-row">
+          <span style="font-size:.875rem;color:var(--muted);">Veículo</span>
+          <span style="font-size:.875rem;font-weight:600;color:var(--cream);">Honda HR-V (SUV)</span>
+        </div>
+        <div class="info-row">
+          <span style="font-size:.875rem;color:var(--muted);">Placa</span>
+          <span style="font-size:.875rem;font-weight:600;color:var(--cream);">ABC-1234</span>
+        </div>
+        <div class="info-row">
+          <span style="font-size:.875rem;color:var(--muted);">Unidade</span>
+          <span style="font-size:.875rem;font-weight:600;color:var(--cream);">Uashi Mooca</span>
+        </div>
+        <div class="info-row">
+          <span style="font-size:.875rem;color:var(--muted);">Duração</span>
+          <span style="font-size:.875rem;font-weight:600;color:var(--cream);">4 min 32 seg</span>
+        </div>
+        <div class="info-row">
+          <span style="font-size:.875rem;color:var(--muted);">Código QR</span>
+          <span style="font-size:.8rem;font-family:monospace;color:var(--cream);">UAW-2847-XK</span>
+        </div>
+      </div>
+
+      <!-- Pagamento -->
+      <div class="card" style="padding:16px;">
+        <div style="font-size:.72rem;font-weight:600;color:var(--muted);text-transform:uppercase;letter-spacing:.08em;margin-bottom:4px;">Pagamento</div>
+        <div class="info-row">
+          <span style="font-size:.875rem;color:var(--muted);">Forma</span>
+          <span style="font-size:.875rem;font-weight:600;color:var(--cream);">Plano Pro ativo</span>
+        </div>
+        <div class="info-row">
+          <span style="font-size:.875rem;color:var(--muted);">Valor cobrado</span>
+          <span style="font-size:.875rem;font-weight:600;color:#22c55e;">Incluso no plano</span>
+        </div>
+        <div class="info-row" style="border-bottom:none;">
+          <span style="font-size:.875rem;color:var(--muted);">Pontos ganhos</span>
+          <span style="font-family:var(--font-display);font-size:1.1rem;color:var(--gold);">+25 pts</span>
+        </div>
+      </div>
+
+      <!-- Avaliação -->
+      <div class="card" style="padding:16px;text-align:center;">
+        <div style="font-size:.75rem;font-weight:600;color:var(--muted);text-transform:uppercase;letter-spacing:.08em;margin-bottom:12px;">Como foi a lavagem?</div>
+        <div style="display:flex;justify-content:center;gap:8px;margin-bottom:12px;" id="stars">
+          <button onclick="rate(1)" style="font-size:1.8rem;background:none;border:none;cursor:pointer;filter:grayscale(1);" id="s1">⭐</button>
+          <button onclick="rate(2)" style="font-size:1.8rem;background:none;border:none;cursor:pointer;filter:grayscale(1);" id="s2">⭐</button>
+          <button onclick="rate(3)" style="font-size:1.8rem;background:none;border:none;cursor:pointer;filter:grayscale(1);" id="s3">⭐</button>
+          <button onclick="rate(4)" style="font-size:1.8rem;background:none;border:none;cursor:pointer;filter:grayscale(1);" id="s4">⭐</button>
+          <button onclick="rate(5)" style="font-size:1.8rem;background:none;border:none;cursor:pointer;filter:grayscale(1);" id="s5">⭐</button>
+        </div>
+        <p style="font-size:.75rem;color:var(--muted);">Sua avaliação ajuda a manter a qualidade.</p>
+      </div>
+
+      <a href="historico.html" class="btn-secondary">← Voltar ao histórico</a>
+      <a href="comprar.html" class="btn-primary" style="border-radius:14px;">Lavar novamente</a>
+
+    </div>
+  </div>
+
+  <nav class="tab-bar">
+    <a href="index.html" class="tab-item"><span class="tab-icon">🏠</span><span class="tab-label">Home</span></a>
+    <a href="mapa.html" class="tab-item"><span class="tab-icon">📍</span><span class="tab-label">Lojas</span></a>
+    <a href="qrcode.html" class="tab-qr"><div class="tab-qr-btn">🔲</div></a>
+    <a href="historico.html" class="tab-item active"><span class="tab-icon">📋</span><span class="tab-label">Histórico</span></a>
+    <a href="conta.html" class="tab-item"><span class="tab-icon">👤</span><span class="tab-label">Conta</span></a>
+  </nav>
+</div>
+<script>
+  function rate(n) {
+    for(let i=1;i<=5;i++) {
+      document.getElementById('s'+i).style.filter = i<=n ? 'none' : 'grayscale(1)';
+    }
+    setTimeout(() => alert('(protótipo) Avaliação ' + n + ' estrelas enviada. Obrigado!'), 200);
+  }
+</script>
+</body></html>

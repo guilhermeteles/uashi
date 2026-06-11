@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" /><meta name="viewport" content="width=device-width,initial-scale=1.0" />
+  <title>Chamados — Franqueado Uashi</title>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="./_admin.css" />
+</head>
+<body>
+<div class="admin-layout">
+  <aside class="sidebar">
+    <div class="sidebar-logo"><div class="wordmark">UASHI</div><div class="swoosh"></div></div>
+    <div class="sidebar-profile">
+      <div class="sidebar-avatar" style="background:var(--blue);">R</div>
+      <div><div class="sidebar-name">Ricardo Almeida</div><div class="sidebar-role">🏪 Franqueado · Mooca</div></div>
+    </div>
+    <nav class="sidebar-nav">
+      <div class="nav-section-label">Principal</div>
+      <a href="franqueado.html" class="nav-item"><span class="nav-icon">📊</span>Dashboard</a>
+      <a href="franqueado-usuarios.html" class="nav-item"><span class="nav-icon">👥</span>Usuários</a>
+      <a href="franqueado-historico.html" class="nav-item"><span class="nav-icon">🚗</span>Histórico</a>
+      <a href="franqueado-chamados.html" class="nav-item active"><span class="nav-icon">💬</span>Chamados</a>
+      <div class="nav-section-label">Conta</div>
+      <a href="perfil-admin.html" class="nav-item"><span class="nav-icon">👤</span>Perfil</a>
+    </nav>
+    <div class="sidebar-footer"><a href="login.html" style="font-size:.75rem;color:var(--muted);text-decoration:none;">← Sair</a></div>
+  </aside>
+
+  <div class="main-area">
+    <div class="topbar">
+      <span class="topbar-title">Chamados · Mooca</span>
+      <div class="topbar-actions">
+        <button class="topbar-btn">🔔<span class="topbar-dot"></span></button>
+        <div style="width:32px;height:32px;border-radius:8px;background:var(--blue);display:flex;align-items:center;justify-content:center;font-family:var(--font-display);color:#fff;font-size:.9rem;">R</div>
+      </div>
+    </div>
+    <hr class="swoosh" />
+
+    <div class="page-content">
+      <div class="page-header">
+        <div>
+          <h1>CHAMADOS DA UNIDADE</h1>
+          <div style="font-size:.8rem;color:var(--muted);">3 em aberto · 1 urgente</div>
+        </div>
+        <button class="btn-primary" onclick="alert('(protótipo) Abrir novo chamado')">+ Novo chamado</button>
+      </div>
+
+      <div class="kpi-grid" style="grid-template-columns:repeat(4,1fr);margin-bottom:20px;">
+        <div class="kpi-card">
+          <div class="kpi-val" style="color:var(--red);">1</div>
+          <div class="kpi-label">Urgente</div>
+        </div>
+        <div class="kpi-card">
+          <div class="kpi-val" style="color:var(--gold);">2</div>
+          <div class="kpi-label">Em andamento</div>
+        </div>
+        <div class="kpi-card">
+          <div class="kpi-val" style="color:var(--cream);">4.2h</div>
+          <div class="kpi-label">Tempo médio resolução</div>
+        </div>
+        <div class="kpi-card">
+          <div class="kpi-val" style="color:#22c55e;">12</div>
+          <div class="kpi-label">Resolvidos este mês</div>
+        </div>
+      </div>
+
+      <div style="display:flex;flex-direction:column;gap:12px;">
+
+        <div class="card" style="padding:16px;border-color:rgba(232,50,26,.25);">
+          <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:8px;">
+            <div style="display:flex;gap:10px;align-items:center;">
+              <span style="font-size:.7rem;color:var(--muted);">#F-0041</span>
+              <span class="tag tag-red">Urgente</span>
+              <span class="tag tag-muted">Equipamento</span>
+            </div>
+            <span style="font-size:.72rem;color:var(--muted);">Hoje 10:15</span>
+          </div>
+          <div style="font-weight:600;color:var(--cream);margin-bottom:4px;">Baia 2 com falha no sensor de QR</div>
+          <div style="font-size:.8rem;color:var(--muted);margin-bottom:12px;">O sensor da baia 2 não lê QR codes com iluminação baixa. Clientes estão sendo redirecionados para a baia 1, gerando fila.</div>
+          <div style="display:flex;gap:8px;">
+            <button class="btn-primary" style="font-size:.72rem;padding:6px 14px;" onclick="alert('(protótipo) Escalonado para suporte técnico')">Escalonar</button>
+            <button class="btn-secondary" style="font-size:.72rem;padding:6px 14px;" onclick="alert('(protótipo) Marcar como resolvido')">Marcar resolvido</button>
+          </div>
+        </div>
+
+        <div class="card" style="padding:16px;border-color:rgba(245,168,0,.2);">
+          <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:8px;">
+            <div style="display:flex;gap:10px;align-items:center;">
+              <span style="font-size:.7rem;color:var(--muted);">#F-0039</span>
+              <span class="tag tag-gold">Em andamento</span>
+              <span class="tag tag-muted">Usuário</span>
+            </div>
+            <span style="font-size:.72rem;color:var(--muted);">Ontem 14:30</span>
+          </div>
+          <div style="font-weight:600;color:var(--cream);margin-bottom:4px;">Cobrança duplicada — Carlos Mendes</div>
+          <div style="font-size:.8rem;color:var(--muted);margin-bottom:12px;">Cliente reporta 2 débitos de R$19 no cartão referente a uma única lavagem simples em 09/06.</div>
+          <div style="display:flex;gap:8px;">
+            <button class="btn-primary" style="font-size:.72rem;padding:6px 14px;" onclick="alert('(protótipo) Abrir conversa com suporte financeiro')">Contatar financeiro</button>
+            <button class="btn-secondary" style="font-size:.72rem;padding:6px 14px;">Ver histórico</button>
+          </div>
+        </div>
+
+        <div class="card" style="padding:16px;border-color:rgba(245,168,0,.2);">
+          <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:8px;">
+            <div style="display:flex;gap:10px;align-items:center;">
+              <span style="font-size:.7rem;color:var(--muted);">#F-0037</span>
+              <span class="tag tag-gold">Em andamento</span>
+              <span class="tag tag-muted">Operacional</span>
+            </div>
+            <span style="font-size:.72rem;color:var(--muted);">09/06 09:00</span>
+          </div>
+          <div style="font-weight:600;color:var(--cream);margin-bottom:4px;">Solicitação de produto — detergente neutro</div>
+          <div style="font-size:.8rem;color:var(--muted);margin-bottom:12px;">Estoque de detergente neutro para banho a seco com menos de 20% do volume mínimo. Pedido aberto ao fornecedor.</div>
+          <div style="display:flex;gap:8px;">
+            <button class="btn-secondary" style="font-size:.72rem;padding:6px 14px;" onclick="alert('(protótipo) Marcar como resolvido')">Marcar resolvido</button>
+          </div>
+        </div>
+
+        <!-- Resolvidos -->
+        <div style="font-size:.8rem;font-weight:600;color:var(--muted);text-transform:uppercase;letter-spacing:.06em;margin-top:8px;">Resolvidos recentemente</div>
+
+        <div class="card" style="padding:16px;opacity:.7;">
+          <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:4px;">
+            <div style="display:flex;gap:10px;align-items:center;">
+              <span style="font-size:.7rem;color:var(--muted);">#F-0035</span>
+              <span class="tag tag-green">Resolvido</span>
+            </div>
+            <span style="font-size:.72rem;color:var(--muted);">07/06 · 2h resolução</span>
+          </div>
+          <div style="font-weight:600;color:var(--cream);">QR expirado — problema na tela do app</div>
+        </div>
+
+        <div class="card" style="padding:16px;opacity:.7;">
+          <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:4px;">
+            <div style="display:flex;gap:10px;align-items:center;">
+              <span style="font-size:.7rem;color:var(--muted);">#F-0033</span>
+              <span class="tag tag-green">Resolvido</span>
+            </div>
+            <span style="font-size:.72rem;color:var(--muted);">05/06 · 6h resolução</span>
+          </div>
+          <div style="font-weight:600;color:var(--cream);">Mangueira de pressão com vazamento</div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>
+</body></html>

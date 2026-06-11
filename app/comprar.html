@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" /><meta name="viewport" content="width=device-width,initial-scale=1.0" />
+  <title>Comprar Lavagem — Uashi</title>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="./_shell.css" />
+  <style>
+    .select-card { background:var(--surface-2);border:2px solid rgba(255,255,255,.06);border-radius:14px;padding:14px;cursor:pointer;transition:border-color .2s,background .2s;display:flex;align-items:center;gap:12px; }
+    .select-card.selected { border-color:var(--red);background:rgba(232,50,26,.06); }
+    .select-card:hover { border-color:rgba(232,50,26,.3); }
+    .wash-btn { background:var(--surface-2);border:2px solid rgba(255,255,255,.06);border-radius:12px;padding:14px;cursor:pointer;text-align:center;transition:all .2s; }
+    .wash-btn.selected { border-color:var(--gold);background:rgba(245,168,0,.08); }
+    .wash-btn:hover { border-color:rgba(245,168,0,.4); }
+    .radio-dot { width:20px;height:20px;border-radius:50%;border:2px solid rgba(255,255,255,.2);display:flex;align-items:center;justify-content:center;flex-shrink:0; }
+    .radio-dot.on::after { content:'';width:10px;height:10px;border-radius:50%;background:var(--red);display:block; }
+  </style>
+</head>
+<body>
+<div class="app-frame" style="max-width:390px;margin:0 auto;">
+  <div class="status-bar"><span class="status-time">09:41</span><div class="status-icons"><span>●●●</span><span>WiFi</span><span>🔋</span></div></div>
+  <div class="top-bar">
+    <a href="index.html" class="top-bar-back">←</a>
+    <span class="top-bar-title">Comprar Lavagem</span>
+  </div>
+  <hr class="swoosh" />
+
+  <div class="app-content">
+    <div class="app-content-inner" style="display:flex;flex-direction:column;gap:20px;">
+
+      <!-- Saldo -->
+      <div style="background:rgba(245,168,0,.08);border:1px solid rgba(245,168,0,.2);border-radius:12px;padding:12px 14px;display:flex;justify-content:space-between;align-items:center;">
+        <div style="font-size:.8rem;color:var(--muted);">Saldo disponível</div>
+        <div style="font-family:var(--font-display);font-size:1.3rem;color:var(--gold);">R$ 120,00</div>
+      </div>
+
+      <!-- Veículo -->
+      <div>
+        <div style="font-size:.72rem;font-weight:600;color:var(--muted);text-transform:uppercase;letter-spacing:.08em;margin-bottom:10px;">Selecione o veículo</div>
+        <div style="display:flex;flex-direction:column;gap:8px;" id="veh-list">
+          <label class="select-card selected" onclick="selectCard(this,'veh-list')">
+            <div class="radio-dot on"></div>
+            <div style="font-size:1.4rem;">🚙</div>
+            <div>
+              <div style="font-weight:600;font-size:.9rem;color:var(--cream);">Honda HR-V</div>
+              <div style="font-size:.75rem;color:var(--muted);">ABC-1234 · SUV</div>
+            </div>
+          </label>
+          <label class="select-card" onclick="selectCard(this,'veh-list')">
+            <div class="radio-dot"></div>
+            <div style="font-size:1.4rem;">🚗</div>
+            <div>
+              <div style="font-weight:600;font-size:.9rem;color:var(--cream);">VW Gol</div>
+              <div style="font-size:.75rem;color:var(--muted);">DEF-5678 · Hatch</div>
+            </div>
+          </label>
+          <a href="veiculos.html" style="font-size:.8rem;color:var(--blue);text-decoration:none;padding:4px 0;display:block;">+ Adicionar veículo</a>
+        </div>
+      </div>
+
+      <!-- Tipo de lavagem -->
+      <div>
+        <div style="font-size:.72rem;font-weight:600;color:var(--muted);text-transform:uppercase;letter-spacing:.08em;margin-bottom:10px;">Tipo de lavagem</div>
+        <div style="display:flex;flex-direction:column;gap:8px;" id="wash-list">
+
+          <label class="select-card" onclick="selectCard(this,'wash-list');updateTotal(25,'Simples')">
+            <div class="radio-dot"></div>
+            <div style="flex:1;">
+              <div style="display:flex;justify-content:space-between;align-items:center;">
+                <div style="font-weight:600;font-size:.9rem;color:var(--cream);">Simples</div>
+                <div style="font-family:var(--font-display);font-size:1.2rem;color:var(--cream);">R$&nbsp;25</div>
+              </div>
+              <div style="font-size:.75rem;color:var(--muted);">Lavagem externa · ~3 min</div>
+            </div>
+          </label>
+
+          <label class="select-card selected" onclick="selectCard(this,'wash-list');updateTotal(35,'Completa')">
+            <div class="radio-dot on"></div>
+            <div style="flex:1;">
+              <div style="display:flex;justify-content:space-between;align-items:center;">
+                <div style="font-weight:600;font-size:.9rem;color:var(--cream);">Completa <span class="tag tag-gold" style="font-size:.6rem;">Popular</span></div>
+                <div style="font-family:var(--font-display);font-size:1.2rem;color:var(--gold);">R$&nbsp;35</div>
+              </div>
+              <div style="font-size:.75rem;color:var(--muted);">Externa + pré-lavagem + cera · ~5 min</div>
+            </div>
+          </label>
+
+          <label class="select-card" onclick="selectCard(this,'wash-list');updateTotal(48,'Premium')">
+            <div class="radio-dot"></div>
+            <div style="flex:1;">
+              <div style="display:flex;justify-content:space-between;align-items:center;">
+                <div style="font-weight:600;font-size:.9rem;color:var(--cream);">Premium</div>
+                <div style="font-family:var(--font-display);font-size:1.2rem;color:var(--blue);">R$&nbsp;48</div>
+              </div>
+              <div style="font-size:.75rem;color:var(--muted);">Tudo + cristalizador + secagem · ~7 min</div>
+            </div>
+          </label>
+
+        </div>
+      </div>
+
+      <!-- Resumo -->
+      <div class="card" style="padding:16px;">
+        <div style="font-size:.72rem;font-weight:600;color:var(--muted);text-transform:uppercase;letter-spacing:.08em;margin-bottom:12px;">Resumo</div>
+        <div style="display:flex;justify-content:space-between;font-size:.875rem;margin-bottom:6px;"><span style="color:var(--muted);">Veículo</span><span style="color:var(--cream);">Honda HR-V (SUV)</span></div>
+        <div style="display:flex;justify-content:space-between;font-size:.875rem;margin-bottom:6px;"><span style="color:var(--muted);">Lavagem</span><span id="wash-type" style="color:var(--cream);">Completa</span></div>
+        <div style="display:flex;justify-content:space-between;font-size:.875rem;margin-bottom:14px;"><span style="color:var(--muted);">Pagamento</span><span style="color:var(--cream);">Saldo de créditos</span></div>
+        <hr style="border:none;border-top:1px solid rgba(255,255,255,.07);margin-bottom:14px;" />
+        <div style="display:flex;justify-content:space-between;align-items:center;">
+          <span style="font-weight:700;color:var(--cream);">Total</span>
+          <span id="total-price" style="font-family:var(--font-display);font-size:1.6rem;color:var(--gold);">R$&nbsp;35</span>
+        </div>
+      </div>
+
+      <a href="qrcode.html" class="btn-primary" style="border-radius:14px;">Confirmar e Gerar QR Code</a>
+      <a href="checkout.html" style="display:block;text-align:center;font-size:.8rem;color:var(--muted);text-decoration:none;padding-bottom:8px;">Pagar com cartão ou Pix</a>
+
+    </div>
+  </div>
+
+  <nav class="tab-bar">
+    <a href="index.html" class="tab-item"><span class="tab-icon">🏠</span><span class="tab-label">Home</span></a>
+    <a href="mapa.html" class="tab-item"><span class="tab-icon">📍</span><span class="tab-label">Lojas</span></a>
+    <a href="qrcode.html" class="tab-qr"><div class="tab-qr-btn">🔲</div></a>
+    <a href="historico.html" class="tab-item"><span class="tab-icon">📋</span><span class="tab-label">Histórico</span></a>
+    <a href="conta.html" class="tab-item"><span class="tab-icon">👤</span><span class="tab-label">Conta</span></a>
+  </nav>
+</div>
+<script>
+  function selectCard(el, groupId) {
+    document.getElementById(groupId).querySelectorAll('.select-card').forEach(c => {
+      c.classList.remove('selected');
+      const dot = c.querySelector('.radio-dot');
+      if (dot) { dot.classList.remove('on'); dot.innerHTML=''; }
+    });
+    el.classList.add('selected');
+    const dot = el.querySelector('.radio-dot');
+    if (dot) { dot.classList.add('on'); dot.innerHTML='<div style="width:10px;height:10px;border-radius:50%;background:var(--red);"></div>'; }
+  }
+  function updateTotal(price, type) {
+    document.getElementById('total-price').textContent = 'R$ '+price;
+    document.getElementById('wash-type').textContent = type;
+  }
+</script>
+</body></html>

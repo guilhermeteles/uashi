@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" /><meta name="viewport" content="width=device-width,initial-scale=1.0" />
+  <title>Meus Veículos — Uashi</title>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="./_shell.css" />
+  <style>
+    .veh-card { background:var(--surface);border:1px solid rgba(255,255,255,.06);border-radius:16px;padding:16px;display:flex;gap:14px;align-items:center; }
+    .veh-card.primary { border-color:rgba(245,168,0,.3); }
+  </style>
+</head>
+<body>
+<div class="app-frame" style="max-width:390px;margin:0 auto;">
+  <div class="status-bar"><span class="status-time">09:41</span><div class="status-icons"><span>●●●</span><span>WiFi</span><span>🔋</span></div></div>
+  <div class="top-bar">
+    <a href="conta.html" class="top-bar-back">←</a>
+    <span class="top-bar-title">Meus Veículos</span>
+    <button class="top-bar-action" onclick="showAddModal()" style="font-size:1.4rem;color:var(--gold);">+</button>
+  </div>
+  <hr class="swoosh" />
+
+  <div class="app-content">
+    <div class="app-content-inner" style="display:flex;flex-direction:column;gap:12px;">
+
+      <div class="veh-card primary">
+        <div style="width:48px;height:48px;border-radius:14px;background:rgba(245,168,0,.12);border:1px solid rgba(245,168,0,.2);display:flex;align-items:center;justify-content:center;font-size:1.5rem;flex-shrink:0;">🚙</div>
+        <div style="flex:1;">
+          <div style="display:flex;align-items:center;gap:6px;margin-bottom:2px;">
+            <div style="font-weight:700;font-size:.95rem;color:var(--cream);">Honda HR-V</div>
+            <span class="tag tag-gold" style="font-size:.6rem;">Principal</span>
+          </div>
+          <div style="font-size:.75rem;color:var(--muted);">ABC-1234 · SUV/Pickup · Preto</div>
+          <div style="font-size:.72rem;color:var(--muted);margin-top:2px;">14 lavagens este mês</div>
+        </div>
+        <div style="display:flex;flex-direction:column;gap:6px;">
+          <button onclick="alert('(protótipo) Editar veículo')" style="background:var(--surface-2);border:none;border-radius:8px;padding:6px 10px;color:var(--muted);font-size:.75rem;cursor:pointer;">Editar</button>
+        </div>
+      </div>
+
+      <div class="veh-card">
+        <div style="width:48px;height:48px;border-radius:14px;background:rgba(255,255,255,.05);display:flex;align-items:center;justify-content:center;font-size:1.5rem;flex-shrink:0;">🚗</div>
+        <div style="flex:1;">
+          <div style="font-weight:700;font-size:.95rem;color:var(--cream);margin-bottom:2px;">VW Gol</div>
+          <div style="font-size:.75rem;color:var(--muted);">DEF-5678 · Hatch · Branco</div>
+          <div style="font-size:.72rem;color:var(--muted);margin-top:2px;">2 lavagens este mês</div>
+        </div>
+        <div style="display:flex;flex-direction:column;gap:6px;">
+          <button onclick="alert('(protótipo) Editar veículo')" style="background:var(--surface-2);border:none;border-radius:8px;padding:6px 10px;color:var(--muted);font-size:.75rem;cursor:pointer;">Editar</button>
+          <button onclick="if(confirm('Remover VW Gol?'))this.closest('.veh-card').remove()" style="background:rgba(232,50,26,.1);border:none;border-radius:8px;padding:6px 10px;color:var(--red);font-size:.75rem;cursor:pointer;">Remover</button>
+        </div>
+      </div>
+
+      <!-- Adicionar -->
+      <button onclick="showAddModal()" style="border:2px dashed rgba(255,255,255,.12);background:transparent;border-radius:16px;padding:20px;width:100%;display:flex;align-items:center;justify-content:center;gap:10px;color:var(--muted);font-family:var(--font-body);font-size:.875rem;cursor:pointer;transition:border-color .2s;" onmouseover="this.style.borderColor='rgba(255,255,255,.3)'" onmouseout="this.style.borderColor='rgba(255,255,255,.12)'">
+        <span style="font-size:1.4rem;">+</span> Adicionar veículo
+      </button>
+
+    </div>
+  </div>
+
+  <!-- Modal de adicionar -->
+  <div id="add-modal" style="display:none;position:fixed;inset:0;background:rgba(0,0,0,.7);z-index:200;display:none;align-items:flex-end;justify-content:center;" onclick="if(event.target===this)hideAddModal()">
+    <div style="background:var(--surface);border-radius:24px 24px 0 0;padding:24px 20px;width:100%;max-width:390px;display:flex;flex-direction:column;gap:14px;">
+      <div style="text-align:center;margin-bottom:4px;">
+        <div style="width:40px;height:4px;background:rgba(255,255,255,.15);border-radius:2px;margin:0 auto 16px;"></div>
+        <div style="font-family:var(--font-display);font-size:1.4rem;color:var(--cream);">NOVO VEÍCULO</div>
+      </div>
+      <div class="form-group"><label class="form-label">Placa *</label><input type="text" class="form-input" placeholder="GHI-9012" style="text-transform:uppercase;" /></div>
+      <div class="form-group"><label class="form-label">Modelo *</label><input type="text" class="form-input" placeholder="Ex: Toyota Corolla" /></div>
+      <div class="form-group">
+        <label class="form-label">Categoria *</label>
+        <select class="form-input">
+          <option value="" disabled selected>Selecione</option>
+          <option>Hatch / Sedan</option><option>SUV / Pickup</option><option>Van / Minivan</option><option>Moto</option>
+        </select>
+      </div>
+      <div style="display:flex;gap:10px;">
+        <button onclick="hideAddModal()" class="btn-secondary" style="flex:1;">Cancelar</button>
+        <button onclick="hideAddModal();alert('(protótipo) Veículo adicionado!')" class="btn-gold" style="flex:2;">Salvar</button>
+      </div>
+    </div>
+  </div>
+
+  <nav class="tab-bar">
+    <a href="index.html" class="tab-item"><span class="tab-icon">🏠</span><span class="tab-label">Home</span></a>
+    <a href="mapa.html" class="tab-item"><span class="tab-icon">📍</span><span class="tab-label">Lojas</span></a>
+    <a href="qrcode.html" class="tab-qr"><div class="tab-qr-btn">🔲</div></a>
+    <a href="historico.html" class="tab-item"><span class="tab-icon">📋</span><span class="tab-label">Histórico</span></a>
+    <a href="conta.html" class="tab-item active"><span class="tab-icon">👤</span><span class="tab-label">Conta</span></a>
+  </nav>
+</div>
+<script>
+  function showAddModal(){ const m=document.getElementById('add-modal'); m.style.display='flex'; }
+  function hideAddModal(){ document.getElementById('add-modal').style.display='none'; }
+</script>
+</body></html>

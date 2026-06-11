@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" /><meta name="viewport" content="width=device-width,initial-scale=1.0" />
+  <title>Suporte — Uashi</title>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="./_shell.css" />
+  <style>
+    .chamado-row { background:var(--surface);border:1px solid rgba(255,255,255,.06);border-radius:12px;padding:14px 16px;display:flex;gap:12px;align-items:flex-start; }
+  </style>
+</head>
+<body>
+<div class="app-frame" style="max-width:390px;margin:0 auto;">
+  <div class="status-bar"><span class="status-time">09:41</span><div class="status-icons"><span>●●●</span><span>WiFi</span><span>🔋</span></div></div>
+  <div class="top-bar">
+    <a href="conta.html" class="top-bar-back">←</a>
+    <span class="top-bar-title">Suporte</span>
+  </div>
+  <hr class="swoosh" />
+
+  <div class="app-content">
+    <div class="app-content-inner" style="display:flex;flex-direction:column;gap:16px;">
+
+      <!-- Abrir chamado -->
+      <div class="card" style="padding:20px;">
+        <div style="font-family:var(--font-display);font-size:1.3rem;color:var(--cream);margin-bottom:16px;">ABRIR CHAMADO</div>
+        <div style="display:flex;flex-direction:column;gap:12px;">
+          <div class="form-group">
+            <label class="form-label">Categoria</label>
+            <select class="form-input">
+              <option value="" disabled selected>Selecione</option>
+              <option>Problemas com QR code</option>
+              <option>Lavagem incompleta</option>
+              <option>Cobrança indevida</option>
+              <option>Problema com dependente</option>
+              <option>App com lentidão</option>
+              <option>Dúvida sobre plano</option>
+              <option>Outros</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Descreva o problema</label>
+            <textarea class="form-input" rows="3" placeholder="Descreva o que aconteceu com o máximo de detalhes..."></textarea>
+          </div>
+          <button class="btn-primary" style="border-radius:12px;" onclick="this.textContent='✅ Chamado aberto!';this.style.background='rgba(34,197,94,.8)';setTimeout(()=>{this.textContent='Abrir chamado';this.style.background='';},3000)">Abrir chamado</button>
+        </div>
+      </div>
+
+      <!-- Chamados em aberto -->
+      <div>
+        <div style="font-size:.72rem;font-weight:600;color:var(--muted);text-transform:uppercase;letter-spacing:.08em;margin-bottom:10px;">Meus chamados</div>
+        <div style="display:flex;flex-direction:column;gap:8px;">
+          <div class="chamado-row">
+            <div style="width:36px;height:36px;border-radius:10px;background:rgba(245,168,0,.12);display:flex;align-items:center;justify-content:center;font-size:1rem;flex-shrink:0;">🔄</div>
+            <div style="flex:1;">
+              <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:3px;">
+                <div style="font-size:.875rem;font-weight:600;color:var(--cream);">QR code não lido na esteira</div>
+                <span class="tag tag-gold">Em análise</span>
+              </div>
+              <div style="font-size:.75rem;color:var(--muted);">Aberto em 09/06 · #UAW-1042</div>
+            </div>
+          </div>
+          <div class="chamado-row">
+            <div style="width:36px;height:36px;border-radius:10px;background:rgba(34,197,94,.12);display:flex;align-items:center;justify-content:center;font-size:1rem;flex-shrink:0;">✅</div>
+            <div style="flex:1;">
+              <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:3px;">
+                <div style="font-size:.875rem;font-weight:600;color:var(--cream);">Dúvida sobre fatura</div>
+                <span class="tag tag-green">Resolvido</span>
+              </div>
+              <div style="font-size:.75rem;color:var(--muted);">Fechado em 05/06 · #UAW-0988</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- FAQ rápido -->
+      <div class="card" style="padding:16px;">
+        <div style="font-size:.72rem;font-weight:600;color:var(--muted);text-transform:uppercase;letter-spacing:.08em;margin-bottom:12px;">Respostas rápidas</div>
+        <a href="#" style="display:block;font-size:.875rem;color:var(--blue);text-decoration:none;padding:8px 0;border-bottom:1px solid rgba(255,255,255,.05);">→ Como regenerar um QR code expirado?</a>
+        <a href="#" style="display:block;font-size:.875rem;color:var(--blue);text-decoration:none;padding:8px 0;border-bottom:1px solid rgba(255,255,255,.05);">→ O que fazer se a lavagem foi cobrada incorretamente?</a>
+        <a href="#" style="display:block;font-size:.875rem;color:var(--blue);text-decoration:none;padding:8px 0;">→ Como cancelar meu plano?</a>
+      </div>
+
+      <!-- Contato direto -->
+      <div style="display:flex;gap:10px;">
+        <a href="https://wa.me/5511000000000" class="btn-secondary" style="flex:1;gap:8px;">💬 WhatsApp</a>
+        <a href="mailto:oi@uashi.com.br" class="btn-secondary" style="flex:1;gap:8px;">✉️ E-mail</a>
+      </div>
+
+    </div>
+  </div>
+
+  <nav class="tab-bar">
+    <a href="index.html" class="tab-item"><span class="tab-icon">🏠</span><span class="tab-label">Home</span></a>
+    <a href="mapa.html" class="tab-item"><span class="tab-icon">📍</span><span class="tab-label">Lojas</span></a>
+    <a href="qrcode.html" class="tab-qr"><div class="tab-qr-btn">🔲</div></a>
+    <a href="historico.html" class="tab-item"><span class="tab-icon">📋</span><span class="tab-label">Histórico</span></a>
+    <a href="conta.html" class="tab-item active"><span class="tab-icon">👤</span><span class="tab-label">Conta</span></a>
+  </nav>
+</div>
+</body></html>

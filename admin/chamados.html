@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Uashi Admin — Chamados</title>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="./_admin.css" />
+  <style>
+    .nav-badge { background: var(--red); color: #fff; font-size: .6rem; font-weight: 700; border-radius: 99px; padding: 1px 6px; margin-left: auto; }
+    .topbar-avatar { width: 36px; height: 36px; border-radius: 10px; background: var(--surface-2); border: 1.5px solid rgba(255,255,255,.1); display: flex; align-items: center; justify-content: center; font-size: .75rem; font-weight: 700; color: var(--cream); cursor: pointer; }
+    .section-label { font-family: var(--font-display); font-size: 1.1rem; letter-spacing: .05em; color: var(--cream); margin-bottom: 14px; display: flex; align-items: center; gap: 10px; }
+    .section-label::after { content: ''; flex: 1; height: 1px; background: rgba(255,255,255,.07); }
+    .stats-row { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; margin-bottom: 24px; }
+    .stat-card { background: var(--surface); border: 1px solid rgba(255,255,255,.06); border-radius: 12px; padding: 16px 20px; }
+    .stat-card .val { font-family: var(--font-display); font-size: 1.8rem; color: var(--cream); line-height: 1; }
+    .stat-card .lbl { font-size: .72rem; color: var(--muted); text-transform: uppercase; letter-spacing: .06em; margin-top: 4px; }
+    .user-cell { display: flex; align-items: center; gap: 10px; }
+    .user-avatar-sm { width: 28px; height: 28px; border-radius: 7px; display: flex; align-items: center; justify-content: center; font-size: .68rem; font-weight: 700; flex-shrink: 0; }
+    .action-btn { color: var(--blue); font-size: .78rem; text-decoration: none; font-weight: 600; background: none; border: none; cursor: pointer; padding: 0; }
+    .action-btn:hover { text-decoration: underline; }
+    .action-btn.danger { color: var(--red); }
+  </style>
+</head>
+<body>
+<div class="admin-layout">
+
+  <!-- SIDEBAR -->
+  <aside class="sidebar">
+    <div class="sidebar-logo">
+      <div class="wordmark">UASHI</div>
+      <div class="swoosh"></div>
+    </div>
+    <div class="sidebar-profile">
+      <div class="sidebar-avatar">AM</div>
+      <div>
+        <div class="sidebar-name">Admin Matriz</div>
+        <div class="sidebar-role">Acesso total</div>
+      </div>
+    </div>
+    <nav class="sidebar-nav">
+      <div class="nav-section-label">Principal</div>
+      <a href="./index.html" class="nav-item">
+        <span class="nav-icon">&#9642;</span> Dashboard
+      </a>
+      <a href="./franqueados.html" class="nav-item">
+        <span class="nav-icon">&#127978;</span> Franqueados
+      </a>
+      <a href="./planos.html" class="nav-item">
+        <span class="nav-icon">&#128179;</span> Planos / Pre&#231;os
+      </a>
+      <a href="./promocoes.html" class="nav-item">
+        <span class="nav-icon">&#9889;</span> Promo&#231;&#245;es
+      </a>
+      <div class="nav-section-label">Opera&#231;&#245;es</div>
+      <a href="./alertas.html" class="nav-item">
+        <span class="nav-icon">&#128276;</span> Alertas
+        <span class="nav-badge">5</span>
+      </a>
+      <a href="./chamados.html" class="nav-item active">
+        <span class="nav-icon">&#127915;</span> Chamados
+        <span class="nav-badge">12</span>
+      </a>
+      <a href="./relatorios.html" class="nav-item">
+        <span class="nav-icon">&#128202;</span> Relat&#243;rios
+      </a>
+      <div class="nav-section-label">Conta</div>
+      <a href="./perfil.html" class="nav-item">
+        <span class="nav-icon">&#128100;</span> Perfil
+      </a>
+    </nav>
+    <div class="sidebar-footer">
+      <a href="#" class="nav-item" style="padding: 8px 0; font-size:.78rem;">
+        <span class="nav-icon">&#128682;</span> Sair
+      </a>
+    </div>
+  </aside>
+
+  <!-- MAIN -->
+  <div class="main-area">
+
+    <!-- TOPBAR -->
+    <header class="topbar">
+      <span class="topbar-title">Chamados</span>
+      <div class="topbar-actions">
+        <button class="topbar-btn" title="Alertas">&#128276;<span class="topbar-dot"></span></button>
+        <div class="topbar-avatar">AM</div>
+        <a href="#" class="btn-secondary" style="padding:7px 14px;font-size:.75rem;">Sair</a>
+      </div>
+    </header>
+
+    <!-- PAGE CONTENT -->
+    <main class="page-content">
+
+      <div class="page-header">
+        <div>
+          <h1>Central de Chamados</h1>
+          <p style="color:var(--muted);font-size:.82rem;margin-top:4px;">Suporte e atendimento da rede</p>
+        </div>
+        <button class="btn-primary">+ Novo chamado</button>
+      </div>
+
+      <!-- STATS ROW -->
+      <div class="stats-row">
+        <div class="stat-card" style="border-color:rgba(232,50,26,.25);">
+          <div class="val" style="color:var(--red);">12</div>
+          <div class="lbl">Abertos</div>
+        </div>
+        <div class="stat-card" style="border-color:rgba(245,168,0,.25);">
+          <div class="val" style="color:var(--gold);">5</div>
+          <div class="lbl">Em an&#225;lise</div>
+        </div>
+        <div class="stat-card" style="border-color:rgba(34,197,94,.2);">
+          <div class="val" style="color:#22c55e;">23</div>
+          <div class="lbl">Resolvidos hoje</div>
+        </div>
+        <div class="stat-card" style="border-color:rgba(26,111,212,.2);">
+          <div class="val" style="color:var(--blue);">4h</div>
+          <div class="lbl">Tempo m&#233;dio resolu&#231;&#227;o</div>
+        </div>
+      </div>
+
+      <!-- FILTERS -->
+      <div class="filter-bar">
+        <input class="form-input" style="width:260px;" type="text" placeholder="&#128269;  Buscar chamado ou usu&#225;rio&#8230;" />
+        <select class="form-input" style="width:auto;">
+          <option value="">Todos os status</option>
+          <option>Aberto</option>
+          <option>Em an&#225;lise</option>
+          <option>Resolvido</option>
+        </select>
+        <select class="form-input" style="width:auto;">
+          <option value="">Todas as categorias</option>
+          <option>Pagamento</option>
+          <option>QR Code</option>
+          <option>App / Login</option>
+          <option>Equipamento</option>
+          <option>Planos</option>
+        </select>
+        <select class="form-input" style="width:auto;">
+          <option value="">Todas as unidades</option>
+          <option>Mooca</option>
+          <option>Tatuap&#233;</option>
+          <option>Santo Andr&#233;</option>
+          <option>Osasco</option>
+          <option>Guarulhos</option>
+        </select>
+      </div>
+
+      <!-- TABLE -->
+      <div class="card" style="overflow-x:auto;">
+        <table class="data-table">
+          <thead>
+            <tr>
+              <th>#</th>
+              <th>Usu&#225;rio</th>
+              <th>Categoria</th>
+              <th>Descri&#231;&#227;o</th>
+              <th>Unidade</th>
+              <th>Abertura</th>
+              <th>Status</th>
+              <th>A&#231;&#245;es</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td style="color:var(--muted);font-size:.78rem;">#4821</td>
+              <td>
+                <div class="user-cell">
+                  <div class="user-avatar-sm" style="background:var(--red);">JM</div>
+                  <div>
+                    <div style="font-size:.85rem;font-weight:600;">Jo&#227;o Martins</div>
+                    <div style="font-size:.7rem;color:var(--muted);">Plano Plus</div>
+                  </div>
+                </div>
+              </td>
+              <td><span class="tag tag-red">QR Code</span></td>
+              <td style="font-size:.82rem;max-width:200px;">QR n&#227;o funcionou ap&#243;s 3 tentativas seguidas.</td>
+              <td style="font-size:.82rem;">Mooca</td>
+              <td style="font-size:.78rem;color:var(--muted);">Hoje 14:30</td>
+              <td><span class="tag tag-red">Aberto</span></td>
+              <td>
+                <div style="display:flex;gap:10px;">
+                  <button class="action-btn">Atender</button>
+                  <button class="action-btn danger">Fechar</button>
+                </div>
+              </td>
+            </tr>
+            <tr>
+              <td style="color:var(--muted);font-size:.78rem;">#4820</td>
+              <td>
+                <div class="user-cell">
+                  <div class="user-avatar-sm" style="background:var(--blue);">CA</div>
+                  <div>
+                    <div style="font-size:.85rem;font-weight:600;">Camila Andrade</div>
+                    <div style="font-size:.7rem;color:var(--muted);">Plano B&#225;sico</div>
+                  </div>
+                </div>
+              </td>
+              <td><span class="tag tag-gold">Pagamento</span></td>
+              <td style="font-size:.82rem;max-width:200px;">Cobrado duas vezes no cart&#227;o em junho.</td>
+              <td style="font-size:.82rem;">Tatuap&#233;</td>
+              <td style="font-size:.78rem;color:var(--muted);">Hoje 13:10</td>
+              <td><span class="tag tag-gold">Em an&#225;lise</span></td>
+              <td>
+                <div style="display:flex;gap:10px;">
+                  <button class="action-btn">Ver</button>
+                  <button class="action-btn">Resolver</button>
+                </div>
+              </td>
+            </tr>
+            <tr>
+              <td style="color:var(--muted);font-size:.78rem;">#4819</td>
+              <td>
+                <div class="user-cell">
+                  <div class="user-avatar-sm" style="background:#7c3aed;">RP</div>
+                  <div>
+                    <div style="font-size:.85rem;font-weight:600;">Ricardo Pinto</div>
+                    <div style="font-size:.7rem;color:var(--muted);">Plano Premium</div>
+                  </div>
+                </div>
+              </td>
+              <td><span class="tag tag-blue">App / Login</span></td>
+              <td style="font-size:.82rem;max-width:200px;">N&#227;o consigo logar, esqueci a senha e o e-mail n&#227;o chega.</td>
+              <td style="font-size:.82rem;">Guarulhos</td>
+              <td style="font-size:.78rem;color:var(--muted);">Hoje 11:55</td>
+              <td><span class="tag tag-red">Aberto</span></td>
+              <td>
+                <div style="display:flex;gap:10px;">
+                  <button class="action-btn">Atender</button>
+                  <button class="action-btn danger">Fechar</button>
+                </div>
+              </td>
+            </tr>
+            <tr>
+              <td style="color:var(--muted);font-size:.78rem;">#4818</td>
+              <td>
+                <div class="user-cell">
+                  <div class="user-avatar-sm" style="background:#0891b2;">FS</div>
+                  <div>
+                    <div style="font-size:.85rem;font-weight:600;">Fernanda Silva</div>
+                    <div style="font-size:.7rem;color:var(--muted);">Plano Plus</div>
+                  </div>
+                </div>
+              </td>
+              <td><span class="tag tag-muted">Equipamento</span></td>
+              <td style="font-size:.82rem;max-width:200px;">Mangueira da baia 2 com vazamento forte.</td>
+              <td style="font-size:.82rem;">Santo Andr&#233;</td>
+              <td style="font-size:.78rem;color:var(--muted);">Hoje 10:20</td>
+              <td><span class="tag tag-gold">Em an&#225;lise</span></td>
+              <td>
+                <div style="display:flex;gap:10px;">
+                  <button class="action-btn">Ver</button>
+                  <button class="action-btn">Resolver</button>
+                </div>
+              </td>
+            </tr>
+            <tr>
+              <td style="color:var(--muted);font-size:.78rem;">#4817</td>
+              <td>
+                <div class="user-cell">
+                  <div class="user-avatar-sm" style="background:var(--gold);color:#0A0A0A;">MR</div>
+                  <div>
+                    <div style="font-size:.85rem;font-weight:600;">Marcos Reis</div>
+                    <div style="font-size:.7rem;color:var(--muted);">Plano B&#225;sico</div>
+                  </div>
+                </div>
+              </td>
+              <td><span class="tag tag-blue">Planos</span></td>
+              <td style="font-size:.82rem;max-width:200px;">Quero fazer upgrade para o Premium mas n&#227;o acho o bot&#227;o.</td>
+              <td style="font-size:.82rem;">Osasco</td>
+              <td style="font-size:.78rem;color:var(--muted);">Ontem 18:45</td>
+              <td><span class="tag tag-red">Aberto</span></td>
+              <td>
+                <div style="display:flex;gap:10px;">
+                  <button class="action-btn">Atender</button>
+                  <button class="action-btn danger">Fechar</button>
+                </div>
+              </td>
+            </tr>
+            <tr>
+              <td style="color:var(--muted);font-size:.78rem;">#4816</td>
+              <td>
+                <div class="user-cell">
+                  <div class="user-avatar-sm" style="background:#16a34a;">LB</div>
+                  <div>
+                    <div style="font-size:.85rem;font-weight:600;">Larissa Braga</div>
+                    <div style="font-size:.7rem;color:var(--muted);">Plano Premium</div>
+                  </div>
+                </div>
+              </td>
+              <td><span class="tag tag-red">QR Code</span></td>
+              <td style="font-size:.82rem;max-width:200px;">QR expira antes de eu chegar &#224; baia.</td>
+              <td style="font-size:.82rem;">Mooca</td>
+              <td style="font-size:.78rem;color:var(--muted);">Ontem 15:30</td>
+              <td><span class="tag tag-green">Resolvido</span></td>
+              <td>
+                <div style="display:flex;gap:10px;">
+                  <button class="action-btn">Ver</button>
+                </div>
+              </td>
+            </tr>
+            <tr>
+              <td style="color:var(--muted);font-size:.78rem;">#4815</td>
+              <td>
+                <div class="user-cell">
+                  <div class="user-avatar-sm" style="background:#db2777;">TN</div>
+                  <div>
+                    <div style="font-size:.85rem;font-weight:600;">Tiago Nascimento</div>
+                    <div style="font-size:.7rem;color:var(--muted);">Plano B&#225;sico</div>
+                  </div>
+                </div>
+              </td>
+              <td><span class="tag tag-gold">Pagamento</span></td>
+              <td style="font-size:.82rem;max-width:200px;">Cancelei o plano mas ainda foi cobrado.</td>
+              <td style="font-size:.82rem;">Tatuap&#233;</td>
+              <td style="font-size:.78rem;color:var(--muted);">Ontem 12:00</td>
+              <td><span class="tag tag-gold">Em an&#225;lise</span></td>
+              <td>
+                <div style="display:flex;gap:10px;">
+                  <button class="action-btn">Ver</button>
+                  <button class="action-btn">Resolver</button>
+                </div>
+              </td>
+            </tr>
+            <tr>
+              <td style="color:var(--muted);font-size:.78rem;">#4814</td>
+              <td>
+                <div class="user-cell">
+                  <div class="user-avatar-sm" style="background:#ea580c;">PC</div>
+                  <div>
+                    <div style="font-size:.85rem;font-weight:600;">Patricia Campos</div>
+                    <div style="font-size:.7rem;color:var(--muted);">Plano Plus</div>
+                  </div>
+                </div>
+              </td>
+              <td><span class="tag tag-muted">Equipamento</span></td>
+              <td style="font-size:.82rem;max-width:200px;">Torniquete n&#227;o abriu mesmo com QR v&#225;lido.</td>
+              <td style="font-size:.82rem;">Guarulhos</td>
+              <td style="font-size:.78rem;color:var(--muted);">Ante-ontem 09:15</td>
+              <td><span class="tag tag-green">Resolvido</span></td>
+              <td>
+                <div style="display:flex;gap:10px;">
+                  <button class="action-btn">Ver</button>
+                </div>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+    </main>
+  </div>
+</div>
+</body>
+</html>
