@@ -1,0 +1,696 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Seja um Franqueado Uashi — Lava-Jato Self Service</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="../_shared.css" />
+  <style>
+    /* ── Hero ── */
+    .hero-franquia {
+      background:
+        radial-gradient(ellipse 70% 60% at 80% 30%, rgba(245,168,0,0.10) 0%, transparent 65%),
+        radial-gradient(ellipse 50% 50% at 10% 80%, rgba(26,111,212,0.08) 0%, transparent 60%),
+        var(--bg);
+    }
+
+    /* ── Nav link ── */
+    .nav-link { color:var(--muted); text-decoration:none; font-size:.875rem; font-weight:500; transition:color .2s; }
+    .nav-link:hover { color:var(--cream); }
+
+    /* ── Numbers ── */
+    .kpi-card {
+      background: var(--surface);
+      border: 1px solid rgba(255,255,255,0.06);
+      border-radius: 16px;
+      padding: 32px 24px;
+      text-align: center;
+    }
+
+    /* ── Step timeline ── */
+    .timeline-item {
+      display: grid;
+      grid-template-columns: 56px 1fr;
+      gap: 20px;
+      align-items: start;
+      position: relative;
+    }
+    .timeline-item:not(:last-child)::before {
+      content: '';
+      position: absolute;
+      left: 27px;
+      top: 56px;
+      bottom: -24px;
+      width: 2px;
+      background: linear-gradient(180deg, rgba(245,168,0,0.4) 0%, rgba(245,168,0,0.0) 100%);
+    }
+    .timeline-num {
+      width: 56px;
+      height: 56px;
+      border-radius: 50%;
+      background: var(--surface-2);
+      border: 2px solid rgba(245,168,0,0.4);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: var(--font-display);
+      font-size: 1.5rem;
+      color: var(--gold);
+      flex-shrink: 0;
+    }
+
+    /* ── Differentials ── */
+    .diff-card {
+      background: var(--surface);
+      border: 1px solid rgba(255,255,255,0.06);
+      border-radius: 16px;
+      padding: 28px 24px;
+      transition: transform .2s, box-shadow .2s;
+    }
+    .diff-card:hover { transform: translateY(-4px); box-shadow: 0 12px 40px rgba(0,0,0,.5); }
+    .diff-icon {
+      width: 48px; height: 48px;
+      border-radius: 12px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.4rem;
+      margin-bottom: 16px;
+    }
+
+    /* ── Investment table ── */
+    .invest-row {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      align-items: center;
+      padding: 14px 0;
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+      gap: 16px;
+    }
+    .invest-row:last-child { border-bottom: none; }
+
+    /* ── Form ── */
+    .form-group { display: flex; flex-direction: column; gap: 6px; }
+    .form-label { font-size: .8rem; font-weight: 600; color: var(--muted); letter-spacing: .05em; text-transform: uppercase; }
+    .form-input {
+      background: var(--surface-2);
+      border: 1.5px solid rgba(255,255,255,0.08);
+      border-radius: 8px;
+      color: var(--cream);
+      font-family: var(--font-body);
+      font-size: .9rem;
+      padding: 12px 14px;
+      outline: none;
+      transition: border-color .2s;
+      width: 100%;
+    }
+    .form-input:focus { border-color: var(--gold); }
+    .form-input::placeholder { color: var(--muted); }
+    select.form-input option { background: var(--surface-2); color: var(--cream); }
+    textarea.form-input { resize: vertical; min-height: 100px; }
+
+    /* ── Testimonial ── */
+    .testimonial {
+      background: var(--surface);
+      border: 1px solid rgba(255,255,255,0.06);
+      border-left: 3px solid var(--gold);
+      border-radius: 0 12px 12px 0;
+      padding: 24px 20px;
+    }
+
+    /* ── Comparison ── */
+    .compare-col {
+      background: var(--surface);
+      border: 1px solid rgba(255,255,255,0.06);
+      border-radius: 16px;
+      overflow: hidden;
+    }
+    .compare-col.highlight { border-color: var(--gold); }
+    .compare-head { padding: 20px 24px; border-bottom: 1px solid rgba(255,255,255,0.06); }
+    .compare-body { padding: 8px 0; }
+    .compare-row {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 10px 24px;
+      font-size: .875rem;
+    }
+    .compare-row:nth-child(even) { background: rgba(255,255,255,0.02); }
+  </style>
+</head>
+<body>
+
+<!-- ════ NAV ════════════════════════════════════════════════ -->
+<nav style="position:sticky;top:0;z-index:50;background:rgba(10,10,10,.9);backdrop-filter:blur(14px);border-bottom:1px solid rgba(255,255,255,.06);">
+  <div class="container" style="display:flex;align-items:center;justify-content:space-between;height:64px;gap:16px;">
+    <a href="index.html" style="text-decoration:none;display:flex;align-items:center;gap:10px;flex-shrink:0;">
+      <div style="display:flex;flex-direction:column;gap:3px;">
+        <span style="font-family:var(--font-display);font-size:1.75rem;color:var(--cream);letter-spacing:.05em;line-height:1;">UASHI</span>
+        <span class="swoosh" style="width:48px;"></span>
+      </div>
+    </a>
+    <div style="display:flex;align-items:center;gap:24px;" class="hidden md:flex">
+      <a href="index.html" class="nav-link">Para usuários</a>
+      <a href="#numeros" class="nav-link">Números</a>
+      <a href="#diferenciais" class="nav-link">Diferenciais</a>
+      <a href="#investimento" class="nav-link">Investimento</a>
+      <a href="#formulario" class="nav-link">Quero ser franqueado</a>
+    </div>
+    <a href="#formulario" class="btn-gold" style="font-size:.8rem;padding:10px 20px;flex-shrink:0;">
+      Quero ser franqueado
+    </a>
+  </div>
+</nav>
+<hr class="swoosh" />
+
+<!-- ════ HERO ════════════════════════════════════════════════ -->
+<section class="hero-franquia section" style="padding-top:96px;padding-bottom:96px;">
+  <div class="container" style="max-width:900px;text-align:center;">
+    <span class="tag tag-gold" style="margin-bottom:20px;display:inline-block;">Oportunidade de franquia</span>
+    <h1 style="font-size:clamp(3rem,8vw,5.5rem);color:var(--cream);margin-bottom:20px;line-height:1.0;">
+      SEU NEGÓCIO<br/>
+      <span style="color:var(--gold);">LAVANDO DINHEIRO</span><br/>
+      DE VERDADE
+    </h1>
+    <p style="color:var(--muted);font-size:1.1rem;max-width:560px;margin:0 auto 36px;">
+      Modelo de franquia com operação automatizada, baixa mão de obra e demanda crescente.
+      Payback médio de <strong style="color:var(--cream);">18 meses.</strong>
+    </p>
+    <div style="display:flex;justify-content:center;flex-wrap:wrap;gap:12px;">
+      <a href="#formulario" class="btn-gold" style="font-size:1rem;padding:14px 32px;">Quero ser franqueado</a>
+      <a href="#investimento" class="btn-secondary" style="font-size:1rem;padding:14px 32px;">Ver investimento</a>
+    </div>
+
+    <!-- Mini KPIs no hero -->
+    <div style="display:flex;justify-content:center;flex-wrap:wrap;gap:32px;margin-top:56px;padding-top:40px;border-top:1px solid rgba(255,255,255,.07);">
+      <div style="text-align:center;">
+        <div style="font-family:var(--font-display);font-size:2.4rem;color:var(--gold);">8</div>
+        <div style="font-size:.75rem;color:var(--muted);">Unidades ativas</div>
+      </div>
+      <div style="width:1px;background:rgba(255,255,255,.08);"></div>
+      <div style="text-align:center;">
+        <div style="font-family:var(--font-display);font-size:2.4rem;color:var(--gold);">12K+</div>
+        <div style="font-size:.75rem;color:var(--muted);">Usuários cadastrados</div>
+      </div>
+      <div style="width:1px;background:rgba(255,255,255,.08);"></div>
+      <div style="text-align:center;">
+        <div style="font-family:var(--font-display);font-size:2.4rem;color:var(--gold);">R$&nbsp;28K</div>
+        <div style="font-size:.75rem;color:var(--muted);">Faturamento médio/unidade/mês</div>
+      </div>
+      <div style="width:1px;background:rgba(255,255,255,.08);"></div>
+      <div style="text-align:center;">
+        <div style="font-family:var(--font-display);font-size:2.4rem;color:var(--gold);">18</div>
+        <div style="font-size:.75rem;color:var(--muted);">Meses de payback médio</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="swoosh" />
+
+<!-- ════ NÚMEROS DO NEGÓCIO ══════════════════════════════════ -->
+<section id="numeros" class="section">
+  <div class="container">
+    <div style="text-align:center;margin-bottom:56px;">
+      <span class="tag tag-gold" style="margin-bottom:12px;">O mercado</span>
+      <h2 style="font-size:clamp(2.2rem,5vw,3.5rem);color:var(--cream);">OS NÚMEROS FALAM</h2>
+      <p style="color:var(--muted);margin-top:12px;max-width:500px;margin-left:auto;margin-right:auto;">
+        O mercado de lava-jato no Brasil movimenta mais de R$&nbsp;12&nbsp;bilhões por ano — e está migrando para o self service.
+      </p>
+    </div>
+
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:20px;margin-bottom:48px;">
+      <div class="kpi-card">
+        <div style="font-family:var(--font-display);font-size:3rem;color:var(--gold);line-height:1;margin-bottom:8px;">320+</div>
+        <div style="font-size:.875rem;color:var(--cream);font-weight:600;margin-bottom:4px;">lavagens/dia</div>
+        <div style="font-size:.8rem;color:var(--muted);">capacidade de uma unidade padrão</div>
+      </div>
+      <div class="kpi-card">
+        <div style="font-family:var(--font-display);font-size:3rem;color:var(--gold);line-height:1;margin-bottom:8px;">R$&nbsp;28K</div>
+        <div style="font-size:.875rem;color:var(--cream);font-weight:600;margin-bottom:4px;">faturamento médio/mês</div>
+        <div style="font-size:.8rem;color:var(--muted);">unidades com 6 meses ou mais de operação</div>
+      </div>
+      <div class="kpi-card">
+        <div style="font-family:var(--font-display);font-size:3rem;color:var(--gold);line-height:1;margin-bottom:8px;">38%</div>
+        <div style="font-size:.875rem;color:var(--cream);font-weight:600;margin-bottom:4px;">margem operacional</div>
+        <div style="font-size:.8rem;color:var(--muted);">após royalties e custos fixos</div>
+      </div>
+      <div class="kpi-card">
+        <div style="font-family:var(--font-display);font-size:3rem;color:var(--gold);line-height:1;margin-bottom:8px;">2</div>
+        <div style="font-size:.875rem;color:var(--cream);font-weight:600;margin-bottom:4px;">funcionários</div>
+        <div style="font-size:.8rem;color:var(--muted);">necessários por turno por unidade</div>
+      </div>
+      <div class="kpi-card">
+        <div style="font-family:var(--font-display);font-size:3rem;color:var(--gold);line-height:1;margin-bottom:8px;">18&nbsp;m</div>
+        <div style="font-size:.875rem;color:var(--cream);font-weight:600;margin-bottom:4px;">payback médio</div>
+        <div style="font-size:.8rem;color:var(--muted);">baseado nas primeiras 5 unidades</div>
+      </div>
+      <div class="kpi-card">
+        <div style="font-family:var(--font-display);font-size:3rem;color:var(--gold);line-height:1;margin-bottom:8px;">87%</div>
+        <div style="font-size:.875rem;color:var(--cream);font-weight:600;margin-bottom:4px;">retenção de assinantes</div>
+        <div style="font-size:.8rem;color:var(--muted);">usuários que renovam o plano mensal</div>
+      </div>
+    </div>
+
+    <!-- Testimonial -->
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:20px;">
+      <div class="testimonial">
+        <p style="color:var(--cream);font-size:.95rem;font-style:italic;margin-bottom:16px;">
+          "Abri a primeira unidade em setembro e já recuperei 30% do investimento. A esteira praticamente
+          se opera sozinha — eu administro remotamente pelo painel admin."
+        </p>
+        <div style="display:flex;align-items:center;gap:12px;">
+          <div style="width:40px;height:40px;border-radius:50%;background:var(--surface-2);display:flex;align-items:center;justify-content:center;font-family:var(--font-display);color:var(--gold);font-size:1.1rem;">R</div>
+          <div>
+            <div style="font-weight:600;font-size:.875rem;color:var(--cream);">Ricardo Almeida</div>
+            <div style="font-size:.75rem;color:var(--muted);">Franqueado · Mooca / SP</div>
+          </div>
+        </div>
+      </div>
+      <div class="testimonial">
+        <p style="color:var(--cream);font-size:.95rem;font-style:italic;margin-bottom:16px;">
+          "O diferencial é o app. Os clientes de assinatura são fidelíssimos — especialmente os motoristas de Uber.
+          Já tenho fila de espera toda manhã."
+        </p>
+        <div style="display:flex;align-items:center;gap:12px;">
+          <div style="width:40px;height:40px;border-radius:50%;background:var(--surface-2);display:flex;align-items:center;justify-content:center;font-family:var(--font-display);color:var(--gold);font-size:1.1rem;">F</div>
+          <div>
+            <div style="font-weight:600;font-size:.875rem;color:var(--cream);">Fernanda Costa</div>
+            <div style="font-size:.75rem;color:var(--muted);">Franqueada · Santo André / SP</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="swoosh" />
+
+<!-- ════ POR QUE UASHI VS LAVA-JATO TRADICIONAL ════════════ -->
+<section class="section" style="background:var(--surface);">
+  <div class="container">
+    <div style="text-align:center;margin-bottom:48px;">
+      <span class="tag tag-red" style="margin-bottom:12px;">Comparativo</span>
+      <h2 style="font-size:clamp(2rem,4vw,3rem);color:var(--cream);">UASHI VS LAVA-JATO TRADICIONAL</h2>
+    </div>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:20px;max-width:760px;margin:0 auto;">
+      <!-- Tradicional -->
+      <div class="compare-col">
+        <div class="compare-head">
+          <div style="font-family:var(--font-display);font-size:1.2rem;color:var(--muted);letter-spacing:.05em;">LAVA-JATO TRADICIONAL</div>
+        </div>
+        <div class="compare-body">
+          <div class="compare-row"><span style="color:var(--red);">✗</span> 6–10 funcionários por unidade</div>
+          <div class="compare-row"><span style="color:var(--red);">✗</span> Alta rotatividade de pessoal</div>
+          <div class="compare-row"><span style="color:var(--red);">✗</span> Gestão presencial necessária</div>
+          <div class="compare-row"><span style="color:var(--red);">✗</span> Ticket médio imprevisível</div>
+          <div class="compare-row"><span style="color:var(--red);">✗</span> Sem recorrência de receita</div>
+          <div class="compare-row"><span style="color:var(--red);">✗</span> Sem dados de clientes</div>
+          <div class="compare-row"><span style="color:var(--red);">✗</span> Payback: 3–5 anos</div>
+        </div>
+      </div>
+      <!-- Uashi -->
+      <div class="compare-col highlight">
+        <div class="compare-head" style="background:rgba(245,168,0,.06);">
+          <div style="font-family:var(--font-display);font-size:1.2rem;color:var(--gold);letter-spacing:.05em;">UASHI SELF SERVICE</div>
+        </div>
+        <div class="compare-body">
+          <div class="compare-row"><span style="color:#22c55e;">✓</span> <strong>2 funcionários</strong> por turno</div>
+          <div class="compare-row"><span style="color:#22c55e;">✓</span> Operação <strong>automatizada</strong></div>
+          <div class="compare-row"><span style="color:#22c55e;">✓</span> Gestão <strong>remota pelo app</strong></div>
+          <div class="compare-row"><span style="color:#22c55e;">✓</span> Ticket médio <strong>previsível</strong></div>
+          <div class="compare-row"><span style="color:#22c55e;">✓</span> <strong>Assinaturas mensais</strong> recorrentes</div>
+          <div class="compare-row"><span style="color:#22c55e;">✓</span> Dashboard com <strong>dados em tempo real</strong></div>
+          <div class="compare-row"><span style="color:#22c55e;">✓</span> Payback: <strong>18 meses</strong></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="swoosh" />
+
+<!-- ════ DIFERENCIAIS ════════════════════════════════════════ -->
+<section id="diferenciais" class="section">
+  <div class="container">
+    <div style="text-align:center;margin-bottom:56px;">
+      <span class="tag tag-blue" style="margin-bottom:12px;">O que oferecemos</span>
+      <h2 style="font-size:clamp(2.2rem,5vw,3.5rem);color:var(--cream);">SUPORTE COMPLETO<br/>DO INÍCIO AO FIM</h2>
+    </div>
+
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:20px;">
+
+      <div class="diff-card">
+        <div class="diff-icon" style="background:rgba(245,168,0,.12);">🏗️</div>
+        <h3 style="font-family:var(--font-display);font-size:1.2rem;color:var(--cream);margin-bottom:8px;letter-spacing:.03em;">IMPLANTAÇÃO GUIADA</h3>
+        <p style="font-size:.875rem;color:var(--muted);">Projeto arquitetônico padrão, homologação da esteira, instalação elétrica e hidráulica supervisionada pela nossa equipe técnica.</p>
+      </div>
+
+      <div class="diff-card">
+        <div class="diff-icon" style="background:rgba(26,111,212,.12);">📱</div>
+        <h3 style="font-family:var(--font-display);font-size:1.2rem;color:var(--cream);margin-bottom:8px;letter-spacing:.03em;">TECNOLOGIA INCLUÍDA</h3>
+        <p style="font-size:.875rem;color:var(--muted);">App, leitores de QR code, sistema de gestão, painel admin — tudo incluído. Sem custo adicional de software.</p>
+      </div>
+
+      <div class="diff-card">
+        <div class="diff-icon" style="background:rgba(232,50,26,.12);">📣</div>
+        <h3 style="font-family:var(--font-display);font-size:1.2rem;color:var(--cream);margin-bottom:8px;letter-spacing:.03em;">MARKETING CENTRAL</h3>
+        <p style="font-size:.875rem;color:var(--muted);">Campanhas nacionais, presença nas stores, SEO local, promoções relâmpago geolocalizadas — a matriz faz o trabalho pesado.</p>
+      </div>
+
+      <div class="diff-card">
+        <div class="diff-icon" style="background:rgba(34,197,94,.12);">🎓</div>
+        <h3 style="font-family:var(--font-display);font-size:1.2rem;color:var(--cream);margin-bottom:8px;letter-spacing:.03em;">TREINAMENTO COMPLETO</h3>
+        <p style="font-size:.875rem;color:var(--muted);">5 dias de imersão presencial em São Paulo cobrindo operação, atendimento, manutenção preventiva e gestão pelo painel.</p>
+      </div>
+
+      <div class="diff-card">
+        <div class="diff-icon" style="background:rgba(245,168,0,.12);">📊</div>
+        <h3 style="font-family:var(--font-display);font-size:1.2rem;color:var(--cream);margin-bottom:8px;letter-spacing:.03em;">PAINEL DE GESTÃO</h3>
+        <p style="font-size:.875rem;color:var(--muted);">Dashboard com KPIs em tempo real, benchmark anônimo com outras unidades, relatórios automáticos e alertas de anomalia.</p>
+      </div>
+
+      <div class="diff-card">
+        <div class="diff-icon" style="background:rgba(26,111,212,.12);">🔧</div>
+        <h3 style="font-family:var(--font-display);font-size:1.2rem;color:var(--cream);margin-bottom:8px;letter-spacing:.03em;">SUPORTE 24/7</h3>
+        <p style="font-size:.875rem;color:var(--muted);">Canal dedicado para franqueados, SLA de 4h para chamados críticos, rede de técnicos credenciados em São Paulo e Grande ABC.</p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<hr class="swoosh" />
+
+<!-- ════ INVESTIMENTO ════════════════════════════════════════ -->
+<section id="investimento" class="section">
+  <div class="container" style="max-width:860px;">
+    <div style="text-align:center;margin-bottom:56px;">
+      <span class="tag tag-gold" style="margin-bottom:12px;">Transparência total</span>
+      <h2 style="font-size:clamp(2.2rem,5vw,3.5rem);color:var(--cream);">INVESTIMENTO INICIAL</h2>
+      <p style="color:var(--muted);margin-top:12px;">Sem surpresas. Todos os custos detalhados antes da assinatura do contrato.</p>
+    </div>
+
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:32px;align-items:start;">
+
+      <!-- Custos -->
+      <div>
+        <h3 style="font-family:var(--font-display);font-size:1.2rem;color:var(--cream);letter-spacing:.05em;margin-bottom:20px;">COMPOSIÇÃO DO INVESTIMENTO</h3>
+
+        <div class="invest-row">
+          <div>
+            <div style="font-size:.9rem;font-weight:600;color:var(--cream);">Taxa de franquia</div>
+            <div style="font-size:.75rem;color:var(--muted);">Licença de uso da marca e tecnologia</div>
+          </div>
+          <div style="font-family:var(--font-display);font-size:1.4rem;color:var(--gold);white-space:nowrap;">R$ 45K</div>
+        </div>
+
+        <div class="invest-row">
+          <div>
+            <div style="font-size:.9rem;font-weight:600;color:var(--cream);">Equipamentos</div>
+            <div style="font-size:.75rem;color:var(--muted);">Esteira, leitores QR, estrutura</div>
+          </div>
+          <div style="font-family:var(--font-display);font-size:1.4rem;color:var(--gold);white-space:nowrap;">R$ 180K</div>
+        </div>
+
+        <div class="invest-row">
+          <div>
+            <div style="font-size:.9rem;font-weight:600;color:var(--cream);">Obras e instalação</div>
+            <div style="font-size:.75rem;color:var(--muted);">Elétrica, hidráulica, sinalização</div>
+          </div>
+          <div style="font-family:var(--font-display);font-size:1.4rem;color:var(--gold);white-space:nowrap;">R$ 65K</div>
+        </div>
+
+        <div class="invest-row">
+          <div>
+            <div style="font-size:.9rem;font-weight:600;color:var(--cream);">Capital de giro</div>
+            <div style="font-size:.75rem;color:var(--muted);">3 meses de operação</div>
+          </div>
+          <div style="font-family:var(--font-display);font-size:1.4rem;color:var(--gold);white-space:nowrap;">R$ 30K</div>
+        </div>
+
+        <div class="invest-row" style="border-top:2px solid rgba(245,168,0,.3);border-bottom:none;padding-top:20px;margin-top:4px;">
+          <div>
+            <div style="font-size:1rem;font-weight:700;color:var(--cream);">TOTAL ESTIMADO</div>
+          </div>
+          <div style="font-family:var(--font-display);font-size:2rem;color:var(--gold);white-space:nowrap;">R$ 320K</div>
+        </div>
+
+        <p style="font-size:.75rem;color:var(--muted);margin-top:12px;">
+          * Valores de referência para protótipo. Proposta definitiva enviada após qualificação.
+        </p>
+      </div>
+
+      <!-- Recorrentes -->
+      <div>
+        <h3 style="font-family:var(--font-display);font-size:1.2rem;color:var(--cream);letter-spacing:.05em;margin-bottom:20px;">TAXAS RECORRENTES</h3>
+
+        <div class="invest-row">
+          <div>
+            <div style="font-size:.9rem;font-weight:600;color:var(--cream);">Royalties</div>
+            <div style="font-size:.75rem;color:var(--muted);">Sobre faturamento bruto mensal</div>
+          </div>
+          <div style="font-family:var(--font-display);font-size:1.4rem;color:var(--blue);white-space:nowrap;">6%</div>
+        </div>
+
+        <div class="invest-row">
+          <div>
+            <div style="font-size:.9rem;font-weight:600;color:var(--cream);">Fundo de marketing</div>
+            <div style="font-size:.75rem;color:var(--muted);">Campanhas nacionais e regionais</div>
+          </div>
+          <div style="font-family:var(--font-display);font-size:1.4rem;color:var(--blue);white-space:nowrap;">2%</div>
+        </div>
+
+        <div style="background:var(--surface-2);border-radius:12px;padding:20px;margin-top:24px;">
+          <h4 style="font-family:var(--font-display);font-size:1rem;color:var(--cream);margin-bottom:16px;letter-spacing:.05em;">PROJEÇÃO CONSERVADORA</h4>
+          <div style="display:flex;flex-direction:column;gap:8px;">
+            <div style="display:flex;justify-content:space-between;font-size:.85rem;">
+              <span style="color:var(--muted);">Faturamento mensal</span>
+              <span style="color:var(--cream);font-weight:600;">R$ 22.000</span>
+            </div>
+            <div style="display:flex;justify-content:space-between;font-size:.85rem;">
+              <span style="color:var(--muted);">Custos operacionais</span>
+              <span style="color:var(--cream);">R$ 9.800</span>
+            </div>
+            <div style="display:flex;justify-content:space-between;font-size:.85rem;">
+              <span style="color:var(--muted);">Royalties + marketing</span>
+              <span style="color:var(--cream);">R$ 1.760</span>
+            </div>
+            <hr style="border:none;border-top:1px solid rgba(255,255,255,.08);" />
+            <div style="display:flex;justify-content:space-between;font-size:.95rem;">
+              <span style="color:var(--cream);font-weight:700;">Lucro líquido estimado</span>
+              <span style="font-family:var(--font-display);font-size:1.3rem;color:var(--gold);">R$ 10.440</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<hr class="swoosh" />
+
+<!-- ════ COMO FUNCIONA O PROCESSO ════════════════════════════ -->
+<section class="section" style="background:var(--surface);">
+  <div class="container" style="max-width:700px;">
+    <div style="text-align:center;margin-bottom:56px;">
+      <span class="tag tag-red" style="margin-bottom:12px;">Processo simples</span>
+      <h2 style="font-size:clamp(2rem,4vw,3rem);color:var(--cream);">DO INTERESSE À ABERTURA</h2>
+    </div>
+
+    <div style="display:flex;flex-direction:column;gap:32px;">
+
+      <div class="timeline-item">
+        <div class="timeline-num">1</div>
+        <div style="padding-top:8px;">
+          <h3 style="font-family:var(--font-display);font-size:1.1rem;color:var(--cream);letter-spacing:.04em;margin-bottom:6px;">FORMULÁRIO DE INTERESSE</h3>
+          <p style="font-size:.875rem;color:var(--muted);">Preencha o formulário abaixo. Nossa equipe comercial retorna em até 48h para uma conversa inicial.</p>
+        </div>
+      </div>
+
+      <div class="timeline-item">
+        <div class="timeline-num">2</div>
+        <div style="padding-top:8px;">
+          <h3 style="font-family:var(--font-display);font-size:1.1rem;color:var(--cream);letter-spacing:.04em;margin-bottom:6px;">APRESENTAÇÃO E QUALIFICAÇÃO</h3>
+          <p style="font-size:.875rem;color:var(--muted);">Videochamada de 1h com apresentação completa do modelo de negócio, números reais e resposta às suas dúvidas.</p>
+        </div>
+      </div>
+
+      <div class="timeline-item">
+        <div class="timeline-num">3</div>
+        <div style="padding-top:8px;">
+          <h3 style="font-family:var(--font-display);font-size:1.1rem;color:var(--cream);letter-spacing:.04em;margin-bottom:6px;">VISITA À UNIDADE PILOTO</h3>
+          <p style="font-size:.875rem;color:var(--muted);">Conheça uma unidade em operação, fale com franqueados e veja o sistema funcionando na prática.</p>
+        </div>
+      </div>
+
+      <div class="timeline-item">
+        <div class="timeline-num">4</div>
+        <div style="padding-top:8px;">
+          <h3 style="font-family:var(--font-display);font-size:1.1rem;color:var(--cream);letter-spacing:.04em;margin-bottom:6px;">PROPOSTA E CONTRATO</h3>
+          <p style="font-size:.875rem;color:var(--muted);">Proposta personalizada com análise do ponto, projeto arquitetônico e contrato de franquia. Prazo de análise de 10 dias.</p>
+        </div>
+      </div>
+
+      <div class="timeline-item">
+        <div class="timeline-num">5</div>
+        <div style="padding-top:8px;">
+          <h3 style="font-family:var(--font-display);font-size:1.1rem;color:var(--cream);letter-spacing:.04em;margin-bottom:6px;">IMPLANTAÇÃO E ABERTURA</h3>
+          <p style="font-size:.875rem;color:var(--muted);">Da assinatura à inauguração: 90 dias em média. Nossa equipe acompanha cada etapa da implantação.</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<hr class="swoosh" />
+
+<!-- ════ FORMULÁRIO ══════════════════════════════════════════ -->
+<section id="formulario" class="section">
+  <div class="container" style="max-width:680px;">
+    <div style="text-align:center;margin-bottom:48px;">
+      <span class="tag tag-gold" style="margin-bottom:12px;">Primeiro passo</span>
+      <h2 style="font-size:clamp(2.2rem,5vw,3.5rem);color:var(--cream);">QUERO SER<br/>FRANQUEADO</h2>
+      <p style="color:var(--muted);margin-top:12px;">Preencha e nossa equipe retorna em até 48h.</p>
+    </div>
+
+    <form onsubmit="handleSubmit(event)" style="display:flex;flex-direction:column;gap:20px;">
+
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;">
+        <div class="form-group">
+          <label class="form-label">Nome completo *</label>
+          <input type="text" class="form-input" placeholder="João Silva" required />
+        </div>
+        <div class="form-group">
+          <label class="form-label">Telefone / WhatsApp *</label>
+          <input type="tel" class="form-input" placeholder="(11) 99999-0000" required />
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label class="form-label">E-mail *</label>
+        <input type="email" class="form-input" placeholder="joao@empresa.com.br" required />
+      </div>
+
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;">
+        <div class="form-group">
+          <label class="form-label">Cidade de interesse *</label>
+          <input type="text" class="form-input" placeholder="São Paulo" required />
+        </div>
+        <div class="form-group">
+          <label class="form-label">Estado *</label>
+          <select class="form-input" required>
+            <option value="" disabled selected>Selecione</option>
+            <option>SP</option><option>RJ</option><option>MG</option><option>PR</option>
+            <option>RS</option><option>SC</option><option>BA</option><option>GO</option>
+            <option>DF</option><option>Outro</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label class="form-label">Capital disponível para investimento *</label>
+        <select class="form-input" required>
+          <option value="" disabled selected>Selecione uma faixa</option>
+          <option>Até R$ 200.000</option>
+          <option>R$ 200.001 – R$ 350.000</option>
+          <option>R$ 350.001 – R$ 500.000</option>
+          <option>Acima de R$ 500.000</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label class="form-label">Já tem ponto comercial?</label>
+        <select class="form-input">
+          <option value="" disabled selected>Selecione</option>
+          <option>Sim, tenho um ponto em mente</option>
+          <option>Não, preciso de ajuda para encontrar</option>
+          <option>Tenho o imóvel próprio</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label class="form-label">Experiência com negócios / franquias</label>
+        <select class="form-input">
+          <option value="" disabled selected>Selecione</option>
+          <option>Nunca tive negócio próprio</option>
+          <option>Já fui empresário em outra área</option>
+          <option>Tenho ou tive outra franquia</option>
+          <option>Tenho empresa ativa em outra área</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label class="form-label">Mensagem (opcional)</label>
+        <textarea class="form-input" placeholder="Conte um pouco mais sobre o seu interesse, dúvidas ou localização do ponto..."></textarea>
+      </div>
+
+      <!-- Aceite -->
+      <label style="display:flex;gap:12px;align-items:flex-start;cursor:pointer;">
+        <input type="checkbox" required style="margin-top:3px;accent-color:var(--gold);" />
+        <span style="font-size:.8rem;color:var(--muted);">
+          Concordo com a <a href="#" style="color:var(--blue);">Política de Privacidade</a> e autorizo o contato por WhatsApp e e-mail.
+        </span>
+      </label>
+
+      <button type="submit" class="btn-gold" style="font-size:1rem;padding:16px 32px;justify-content:center;width:100%;">
+        Enviar meu interesse →
+      </button>
+
+      <p style="text-align:center;font-size:.8rem;color:var(--muted);">
+        Sem compromisso. Retorno em até 48h pelo WhatsApp informado.
+      </p>
+    </form>
+
+    <!-- Success state (hidden) -->
+    <div id="success" style="display:none;text-align:center;padding:48px 24px;background:var(--surface);border-radius:16px;border:1px solid rgba(34,197,94,.3);">
+      <div style="font-size:3rem;margin-bottom:16px;">✅</div>
+      <h3 style="font-family:var(--font-display);font-size:2rem;color:var(--cream);margin-bottom:8px;">INTERESSE REGISTRADO!</h3>
+      <p style="color:var(--muted);">Nossa equipe comercial retorna em até 48h no WhatsApp informado.</p>
+      <a href="index.html" class="btn-secondary" style="margin-top:24px;display:inline-flex;">Voltar para o site</a>
+    </div>
+  </div>
+</section>
+
+<hr class="swoosh" />
+
+<!-- ════ FOOTER ══════════════════════════════════════════════ -->
+<footer style="background:var(--surface);padding:40px 0 24px;">
+  <div class="container">
+    <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:16px;margin-bottom:24px;">
+      <div>
+        <div style="font-family:var(--font-display);font-size:1.8rem;color:var(--cream);letter-spacing:.05em;line-height:1;">UASHI</div>
+        <span class="swoosh-sm" style="margin-top:4px;"></span>
+      </div>
+      <div style="display:flex;gap:24px;flex-wrap:wrap;">
+        <a href="index.html" class="nav-link" style="font-size:.875rem;">Para usuários</a>
+        <a href="#numeros" class="nav-link" style="font-size:.875rem;">Números</a>
+        <a href="#formulario" class="nav-link" style="font-size:.875rem;color:var(--gold);">Seja franqueado</a>
+        <a href="mailto:franquia@uashi.com.br" class="nav-link" style="font-size:.875rem;">franquia@uashi.com.br</a>
+      </div>
+    </div>
+    <hr style="border:none;border-top:1px solid rgba(255,255,255,.07);margin-bottom:16px;" />
+    <div style="display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px;">
+      <p style="font-size:.75rem;color:var(--muted);">© 2025 Uashi Tecnologia LTDA. Todos os direitos reservados.</p>
+      <div style="display:flex;gap:16px;">
+        <a href="#" style="font-size:.75rem;color:var(--muted);text-decoration:none;">Termos</a>
+        <a href="#" style="font-size:.75rem;color:var(--muted);text-decoration:none;">Privacidade</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script>
+  function handleSubmit(e) {
+    e.preventDefault();
+    document.querySelector('form').style.display = 'none';
+    document.getElementById('success').style.display = 'block';
+    document.getElementById('success').scrollIntoView({ behavior: 'smooth', block: 'center' });
+  }
+</script>
+</body>
+</html>
