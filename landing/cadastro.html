@@ -1,0 +1,731 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Criar conta — Uashi</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="../_shared.css" />
+  <style>
+    /* ── Layout split ── */
+    .page-wrap {
+      min-height: 100vh;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+    }
+    @media (max-width: 768px) {
+      .page-wrap { grid-template-columns: 1fr; }
+      .side-panel { display: none; }
+    }
+
+    /* ── Side panel ── */
+    .side-panel {
+      background:
+        radial-gradient(ellipse 80% 60% at 30% 40%, rgba(232,50,26,0.14) 0%, transparent 65%),
+        radial-gradient(ellipse 60% 50% at 80% 80%, rgba(26,111,212,0.10) 0%, transparent 60%),
+        var(--surface);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      padding: 48px 40px;
+      border-right: 1px solid rgba(255,255,255,0.06);
+      position: sticky;
+      top: 0;
+      height: 100vh;
+      overflow: hidden;
+    }
+
+    /* ── Form panel ── */
+    .form-panel {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 48px 40px;
+      min-height: 100vh;
+    }
+    .form-inner { width: 100%; max-width: 420px; }
+
+    /* ── Progress bar ── */
+    .progress-track {
+      height: 3px;
+      background: rgba(255,255,255,0.08);
+      border-radius: 2px;
+      overflow: hidden;
+    }
+    .progress-fill {
+      height: 100%;
+      background: var(--swoosh);
+      border-radius: 2px;
+      transition: width 0.4s ease;
+    }
+
+    /* ── Step dots ── */
+    .step-dot {
+      width: 28px; height: 28px;
+      border-radius: 50%;
+      background: var(--surface-2);
+      border: 2px solid rgba(255,255,255,0.1);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 0.7rem; font-weight: 700;
+      color: var(--muted);
+      transition: background 0.3s, border-color 0.3s, color 0.3s;
+    }
+    .step-dot.active  { background: var(--red); border-color: var(--red); color: #fff; }
+    .step-dot.done    { background: rgba(34,197,94,0.2); border-color: #22c55e; color: #22c55e; }
+
+    /* ── Form inputs ── */
+    .form-group { display: flex; flex-direction: column; gap: 6px; }
+    .form-label { font-size: .78rem; font-weight: 600; color: var(--muted); letter-spacing: .05em; text-transform: uppercase; }
+    .form-input {
+      background: var(--surface-2);
+      border: 1.5px solid rgba(255,255,255,0.08);
+      border-radius: 8px;
+      color: var(--cream);
+      font-family: var(--font-body);
+      font-size: .9rem;
+      padding: 12px 14px;
+      outline: none;
+      transition: border-color .2s, box-shadow .2s;
+      width: 100%;
+    }
+    .form-input:focus { border-color: var(--red); box-shadow: 0 0 0 3px rgba(232,50,26,0.12); }
+    .form-input.valid { border-color: rgba(34,197,94,0.5); }
+    .form-input::placeholder { color: var(--muted); }
+    select.form-input option { background: var(--surface-2); }
+
+    /* ── Type selector cards ── */
+    .type-card {
+      background: var(--surface-2);
+      border: 2px solid rgba(255,255,255,0.06);
+      border-radius: 12px;
+      padding: 16px;
+      cursor: pointer;
+      transition: border-color .2s, background .2s;
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+    .type-card:hover { border-color: rgba(232,50,26,0.3); background: rgba(232,50,26,0.05); }
+    .type-card.selected { border-color: var(--red); background: rgba(232,50,26,0.08); }
+    .type-card input[type="radio"] { display: none; }
+    .type-icon { font-size: 1.6rem; flex-shrink: 0; }
+    .type-title { font-size: .9rem; font-weight: 600; color: var(--cream); }
+    .type-desc  { font-size: .75rem; color: var(--muted); }
+
+    /* ── Platform pills ── */
+    .platform-pill {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--surface-2);
+      border: 2px solid rgba(255,255,255,0.06);
+      border-radius: 99px;
+      padding: 8px 16px;
+      cursor: pointer;
+      font-size: .875rem;
+      font-weight: 600;
+      color: var(--muted);
+      transition: all .2s;
+      white-space: nowrap;
+    }
+    .platform-pill:hover  { border-color: rgba(255,255,255,0.2); color: var(--cream); }
+    .platform-pill.active { border-color: var(--gold); background: rgba(245,168,0,0.1); color: var(--gold); }
+
+    /* ── Social button ── */
+    .social-btn {
+      display: flex; align-items: center; justify-content: center; gap: 10px;
+      width: 100%;
+      background: var(--surface-2);
+      border: 1.5px solid rgba(255,255,255,0.1);
+      border-radius: 8px;
+      color: var(--cream);
+      font-family: var(--font-body);
+      font-size: .875rem; font-weight: 600;
+      padding: 12px;
+      cursor: pointer;
+      text-decoration: none;
+      transition: border-color .2s, background .2s;
+    }
+    .social-btn:hover { border-color: rgba(255,255,255,0.3); background: rgba(255,255,255,0.04); }
+
+    /* ── Password strength ── */
+    .strength-bar {
+      display: flex; gap: 4px; margin-top: 6px;
+    }
+    .strength-seg {
+      flex: 1; height: 3px; border-radius: 2px;
+      background: rgba(255,255,255,0.1);
+      transition: background .3s;
+    }
+
+    /* ── Step containers ── */
+    .step { display: none; }
+    .step.active { display: block; }
+
+    /* ── Success screen ── */
+    #screen-success { display: none; }
+
+    /* ── Benefit list on side ── */
+    .benefit-item {
+      display: flex; align-items: flex-start; gap: 12px;
+    }
+    .benefit-icon {
+      width: 36px; height: 36px; border-radius: 10px;
+      background: rgba(255,255,255,0.05);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1rem; flex-shrink: 0;
+    }
+
+    /* ── Phone animation ── */
+    .phone-mini {
+      width: 140px; height: 280px;
+      background: var(--surface);
+      border-radius: 24px;
+      border: 2px solid rgba(255,255,255,0.1);
+      position: relative;
+      overflow: hidden;
+      box-shadow: 0 24px 60px rgba(0,0,0,0.5);
+    }
+    .phone-mini-screen {
+      position: absolute; inset: 4px;
+      background: var(--bg);
+      border-radius: 21px;
+      overflow: hidden;
+    }
+  </style>
+</head>
+<body>
+
+<div class="page-wrap">
+
+  <!-- ═══════════════════════════════════════════════════
+       PAINEL LATERAL (visível só em desktop)
+  ═══════════════════════════════════════════════════ -->
+  <aside class="side-panel">
+    <!-- Logo -->
+    <a href="index.html" style="text-decoration:none;">
+      <div style="font-family:var(--font-display);font-size:2rem;color:var(--cream);letter-spacing:.05em;line-height:1;margin-bottom:6px;">UASHI</div>
+      <span class="swoosh" style="width:48px;display:block;"></span>
+    </a>
+
+    <!-- Copy central -->
+    <div>
+      <h2 style="font-family:var(--font-display);font-size:2.6rem;color:var(--cream);line-height:1.05;margin-bottom:20px;">
+        CARRO LIMPO<br/>
+        <span style="color:var(--red);">EM 5 MIN.</span><br/>
+        TODO DIA.
+      </h2>
+
+      <div style="display:flex;flex-direction:column;gap:20px;margin-bottom:40px;">
+        <div class="benefit-item">
+          <div class="benefit-icon">🔲</div>
+          <div>
+            <div style="font-size:.875rem;font-weight:600;color:var(--cream);">QR code na hora</div>
+            <div style="font-size:.8rem;color:var(--muted);">Gere pelo app, passe pela esteira, foi embora.</div>
+          </div>
+        </div>
+        <div class="benefit-item">
+          <div class="benefit-icon">♾️</div>
+          <div>
+            <div style="font-size:.875rem;font-weight:600;color:var(--cream);">1 lavagem por dia no plano Pro</div>
+            <div style="font-size:.8rem;color:var(--muted);">Ideal para Uber, 99 e taxistas.</div>
+          </div>
+        </div>
+        <div class="benefit-item">
+          <div class="benefit-icon">👨‍👩‍👦</div>
+          <div>
+            <div style="font-size:.875rem;font-weight:600;color:var(--cream);">Dependentes com limite</div>
+            <div style="font-size:.8rem;color:var(--muted);">Defina frequência e valor para cada um.</div>
+          </div>
+        </div>
+        <div class="benefit-item">
+          <div class="benefit-icon">⭐</div>
+          <div>
+            <div style="font-size:.875rem;font-weight:600;color:var(--cream);">Programa de fidelidade</div>
+            <div style="font-size:.8rem;color:var(--muted);">Bronze → Prata → Ouro → Diamante.</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Mini phone mockup -->
+      <div style="display:flex;justify-content:center;">
+        <div class="phone-mini">
+          <div class="phone-mini-screen">
+            <div style="padding:12px;">
+              <div style="font-family:var(--font-display);font-size:.6rem;color:var(--muted);letter-spacing:.1em;margin-bottom:8px;">OLÁ, BEM-VINDO!</div>
+              <div style="background:var(--surface-2);border-radius:8px;padding:10px;margin-bottom:8px;">
+                <div style="font-size:.6rem;color:var(--muted);">Créditos</div>
+                <div style="font-family:var(--font-display);font-size:1.2rem;color:var(--gold);">R$ 120,00</div>
+              </div>
+              <div style="background:var(--red);border-radius:8px;padding:8px;text-align:center;">
+                <div style="font-family:var(--font-display);font-size:.7rem;color:#fff;letter-spacing:.05em;">GERAR QR CODE</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Bottom -->
+    <p style="font-size:.75rem;color:var(--muted);">
+      Já tem conta? <a href="#" style="color:var(--blue);">Acesse o app</a>
+    </p>
+  </aside>
+
+  <!-- ═══════════════════════════════════════════════════
+       PAINEL DO FORMULÁRIO
+  ═══════════════════════════════════════════════════ -->
+  <main class="form-panel">
+    <div class="form-inner">
+
+      <!-- ── FORMULÁRIO MULTI-ETAPA ── -->
+      <div id="screen-form">
+
+        <!-- Progress -->
+        <div style="margin-bottom:32px;">
+          <!-- Steps indicator -->
+          <div style="display:flex;align-items:center;gap:8px;margin-bottom:12px;">
+            <div class="step-dot active" id="dot-1">1</div>
+            <div style="flex:1;height:1px;background:rgba(255,255,255,.08);"></div>
+            <div class="step-dot" id="dot-2">2</div>
+            <div style="flex:1;height:1px;background:rgba(255,255,255,.08);"></div>
+            <div class="step-dot" id="dot-3">3</div>
+            <div style="flex:1;height:1px;background:rgba(255,255,255,.08);"></div>
+            <div class="step-dot" id="dot-4">4</div>
+          </div>
+          <div class="progress-track">
+            <div class="progress-fill" id="progress-fill" style="width:25%;"></div>
+          </div>
+          <div style="display:flex;justify-content:space-between;margin-top:6px;">
+            <span id="step-label" style="font-size:.75rem;color:var(--muted);">Passo 1 de 4 — Seus dados</span>
+            <span id="step-pct" style="font-size:.75rem;color:var(--muted);">25%</span>
+          </div>
+        </div>
+
+        <!-- ── STEP 1 — Dados pessoais ── -->
+        <div class="step active" id="step-1">
+          <h2 style="font-family:var(--font-display);font-size:2rem;color:var(--cream);margin-bottom:4px;">SEUS DADOS</h2>
+          <p style="font-size:.875rem;color:var(--muted);margin-bottom:28px;">Preencha seus dados para criar a conta.</p>
+
+          <!-- Social login -->
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:20px;">
+            <button class="social-btn" onclick="handleSocialLogin('Google')">
+              <svg width="18" height="18" viewBox="0 0 24 24"><path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/><path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/><path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z"/><path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"/></svg>
+              Continuar com Google
+            </button>
+            <button class="social-btn" onclick="handleSocialLogin('Apple')">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="var(--cream)"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>
+              Continuar com Apple
+            </button>
+          </div>
+
+          <div style="display:flex;align-items:center;gap:12px;margin-bottom:20px;">
+            <hr style="flex:1;border:none;border-top:1px solid rgba(255,255,255,.08);" />
+            <span style="font-size:.75rem;color:var(--muted);">ou cadastre com e-mail</span>
+            <hr style="flex:1;border:none;border-top:1px solid rgba(255,255,255,.08);" />
+          </div>
+
+          <div style="display:flex;flex-direction:column;gap:16px;">
+            <div class="form-group">
+              <label class="form-label">Nome completo *</label>
+              <input type="text" id="f-nome" class="form-input" placeholder="João da Silva" />
+            </div>
+            <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;">
+              <div class="form-group">
+                <label class="form-label">CPF *</label>
+                <input type="text" id="f-cpf" class="form-input" placeholder="000.000.000-00" maxlength="14" oninput="maskCPF(this)" />
+              </div>
+              <div class="form-group">
+                <label class="form-label">Telefone *</label>
+                <input type="tel" id="f-tel" class="form-input" placeholder="(11) 99999-0000" maxlength="15" oninput="maskPhone(this)" />
+              </div>
+            </div>
+            <div class="form-group">
+              <label class="form-label">E-mail *</label>
+              <input type="email" id="f-email" class="form-input" placeholder="joao@exemplo.com" />
+            </div>
+          </div>
+
+          <button class="btn-primary" onclick="goStep(2)" style="width:100%;justify-content:center;margin-top:24px;font-size:.95rem;padding:14px;">
+            Continuar →
+          </button>
+
+          <p style="text-align:center;font-size:.8rem;color:var(--muted);margin-top:16px;">
+            Já tem conta? <a href="#" style="color:var(--blue);">Entrar no app</a>
+          </p>
+        </div>
+
+        <!-- ── STEP 2 — Tipo de usuário ── -->
+        <div class="step" id="step-2">
+          <h2 style="font-family:var(--font-display);font-size:2rem;color:var(--cream);margin-bottom:4px;">COMO VOCÊ USA?</h2>
+          <p style="font-size:.875rem;color:var(--muted);margin-bottom:28px;">Isso nos ajuda a oferecer o melhor plano para você.</p>
+
+          <div style="display:flex;flex-direction:column;gap:12px;" id="type-cards">
+
+            <label class="type-card" onclick="selectType(this, 'regular')">
+              <input type="radio" name="tipo" value="regular" />
+              <div class="type-icon">🚗</div>
+              <div>
+                <div class="type-title">Uso pessoal</div>
+                <div class="type-desc">Lavo meu carro de vez em quando ou regularmente.</div>
+              </div>
+              <div style="margin-left:auto;">
+                <div class="radio-check" style="width:20px;height:20px;border-radius:50%;border:2px solid rgba(255,255,255,.2);display:flex;align-items:center;justify-content:center;"></div>
+              </div>
+            </label>
+
+            <label class="type-card" onclick="selectType(this, 'motorista')">
+              <input type="radio" name="tipo" value="motorista" />
+              <div class="type-icon">🚕</div>
+              <div>
+                <div class="type-title">Motorista de app / Taxista</div>
+                <div class="type-desc">Uber, 99, iFood, InDriver, táxi — lavo todo dia.</div>
+              </div>
+              <div style="margin-left:auto;">
+                <div class="radio-check" style="width:20px;height:20px;border-radius:50%;border:2px solid rgba(255,255,255,.2);display:flex;align-items:center;justify-content:center;"></div>
+              </div>
+            </label>
+
+            <label class="type-card" onclick="selectType(this, 'frota')">
+              <input type="radio" name="tipo" value="frota" />
+              <div class="type-icon">🚛</div>
+              <div>
+                <div class="type-title">Dono de frota / Empresa</div>
+                <div class="type-desc">Tenho 5+ veículos — quero fatura consolidada.</div>
+              </div>
+              <div style="margin-left:auto;">
+                <div class="radio-check" style="width:20px;height:20px;border-radius:50%;border:2px solid rgba(255,255,255,.2);display:flex;align-items:center;justify-content:center;"></div>
+              </div>
+            </label>
+
+          </div>
+
+          <div style="display:flex;gap:12px;margin-top:24px;">
+            <button class="btn-secondary" onclick="goStep(1)" style="flex:1;justify-content:center;">← Voltar</button>
+            <button class="btn-primary" onclick="goStep(3)" style="flex:2;justify-content:center;">Continuar →</button>
+          </div>
+        </div>
+
+        <!-- ── STEP 3 — Plataforma (condicional) ou pula ── -->
+        <div class="step" id="step-3">
+          <!-- Conteúdo injetado via JS dependendo do tipo -->
+          <div id="step-3-motorista">
+            <h2 style="font-family:var(--font-display);font-size:2rem;color:var(--cream);margin-bottom:4px;">QUAL PLATAFORMA?</h2>
+            <p style="font-size:.875rem;color:var(--muted);margin-bottom:28px;">Selecione todas que você usa. Isso nos ajuda em parcerias futuras.</p>
+
+            <div style="display:flex;flex-wrap:wrap;gap:10px;margin-bottom:28px;" id="platform-pills">
+              <button class="platform-pill" onclick="togglePlatform(this)">🟫 Uber</button>
+              <button class="platform-pill" onclick="togglePlatform(this)">🟦 99</button>
+              <button class="platform-pill" onclick="togglePlatform(this)">🟥 iFood</button>
+              <button class="platform-pill" onclick="togglePlatform(this)">⬛ InDriver</button>
+              <button class="platform-pill" onclick="togglePlatform(this)">🟨 Shopee</button>
+              <button class="platform-pill" onclick="togglePlatform(this)">🚕 Táxi</button>
+              <button class="platform-pill" onclick="togglePlatform(this)">Outra</button>
+            </div>
+
+            <div style="display:flex;gap:12px;">
+              <button class="btn-secondary" onclick="goStep(2)" style="flex:1;justify-content:center;">← Voltar</button>
+              <button class="btn-primary" onclick="goStep(4)" style="flex:2;justify-content:center;">Continuar →</button>
+            </div>
+          </div>
+
+          <div id="step-3-frota" style="display:none;">
+            <h2 style="font-family:var(--font-display);font-size:2rem;color:var(--cream);margin-bottom:4px;">SUA FROTA</h2>
+            <p style="font-size:.875rem;color:var(--muted);margin-bottom:28px;">Informe alguns dados para preparar seu acesso empresarial.</p>
+
+            <div style="display:flex;flex-direction:column;gap:16px;">
+              <div class="form-group">
+                <label class="form-label">Nome da empresa *</label>
+                <input type="text" class="form-input" placeholder="Transportes Silva LTDA" />
+              </div>
+              <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;">
+                <div class="form-group">
+                  <label class="form-label">CNPJ</label>
+                  <input type="text" class="form-input" placeholder="00.000.000/0001-00" />
+                </div>
+                <div class="form-group">
+                  <label class="form-label">Nº de veículos *</label>
+                  <select class="form-input">
+                    <option value="" disabled selected>Selecione</option>
+                    <option>5 – 10 veículos</option>
+                    <option>11 – 30 veículos</option>
+                    <option>31 – 100 veículos</option>
+                    <option>Mais de 100</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+
+            <div style="display:flex;gap:12px;margin-top:24px;">
+              <button class="btn-secondary" onclick="goStep(2)" style="flex:1;justify-content:center;">← Voltar</button>
+              <button class="btn-primary" onclick="goStep(4)" style="flex:2;justify-content:center;">Continuar →</button>
+            </div>
+          </div>
+
+          <div id="step-3-regular" style="display:none;">
+            <!-- Usuário regular pula para step 4 direto via JS, mas fallback aqui -->
+            <h2 style="font-family:var(--font-display);font-size:2rem;color:var(--cream);margin-bottom:4px;">QUASE LÁ!</h2>
+            <p style="font-size:.875rem;color:var(--muted);margin-bottom:28px;">Só mais um passo — crie sua senha de acesso.</p>
+            <div style="display:flex;gap:12px;">
+              <button class="btn-secondary" onclick="goStep(2)" style="flex:1;justify-content:center;">← Voltar</button>
+              <button class="btn-primary" onclick="goStep(4)" style="flex:2;justify-content:center;">Continuar →</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- ── STEP 4 — Senha + Termos ── -->
+        <div class="step" id="step-4">
+          <h2 style="font-family:var(--font-display);font-size:2rem;color:var(--cream);margin-bottom:4px;">SENHA E TERMOS</h2>
+          <p style="font-size:.875rem;color:var(--muted);margin-bottom:28px;">Crie uma senha segura para finalizar o cadastro.</p>
+
+          <div style="display:flex;flex-direction:column;gap:16px;margin-bottom:20px;">
+            <div class="form-group">
+              <label class="form-label">Senha *</label>
+              <div style="position:relative;">
+                <input type="password" id="f-senha" class="form-input" placeholder="Mínimo 8 caracteres" oninput="updateStrength(this.value)" style="padding-right:44px;" />
+                <button onclick="togglePass('f-senha', this)" type="button" style="position:absolute;right:12px;top:50%;transform:translateY(-50%);background:none;border:none;color:var(--muted);cursor:pointer;font-size:.9rem;">👁</button>
+              </div>
+              <div class="strength-bar">
+                <div class="strength-seg" id="s1"></div>
+                <div class="strength-seg" id="s2"></div>
+                <div class="strength-seg" id="s3"></div>
+                <div class="strength-seg" id="s4"></div>
+              </div>
+              <div style="font-size:.72rem;color:var(--muted);margin-top:2px;" id="strength-label">Use letras, números e símbolos</div>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label">Confirmar senha *</label>
+              <div style="position:relative;">
+                <input type="password" id="f-senha2" class="form-input" placeholder="Repita a senha" style="padding-right:44px;" />
+                <button onclick="togglePass('f-senha2', this)" type="button" style="position:absolute;right:12px;top:50%;transform:translateY(-50%);background:none;border:none;color:var(--muted);cursor:pointer;font-size:.9rem;">👁</button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Termos -->
+          <div style="display:flex;flex-direction:column;gap:12px;margin-bottom:24px;">
+            <label style="display:flex;gap:10px;align-items:flex-start;cursor:pointer;">
+              <input type="checkbox" id="check-termos" style="margin-top:3px;accent-color:var(--red);flex-shrink:0;" />
+              <span style="font-size:.8rem;color:var(--muted);">
+                Aceito os <a href="#" style="color:var(--blue);">Termos de Uso</a> e a <a href="#" style="color:var(--blue);">Política de Privacidade</a> da Uashi.
+              </span>
+            </label>
+            <label style="display:flex;gap:10px;align-items:flex-start;cursor:pointer;">
+              <input type="checkbox" id="check-mkt" style="margin-top:3px;accent-color:var(--red);flex-shrink:0;" />
+              <span style="font-size:.8rem;color:var(--muted);">
+                Quero receber promoções e novidades por e-mail e WhatsApp. (opcional)
+              </span>
+            </label>
+          </div>
+
+          <div style="display:flex;gap:12px;">
+            <button class="btn-secondary" onclick="goStep(3)" style="flex:1;justify-content:center;">← Voltar</button>
+            <button class="btn-primary" onclick="finalizarCadastro()" style="flex:2;justify-content:center;">Criar conta ✓</button>
+          </div>
+        </div>
+
+      </div><!-- /screen-form -->
+
+      <!-- ═══════════════════════════════════════════════
+           TELA DE SUCESSO — Baixe o App
+      ═══════════════════════════════════════════════ -->
+      <div id="screen-success">
+        <div style="text-align:center;">
+          <!-- Ícone animado -->
+          <div style="width:80px;height:80px;background:rgba(34,197,94,.12);border:2px solid rgba(34,197,94,.3);border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 24px;font-size:2rem;">✅</div>
+
+          <h2 style="font-family:var(--font-display);font-size:2.5rem;color:var(--cream);margin-bottom:8px;line-height:1.0;">
+            CONTA CRIADA!<br/><span style="color:var(--gold);">BAIXE O APP</span>
+          </h2>
+          <p style="color:var(--muted);font-size:.9rem;margin-bottom:32px;max-width:340px;margin-left:auto;margin-right:auto;">
+            Sua conta está pronta. Baixe o app para gerar seu primeiro QR code e lavar o carro hoje.
+          </p>
+
+          <!-- Swoosh divisor -->
+          <hr class="swoosh" style="margin-bottom:32px;" />
+
+          <!-- Badges -->
+          <div style="display:flex;flex-direction:column;gap:12px;max-width:240px;margin:0 auto 32px;">
+            <a href="#" class="store-badge" style="justify-content:center;">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="var(--cream)"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>
+              <div>
+                <span class="store-label">Disponível na</span>
+                <span class="store-name">App Store</span>
+              </div>
+            </a>
+            <a href="#" class="store-badge" style="justify-content:center;">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="var(--cream)"><path d="M3 20.5v-17c0-.83 1-.97 1.4-.4l16 8c.46.23.46.87 0 1.1l-16 8c-.4.57-1.4.13-1.4-.7z"/></svg>
+              <div>
+                <span class="store-label">Disponível no</span>
+                <span class="store-name">Google Play</span>
+              </div>
+            </a>
+          </div>
+
+          <!-- Próximos passos -->
+          <div style="background:var(--surface);border-radius:12px;padding:20px;text-align:left;">
+            <div style="font-size:.75rem;font-weight:700;color:var(--muted);letter-spacing:.08em;text-transform:uppercase;margin-bottom:14px;">Próximos passos</div>
+            <div style="display:flex;flex-direction:column;gap:10px;">
+              <div style="display:flex;gap:10px;align-items:center;font-size:.85rem;color:var(--cream);">
+                <span style="width:24px;height:24px;border-radius:50%;background:rgba(34,197,94,.15);border:1px solid rgba(34,197,94,.3);display:flex;align-items:center;justify-content:center;font-size:.7rem;color:#22c55e;flex-shrink:0;">✓</span>
+                Conta criada com sucesso
+              </div>
+              <div style="display:flex;gap:10px;align-items:center;font-size:.85rem;color:var(--cream);">
+                <span style="width:24px;height:24px;border-radius:50%;background:rgba(245,168,0,.12);border:1px solid rgba(245,168,0,.3);display:flex;align-items:center;justify-content:center;font-size:.75rem;color:var(--gold);flex-shrink:0;">2</span>
+                Baixe o app e faça login
+              </div>
+              <div style="display:flex;gap:10px;align-items:center;font-size:.85rem;color:var(--cream);">
+                <span style="width:24px;height:24px;border-radius:50%;background:var(--surface-2);border:1px solid rgba(255,255,255,.1);display:flex;align-items:center;justify-content:center;font-size:.75rem;color:var(--muted);flex-shrink:0;">3</span>
+                Adicione seu veículo
+              </div>
+              <div style="display:flex;gap:10px;align-items:center;font-size:.85rem;color:var(--cream);">
+                <span style="width:24px;height:24px;border-radius:50%;background:var(--surface-2);border:1px solid rgba(255,255,255,.1);display:flex;align-items:center;justify-content:center;font-size:.75rem;color:var(--muted);flex-shrink:0;">4</span>
+                Gere seu primeiro QR code e lave!
+              </div>
+            </div>
+          </div>
+
+          <p style="font-size:.8rem;color:var(--muted);margin-top:20px;">
+            Enviamos um e-mail de confirmação para o endereço cadastrado.
+          </p>
+
+          <a href="index.html" style="display:inline-block;margin-top:12px;font-size:.8rem;color:var(--muted);text-decoration:underline;">
+            Voltar para o site
+          </a>
+        </div>
+      </div><!-- /screen-success -->
+
+    </div><!-- /form-inner -->
+  </main>
+
+</div><!-- /page-wrap -->
+
+<script>
+  /* ── Estado ── */
+  let currentStep = 1;
+  let userType = null;
+
+  const stepLabels = [
+    'Passo 1 de 4 — Seus dados',
+    'Passo 2 de 4 — Como você usa',
+    'Passo 3 de 4 — Informações adicionais',
+    'Passo 4 de 4 — Senha e termos',
+  ];
+  const stepProgress = ['25%', '50%', '75%', '100%'];
+  const stepPcts = ['25%', '50%', '75%', '100%'];
+
+  function goStep(n) {
+    // hide current
+    document.getElementById('step-' + currentStep).classList.remove('active');
+    document.getElementById('dot-' + currentStep).classList.remove('active');
+    document.getElementById('dot-' + currentStep).classList.add('done');
+
+    // Se step 3, definir qual sub-painel mostrar
+    if (n === 3) {
+      document.getElementById('step-3-motorista').style.display = 'none';
+      document.getElementById('step-3-frota').style.display = 'none';
+      document.getElementById('step-3-regular').style.display = 'none';
+
+      if (userType === 'motorista') {
+        document.getElementById('step-3-motorista').style.display = 'block';
+      } else if (userType === 'frota') {
+        document.getElementById('step-3-frota').style.display = 'block';
+      } else {
+        // Usuário regular pula step 3 direto para 4
+        document.getElementById('dot-3').classList.remove('active');
+        document.getElementById('dot-3').classList.add('done');
+        showStep(4);
+        return;
+      }
+    }
+
+    showStep(n);
+  }
+
+  function showStep(n) {
+    currentStep = n;
+    document.getElementById('step-' + n).classList.add('active');
+    document.getElementById('dot-' + n).classList.remove('done');
+    document.getElementById('dot-' + n).classList.add('active');
+    document.getElementById('progress-fill').style.width = stepProgress[n - 1];
+    document.getElementById('step-label').textContent = stepLabels[n - 1];
+    document.getElementById('step-pct').textContent = stepPcts[n - 1];
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+
+  function selectType(el, type) {
+    userType = type;
+    document.querySelectorAll('.type-card').forEach(c => c.classList.remove('selected'));
+    el.classList.add('selected');
+    // mark radio check visually
+    el.querySelector('.radio-check').innerHTML = '<div style="width:10px;height:10px;border-radius:50%;background:var(--red);"></div>';
+    document.querySelectorAll('.radio-check').forEach((rc, i) => {
+      if (rc !== el.querySelector('.radio-check')) rc.innerHTML = '';
+    });
+  }
+
+  function togglePlatform(el) {
+    el.classList.toggle('active');
+  }
+
+  function maskCPF(el) {
+    let v = el.value.replace(/\D/g, '').slice(0, 11);
+    v = v.replace(/(\d{3})(\d)/, '$1.$2');
+    v = v.replace(/(\d{3})(\d)/, '$1.$2');
+    v = v.replace(/(\d{3})(\d{1,2})$/, '$1-$2');
+    el.value = v;
+  }
+
+  function maskPhone(el) {
+    let v = el.value.replace(/\D/g, '').slice(0, 11);
+    if (v.length > 10) v = v.replace(/(\d{2})(\d{5})(\d{4})/, '($1) $2-$3');
+    else if (v.length > 6) v = v.replace(/(\d{2})(\d{4})(\d{0,4})/, '($1) $2-$3');
+    else if (v.length > 2) v = v.replace(/(\d{2})(\d{0,5})/, '($1) $2');
+    else v = v.replace(/(\d{0,2})/, '($1');
+    el.value = v;
+  }
+
+  function updateStrength(pwd) {
+    const segs = [document.getElementById('s1'), document.getElementById('s2'), document.getElementById('s3'), document.getElementById('s4')];
+    const label = document.getElementById('strength-label');
+    let score = 0;
+    if (pwd.length >= 8) score++;
+    if (/[A-Z]/.test(pwd)) score++;
+    if (/[0-9]/.test(pwd)) score++;
+    if (/[^A-Za-z0-9]/.test(pwd)) score++;
+    const colors = ['#E8321A', '#F5A800', '#1A6FD4', '#22c55e'];
+    const labels = ['Muito fraca', 'Fraca', 'Boa', 'Forte'];
+    segs.forEach((s, i) => s.style.background = i < score ? colors[score - 1] : 'rgba(255,255,255,.1)');
+    label.textContent = score > 0 ? labels[score - 1] : 'Use letras, números e símbolos';
+    label.style.color = score > 0 ? colors[score - 1] : 'var(--muted)';
+  }
+
+  function togglePass(id, btn) {
+    const el = document.getElementById(id);
+    el.type = el.type === 'password' ? 'text' : 'password';
+    btn.textContent = el.type === 'password' ? '👁' : '🙈';
+  }
+
+  function finalizarCadastro() {
+    if (!document.getElementById('check-termos').checked) {
+      document.getElementById('check-termos').style.outline = '2px solid var(--red)';
+      return;
+    }
+    document.getElementById('screen-form').style.display = 'none';
+    document.getElementById('screen-success').style.display = 'block';
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+
+  function handleSocialLogin(provider) {
+    // Simulação: vai direto para tela de tipo de usuário
+    goStep(2);
+  }
+</script>
+
+</body>
+</html>
