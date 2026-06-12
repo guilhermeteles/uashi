@@ -197,6 +197,7 @@
       overflow: hidden;
     }
   </style>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hugeicons@0.0.7/fonts/hugeicons.css" />
 </head>
 <body>
 
@@ -698,7 +699,7 @@
     if (/[A-Z]/.test(pwd)) score++;
     if (/[0-9]/.test(pwd)) score++;
     if (/[^A-Za-z0-9]/.test(pwd)) score++;
-    const colors = ['#E8321A', '#F5A800', '#1A6FD4', '#22c55e'];
+    const colors = ['#E8321A', '#F5A800', '#037BC9', '#22c55e'];
     const labels = ['Muito fraca', 'Fraca', 'Boa', 'Forte'];
     segs.forEach((s, i) => s.style.background = i < score ? colors[score - 1] : 'rgba(255,255,255,.1)');
     label.textContent = score > 0 ? labels[score - 1] : 'Use letras, números e símbolos';

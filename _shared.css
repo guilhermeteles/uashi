@@ -4,17 +4,17 @@
 
 :root {
   /* Colors */
-  --bg:        #0A0A0A;
-  --surface:   #141414;
-  --surface-2: #1E1E1E;
+  --bg:        #011c50;
+  --surface:   #013272;
+  --surface-2: #01408a;
   --red:       #E8321A;
   --gold:      #F5A800;
-  --blue:      #1A6FD4;
+  --blue:      #037BC9;
   --cream:     #F0E8D0;
-  --muted:     #6B6B6B;
+  --muted:     #7ba3c8;
 
   /* Swoosh gradient */
-  --swoosh: linear-gradient(90deg, #E8321A 0%, #F5A800 50%, #1A6FD4 100%);
+  --swoosh: linear-gradient(90deg, #E8321A 0%, #F5A800 50%, #037BC9 100%);
 
   /* Typography */
   --font-display: 'Bebas Neue', sans-serif;
@@ -179,5 +179,5 @@ h1, h2, h3 { font-family: var(--font-display); letter-spacing: 0.02em; line-heig
 }
 .tag-gold  { background: rgba(245,168,0,0.15);  color: var(--gold); border: 1px solid rgba(245,168,0,0.3); }
 .tag-red   { background: rgba(232,50,26,0.15);   color: var(--red);  border: 1px solid rgba(232,50,26,0.3); }
-.tag-blue  { background: rgba(26,111,212,0.15);  color: var(--blue); border: 1px solid rgba(26,111,212,0.3); }
+.tag-blue  { background: rgba(3,123,201,0.15);   color: var(--blue); border: 1px solid rgba(3,123,201,0.3); }
 .tag-green { background: rgba(34,197,94,0.15);   color: #22c55e;     border: 1px solid rgba(34,197,94,0.3); }

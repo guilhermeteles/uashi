@@ -55,6 +55,7 @@
   .alert-card.resolved::after { content:'✓ Resolvido';position:absolute;right:16px;top:16px;background:rgba(34,197,94,.15);border:1px solid rgba(34,197,94,.3);color:#22c55e;font-size:.7rem;font-weight:700;padding:3px 10px;border-radius:99px; }
   .alert-card { position:relative; }
   </style>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hugeicons@0.0.7/fonts/hugeicons.css" />
 </head>
 <body>
 <div class="admin-layout">
@@ -75,37 +76,37 @@
     <nav class="sidebar-nav">
       <div class="nav-section-label">Principal</div>
       <a href="./index.html" class="nav-item">
-        <span class="nav-icon">&#9642;</span> Dashboard
+        <span class="nav-icon"><i class="hgi-stroke hgi-chart-bar-01"></i></span> Dashboard
       </a>
       <a href="./franqueados.html" class="nav-item">
-        <span class="nav-icon">🏪</span> Franqueados
+        <span class="nav-icon"><i class="hgi-stroke hgi-store-01"></i></span> Franqueados
       </a>
-      <a href="./planos-precos.html" class="nav-item">
-        <span class="nav-icon">💳</span> Planos / Preços
+      <a href="./planos.html" class="nav-item">
+        <span class="nav-icon"><i class="hgi-stroke hgi-credit-card-01"></i></span> Planos / Preços
       </a>
       <a href="./promocoes.html" class="nav-item">
-        <span class="nav-icon">⚡</span> Promoções
+        <span class="nav-icon"><i class="hgi-stroke hgi-zap"></i></span> Promoções
       </a>
       <div class="nav-section-label">Operações</div>
       <a href="./alertas.html" class="nav-item active">
-        <span class="nav-icon">🔔</span> Alertas
+        <span class="nav-icon"><i class="hgi-stroke hgi-notification-01"></i></span> Alertas
         <span class="nav-badge">5</span>
       </a>
       <a href="./chamados.html" class="nav-item">
-        <span class="nav-icon">🎫</span> Chamados
+        <span class="nav-icon"><i class="hgi-stroke hgi-ticket-01"></i></span> Chamados
         <span class="nav-badge">12</span>
       </a>
       <a href="./relatorios.html" class="nav-item">
-        <span class="nav-icon">📊</span> Relatórios
+        <span class="nav-icon"><i class="hgi-stroke hgi-chart-bar-01"></i></span> Relatórios
       </a>
       <div class="nav-section-label">Conta</div>
-      <a href="./perfil-admin.html" class="nav-item">
-        <span class="nav-icon">👤</span> Perfil
+      <a href="./perfil.html" class="nav-item">
+        <span class="nav-icon"><i class="hgi-stroke hgi-user-01"></i></span> Perfil
       </a>
     </nav>
     <div class="sidebar-footer">
       <a href="#" class="nav-item" style="padding: 8px 0; font-size:.78rem;">
-        <span class="nav-icon">🚪</span> Sair
+        <span class="nav-icon"><i class="hgi-stroke hgi-logout-03"></i></span> Sair
       </a>
     </div>
   </aside>
@@ -117,7 +118,7 @@
     <header class="topbar">
       <span class="topbar-title">Alertas e Anomalias</span>
       <div class="topbar-actions">
-        <button class="topbar-btn" title="Alertas">🔔<span class="topbar-dot"></span></button>
+        <button class="topbar-btn" title="Alertas"><i class="hgi-stroke hgi-notification-01"></i><span class="topbar-dot"></span></button>
         <div class="topbar-avatar">AM</div>
         <a href="#" class="btn-secondary" style="padding:7px 14px;font-size:.75rem;">Sair</a>
       </div>
