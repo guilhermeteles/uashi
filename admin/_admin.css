@@ -45,6 +45,8 @@ body { background: var(--bg); color: var(--cream); font-family: var(--font-body)
 .nav-item:hover { color: var(--cream); background: rgba(255,255,255,.03); }
 .nav-item.active { color: var(--cream); background: rgba(255,255,255,.05); border-left-color: var(--red); }
 .nav-item .nav-icon { font-size: 1rem; width: 20px; text-align: center; }
+.nav-icon iconify-icon { display: inline-flex; width: 18px; height: 18px; }
+.topbar-btn iconify-icon { display: inline-flex; width: 18px; height: 18px; }
 .sidebar-footer { padding: 12px 20px; border-top: 1px solid rgba(255,255,255,.06); }
 
 /* ── Main area ── */
