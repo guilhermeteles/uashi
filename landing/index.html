@@ -250,24 +250,9 @@
       <div style="position:absolute;width:300px;height:300px;border-radius:50%;background:radial-gradient(circle,rgba(26,111,212,0.22) 0%,transparent 70%);pointer-events:none;"></div>
       <div class="phone-mockup">
         <div class="phone-screen">
-          <!-- Simulated QR screen -->
-          <div style="text-align:center;padding:20px;">
-            <div style="font-family:var(--font-display);font-size:0.85rem;color:var(--muted);letter-spacing:0.1em;margin-bottom:16px;">SEU QR CODE</div>
-            <!-- Fake QR -->
-            <div style="width:140px;height:140px;background:#fff;border-radius:12px;margin:0 auto 16px;display:grid;grid-template-columns:repeat(7,1fr);padding:10px;gap:2px;">
-              <!-- Just visual squares to mimic a QR -->
-              <script>
-                document.currentScript.previousElementSibling.innerHTML = (() => {
-                  const p = [1,1,1,1,1,1,1,1,0,0,0,0,0,1,1,0,1,1,1,0,1,1,0,1,0,0,1,1,1,0,1,1,1,0,1,1,0,0,0,0,0,1,1,1,1,1,1,1,1,0,0,0,0,0,0,0,1,0,1,0,1,0,1,1,1,0,0,1,0,1,0,0,0,1,0,0,1,1,1,0,0,0,1,1,0,1,0,0,1,0,1,0,1,0,1,0,0,0,0,0,0,0,1,0,1,0,1,1,1,0,1,1,0,1,0,1,0,0,1,0,1,0,1,1,1,0,1,1,0,0,1,0,1,0,0,1,0,0,1,0,1,0,1,0,1,1,1,1,1,1,1];
-                  return p.map(b=>`<div style="background:${b?'#0a0a0a':'#fff'};border-radius:1px;"></div>`).join('');
-                })();
-              </script>
-            </div>
-            <div style="font-family:var(--font-display);font-size:1.3rem;color:var(--cream);margin-bottom:4px;">LAVAGEM COMPLETA</div>
-            <div style="font-size:0.75rem;color:var(--muted);">Válido por 30 min · SUV</div>
-            <hr class="swoosh" style="margin:14px 0;" />
-            <div style="font-size:0.7rem;color:var(--muted);">Carlos M. · Plano Ouro</div>
-          </div>
+          <!-- App real ao vivo dentro do mockup (home do app) -->
+          <iframe src="../app/index.html" title="App Uashi" scrolling="no" loading="lazy"
+            style="position:absolute;top:0;left:0;width:390px;height:803px;border:0;transform:scale(0.534);transform-origin:top left;pointer-events:none;"></iframe>
         </div>
       </div>
     </div>
