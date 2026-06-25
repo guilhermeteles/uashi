@@ -141,6 +141,36 @@
     /* ── Glowing swoosh accents ── */
     .glow-red  { text-shadow: 0 0 32px rgba(232,50,26,0.4); }
     .glow-gold { text-shadow: 0 0 32px rgba(245,168,0,0.4); }
+
+    /* ── Stepper "Como Funciona" ── */
+    .steps { position:relative; display:grid; grid-template-columns:repeat(5,1fr); gap:16px; }
+    .steps-line { position:absolute; top:34px; left:10%; right:10%; height:3px; background:rgba(255,255,255,.10); border-radius:2px; z-index:0; }
+    .steps-line-fill { position:absolute; left:0; top:0; bottom:0; width:0; background:linear-gradient(90deg,var(--red),var(--gold),var(--blue)); border-radius:2px; transition:width .55s var(--ease-out); }
+    .step { position:relative; z-index:1; display:flex; flex-direction:column; align-items:center; text-align:center;
+            background:transparent; border:none; cursor:pointer; padding:0 8px; font-family:var(--font-body);
+            opacity:.5; transition:opacity .3s var(--ease-out); }
+    .step:hover { opacity:.8; }
+    .step.is-active { opacity:1; }
+    .step-dot { width:68px; height:68px; border-radius:50%; display:flex; align-items:center; justify-content:center;
+                background:var(--surface-2); border:2px solid rgba(255,255,255,.12); color:var(--muted); font-size:1.7rem;
+                margin-bottom:16px; transition:transform .3s var(--ease-out), border-color .3s, color .3s, box-shadow .3s; }
+    .step.is-active .step-dot { color:var(--cream); border-color:var(--blue); background:var(--bg);
+                transform:scale(1.08); box-shadow:0 0 0 6px rgba(6,120,191,.18); }
+    .step-k { font-size:.62rem; font-weight:700; letter-spacing:.12em; text-transform:uppercase; color:var(--blue); margin-bottom:6px; }
+    .step-t { font-family:var(--font-display); font-size:1.05rem; letter-spacing:.05em; color:var(--cream); margin-bottom:8px; line-height:1.05; }
+    .step-d { font-size:.84rem; color:var(--muted); max-width:200px; }
+    .step-body { display:flex; flex-direction:column; align-items:center; }
+    @media (max-width:860px){
+      .steps { grid-template-columns:1fr; gap:8px; max-width:420px; margin:0 auto; }
+      .steps-line { left:33px; right:auto; top:34px; bottom:34px; width:3px; height:auto; }
+      .steps-line-fill { left:0; right:0; top:0; height:0; width:auto; background:linear-gradient(180deg,var(--red),var(--gold),var(--blue)); transition:height .55s var(--ease-out); }
+      .step { flex-direction:row; text-align:left; gap:16px; align-items:flex-start; padding:10px 0; }
+      .step-dot { margin-bottom:0; flex-shrink:0; }
+      .step-body { display:flex; flex-direction:column; align-items:flex-start; }
+    }
+    @media (prefers-reduced-motion: reduce){
+      .steps-line-fill, .step, .step-dot { transition:none; }
+    }
   </style>
   <script src="https://code.iconify.design/iconify-icon/2.1.0/iconify-icon.min.js"></script>
 </head>
@@ -267,55 +297,49 @@
 ════════════════════════════════════════════════════════════ -->
 <section id="como-funciona" class="section">
   <div class="container">
-    <div style="text-align:center;margin-bottom:56px;">
-      <span class="tag tag-red" style="margin-bottom:12px;">Simples assim</span>
+    <div style="text-align:center;margin-bottom:48px;">
+      <span class="tag tag-blue" style="margin-bottom:12px;">Simples assim</span>
       <h2 style="font-size:clamp(2.2rem,5vw,3.5rem);color:var(--cream);">COMO FUNCIONA</h2>
+      <p style="color:var(--muted);font-size:.9rem;margin-top:10px;">Do volante ao carro limpo em menos de 5 minutos.</p>
     </div>
 
-    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:24px;position:relative;">
+    <div class="steps" id="steps">
+      <div class="steps-line"><div class="steps-line-fill" id="stepsFill"></div></div>
 
-      <!-- Step connector line (decorative) -->
-      <div style="position:absolute;top:24px;left:10%;right:10%;height:2px;background:linear-gradient(90deg,var(--red),var(--gold),var(--blue));opacity:0.25;pointer-events:none;" class="hidden lg:block"></div>
+      <button class="step is-active" data-i="0">
+        <span class="step-dot"><iconify-icon icon="hugeicons:car-01"></iconify-icon></span>
+        <span class="step-body"><span class="step-k">Passo 1</span>
+        <span class="step-t">CHEGOU</span>
+        <span class="step-d">Dirija até uma unidade Uashi. Sem agendamento, sem fila.</span></span>
+      </button>
 
-      <!-- 1 -->
-      <div style="text-align:center;padding:28px 20px;background:var(--surface);border-radius:16px;border:1px solid rgba(255,255,255,0.06);">
-        <div class="step-num" style="margin:0 auto 16px;">1</div>
-        <div style="font-size:2rem;margin-bottom:12px;"><iconify-icon icon="hugeicons:car-01"></iconify-icon></div>
-        <h3 style="font-size:1rem;font-family:var(--font-display);letter-spacing:0.05em;margin-bottom:8px;color:var(--cream);">CHEGOU</h3>
-        <p style="font-size:0.85rem;color:var(--muted);">Dirija até uma unidade Uashi. Sem agendamento, sem fila.</p>
-      </div>
+      <button class="step" data-i="1">
+        <span class="step-dot"><iconify-icon icon="hugeicons:mobile-navigator-01"></iconify-icon></span>
+        <span class="step-body"><span class="step-k">Passo 2</span>
+        <span class="step-t">ABRIU O APP</span>
+        <span class="step-d">Selecione o tipo de lavagem e seu veículo no app.</span></span>
+      </button>
 
-      <!-- 2 -->
-      <div style="text-align:center;padding:28px 20px;background:var(--surface);border-radius:16px;border:1px solid rgba(255,255,255,0.06);">
-        <div class="step-num" style="margin:0 auto 16px;">2</div>
-        <div style="font-size:2rem;margin-bottom:12px;"><iconify-icon icon="hugeicons:mobile-navigator-01"></iconify-icon></div>
-        <h3 style="font-size:1rem;font-family:var(--font-display);letter-spacing:0.05em;margin-bottom:8px;color:var(--cream);">ABRIU O APP</h3>
-        <p style="font-size:0.85rem;color:var(--muted);">Selecione o tipo de lavagem e seu veículo no app.</p>
-      </div>
+      <button class="step" data-i="2">
+        <span class="step-dot"><iconify-icon icon="hugeicons:qr-code-01"></iconify-icon></span>
+        <span class="step-body"><span class="step-k">Passo 3</span>
+        <span class="step-t">GEROU O QR</span>
+        <span class="step-d">Mostre o QR code para o leitor na entrada da esteira.</span></span>
+      </button>
 
-      <!-- 3 -->
-      <div style="text-align:center;padding:28px 20px;background:var(--surface);border-radius:16px;border:1px solid rgba(255,255,255,0.06);border-color:rgba(232,50,26,0.3);">
-        <div class="step-num" style="margin:0 auto 16px;">3</div>
-        <div style="font-size:2rem;margin-bottom:12px;"><iconify-icon icon="hugeicons:qr-code-01"></iconify-icon></div>
-        <h3 style="font-size:1rem;font-family:var(--font-display);letter-spacing:0.05em;margin-bottom:8px;color:var(--cream);">GEROU O QR</h3>
-        <p style="font-size:0.85rem;color:var(--muted);">Mostre o QR code para o leitor na entrada da esteira.</p>
-      </div>
+      <button class="step" data-i="3">
+        <span class="step-dot"><iconify-icon icon="hugeicons:car-01"></iconify-icon></span>
+        <span class="step-body"><span class="step-k">Passo 4</span>
+        <span class="step-t">PASSOU PELA ESTEIRA</span>
+        <span class="step-d">Mantenha o ponto morto. A esteira cuida do resto.</span></span>
+      </button>
 
-      <!-- 4 -->
-      <div style="text-align:center;padding:28px 20px;background:var(--surface);border-radius:16px;border:1px solid rgba(255,255,255,0.06);">
-        <div class="step-num" style="margin:0 auto 16px;">4</div>
-        <div style="font-size:2rem;margin-bottom:12px;"><iconify-icon icon="hugeicons:car-01"></iconify-icon></div>
-        <h3 style="font-size:1rem;font-family:var(--font-display);letter-spacing:0.05em;margin-bottom:8px;color:var(--cream);">PASSOU PELA ESTEIRA</h3>
-        <p style="font-size:0.85rem;color:var(--muted);">Mantenha o ponto morto. A esteira cuida do resto.</p>
-      </div>
-
-      <!-- 5 -->
-      <div style="text-align:center;padding:28px 20px;background:var(--surface);border-radius:16px;border:1px solid rgba(255,255,255,0.06);">
-        <div class="step-num" style="margin:0 auto 16px;">5</div>
-        <div style="font-size:2rem;margin-bottom:12px;"><iconify-icon icon="hugeicons:checkmark-circle-02"></iconify-icon></div>
-        <h3 style="font-size:1rem;font-family:var(--font-display);letter-spacing:0.05em;margin-bottom:8px;color:var(--cream);">FOI EMBORA</h3>
-        <p style="font-size:0.85rem;color:var(--muted);">Carro limpo em menos de 5 minutos. Pronto!</p>
-      </div>
+      <button class="step" data-i="4">
+        <span class="step-dot"><iconify-icon icon="hugeicons:checkmark-circle-02"></iconify-icon></span>
+        <span class="step-body"><span class="step-k">Passo 5</span>
+        <span class="step-t">FOI EMBORA</span>
+        <span class="step-d">Carro limpo em menos de 5 minutos. Pronto!</span></span>
+      </button>
     </div>
   </div>
 </section>
@@ -859,5 +883,32 @@
   }
 </script>
 
+
+<script>
+  (function(){
+    var wrap=document.getElementById('steps');
+    if(!wrap) return;
+    var steps=Array.prototype.slice.call(wrap.querySelectorAll('.step'));
+    var fill=document.getElementById('stepsFill');
+    var n=steps.length, i=0, timer=null, paused=false;
+    var vertical=function(){ return window.matchMedia('(max-width:860px)').matches; };
+    function render(){
+      steps.forEach(function(s,k){ s.classList.toggle('is-active', k===i); });
+      var pct=(n>1? (i/(n-1))*100 : 0)+'%';
+      if(vertical()){ fill.style.height=pct; fill.style.width='100%'; }
+      else { fill.style.width=pct; fill.style.height='100%'; }
+    }
+    function next(){ i=(i+1)%n; render(); }
+    function start(){ stop(); timer=setInterval(function(){ if(!paused) next(); }, 2400); }
+    function stop(){ if(timer){ clearInterval(timer); timer=null; } }
+    steps.forEach(function(s){
+      s.addEventListener('click', function(){ i=+s.dataset.i; render(); });
+      s.addEventListener('mouseenter', function(){ paused=true; });
+      s.addEventListener('mouseleave', function(){ paused=false; });
+    });
+    window.addEventListener('resize', render);
+    render(); start();
+  })();
+</script>
 </body>
 </html>

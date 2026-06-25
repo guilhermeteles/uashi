@@ -28,7 +28,7 @@
 
 ## LANDING (em andamento)
 
-- [ ] `landing/index.html` — Home pública
+- [~] `landing/index.html` — Home pública (em andamento: "Como Funciona" virou stepper interativo com linha de progresso animada, auto-avanço e responsivo)
 - [ ] `landing/cadastro.html` — Criar conta
 - [ ] `landing/franquia.html` — Seja franqueado
 - [x] `landing/frota.html` — **NOVA**: landing para frotistas (criada ✓ — hero, vantagens, como funciona, planos, formulário B2B)
@@ -47,4 +47,4 @@
 ---
 
 ## Log de sessões
-- 2026-06-25: criado tracker; foco = polish+consistência; criada landing/frota.html e linkada na nav. Próximo: otimizar landing/index.html (polish/motion/consistência).
+- 2026-06-25: criado tracker; foco = polish+consistência; criada landing/frota.html e linkada na nav. Em andamento: landing/index.html — seção "Como Funciona" reescrita como stepper interativo. Próximo: hero/preços/planos/FAQ da home.
