@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Uashi para Frotas — Lava-Jato Self Service para Empresas</title>
+  <meta name="description" content="Mantenha a frota da sua empresa sempre limpa com a Uashi: lavagem self-service em esteira, uma fatura única, limites por veículo e relatórios em tempo real." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../_shared.css" />
+  <style>
+    /* ── Hero ── */
+    .hero-frota {
+      background:
+        radial-gradient(ellipse 70% 60% at 78% 30%, rgba(6,120,191,0.18) 0%, transparent 65%),
+        radial-gradient(ellipse 50% 50% at 12% 85%, rgba(6,120,191,0.10) 0%, transparent 60%),
+        var(--bg);
+    }
+    .nav-link { color:rgba(255,255,255,0.82); text-decoration:none; font-size:.875rem; font-weight:500; transition:color .2s; }
+    .nav-link:hover { color:var(--cream); }
+
+    /* ── Cards ── */
+    .kpi-card { background:var(--surface); border:1px solid rgba(255,255,255,.06); border-radius:16px; padding:28px 24px; text-align:center; }
+    .benefit {
+      background:var(--surface); border:1px solid rgba(255,255,255,.06); border-radius:16px; padding:24px;
+      transition: transform .2s var(--ease-out), border-color .2s;
+    }
+    @media (hover:hover) and (pointer:fine) {
+      .benefit:hover { transform: translateY(-4px); border-color: rgba(6,120,191,.4); }
+    }
+    .benefit-ico { width:46px; height:46px; border-radius:12px; background:rgba(6,120,191,.15); display:flex; align-items:center; justify-content:center; font-size:1.4rem; color:var(--blue); margin-bottom:14px; }
+
+    /* ── Steps ── */
+    .step { display:grid; grid-template-columns:52px 1fr; gap:18px; align-items:start; position:relative; }
+    .step:not(:last-child)::before { content:''; position:absolute; left:25px; top:52px; bottom:-22px; width:2px; background:linear-gradient(180deg, rgba(6,120,191,.5), rgba(6,120,191,0)); }
+    .step-n { width:52px; height:52px; border-radius:50%; background:var(--surface-2); border:2px solid rgba(6,120,191,.5); display:flex; align-items:center; justify-content:center; font-family:var(--font-display); font-size:1.4rem; color:var(--blue); flex-shrink:0; }
+
+    /* ── Form ── */
+    .f-input { background:var(--surface-2); border:1.5px solid rgba(255,255,255,.08); border-radius:10px; color:var(--cream); font-family:var(--font-body); font-size:.95rem; padding:12px 14px; outline:none; width:100%; transition:border-color .2s; }
+    .f-input:focus { border-color:var(--blue); }
+    .f-label { font-size:.72rem; font-weight:600; color:var(--muted); letter-spacing:.05em; text-transform:uppercase; margin-bottom:6px; display:block; }
+  </style>
+  <script src="https://code.iconify.design/iconify-icon/2.1.0/iconify-icon.min.js"></script>
+</head>
+<body>
+
+<!-- ════ NAV ════ -->
+<nav style="position:sticky;top:0;z-index:50;background:rgba(6,120,191,0.92);backdrop-filter:blur(14px);border-bottom:1px solid rgba(255,255,255,.06);">
+  <div class="container" style="display:flex;align-items:center;justify-content:space-between;height:64px;gap:16px;">
+    <a href="index.html" style="text-decoration:none;display:flex;align-items:center;gap:10px;flex-shrink:0;">
+      <img src="../uashi-logo.svg" alt="Uashi" style="height:28px;width:auto;display:block;" />
+    </a>
+    <div style="display:flex;align-items:center;gap:24px;" class="hidden md:flex">
+      <a href="index.html" class="nav-link">Para usuários</a>
+      <a href="#vantagens" class="nav-link">Vantagens</a>
+      <a href="#como" class="nav-link">Como funciona</a>
+      <a href="#planos" class="nav-link">Planos</a>
+      <a href="franquia.html" class="nav-link" style="color:var(--gold);">Franquia</a>
+    </div>
+    <a href="#contato" class="btn-primary" style="font-size:.8rem;padding:10px 20px;flex-shrink:0;">Falar com vendas</a>
+  </div>
+</nav>
+
+<!-- ════ HERO ════ -->
+<section class="hero-frota section" style="padding-top:96px;padding-bottom:96px;">
+  <div class="container" style="display:grid;grid-template-columns:1.1fr 0.9fr;gap:56px;align-items:center;">
+    <div>
+      <span class="tag tag-blue" style="margin-bottom:16px;display:inline-block;">Uashi para Empresas</span>
+      <h1 style="font-size:clamp(2.6rem,6vw,4.4rem);color:var(--cream);margin-bottom:20px;line-height:1.0;">
+        SUA FROTA<br/><span class="destaque">SEMPRE LIMPA</span><br/>SEM DOR DE CABEÇA
+      </h1>
+      <p style="color:var(--muted);font-size:1.1rem;max-width:480px;margin-bottom:14px;">
+        Seus motoristas lavam em qualquer unidade Uashi com um QR code.
+        Você recebe <strong style="color:var(--cream);">uma fatura única</strong>, define
+        limites por veículo e acompanha tudo em tempo real.
+      </p>
+      <p style="color:var(--muted);font-size:.9rem;margin-bottom:34px;">
+        Ideal para <strong style="color:var(--blue);">transportadoras, locadoras, delivery e frotas corporativas.</strong>
+      </p>
+      <div style="display:flex;flex-wrap:wrap;gap:12px;margin-bottom:40px;">
+        <a href="#contato" class="btn-primary" style="width:auto;">Falar com vendas</a>
+        <a href="#planos" class="btn-secondary" style="width:auto;">Ver planos de frota</a>
+      </div>
+      <div style="display:flex;gap:28px;flex-wrap:wrap;">
+        <div><div style="font-family:var(--font-display);font-size:2rem;color:var(--blue);">1 fatura</div><div style="font-size:.75rem;color:var(--muted);">para toda a frota</div></div>
+        <div style="width:1px;background:rgba(255,255,255,.08);"></div>
+        <div><div style="font-family:var(--font-display);font-size:2rem;color:var(--blue);">-40%</div><div style="font-size:.75rem;color:var(--muted);">vs. lava-jato avulso</div></div>
+        <div style="width:1px;background:rgba(255,255,255,.08);"></div>
+        <div><div style="font-family:var(--font-display);font-size:2rem;color:var(--blue);">&lt;5 min</div><div style="font-size:.75rem;color:var(--muted);">por lavagem</div></div>
+      </div>
+    </div>
+    <!-- Mockup: painel de frota real ao vivo -->
+    <div style="display:flex;justify-content:center;">
+      <div style="width:100%;max-width:420px;background:var(--surface);border:1px solid rgba(255,255,255,.08);border-radius:18px;overflow:hidden;box-shadow:0 24px 64px rgba(0,0,0,.45);">
+        <div style="background:var(--blue);padding:12px 16px;display:flex;align-items:center;gap:8px;">
+          <iconify-icon icon="hugeicons:container-truck-01" style="color:#fff;"></iconify-icon>
+          <span style="font-family:var(--font-display);color:#fff;letter-spacing:.04em;">PAINEL DA FROTA</span>
+        </div>
+        <div style="padding:18px;display:flex;flex-direction:column;gap:12px;">
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;">
+            <div style="background:var(--surface-2);border-radius:12px;padding:14px;"><div style="font-size:.65rem;color:var(--muted);">Veículos</div><div style="font-family:var(--font-display);font-size:1.6rem;color:var(--cream);">24</div></div>
+            <div style="background:var(--surface-2);border-radius:12px;padding:14px;"><div style="font-size:.65rem;color:var(--muted);">Lavagens / mês</div><div style="font-family:var(--font-display);font-size:1.6rem;color:var(--gold);">312</div></div>
+          </div>
+          <div style="background:var(--surface-2);border-radius:12px;padding:14px;">
+            <div style="font-size:.65rem;color:var(--muted);margin-bottom:8px;">Fatura em aberto</div>
+            <div style="display:flex;justify-content:space-between;align-items:baseline;"><span style="font-family:var(--font-display);font-size:1.8rem;color:var(--cream);">R$ 4.680</span><span style="font-size:.7rem;color:#22c55e;">vence 10/jul</span></div>
+          </div>
+          <a href="../admin/frota.html" class="btn-secondary" style="width:100%;font-size:.75rem;">Ver painel completo <iconify-icon icon="hugeicons:arrow-right-01"></iconify-icon></a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="swoosh" />
+
+<!-- ════ VANTAGENS ════ -->
+<section id="vantagens" class="section">
+  <div class="container">
+    <div style="text-align:center;margin-bottom:48px;">
+      <span class="tag tag-blue" style="margin-bottom:12px;">Por que Uashi para frotas</span>
+      <h2 style="font-size:clamp(2rem,4.5vw,3.2rem);color:var(--cream);">CONTROLE TOTAL, ZERO BUROCRACIA</h2>
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:18px;">
+      <div class="benefit"><div class="benefit-ico"><iconify-icon icon="hugeicons:invoice-01"></iconify-icon></div><h3 style="font-family:var(--font-display);color:var(--cream);font-size:1.2rem;margin-bottom:6px;">FATURA ÚNICA</h3><p style="font-size:.85rem;color:var(--muted);">Uma só nota fiscal por mês para toda a frota. Acabou o reembolso de recibo avulso.</p></div>
+      <div class="benefit"><div class="benefit-ico"><iconify-icon icon="hugeicons:user-multiple-02"></iconify-icon></div><h3 style="font-family:var(--font-display);color:var(--cream);font-size:1.2rem;margin-bottom:6px;">GESTÃO DE MOTORISTAS</h3><p style="font-size:.85rem;color:var(--muted);">Cadastre motoristas e vincule a veículos. Cada um lava com o próprio QR.</p></div>
+      <div class="benefit"><div class="benefit-ico"><iconify-icon icon="hugeicons:alert-02"></iconify-icon></div><h3 style="font-family:var(--font-display);color:var(--cream);font-size:1.2rem;margin-bottom:6px;">LIMITES POR VEÍCULO</h3><p style="font-size:.85rem;color:var(--muted);">Defina quantas lavagens por mês cada carro pode ter. Sem surpresas no fim do mês.</p></div>
+      <div class="benefit"><div class="benefit-ico"><iconify-icon icon="hugeicons:analytics-01"></iconify-icon></div><h3 style="font-family:var(--font-display);color:var(--cream);font-size:1.2rem;margin-bottom:6px;">RELATÓRIOS EM TEMPO REAL</h3><p style="font-size:.85rem;color:var(--muted);">Veja uso por veículo, motorista e unidade. Exporte para o financeiro.</p></div>
+      <div class="benefit"><div class="benefit-ico"><iconify-icon icon="hugeicons:location-01"></iconify-icon></div><h3 style="font-family:var(--font-display);color:var(--cream);font-size:1.2rem;margin-bottom:6px;">REDE DE UNIDADES</h3><p style="font-size:.85rem;color:var(--muted);">Seus motoristas lavam em qualquer unidade Uashi, 24h durante a semana.</p></div>
+      <div class="benefit"><div class="benefit-ico"><iconify-icon icon="hugeicons:message-01"></iconify-icon></div><h3 style="font-family:var(--font-display);color:var(--cream);font-size:1.2rem;margin-bottom:6px;">SUPORTE DEDICADO</h3><p style="font-size:.85rem;color:var(--muted);">Gerente de conta e canal de suporte exclusivo para contas de frota.</p></div>
+    </div>
+  </div>
+</section>
+
+<hr class="swoosh" />
+
+<!-- ════ COMO FUNCIONA ════ -->
+<section id="como" class="section" style="background:var(--surface);">
+  <div class="container" style="display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:center;">
+    <div>
+      <span class="tag tag-gold" style="margin-bottom:12px;">Simples de operar</span>
+      <h2 style="font-size:clamp(2rem,4.5vw,3.2rem);color:var(--cream);margin-bottom:32px;">COMO FUNCIONA</h2>
+      <div style="display:flex;flex-direction:column;gap:24px;">
+        <div class="step"><div class="step-n">1</div><div><h3 style="font-family:var(--font-display);color:var(--cream);font-size:1.2rem;">CADASTRE A FROTA</h3><p style="font-size:.88rem;color:var(--muted);">Suba os veículos e motoristas no painel — ou nos mande a planilha que cadastramos para você.</p></div></div>
+        <div class="step"><div class="step-n">2</div><div><h3 style="font-family:var(--font-display);color:var(--cream);font-size:1.2rem;">DEFINA REGRAS</h3><p style="font-size:.88rem;color:var(--muted);">Limites por veículo, tipos de lavagem liberados e centros de custo.</p></div></div>
+        <div class="step"><div class="step-n">3</div><div><h3 style="font-family:var(--font-display);color:var(--cream);font-size:1.2rem;">MOTORISTA LAVA COM QR</h3><p style="font-size:.88rem;color:var(--muted);">Na unidade, gera o QR no app, passa pela esteira e segue viagem em menos de 5 min.</p></div></div>
+        <div class="step"><div class="step-n">4</div><div><h3 style="font-family:var(--font-display);color:var(--cream);font-size:1.2rem;">UMA FATURA NO FIM DO MÊS</h3><p style="font-size:.88rem;color:var(--muted);">Consolidamos tudo em uma nota fiscal, com relatório detalhado anexo.</p></div></div>
+      </div>
+    </div>
+    <div style="display:flex;justify-content:center;">
+      <div style="width:100%;max-width:380px;height:520px;border-radius:24px;overflow:hidden;border:1px solid rgba(255,255,255,.08);box-shadow:0 24px 64px rgba(0,0,0,.5);position:relative;background:var(--bg);">
+        <iframe src="../admin/frota.html" title="Painel de frota Uashi" scrolling="no" loading="lazy"
+          style="position:absolute;top:0;left:0;width:1100px;height:1500px;border:0;transform:scale(0.345);transform-origin:top left;pointer-events:none;"></iframe>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="swoosh" />
+
+<!-- ════ PLANOS ════ -->
+<section id="planos" class="section">
+  <div class="container">
+    <div style="text-align:center;margin-bottom:48px;">
+      <span class="tag tag-blue" style="margin-bottom:12px;">Planos de frota</span>
+      <h2 style="font-size:clamp(2rem,4.5vw,3.2rem);color:var(--cream);">ESCALA COM A SUA OPERAÇÃO</h2>
+      <p style="color:var(--muted);font-size:.9rem;margin-top:10px;">Valores por veículo/mês. Quanto maior a frota, menor o custo unitário.</p>
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:18px;max-width:980px;margin:0 auto;">
+      <div class="kpi-card" style="text-align:left;">
+        <span class="tag tag-blue" style="margin-bottom:10px;">Frota Light</span>
+        <div style="font-family:var(--font-display);font-size:1rem;color:var(--muted);">até 10 veículos</div>
+        <div style="font-family:var(--font-display);font-size:2.6rem;color:var(--cream);margin:6px 0;">R$ 89<span style="font-size:1rem;color:var(--muted);">/veículo</span></div>
+        <p style="font-size:.82rem;color:var(--muted);margin-bottom:16px;">4 lavagens/mês por veículo · fatura única · painel completo.</p>
+        <a href="#contato" class="btn-secondary" style="width:100%;">Falar com vendas</a>
+      </div>
+      <div class="kpi-card" style="text-align:left;border-color:var(--blue);box-shadow:0 0 0 1px rgba(6,120,191,.4);position:relative;">
+        <span class="tag tag-gold" style="position:absolute;top:-11px;right:16px;">Mais popular</span>
+        <span class="tag tag-blue" style="margin-bottom:10px;">Frota Pro</span>
+        <div style="font-family:var(--font-display);font-size:1rem;color:var(--muted);">11 a 50 veículos</div>
+        <div style="font-family:var(--font-display);font-size:2.6rem;color:var(--cream);margin:6px 0;">R$ 69<span style="font-size:1rem;color:var(--muted);">/veículo</span></div>
+        <p style="font-size:.82rem;color:var(--muted);margin-bottom:16px;">8 lavagens/mês · limites por veículo · relatórios · suporte dedicado.</p>
+        <a href="#contato" class="btn-primary" style="width:100%;">Falar com vendas</a>
+      </div>
+      <div class="kpi-card" style="text-align:left;">
+        <span class="tag tag-blue" style="margin-bottom:10px;">Frota Enterprise</span>
+        <div style="font-family:var(--font-display);font-size:1rem;color:var(--muted);">50+ veículos</div>
+        <div style="font-family:var(--font-display);font-size:2.6rem;color:var(--cream);margin:6px 0;">Sob medida</div>
+        <p style="font-size:.82rem;color:var(--muted);margin-bottom:16px;">Lavagens ilimitadas, integração com ERP e gerente de conta.</p>
+        <a href="#contato" class="btn-secondary" style="width:100%;">Falar com vendas</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="swoosh" />
+
+<!-- ════ FORMULÁRIO ════ -->
+<section id="contato" class="section" style="background:var(--surface);">
+  <div class="container" style="max-width:680px;">
+    <div id="form-frota">
+      <div style="text-align:center;margin-bottom:32px;">
+        <h2 style="font-size:clamp(2rem,4.5vw,3rem);color:var(--cream);">FALE COM NOSSO TIME</h2>
+        <p style="color:var(--muted);font-size:.9rem;margin-top:8px;">Conte sobre sua frota e montamos uma proposta sob medida em até 1 dia útil.</p>
+      </div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;">
+        <div><label class="f-label">Empresa</label><input class="f-input" type="text" placeholder="Razão social" /></div>
+        <div><label class="f-label">CNPJ</label><input class="f-input" type="text" placeholder="00.000.000/0000-00" /></div>
+        <div><label class="f-label">Responsável</label><input class="f-input" type="text" placeholder="Seu nome" /></div>
+        <div><label class="f-label">Telefone</label><input class="f-input" type="tel" placeholder="(11) 99999-0000" /></div>
+        <div><label class="f-label">E-mail</label><input class="f-input" type="email" placeholder="voce@empresa.com" /></div>
+        <div><label class="f-label">Tamanho da frota</label>
+          <select class="f-input"><option>1 a 10 veículos</option><option>11 a 50 veículos</option><option>51 a 200 veículos</option><option>200+ veículos</option></select>
+        </div>
+      </div>
+      <button onclick="enviarFrota()" class="btn-primary" style="width:100%;margin-top:20px;">Solicitar proposta</button>
+      <p style="font-size:.72rem;color:var(--muted);text-align:center;margin-top:12px;">Ao enviar, você concorda com nossa Política de Privacidade.</p>
+    </div>
+    <div id="ok-frota" style="display:none;text-align:center;padding:40px 0;">
+      <div style="font-size:3rem;color:#22c55e;margin-bottom:12px;"><iconify-icon icon="hugeicons:checkmark-circle-02"></iconify-icon></div>
+      <h2 style="font-family:var(--font-display);font-size:2rem;color:var(--cream);margin-bottom:8px;">SOLICITAÇÃO ENVIADA!</h2>
+      <p style="color:var(--muted);font-size:.9rem;">Nosso time de frotas entra em contato em até 1 dia útil. 🚛</p>
+    </div>
+  </div>
+</section>
+
+<!-- ════ FOOTER ════ -->
+<footer style="background:var(--surface);padding:40px 0 24px;">
+  <div class="container">
+    <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:16px;margin-bottom:24px;">
+      <img src="../uashi-logo.svg" alt="Uashi" style="height:34px;width:auto;display:block;" />
+      <div style="display:flex;gap:24px;flex-wrap:wrap;">
+        <a href="index.html" class="nav-link" style="font-size:.875rem;">Para usuários</a>
+        <a href="franquia.html" class="nav-link" style="font-size:.875rem;">Franquia</a>
+        <a href="#contato" class="nav-link" style="font-size:.875rem;color:var(--blue);">Falar com vendas</a>
+        <a href="mailto:frotas@uashi.com.br" class="nav-link" style="font-size:.875rem;">frotas@uashi.com.br</a>
+      </div>
+    </div>
+    <hr style="border:none;border-top:1px solid rgba(255,255,255,.07);margin-bottom:16px;" />
+    <div style="display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px;">
+      <p style="font-size:.75rem;color:var(--muted);">© 2025 Uashi Tecnologia LTDA. Todos os direitos reservados.</p>
+      <div style="display:flex;gap:16px;">
+        <a href="#" style="font-size:.75rem;color:var(--muted);text-decoration:none;">Termos</a>
+        <a href="#" style="font-size:.75rem;color:var(--muted);text-decoration:none;">Privacidade</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script>
+  function enviarFrota(){
+    document.getElementById('form-frota').style.display='none';
+    document.getElementById('ok-frota').style.display='block';
+    document.getElementById('ok-frota').scrollIntoView({behavior:'smooth',block:'center'});
+  }
+</script>
+</body>
+</html>
