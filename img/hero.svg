@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="900" viewBox="0 0 1600 900">
+  <defs>
+    <linearGradient id="g" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#E8321A"/><stop offset="1" stop-color="#7a1a0d"/>
+    </linearGradient>
+  </defs>
+  <rect width="1600" height="900" fill="#0A0A0A"/>
+  <rect width="1600" height="900" fill="url(#g)" opacity="0.85"/>
+  <circle cx="663" cy="154" r="10" fill="#FFFFFF" opacity="0.12"/><circle cx="98" cy="74" r="12" fill="#FFFFFF" opacity="0.05"/><circle cx="748" cy="596" r="4" fill="#FFFFFF" opacity="0.12"/><circle cx="439" cy="38" r="5" fill="#FFFFFF" opacity="0.08"/><circle cx="856" cy="71" r="7" fill="#FFFFFF" opacity="0.05"/><circle cx="1128" cy="434" r="4" fill="#FFFFFF" opacity="0.12"/><circle cx="253" cy="228" r="14" fill="#FFFFFF" opacity="0.12"/><circle cx="1193" cy="63" r="13" fill="#FFFFFF" opacity="0.12"/><circle cx="812" cy="50" r="7" fill="#FFFFFF" opacity="0.05"/><circle cx="1140" cy="879" r="6" fill="#FFFFFF" opacity="0.08"/><circle cx="858" cy="147" r="12" fill="#FFFFFF" opacity="0.05"/><circle cx="1169" cy="315" r="12" fill="#FFFFFF" opacity="0.12"/><circle cx="370" cy="105" r="13" fill="#FFFFFF" opacity="0.12"/><circle cx="1308" cy="192" r="9" fill="#FFFFFF" opacity="0.05"/><circle cx="1121" cy="729" r="5" fill="#FFFFFF" opacity="0.12"/><circle cx="122" cy="633" r="7" fill="#FFFFFF" opacity="0.08"/><circle cx="1393" cy="544" r="10" fill="#FFFFFF" opacity="0.08"/><circle cx="953" cy="599" r="11" fill="#FFFFFF" opacity="0.08"/>
+  <g transform="translate(992.0,558.0) scale(5.0)" fill="#FFFFFF" opacity="0.92">
+      <path d="M-60,8 q4,-26 22,-30 l36,-4 q14,-1 24,10 l16,18 l26,4 q10,2 10,12 l0,8 q0,6 -8,6 l-12,0
+        a13,13 0 1,0 -26,0 l-48,0 a13,13 0 1,0 -26,0 l-8,0 q-8,0 -8,-8 z"/>
+      <circle cx="-47" cy="20" r="9" fill="#0A0A0A"/><circle cx="35" cy="20" r="9" fill="#0A0A0A"/>
+      <path d="M-30,-18 l30,-3 q9,0 15,7 l10,12 l-55,0 z" fill="#0A0A0A" opacity="0.5"/>
+    </g>
+  <text x="800.0" y="450.0" fill="#F5F1E8" font-family="Bebas Neue, Arial, sans-serif"
+    font-size="144" font-weight="bold" text-anchor="middle" letter-spacing="3">UASHI</text>
+  <text x="800.0" y="567.0" fill="#F5A800" font-family="Arial,sans-serif" font-size="63" text-anchor="middle">LAVA-JATO SELF SERVICE</text>
+</svg>

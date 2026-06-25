@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="360" viewBox="0 0 800 360">
+  <defs>
+    <linearGradient id="g" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#1a1a1a"/><stop offset="1" stop-color="#E8321A"/>
+    </linearGradient>
+  </defs>
+  <rect width="800" height="360" fill="#0A0A0A"/>
+  <rect width="800" height="360" fill="url(#g)" opacity="0.85"/>
+  <circle cx="331" cy="77" r="10" fill="#FFFFFF" opacity="0.12"/><circle cx="49" cy="37" r="12" fill="#FFFFFF" opacity="0.05"/><circle cx="374" cy="298" r="4" fill="#FFFFFF" opacity="0.12"/><circle cx="219" cy="19" r="5" fill="#FFFFFF" opacity="0.08"/><circle cx="428" cy="35" r="7" fill="#FFFFFF" opacity="0.05"/><circle cx="564" cy="217" r="4" fill="#FFFFFF" opacity="0.12"/><circle cx="126" cy="114" r="14" fill="#FFFFFF" opacity="0.12"/><circle cx="596" cy="31" r="13" fill="#FFFFFF" opacity="0.12"/><circle cx="406" cy="25" r="7" fill="#FFFFFF" opacity="0.05"/><circle cx="570" cy="68" r="8" fill="#FFFFFF" opacity="0.08"/><circle cx="147" cy="276" r="5" fill="#FFFFFF" opacity="0.12"/><circle cx="315" cy="286" r="14" fill="#FFFFFF" opacity="0.05"/><circle cx="105" cy="297" r="13" fill="#FFFFFF" opacity="0.12"/><circle cx="192" cy="190" r="5" fill="#FFFFFF" opacity="0.12"/><circle cx="729" cy="32" r="13" fill="#FFFFFF" opacity="0.05"/><circle cx="633" cy="105" r="11" fill="#FFFFFF" opacity="0.12"/><circle cx="544" cy="218" r="16" fill="#FFFFFF" opacity="0.08"/><circle cx="476" cy="299" r="11" fill="#FFFFFF" opacity="0.08"/>
+  <g transform="translate(496.0,223.2) scale(2.0)" fill="#FFFFFF" opacity="0.92">
+      <path d="M-60,8 q4,-26 22,-30 l36,-4 q14,-1 24,10 l16,18 l26,4 q10,2 10,12 l0,8 q0,6 -8,6 l-12,0
+        a13,13 0 1,0 -26,0 l-48,0 a13,13 0 1,0 -26,0 l-8,0 q-8,0 -8,-8 z"/>
+      <circle cx="-47" cy="20" r="9" fill="#0A0A0A"/><circle cx="35" cy="20" r="9" fill="#0A0A0A"/>
+      <path d="M-30,-18 l30,-3 q9,0 15,7 l10,12 l-55,0 z" fill="#0A0A0A" opacity="0.5"/>
+    </g>
+  <text x="400.0" y="180.0" fill="#F5F1E8" font-family="Bebas Neue, Arial, sans-serif"
+    font-size="57" font-weight="bold" text-anchor="middle" letter-spacing="3">UASHI MOOCA</text>
+  <text x="400.0" y="226.0" fill="#F5A800" font-family="Arial,sans-serif" font-size="25" text-anchor="middle">R. da Mooca, 1420</text>
+</svg>

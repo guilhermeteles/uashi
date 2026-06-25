@@ -2,7 +2,10 @@
 
 Pasta para os assets de imagem do Uashi.
 
-## Como funciona (abordagem híbrida)
+## Como funciona
+
+> **Estado atual:** os slots usam placeholders **SVG locais** gerados (on-brand, sempre renderizam, sem rede). Os arquivos `.svg` desta pasta são esses placeholders. Para usar uma foto real, salve um `.jpg`/`.webp` aqui e troque a extensão no HTML correspondente.
+
 
 Hoje as telas usam **fotos remotas** como placeholder, vindas de serviços
 gratuitos que funcionam direto no navegador (sem chave de API):
