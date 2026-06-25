@@ -56,7 +56,7 @@ body {
 /* ── Status bar ── */
 .status-bar {
   height: 44px;
-  background: transparent;
+  background: var(--blue);
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -69,7 +69,7 @@ body {
 /* ── Top bar ── */
 .top-bar {
   height: var(--topbar-h);
-  background: var(--surface);
+  background: var(--blue);
   display: flex;
   align-items: center;
   padding: 0 16px;

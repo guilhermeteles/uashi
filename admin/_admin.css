@@ -65,7 +65,7 @@ body {
 
 /* ── Topbar ── */
 .topbar {
-  height: var(--topbar-h); background: var(--surface);
+  height: var(--topbar-h); background: var(--blue);
   border-bottom: 1px solid rgba(255,255,255,.06);
   display: flex; align-items: center; padding: 0 24px; gap: 16px;
   position: sticky; top: 0; z-index: 50;
