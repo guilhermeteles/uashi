@@ -38,19 +38,38 @@
     }
 
     /* ── Price cards ── */
+    @property --ang { syntax:'<angle>'; initial-value:0deg; inherits:false; }
     .price-card {
       background: var(--surface);
       border: 1px solid rgba(255,255,255,0.06);
       border-radius: 16px;
       padding: 28px 24px;
       text-align: center;
-      transition: transform 0.2s, box-shadow 0.2s;
+      transition: transform 0.25s var(--ease-out), box-shadow 0.25s var(--ease-out), border-color 0.25s;
       position: relative;
+      isolation: isolate;
     }
-    .price-card:hover { transform: translateY(-6px); box-shadow: 0 16px 48px rgba(0,0,0,0.5); }
-    .price-card.featured {
-      border-color: var(--gold);
-      box-shadow: 0 0 0 1px rgba(245,168,0,0.3);
+    .price-card > * { position: relative; z-index: 1; }
+    /* spotlight que segue o cursor */
+    .price-card::before {
+      content:""; position:absolute; inset:0; border-radius:inherit; pointer-events:none; z-index:0;
+      background: radial-gradient(240px circle at var(--mx,50%) var(--my,-20%), rgba(242,160,7,0.20), transparent 60%);
+      opacity:0; transition: opacity .3s var(--ease-out);
+    }
+    @media (hover:hover) and (pointer:fine) {
+      .price-card:hover { transform: translateY(-8px); box-shadow: 0 22px 56px rgba(0,0,0,0.55); border-color: rgba(255,255,255,0.14); }
+      .price-card:hover::before { opacity:1; }
+    }
+    /* destaque com borda em gradiente animado */
+    .price-card.featured { border-color: transparent; box-shadow: 0 0 40px rgba(242,160,7,0.12); }
+    .price-card.featured::after {
+      content:""; position:absolute; inset:-1.5px; border-radius:inherit; z-index:-1; pointer-events:none;
+      background: conic-gradient(from var(--ang), var(--gold), var(--red), var(--blue), var(--gold));
+      animation: spinborder 6s linear infinite;
+    }
+    @keyframes spinborder { to { --ang: 360deg; } }
+    @media (prefers-reduced-motion: reduce) {
+      .price-card.featured::after { animation: none; background: var(--gold); }
     }
 
     /* ── Plan cards ── */
@@ -937,6 +956,16 @@
     window.addEventListener('resize', render);
     render(); start();
   })();
+</script>
+<script>
+  // Spotlight nos price-cards (segue o cursor)
+  document.querySelectorAll('.price-card').forEach(function(card){
+    card.addEventListener('pointermove', function(e){
+      var r = card.getBoundingClientRect();
+      card.style.setProperty('--mx', ((e.clientX - r.left)/r.width*100) + '%');
+      card.style.setProperty('--my', ((e.clientY - r.top)/r.height*100) + '%');
+    });
+  });
 </script>
 </body>
 </html>
