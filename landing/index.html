@@ -60,16 +60,22 @@
       .price-card:hover { transform: translateY(-8px); box-shadow: 0 22px 56px rgba(0,0,0,0.55); border-color: rgba(255,255,255,0.14); }
       .price-card:hover::before { opacity:1; }
     }
-    /* destaque com borda em gradiente animado */
-    .price-card.featured { border-color: transparent; box-shadow: 0 0 40px rgba(242,160,7,0.12); }
-    .price-card.featured::after {
-      content:""; position:absolute; inset:-1.5px; border-radius:inherit; z-index:-1; pointer-events:none;
-      background: conic-gradient(from var(--ang), var(--gold), var(--red), var(--blue), var(--gold));
+    /* destaque com borda em gradiente animado (padding-box/border-box) */
+    .price-card.featured {
+      border: 2px solid transparent;
+      background:
+        linear-gradient(var(--surface), var(--surface)) padding-box,
+        conic-gradient(from var(--ang), var(--gold), var(--red), var(--blue), var(--gold)) border-box;
+      box-shadow: 0 0 44px rgba(242,160,7,0.14);
       animation: spinborder 6s linear infinite;
     }
     @keyframes spinborder { to { --ang: 360deg; } }
     @media (prefers-reduced-motion: reduce) {
-      .price-card.featured::after { animation: none; background: var(--gold); }
+      .price-card.featured {
+        animation: none;
+        background: linear-gradient(var(--surface), var(--surface)) padding-box,
+                    linear-gradient(var(--gold), var(--gold)) border-box;
+      }
     }
 
     /* ── Plan cards ── */

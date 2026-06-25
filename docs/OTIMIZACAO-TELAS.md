@@ -28,7 +28,7 @@
 
 ## LANDING (em andamento)
 
-- [~] `landing/index.html` — Home pública (em andamento: stepper interativo no "Como Funciona" + sistema de diferenciação de seções (ritmo de bandas transparente↔surface + glow de canto com cor-assinatura por seção))
+- [~] `landing/index.html` — Home pública (em andamento: stepper interativo no "Como Funciona" + sistema de diferenciação de seções (ritmo de bandas transparente↔surface + glow de canto por seção); túnel de lava-jato no Como Funciona (escovas giratórias); cards de Lavagem Avulsa com spotlight + borda gradiente animada)
 - [ ] `landing/cadastro.html` — Criar conta
 - [ ] `landing/franquia.html` — Seja franqueado
 - [x] `landing/frota.html` — **NOVA**: landing para frotistas (criada ✓ — hero, vantagens, como funciona, planos, formulário B2B)
