@@ -35,17 +35,28 @@ body {
   width: 100%;
   max-width: 390px;
   min-height: 100vh;
-  background: var(--bg);
+  background: linear-gradient(-45deg, #00102b, #011c50, #02326f, #011a4a, #00102b);
+  background-size: 400% 400%;
+  animation: uashiFlow 22s ease-in-out infinite;
   position: relative;
   display: flex;
   flex-direction: column;
   overflow: hidden;
 }
 
+/* ── Animated blue background ── */
+@keyframes uashiFlow {
+  0%, 100% { background-position: 0% 50%; }
+  50%      { background-position: 100% 50%; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .app-frame { animation: none; }
+}
+
 /* ── Status bar ── */
 .status-bar {
   height: 44px;
-  background: var(--bg);
+  background: transparent;
   display: flex;
   align-items: center;
   justify-content: space-between;

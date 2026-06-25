@@ -18,7 +18,18 @@
 
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 html { scroll-behavior: smooth; -webkit-font-smoothing: antialiased; }
-body { background: var(--bg); color: var(--cream); font-family: var(--font-body); }
+body {
+  background: linear-gradient(-45deg, #00102b, #011c50, #02326f, #011a4a, #00102b);
+  background-size: 400% 400%;
+  background-attachment: fixed;
+  animation: uashiFlow 22s ease-in-out infinite;
+  color: var(--cream); font-family: var(--font-body);
+}
+@keyframes uashiFlow {
+  0%, 100% { background-position: 0% 50%; }
+  50%      { background-position: 100% 50%; }
+}
+@media (prefers-reduced-motion: reduce) { body { animation: none; } }
 
 /* ── Layout ── */
 .admin-layout { display: grid; grid-template-columns: var(--sidebar-w) 1fr; min-height: 100vh; }
