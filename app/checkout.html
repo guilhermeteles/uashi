@@ -18,9 +18,9 @@
 </head>
 <body>
 <div class="app-frame" style="max-width:390px;margin:0 auto;">
-  <div class="status-bar"><span class="status-time">09:41</span><div class="status-icons"><span>●●●</span><span>WiFi</span><span>🔋</span></div></div>
+  <div class="status-bar"><span class="status-time">09:41</span><div class="status-icons"><span><iconify-icon icon="hugeicons:signal-full-01"></iconify-icon></span><span>WiFi</span><span><iconify-icon icon="hugeicons:battery-medium-01"></iconify-icon></span></div></div>
   <div class="top-bar">
-    <a href="comprar.html" class="top-bar-back">←</a>
+    <a href="comprar.html" class="top-bar-back"><iconify-icon icon="hugeicons:arrow-left-01"></iconify-icon></a>
     <span class="top-bar-title">Pagamento</span>
   </div>
   <hr class="swoosh" />
@@ -45,17 +45,17 @@
         <div style="font-size:.72rem;font-weight:600;color:var(--muted);text-transform:uppercase;letter-spacing:.08em;margin-bottom:10px;">Forma de pagamento</div>
         <div style="display:flex;flex-direction:column;gap:8px;">
           <div class="pay-opt active" onclick="selectPay(this,'card')">
-            <span style="font-size:1.4rem;">💳</span>
+            <span style="font-size:1.4rem;"><iconify-icon icon="hugeicons:credit-card"></iconify-icon></span>
             <div style="flex:1;"><div style="font-weight:600;font-size:.875rem;color:var(--cream);">Cartão de crédito</div></div>
             <div class="radio-check" style="width:20px;height:20px;border-radius:50%;border:2px solid var(--blue);display:flex;align-items:center;justify-content:center;"><div style="width:10px;height:10px;border-radius:50%;background:var(--blue);"></div></div>
           </div>
           <div class="pay-opt" onclick="selectPay(this,'pix')">
-            <span style="font-size:1.4rem;">🟢</span>
+            <span style="font-size:1.4rem;"><iconify-icon icon="hugeicons:circle" style="color:#28a745"></iconify-icon></span>
             <div style="flex:1;"><div style="font-weight:600;font-size:.875rem;color:var(--cream);">Pix</div><div style="font-size:.72rem;color:var(--muted);">Aprovação em segundos</div></div>
             <div class="radio-check" style="width:20px;height:20px;border-radius:50%;border:2px solid rgba(255,255,255,.2);"></div>
           </div>
           <div class="pay-opt" onclick="selectPay(this,'saldo')">
-            <span style="font-size:1.4rem;">💰</span>
+            <span style="font-size:1.4rem;"><iconify-icon icon="hugeicons:coins-01"></iconify-icon></span>
             <div style="flex:1;"><div style="font-weight:600;font-size:.875rem;color:var(--cream);">Saldo de créditos</div><div style="font-size:.72rem;color:var(--muted);">R$ 120,00 disponíveis</div></div>
             <div class="radio-check" style="width:20px;height:20px;border-radius:50%;border:2px solid rgba(255,255,255,.2);"></div>
           </div>
@@ -82,7 +82,7 @@
       <!-- PIX section -->
       <div id="pix-section">
         <div style="text-align:center;padding:20px;background:var(--surface);border-radius:14px;">
-          <div style="width:140px;height:140px;background:#fff;border-radius:12px;margin:0 auto 16px;display:flex;align-items:center;justify-content:center;font-size:4rem;">🟢</div>
+          <div style="width:140px;height:140px;background:#fff;border-radius:12px;margin:0 auto 16px;display:flex;align-items:center;justify-content:center;font-size:4rem;"><iconify-icon icon="hugeicons:circle" style="color:#28a745"></iconify-icon></div>
           <div style="font-family:var(--font-display);font-size:1rem;color:var(--cream);margin-bottom:8px;">CÓDIGO PIX COPIADO</div>
           <div style="font-size:.75rem;color:var(--muted);font-family:monospace;word-break:break-all;background:var(--surface-2);padding:10px;border-radius:8px;">00020126580014BR.GOV.BCB.PIX01364d3e...</div>
           <button onclick="alert('Código PIX copiado!')" style="margin-top:10px;background:var(--surface-2);border:1px solid rgba(255,255,255,.1);border-radius:8px;color:var(--blue);font-size:.8rem;padding:8px 16px;cursor:pointer;">Copiar código</button>
@@ -93,7 +93,7 @@
         Pagar R$ 35,00
       </button>
 
-      <p style="text-align:center;font-size:.72rem;color:var(--muted);">🔒 Pagamento seguro via Stripe</p>
+      <p style="text-align:center;font-size:.72rem;color:var(--muted);"><iconify-icon icon="hugeicons:lock"></iconify-icon> Pagamento seguro via Stripe</p>
 
     </div>
   </div>
@@ -101,7 +101,7 @@
   <nav class="tab-bar">
     <a href="index.html" class="tab-item"><span class="tab-icon"><iconify-icon icon="hugeicons:home-01"></iconify-icon></span><span class="tab-label">Home</span></a>
     <a href="mapa.html" class="tab-item"><span class="tab-icon"><iconify-icon icon="hugeicons:location-01"></iconify-icon></span><span class="tab-label">Lojas</span></a>
-    <a href="qrcode.html" class="tab-qr"><div class="tab-qr-btn">🔲</div></a>
+    <a href="qrcode.html" class="tab-qr"><div class="tab-qr-btn"><iconify-icon icon="hugeicons:qr-code-01"></iconify-icon></div></a>
     <a href="historico.html" class="tab-item"><span class="tab-icon"><iconify-icon icon="hugeicons:task-01"></iconify-icon></span><span class="tab-label">Histórico</span></a>
     <a href="conta.html" class="tab-item"><span class="tab-icon"><iconify-icon icon="hugeicons:user"></iconify-icon></span><span class="tab-label">Conta</span></a>
   </nav>
@@ -123,7 +123,7 @@
     if(type==='saldo'){ document.getElementById('card-section').style.display='none'; document.getElementById('pix-section').style.display='none'; }
   }
   function confirmPay() {
-    document.getElementById('pay-btn').textContent = '⏳ Processando...';
+    document.getElementById('pay-btn').textContent = '<iconify-icon icon="hugeicons:sand-clock"></iconify-icon> Processando...';
     setTimeout(() => window.location.href = 'qrcode.html', 1500);
   }
 </script>

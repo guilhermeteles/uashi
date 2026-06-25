@@ -20,9 +20,9 @@
 </head>
 <body>
 <div class="app-frame" style="max-width:390px;margin:0 auto;">
-  <div class="status-bar"><span class="status-time">09:41</span><div class="status-icons"><span>●●●</span><span>WiFi</span><span>🔋</span></div></div>
+  <div class="status-bar"><span class="status-time">09:41</span><div class="status-icons"><span><iconify-icon icon="hugeicons:signal-full-01"></iconify-icon></span><span>WiFi</span><span><iconify-icon icon="hugeicons:battery-medium-01"></iconify-icon></span></div></div>
   <div class="top-bar">
-    <a href="index.html" class="top-bar-back">←</a>
+    <a href="index.html" class="top-bar-back"><iconify-icon icon="hugeicons:arrow-left-01"></iconify-icon></a>
     <span class="top-bar-title">Planos</span>
     <a href="gerenciar-plano.html" class="top-bar-action" style="font-size:.7rem;color:var(--blue);">Gerenciar</a>
   </div>
@@ -60,8 +60,8 @@
           <p style="font-size:.8rem;color:var(--muted);margin-top:4px;">Para uso pessoal casual.</p>
         </div>
         <div class="plan-body">
-          <div class="check-item"><span style="color:#22c55e;">✓</span> 8 lavagens simples/mês</div>
-          <div class="check-item"><span style="color:#22c55e;">✓</span> Todas as unidades</div>
+          <div class="check-item"><span style="color:#22c55e;"><iconify-icon icon="hugeicons:tick-01"></iconify-icon></span> 8 lavagens simples/mês</div>
+          <div class="check-item"><span style="color:#22c55e;"><iconify-icon icon="hugeicons:tick-01"></iconify-icon></span> Todas as unidades</div>
           <div class="check-item"><span style="color:var(--muted);">–</span> <span style="color:var(--muted);">Horário estendido</span></div>
           <div class="check-item"><span style="color:var(--muted);">–</span> <span style="color:var(--muted);">Dependentes</span></div>
           <button class="btn-secondary" style="margin-top:14px;" onclick="confirmPlan('Básico','R$ 79')">Mudar para Básico</button>
@@ -71,7 +71,7 @@
       <!-- Pro — atual -->
       <div class="plan-card current" style="position:relative;">
         <div style="position:absolute;top:-12px;left:50%;transform:translateX(-50%);">
-          <span class="tag tag-gold">✓ Plano atual</span>
+          <span class="tag tag-gold"><iconify-icon icon="hugeicons:tick-01"></iconify-icon> Plano atual</span>
         </div>
         <div class="plan-head" style="padding-top:24px;background:rgba(245,168,0,.04);">
           <span class="tag tag-gold" style="margin-bottom:10px;display:inline-block;">Pro · Motorista</span>
@@ -82,10 +82,10 @@
           <p style="font-size:.8rem;color:var(--muted);margin-top:4px;">Para motoristas de app e taxistas.</p>
         </div>
         <div class="plan-body">
-          <div class="check-item"><span style="color:#22c55e;">✓</span> <strong>1 lavagem completa/dia</strong></div>
-          <div class="check-item"><span style="color:#22c55e;">✓</span> Horário estendido (5h–23h)</div>
-          <div class="check-item"><span style="color:#22c55e;">✓</span> Fila preferencial</div>
-          <div class="check-item"><span style="color:#22c55e;">✓</span> Pontos em dobro</div>
+          <div class="check-item"><span style="color:#22c55e;"><iconify-icon icon="hugeicons:tick-01"></iconify-icon></span> <strong>1 lavagem completa/dia</strong></div>
+          <div class="check-item"><span style="color:#22c55e;"><iconify-icon icon="hugeicons:tick-01"></iconify-icon></span> Horário estendido (5h–23h)</div>
+          <div class="check-item"><span style="color:#22c55e;"><iconify-icon icon="hugeicons:tick-01"></iconify-icon></span> Fila preferencial</div>
+          <div class="check-item"><span style="color:#22c55e;"><iconify-icon icon="hugeicons:tick-01"></iconify-icon></span> Pontos em dobro</div>
           <button class="btn-secondary" style="margin-top:14px;opacity:.5;cursor:not-allowed;">Plano atual</button>
         </div>
       </div>
@@ -101,10 +101,10 @@
           <p style="font-size:.8rem;color:var(--muted);margin-top:4px;">Empresas · mín. 5 veículos.</p>
         </div>
         <div class="plan-body">
-          <div class="check-item"><span style="color:#22c55e;">✓</span> 1 lavagem completa/veículo/dia</div>
-          <div class="check-item"><span style="color:#22c55e;">✓</span> Painel admin dedicado</div>
-          <div class="check-item"><span style="color:#22c55e;">✓</span> Nota fiscal + fatura mensal</div>
-          <div class="check-item"><span style="color:#22c55e;">✓</span> Limite por motorista</div>
+          <div class="check-item"><span style="color:#22c55e;"><iconify-icon icon="hugeicons:tick-01"></iconify-icon></span> 1 lavagem completa/veículo/dia</div>
+          <div class="check-item"><span style="color:#22c55e;"><iconify-icon icon="hugeicons:tick-01"></iconify-icon></span> Painel admin dedicado</div>
+          <div class="check-item"><span style="color:#22c55e;"><iconify-icon icon="hugeicons:tick-01"></iconify-icon></span> Nota fiscal + fatura mensal</div>
+          <div class="check-item"><span style="color:#22c55e;"><iconify-icon icon="hugeicons:tick-01"></iconify-icon></span> Limite por motorista</div>
           <button class="btn-secondary" style="margin-top:14px;border-color:var(--blue);color:var(--blue);" onclick="alert('(protótipo) Falar com comercial')">Falar com Comercial</button>
         </div>
       </div>
@@ -117,7 +117,7 @@
   <nav class="tab-bar">
     <a href="index.html" class="tab-item"><span class="tab-icon"><iconify-icon icon="hugeicons:home-01"></iconify-icon></span><span class="tab-label">Home</span></a>
     <a href="mapa.html" class="tab-item"><span class="tab-icon"><iconify-icon icon="hugeicons:location-01"></iconify-icon></span><span class="tab-label">Lojas</span></a>
-    <a href="qrcode.html" class="tab-qr"><div class="tab-qr-btn">🔲</div></a>
+    <a href="qrcode.html" class="tab-qr"><div class="tab-qr-btn"><iconify-icon icon="hugeicons:qr-code-01"></iconify-icon></div></a>
     <a href="historico.html" class="tab-item"><span class="tab-icon"><iconify-icon icon="hugeicons:task-01"></iconify-icon></span><span class="tab-label">Histórico</span></a>
     <a href="conta.html" class="tab-item"><span class="tab-icon"><iconify-icon icon="hugeicons:user"></iconify-icon></span><span class="tab-label">Conta</span></a>
   </nav>

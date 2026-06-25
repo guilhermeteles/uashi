@@ -12,11 +12,11 @@
 <div class="app-frame">
   <div class="status-bar">
     <span>9:41</span>
-    <span>●●● 5G ■</span>
+    <span><iconify-icon icon="hugeicons:signal-full-01"></iconify-icon> 5G <iconify-icon icon="hugeicons:square"></iconify-icon></span>
   </div>
 
   <div class="top-bar">
-    <a href="qrcode.html" class="top-bar-back">←</a>
+    <a href="qrcode.html" class="top-bar-back"><iconify-icon icon="hugeicons:arrow-left-01"></iconify-icon></a>
     <span style="font-family:var(--font-display);letter-spacing:.06em;">ENVIAR PRESENTE</span>
     <div style="width:36px;"></div>
   </div>
@@ -25,7 +25,7 @@
 
     <!-- Hero -->
     <div style="text-align:center;padding:32px 20px 24px;">
-      <div style="font-size:3rem;margin-bottom:12px;">🎁</div>
+      <div style="font-size:3rem;margin-bottom:12px;"><iconify-icon icon="hugeicons:gift"></iconify-icon></div>
       <div style="font-family:var(--font-display);font-size:1.8rem;color:var(--cream);margin-bottom:6px;">PRESENTE DE LAVAGEM</div>
       <div style="font-size:.85rem;color:var(--muted);">Presenteie alguém com uma lavagem gratuita na Uashi</div>
     </div>
@@ -36,7 +36,7 @@
       <div style="display:flex;flex-direction:column;gap:10px;">
 
         <div class="card-sm" id="gift-simples" onclick="selectGift('simples')" style="padding:14px;display:flex;align-items:center;gap:12px;cursor:pointer;border:1.5px solid rgba(26,111,212,.4);">
-          <div style="width:40px;height:40px;border-radius:10px;background:rgba(26,111,212,.15);display:flex;align-items:center;justify-content:center;font-size:1.2rem;flex-shrink:0;">🚿</div>
+          <div style="width:40px;height:40px;border-radius:10px;background:rgba(26,111,212,.15);display:flex;align-items:center;justify-content:center;font-size:1.2rem;flex-shrink:0;"><iconify-icon icon="hugeicons:shower-01"></iconify-icon></div>
           <div style="flex:1;">
             <div style="font-weight:600;color:var(--cream);">Lavagem Simples</div>
             <div style="font-size:.75rem;color:var(--muted);">Exterior · até Sedan</div>
@@ -48,7 +48,7 @@
         </div>
 
         <div class="card-sm" id="gift-completa" onclick="selectGift('completa')" style="padding:14px;display:flex;align-items:center;gap:12px;cursor:pointer;">
-          <div style="width:40px;height:40px;border-radius:10px;background:rgba(245,168,0,.12);display:flex;align-items:center;justify-content:center;font-size:1.2rem;flex-shrink:0;">✨</div>
+          <div style="width:40px;height:40px;border-radius:10px;background:rgba(245,168,0,.12);display:flex;align-items:center;justify-content:center;font-size:1.2rem;flex-shrink:0;"><iconify-icon icon="hugeicons:sparkles"></iconify-icon></div>
           <div style="flex:1;">
             <div style="font-weight:600;color:var(--cream);">Lavagem Completa</div>
             <div style="font-size:.75rem;color:var(--muted);">Interior + Exterior · até SUV</div>
@@ -60,7 +60,7 @@
         </div>
 
         <div class="card-sm" id="gift-premium" onclick="selectGift('premium')" style="padding:14px;display:flex;align-items:center;gap:12px;cursor:pointer;">
-          <div style="width:40px;height:40px;border-radius:10px;background:rgba(232,50,26,.1);display:flex;align-items:center;justify-content:center;font-size:1.2rem;flex-shrink:0;">💎</div>
+          <div style="width:40px;height:40px;border-radius:10px;background:rgba(232,50,26,.1);display:flex;align-items:center;justify-content:center;font-size:1.2rem;flex-shrink:0;"><iconify-icon icon="hugeicons:diamond-01"></iconify-icon></div>
           <div style="flex:1;">
             <div style="font-weight:600;color:var(--cream);">Lavagem Premium</div>
             <div style="font-size:.75rem;color:var(--muted);">Polimento + Cristalização</div>
@@ -108,7 +108,7 @@
     <div style="padding:0 16px;margin-bottom:24px;">
       <div class="form-group">
         <label class="form-label">Mensagem personalizada (opcional)</label>
-        <textarea class="form-input" rows="2" placeholder="Ex: Presente pra você! 🎉" style="resize:none;"></textarea>
+        <textarea class="form-input" rows="2" placeholder="Ex: Presente pra você! <iconify-icon icon="hugeicons:party"></iconify-icon>" style="resize:none;"></textarea>
       </div>
     </div>
 
@@ -138,7 +138,7 @@
     <!-- CTA -->
     <div style="padding:0 16px;">
       <button class="btn-primary" style="width:100%;justify-content:center;font-size:1rem;padding:14px;" onclick="sendGift()">
-        Enviar presente 🎁
+        Enviar presente <iconify-icon icon="hugeicons:gift"></iconify-icon>
       </button>
     </div>
 
@@ -147,7 +147,7 @@
 
 <!-- Success overlay -->
 <div id="success-overlay" style="display:none;position:fixed;inset:0;background:rgba(0,0,0,.9);z-index:100;align-items:center;justify-content:center;flex-direction:column;text-align:center;padding:32px;">
-  <div style="font-size:4rem;margin-bottom:16px;">🎁</div>
+  <div style="font-size:4rem;margin-bottom:16px;"><iconify-icon icon="hugeicons:gift"></iconify-icon></div>
   <div style="font-family:var(--font-display);font-size:2rem;color:var(--cream);margin-bottom:8px;">PRESENTE ENVIADO!</div>
   <div style="font-size:.9rem;color:var(--muted);margin-bottom:32px;max-width:280px;">A lavagem foi enviada com sucesso. <span id="success-name">O destinatário</span> receberá uma notificação agora.</div>
   <a href="index.html" class="btn-primary" style="justify-content:center;padding:14px 32px;">Voltar ao início</a>

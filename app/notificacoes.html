@@ -16,9 +16,9 @@
 </head>
 <body>
 <div class="app-frame" style="max-width:390px;margin:0 auto;">
-  <div class="status-bar"><span class="status-time">09:41</span><div class="status-icons"><span>●●●</span><span>WiFi</span><span>🔋</span></div></div>
+  <div class="status-bar"><span class="status-time">09:41</span><div class="status-icons"><span><iconify-icon icon="hugeicons:signal-full-01"></iconify-icon></span><span>WiFi</span><span><iconify-icon icon="hugeicons:battery-medium-01"></iconify-icon></span></div></div>
   <div class="top-bar">
-    <a href="index.html" class="top-bar-back">←</a>
+    <a href="index.html" class="top-bar-back"><iconify-icon icon="hugeicons:arrow-left-01"></iconify-icon></a>
     <span class="top-bar-title">Notificações</span>
     <button class="top-bar-action" onclick="markAllRead()" style="font-size:.7rem;color:var(--blue);">Ler tudo</button>
   </div>
@@ -31,7 +31,7 @@
       <div style="font-size:.72rem;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:.08em;padding:12px 0 4px;">Hoje</div>
 
       <div class="notif-row unread">
-        <div class="notif-icon-wrap" style="background:rgba(34,197,94,.1);">✅<span class="unread-dot"></span></div>
+        <div class="notif-icon-wrap" style="background:rgba(34,197,94,.1);"><iconify-icon icon="hugeicons:checkmark-circle-02"></iconify-icon><span class="unread-dot"></span></div>
         <div style="flex:1;">
           <div style="font-size:.875rem;font-weight:600;color:var(--cream);margin-bottom:2px;">Lavagem concluída</div>
           <div style="font-size:.8rem;color:var(--muted);">Sua lavagem na Uashi Mooca foi concluída com sucesso. Avalie sua experiência.</div>
@@ -40,7 +40,7 @@
       </div>
 
       <div class="notif-row unread">
-        <div class="notif-icon-wrap" style="background:rgba(245,168,0,.1);">👨‍👩‍👦<span class="unread-dot"></span></div>
+        <div class="notif-icon-wrap" style="background:rgba(245,168,0,.1);"><iconify-icon icon="hugeicons:user"></iconify-icon>‍<iconify-icon icon="hugeicons:user"></iconify-icon>‍<iconify-icon icon="hugeicons:user"></iconify-icon><span class="unread-dot"></span></div>
         <div style="flex:1;">
           <div style="font-size:.875rem;font-weight:600;color:var(--cream);margin-bottom:2px;">Ana Mendes usou o plano</div>
           <div style="font-size:.8rem;color:var(--muted);">Sua dependente realizou uma lavagem simples na Uashi Tatuapé. R$ 0 (plano).</div>
@@ -52,7 +52,7 @@
       <div style="font-size:.72rem;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:.08em;padding:16px 0 4px;">Ontem</div>
 
       <div class="notif-row">
-        <div class="notif-icon-wrap" style="background:rgba(232,50,26,.1);">📣</div>
+        <div class="notif-icon-wrap" style="background:rgba(232,50,26,.1);"><iconify-icon icon="hugeicons:megaphone-01"></iconify-icon></div>
         <div style="flex:1;">
           <div style="font-size:.875rem;font-weight:600;color:var(--cream);margin-bottom:2px;">Promoção relâmpago · Mooca</div>
           <div style="font-size:.8rem;color:var(--muted);">Lavagem Premium por R$ 28 hoje das 14h às 18h na Uashi Mooca. Corre!</div>
@@ -61,7 +61,7 @@
       </div>
 
       <div class="notif-row">
-        <div class="notif-icon-wrap" style="background:rgba(34,197,94,.1);">✅</div>
+        <div class="notif-icon-wrap" style="background:rgba(34,197,94,.1);"><iconify-icon icon="hugeicons:checkmark-circle-02"></iconify-icon></div>
         <div style="flex:1;">
           <div style="font-size:.875rem;font-weight:600;color:var(--cream);margin-bottom:2px;">Lavagem concluída</div>
           <div style="font-size:.8rem;color:var(--muted);">Lavagem completa na Uashi Tatuapé. Durante 4 min 12 seg.</div>
@@ -73,7 +73,7 @@
       <div style="font-size:.72rem;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:.08em;padding:16px 0 4px;">Esta semana</div>
 
       <div class="notif-row">
-        <div class="notif-icon-wrap" style="background:rgba(245,168,0,.1);">💳</div>
+        <div class="notif-icon-wrap" style="background:rgba(245,168,0,.1);"><iconify-icon icon="hugeicons:credit-card"></iconify-icon></div>
         <div style="flex:1;">
           <div style="font-size:.875rem;font-weight:600;color:var(--cream);margin-bottom:2px;">Créditos baixos</div>
           <div style="font-size:.8rem;color:var(--muted);">Seu saldo está em R$ 25,00. Adicione créditos para não ser surpreendido.</div>
@@ -82,7 +82,7 @@
       </div>
 
       <div class="notif-row">
-        <div class="notif-icon-wrap" style="background:rgba(26,111,212,.1);">🔄</div>
+        <div class="notif-icon-wrap" style="background:rgba(26,111,212,.1);"><iconify-icon icon="hugeicons:refresh"></iconify-icon></div>
         <div style="flex:1;">
           <div style="font-size:.875rem;font-weight:600;color:var(--cream);margin-bottom:2px;">Plano renovando em 21 dias</div>
           <div style="font-size:.8rem;color:var(--muted);">Seu Plano Pro será renovado em 21 dias por R$ 149,00. Tudo certo!</div>
@@ -91,7 +91,7 @@
       </div>
 
       <div style="padding:16px 0 8px;text-align:center;">
-        <a href="notificacoes-config.html" style="font-size:.8rem;color:var(--blue);text-decoration:none;">Configurar notificações →</a>
+        <a href="notificacoes-config.html" style="font-size:.8rem;color:var(--blue);text-decoration:none;">Configurar notificações <iconify-icon icon="hugeicons:arrow-right-01"></iconify-icon></a>
       </div>
 
     </div>
@@ -100,7 +100,7 @@
   <nav class="tab-bar">
     <a href="index.html" class="tab-item"><span class="tab-icon"><iconify-icon icon="hugeicons:home-01"></iconify-icon></span><span class="tab-label">Home</span></a>
     <a href="mapa.html" class="tab-item"><span class="tab-icon"><iconify-icon icon="hugeicons:location-01"></iconify-icon></span><span class="tab-label">Lojas</span></a>
-    <a href="qrcode.html" class="tab-qr"><div class="tab-qr-btn">🔲</div></a>
+    <a href="qrcode.html" class="tab-qr"><div class="tab-qr-btn"><iconify-icon icon="hugeicons:qr-code-01"></iconify-icon></div></a>
     <a href="historico.html" class="tab-item"><span class="tab-icon"><iconify-icon icon="hugeicons:task-01"></iconify-icon></span><span class="tab-label">Histórico</span></a>
     <a href="conta.html" class="tab-item active"><span class="tab-icon"><iconify-icon icon="hugeicons:user"></iconify-icon></span><span class="tab-label">Conta</span></a>
   </nav>

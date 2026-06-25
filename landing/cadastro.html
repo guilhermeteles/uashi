@@ -223,31 +223,31 @@
 
       <div style="display:flex;flex-direction:column;gap:20px;margin-bottom:40px;">
         <div class="benefit-item">
-          <div class="benefit-icon">🔲</div>
+          <div class="benefit-icon"><iconify-icon icon="hugeicons:qr-code-01"></iconify-icon></div>
           <div>
             <div style="font-size:.875rem;font-weight:600;color:var(--cream);">QR code na hora</div>
             <div style="font-size:.8rem;color:var(--muted);">Gere pelo app, passe pela esteira, foi embora.</div>
           </div>
         </div>
         <div class="benefit-item">
-          <div class="benefit-icon">♾️</div>
+          <div class="benefit-icon"><iconify-icon icon="hugeicons:infinity-01"></iconify-icon></div>
           <div>
             <div style="font-size:.875rem;font-weight:600;color:var(--cream);">1 lavagem por dia no plano Pro</div>
             <div style="font-size:.8rem;color:var(--muted);">Ideal para Uber, 99 e taxistas.</div>
           </div>
         </div>
         <div class="benefit-item">
-          <div class="benefit-icon">👨‍👩‍👦</div>
+          <div class="benefit-icon"><iconify-icon icon="hugeicons:user"></iconify-icon>‍<iconify-icon icon="hugeicons:user"></iconify-icon>‍<iconify-icon icon="hugeicons:user"></iconify-icon></div>
           <div>
             <div style="font-size:.875rem;font-weight:600;color:var(--cream);">Dependentes com limite</div>
             <div style="font-size:.8rem;color:var(--muted);">Defina frequência e valor para cada um.</div>
           </div>
         </div>
         <div class="benefit-item">
-          <div class="benefit-icon">⭐</div>
+          <div class="benefit-icon"><iconify-icon icon="hugeicons:star" style="color:#f5b301"></iconify-icon></div>
           <div>
             <div style="font-size:.875rem;font-weight:600;color:var(--cream);">Programa de fidelidade</div>
-            <div style="font-size:.8rem;color:var(--muted);">Bronze → Prata → Ouro → Diamante.</div>
+            <div style="font-size:.8rem;color:var(--muted);">Bronze <iconify-icon icon="hugeicons:arrow-right-01"></iconify-icon> Prata <iconify-icon icon="hugeicons:arrow-right-01"></iconify-icon> Ouro <iconify-icon icon="hugeicons:arrow-right-01"></iconify-icon> Diamante.</div>
           </div>
         </div>
       </div>
@@ -352,7 +352,7 @@
           </div>
 
           <button class="btn-primary" onclick="goStep(2)" style="width:100%;justify-content:center;margin-top:24px;font-size:.95rem;padding:14px;">
-            Continuar →
+            Continuar <iconify-icon icon="hugeicons:arrow-right-01"></iconify-icon>
           </button>
 
           <p style="text-align:center;font-size:.8rem;color:var(--muted);margin-top:16px;">
@@ -369,7 +369,7 @@
 
             <label class="type-card" onclick="selectType(this, 'regular')">
               <input type="radio" name="tipo" value="regular" />
-              <div class="type-icon">🚗</div>
+              <div class="type-icon"><iconify-icon icon="hugeicons:car-01"></iconify-icon></div>
               <div>
                 <div class="type-title">Uso pessoal</div>
                 <div class="type-desc">Lavo meu carro de vez em quando ou regularmente.</div>
@@ -381,7 +381,7 @@
 
             <label class="type-card" onclick="selectType(this, 'motorista')">
               <input type="radio" name="tipo" value="motorista" />
-              <div class="type-icon">🚕</div>
+              <div class="type-icon"><iconify-icon icon="hugeicons:car-01"></iconify-icon></div>
               <div>
                 <div class="type-title">Motorista de app / Taxista</div>
                 <div class="type-desc">Uber, 99, iFood, InDriver, táxi — lavo todo dia.</div>
@@ -393,7 +393,7 @@
 
             <label class="type-card" onclick="selectType(this, 'frota')">
               <input type="radio" name="tipo" value="frota" />
-              <div class="type-icon">🚛</div>
+              <div class="type-icon"><iconify-icon icon="hugeicons:container-truck-01"></iconify-icon></div>
               <div>
                 <div class="type-title">Dono de frota / Empresa</div>
                 <div class="type-desc">Tenho 5+ veículos — quero fatura consolidada.</div>
@@ -406,8 +406,8 @@
           </div>
 
           <div style="display:flex;gap:12px;margin-top:24px;">
-            <button class="btn-secondary" onclick="goStep(1)" style="flex:1;justify-content:center;">← Voltar</button>
-            <button class="btn-primary" onclick="goStep(3)" style="flex:2;justify-content:center;">Continuar →</button>
+            <button class="btn-secondary" onclick="goStep(1)" style="flex:1;justify-content:center;"><iconify-icon icon="hugeicons:arrow-left-01"></iconify-icon> Voltar</button>
+            <button class="btn-primary" onclick="goStep(3)" style="flex:2;justify-content:center;">Continuar <iconify-icon icon="hugeicons:arrow-right-01"></iconify-icon></button>
           </div>
         </div>
 
@@ -419,18 +419,18 @@
             <p style="font-size:.875rem;color:var(--muted);margin-bottom:28px;">Selecione todas que você usa. Isso nos ajuda em parcerias futuras.</p>
 
             <div style="display:flex;flex-wrap:wrap;gap:10px;margin-bottom:28px;" id="platform-pills">
-              <button class="platform-pill" onclick="togglePlatform(this)">🟫 Uber</button>
-              <button class="platform-pill" onclick="togglePlatform(this)">🟦 99</button>
-              <button class="platform-pill" onclick="togglePlatform(this)">🟥 iFood</button>
-              <button class="platform-pill" onclick="togglePlatform(this)">⬛ InDriver</button>
-              <button class="platform-pill" onclick="togglePlatform(this)">🟨 Shopee</button>
-              <button class="platform-pill" onclick="togglePlatform(this)">🚕 Táxi</button>
+              <button class="platform-pill" onclick="togglePlatform(this)"><iconify-icon icon="hugeicons:square" style="color:#8a5a2b"></iconify-icon> Uber</button>
+              <button class="platform-pill" onclick="togglePlatform(this)"><iconify-icon icon="hugeicons:square" style="color:#2d6cdf"></iconify-icon> 99</button>
+              <button class="platform-pill" onclick="togglePlatform(this)"><iconify-icon icon="hugeicons:square" style="color:#e8442f"></iconify-icon> iFood</button>
+              <button class="platform-pill" onclick="togglePlatform(this)"><iconify-icon icon="hugeicons:square" style="color:#222"></iconify-icon> InDriver</button>
+              <button class="platform-pill" onclick="togglePlatform(this)"><iconify-icon icon="hugeicons:square" style="color:#f5c518"></iconify-icon> Shopee</button>
+              <button class="platform-pill" onclick="togglePlatform(this)"><iconify-icon icon="hugeicons:car-01"></iconify-icon> Táxi</button>
               <button class="platform-pill" onclick="togglePlatform(this)">Outra</button>
             </div>
 
             <div style="display:flex;gap:12px;">
-              <button class="btn-secondary" onclick="goStep(2)" style="flex:1;justify-content:center;">← Voltar</button>
-              <button class="btn-primary" onclick="goStep(4)" style="flex:2;justify-content:center;">Continuar →</button>
+              <button class="btn-secondary" onclick="goStep(2)" style="flex:1;justify-content:center;"><iconify-icon icon="hugeicons:arrow-left-01"></iconify-icon> Voltar</button>
+              <button class="btn-primary" onclick="goStep(4)" style="flex:2;justify-content:center;">Continuar <iconify-icon icon="hugeicons:arrow-right-01"></iconify-icon></button>
             </div>
           </div>
 
@@ -462,8 +462,8 @@
             </div>
 
             <div style="display:flex;gap:12px;margin-top:24px;">
-              <button class="btn-secondary" onclick="goStep(2)" style="flex:1;justify-content:center;">← Voltar</button>
-              <button class="btn-primary" onclick="goStep(4)" style="flex:2;justify-content:center;">Continuar →</button>
+              <button class="btn-secondary" onclick="goStep(2)" style="flex:1;justify-content:center;"><iconify-icon icon="hugeicons:arrow-left-01"></iconify-icon> Voltar</button>
+              <button class="btn-primary" onclick="goStep(4)" style="flex:2;justify-content:center;">Continuar <iconify-icon icon="hugeicons:arrow-right-01"></iconify-icon></button>
             </div>
           </div>
 
@@ -472,8 +472,8 @@
             <h2 style="font-family:var(--font-display);font-size:2rem;color:var(--cream);margin-bottom:4px;">QUASE LÁ!</h2>
             <p style="font-size:.875rem;color:var(--muted);margin-bottom:28px;">Só mais um passo — crie sua senha de acesso.</p>
             <div style="display:flex;gap:12px;">
-              <button class="btn-secondary" onclick="goStep(2)" style="flex:1;justify-content:center;">← Voltar</button>
-              <button class="btn-primary" onclick="goStep(4)" style="flex:2;justify-content:center;">Continuar →</button>
+              <button class="btn-secondary" onclick="goStep(2)" style="flex:1;justify-content:center;"><iconify-icon icon="hugeicons:arrow-left-01"></iconify-icon> Voltar</button>
+              <button class="btn-primary" onclick="goStep(4)" style="flex:2;justify-content:center;">Continuar <iconify-icon icon="hugeicons:arrow-right-01"></iconify-icon></button>
             </div>
           </div>
         </div>
@@ -488,7 +488,7 @@
               <label class="form-label">Senha *</label>
               <div style="position:relative;">
                 <input type="password" id="f-senha" class="form-input" placeholder="Mínimo 8 caracteres" oninput="updateStrength(this.value)" style="padding-right:44px;" />
-                <button onclick="togglePass('f-senha', this)" type="button" style="position:absolute;right:12px;top:50%;transform:translateY(-50%);background:none;border:none;color:var(--muted);cursor:pointer;font-size:.9rem;">👁</button>
+                <button onclick="togglePass('f-senha', this)" type="button" style="position:absolute;right:12px;top:50%;transform:translateY(-50%);background:none;border:none;color:var(--muted);cursor:pointer;font-size:.9rem;"><iconify-icon icon="hugeicons:view"></iconify-icon></button>
               </div>
               <div class="strength-bar">
                 <div class="strength-seg" id="s1"></div>
@@ -503,7 +503,7 @@
               <label class="form-label">Confirmar senha *</label>
               <div style="position:relative;">
                 <input type="password" id="f-senha2" class="form-input" placeholder="Repita a senha" style="padding-right:44px;" />
-                <button onclick="togglePass('f-senha2', this)" type="button" style="position:absolute;right:12px;top:50%;transform:translateY(-50%);background:none;border:none;color:var(--muted);cursor:pointer;font-size:.9rem;">👁</button>
+                <button onclick="togglePass('f-senha2', this)" type="button" style="position:absolute;right:12px;top:50%;transform:translateY(-50%);background:none;border:none;color:var(--muted);cursor:pointer;font-size:.9rem;"><iconify-icon icon="hugeicons:view"></iconify-icon></button>
               </div>
             </div>
           </div>
@@ -525,8 +525,8 @@
           </div>
 
           <div style="display:flex;gap:12px;">
-            <button class="btn-secondary" onclick="goStep(3)" style="flex:1;justify-content:center;">← Voltar</button>
-            <button class="btn-primary" onclick="finalizarCadastro()" style="flex:2;justify-content:center;">Criar conta ✓</button>
+            <button class="btn-secondary" onclick="goStep(3)" style="flex:1;justify-content:center;"><iconify-icon icon="hugeicons:arrow-left-01"></iconify-icon> Voltar</button>
+            <button class="btn-primary" onclick="finalizarCadastro()" style="flex:2;justify-content:center;">Criar conta <iconify-icon icon="hugeicons:tick-01"></iconify-icon></button>
           </div>
         </div>
 
@@ -538,7 +538,7 @@
       <div id="screen-success">
         <div style="text-align:center;">
           <!-- Ícone animado -->
-          <div style="width:80px;height:80px;background:rgba(34,197,94,.12);border:2px solid rgba(34,197,94,.3);border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 24px;font-size:2rem;">✅</div>
+          <div style="width:80px;height:80px;background:rgba(34,197,94,.12);border:2px solid rgba(34,197,94,.3);border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 24px;font-size:2rem;"><iconify-icon icon="hugeicons:checkmark-circle-02"></iconify-icon></div>
 
           <h2 style="font-family:var(--font-display);font-size:2.5rem;color:var(--cream);margin-bottom:8px;line-height:1.0;">
             CONTA CRIADA!<br/><span style="color:var(--gold);">BAIXE O APP</span>
@@ -573,7 +573,7 @@
             <div style="font-size:.75rem;font-weight:700;color:var(--muted);letter-spacing:.08em;text-transform:uppercase;margin-bottom:14px;">Próximos passos</div>
             <div style="display:flex;flex-direction:column;gap:10px;">
               <div style="display:flex;gap:10px;align-items:center;font-size:.85rem;color:var(--cream);">
-                <span style="width:24px;height:24px;border-radius:50%;background:rgba(34,197,94,.15);border:1px solid rgba(34,197,94,.3);display:flex;align-items:center;justify-content:center;font-size:.7rem;color:#22c55e;flex-shrink:0;">✓</span>
+                <span style="width:24px;height:24px;border-radius:50%;background:rgba(34,197,94,.15);border:1px solid rgba(34,197,94,.3);display:flex;align-items:center;justify-content:center;font-size:.7rem;color:#22c55e;flex-shrink:0;"><iconify-icon icon="hugeicons:tick-01"></iconify-icon></span>
                 Conta criada com sucesso
               </div>
               <div style="display:flex;gap:10px;align-items:center;font-size:.85rem;color:var(--cream);">
@@ -709,7 +709,7 @@
   function togglePass(id, btn) {
     const el = document.getElementById(id);
     el.type = el.type === 'password' ? 'text' : 'password';
-    btn.textContent = el.type === 'password' ? '👁' : '🙈';
+    btn.textContent = el.type === 'password' ? '<iconify-icon icon="hugeicons:view"></iconify-icon>' : '<iconify-icon icon="hugeicons:view-off"></iconify-icon>';
   }
 
   function finalizarCadastro() {

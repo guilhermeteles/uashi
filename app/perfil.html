@@ -9,9 +9,9 @@
 </head>
 <body>
 <div class="app-frame" style="max-width:390px;margin:0 auto;">
-  <div class="status-bar"><span class="status-time">09:41</span><div class="status-icons"><span>●●●</span><span>WiFi</span><span>🔋</span></div></div>
+  <div class="status-bar"><span class="status-time">09:41</span><div class="status-icons"><span><iconify-icon icon="hugeicons:signal-full-01"></iconify-icon></span><span>WiFi</span><span><iconify-icon icon="hugeicons:battery-medium-01"></iconify-icon></span></div></div>
   <div class="top-bar">
-    <a href="conta.html" class="top-bar-back">←</a>
+    <a href="conta.html" class="top-bar-back"><iconify-icon icon="hugeicons:arrow-left-01"></iconify-icon></a>
     <span class="top-bar-title">Editar Perfil</span>
     <button class="top-bar-action" onclick="saveProfile()" style="font-size:.75rem;color:var(--gold);font-weight:700;">Salvar</button>
   </div>
@@ -24,7 +24,7 @@
       <div style="display:flex;flex-direction:column;align-items:center;gap:10px;padding:20px 0;">
         <div style="position:relative;">
           <div style="width:80px;height:80px;border-radius:24px;background:var(--red);display:flex;align-items:center;justify-content:center;font-family:var(--font-display);font-size:2rem;color:#fff;">C</div>
-          <button onclick="alert('(protótipo) Alterar foto')" style="position:absolute;bottom:-4px;right:-4px;width:28px;height:28px;border-radius:8px;background:var(--surface-2);border:2px solid var(--bg);display:flex;align-items:center;justify-content:center;cursor:pointer;font-size:.85rem;">✏️</button>
+          <button onclick="alert('(protótipo) Alterar foto')" style="position:absolute;bottom:-4px;right:-4px;width:28px;height:28px;border-radius:8px;background:var(--surface-2);border:2px solid var(--bg);display:flex;align-items:center;justify-content:center;cursor:pointer;font-size:.85rem;"><iconify-icon icon="hugeicons:pencil-edit-01"></iconify-icon></button>
         </div>
         <div style="font-size:.75rem;color:var(--muted);">Toque para alterar a foto</div>
       </div>
@@ -60,8 +60,8 @@
         <div class="form-group">
           <label class="form-label">Plataformas de app</label>
           <div style="display:flex;flex-wrap:wrap;gap:8px;margin-top:2px;">
-            <span style="background:rgba(245,168,0,.12);border:1.5px solid rgba(245,168,0,.3);border-radius:99px;padding:5px 12px;font-size:.75rem;color:var(--gold);">Uber ✓</span>
-            <span style="background:rgba(245,168,0,.12);border:1.5px solid rgba(245,168,0,.3);border-radius:99px;padding:5px 12px;font-size:.75rem;color:var(--gold);">99 ✓</span>
+            <span style="background:rgba(245,168,0,.12);border:1.5px solid rgba(245,168,0,.3);border-radius:99px;padding:5px 12px;font-size:.75rem;color:var(--gold);">Uber <iconify-icon icon="hugeicons:tick-01"></iconify-icon></span>
+            <span style="background:rgba(245,168,0,.12);border:1.5px solid rgba(245,168,0,.3);border-radius:99px;padding:5px 12px;font-size:.75rem;color:var(--gold);">99 <iconify-icon icon="hugeicons:tick-01"></iconify-icon></span>
             <button onclick="alert('(protótipo) Adicionar plataforma')" style="background:var(--surface-2);border:1.5px dashed rgba(255,255,255,.15);border-radius:99px;padding:5px 12px;font-size:.75rem;color:var(--muted);cursor:pointer;">+ Adicionar</button>
           </div>
         </div>
@@ -85,7 +85,7 @@
   <nav class="tab-bar">
     <a href="index.html" class="tab-item"><span class="tab-icon"><iconify-icon icon="hugeicons:home-01"></iconify-icon></span><span class="tab-label">Home</span></a>
     <a href="mapa.html" class="tab-item"><span class="tab-icon"><iconify-icon icon="hugeicons:location-01"></iconify-icon></span><span class="tab-label">Lojas</span></a>
-    <a href="qrcode.html" class="tab-qr"><div class="tab-qr-btn">🔲</div></a>
+    <a href="qrcode.html" class="tab-qr"><div class="tab-qr-btn"><iconify-icon icon="hugeicons:qr-code-01"></iconify-icon></div></a>
     <a href="historico.html" class="tab-item"><span class="tab-icon"><iconify-icon icon="hugeicons:task-01"></iconify-icon></span><span class="tab-label">Histórico</span></a>
     <a href="conta.html" class="tab-item active"><span class="tab-icon"><iconify-icon icon="hugeicons:user"></iconify-icon></span><span class="tab-label">Conta</span></a>
   </nav>

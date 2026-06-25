@@ -52,7 +52,7 @@
   .toast.show { transform:translateX(-50%) translateY(0);opacity:1; }
   /* ── resolved card ── */
   .alert-card.resolved { opacity:.4;pointer-events:none; }
-  .alert-card.resolved::after { content:'✓ Resolvido';position:absolute;right:16px;top:16px;background:rgba(34,197,94,.15);border:1px solid rgba(34,197,94,.3);color:#22c55e;font-size:.7rem;font-weight:700;padding:3px 10px;border-radius:99px; }
+  .alert-card.resolved::after { content:'<iconify-icon icon="hugeicons:tick-01"></iconify-icon> Resolvido';position:absolute;right:16px;top:16px;background:rgba(34,197,94,.15);border:1px solid rgba(34,197,94,.3);color:#22c55e;font-size:.7rem;font-weight:700;padding:3px 10px;border-radius:99px; }
   .alert-card { position:relative; }
   </style>
   <script src="https://code.iconify.design/iconify-icon/2.1.0/iconify-icon.min.js"></script>
@@ -132,7 +132,7 @@
           <h1>Alertas</h1>
           <p style="color:var(--muted);font-size:.82rem;margin-top:4px;">Monitoramento em tempo real · Última atualização: agora</p>
         </div>
-        <button class="btn-secondary">✓ Resolver todos lidos</button>
+        <button class="btn-secondary"><iconify-icon icon="hugeicons:tick-01"></iconify-icon> Resolver todos lidos</button>
       </div>
 
       <!-- STATS -->
@@ -164,7 +164,7 @@
 
         <!-- CRÍTICO 1 -->
         <div class="alert-card critical" id="a1">
-          <div class="alert-icon critical">🚨</div>
+          <div class="alert-icon critical"><iconify-icon icon="hugeicons:alert-02"></iconify-icon></div>
           <div style="flex:1;">
             <div style="display:flex;justify-content:space-between;align-items:flex-start;gap:8px;">
               <div style="font-size:.9rem;font-weight:700;color:var(--cream);">QR code usado 2x seguidas · Mooca</div>
@@ -172,7 +172,7 @@
             </div>
             <div style="font-size:.8rem;color:var(--muted);margin-top:4px;line-height:1.5;">O QR #M-4821 foi acionado duas vezes em menos de 4 minutos pelo mesmo dispositivo (ID: usr_8821). Possível tentativa de fraude ou clonagem de sessão.</div>
             <div class="alert-meta">
-              <span>📍 Mooca · SP</span><span>🕐 Hoje, 14:32</span><span>👤 usr_8821</span>
+              <span><iconify-icon icon="hugeicons:location-01"></iconify-icon> Mooca · SP</span><span><iconify-icon icon="hugeicons:clock-01"></iconify-icon> Hoje, 14:32</span><span><iconify-icon icon="hugeicons:user"></iconify-icon> usr_8821</span>
             </div>
             <div class="alert-actions">
               <button class="btn-secondary" style="padding:5px 14px;font-size:.75rem;" onclick="openDrawer('qr')">Ver detalhes</button>
@@ -183,7 +183,7 @@
 
         <!-- CRÍTICO 2 -->
         <div class="alert-card critical" id="a2">
-          <div class="alert-icon critical">💰</div>
+          <div class="alert-icon critical"><iconify-icon icon="hugeicons:coins-01"></iconify-icon></div>
           <div style="flex:1;">
             <div style="display:flex;justify-content:space-between;align-items:flex-start;gap:8px;">
               <div style="font-size:.9rem;font-weight:700;color:var(--cream);">Inadimplência de royalties · Guarulhos</div>
@@ -191,7 +191,7 @@
             </div>
             <div style="font-size:.8rem;color:var(--muted);margin-top:4px;line-height:1.5;">Franqueado Rafael Torres (Guarulhos) não efetuou o pagamento de royalties há 12 dias. Valor pendente: R$3.240. Segundo aviso enviado por e-mail.</div>
             <div class="alert-meta">
-              <span>📍 Guarulhos · SP</span><span>🕐 Ontem, 09:15</span><span>💳 R$3.240 pendente</span>
+              <span><iconify-icon icon="hugeicons:location-01"></iconify-icon> Guarulhos · SP</span><span><iconify-icon icon="hugeicons:clock-01"></iconify-icon> Ontem, 09:15</span><span><iconify-icon icon="hugeicons:credit-card"></iconify-icon> R$3.240 pendente</span>
             </div>
             <div class="alert-actions">
               <button class="btn-secondary" style="padding:5px 14px;font-size:.75rem;" onclick="openDrawer('contrato')">Ver contrato</button>
@@ -202,7 +202,7 @@
 
         <!-- CRÍTICO 3 -->
         <div class="alert-card critical" id="a3">
-          <div class="alert-icon critical">⚙️</div>
+          <div class="alert-icon critical"><iconify-icon icon="hugeicons:settings-01"></iconify-icon></div>
           <div style="flex:1;">
             <div style="display:flex;justify-content:space-between;align-items:flex-start;gap:8px;">
               <div style="font-size:.9rem;font-weight:700;color:var(--cream);">Falha na baia 3 · Osasco</div>
@@ -210,7 +210,7 @@
             </div>
             <div style="font-size:.8rem;color:var(--muted);margin-top:4px;line-height:1.5;">A baia 3 da unidade Osasco reportou erro de sensor E-14 às 10:08. A baia está bloqueada automaticamente. Técnico não foi acionado ainda.</div>
             <div class="alert-meta">
-              <span>📍 Osasco · SP</span><span>🕐 Hoje, 10:08</span><span>🔧 Baia #3 bloqueada</span>
+              <span><iconify-icon icon="hugeicons:location-01"></iconify-icon> Osasco · SP</span><span><iconify-icon icon="hugeicons:clock-01"></iconify-icon> Hoje, 10:08</span><span><iconify-icon icon="hugeicons:wrench-01"></iconify-icon> Baia #3 bloqueada</span>
             </div>
             <div class="alert-actions">
               <button class="btn-secondary" style="padding:5px 14px;font-size:.75rem;" onclick="openDrawer('logs')">Ver logs</button>
@@ -221,7 +221,7 @@
 
         <!-- AVISO 1 -->
         <div class="alert-card warning" id="a4">
-          <div class="alert-icon warning">⚠️</div>
+          <div class="alert-icon warning"><iconify-icon icon="hugeicons:alert-02"></iconify-icon></div>
           <div style="flex:1;">
             <div style="display:flex;justify-content:space-between;align-items:flex-start;gap:8px;">
               <div style="font-size:.9rem;font-weight:700;color:var(--cream);">Pico acima de 40% · Tatuapé (Sex 18h)</div>
@@ -229,7 +229,7 @@
             </div>
             <div style="font-size:.8rem;color:var(--muted);margin-top:4px;line-height:1.5;">Fila de 7 usuários aguardando baias na unidade Tatuapé. Pico de demanda 42% acima do padrão para este horário. Considere notificar usuários sobre tempo de espera.</div>
             <div class="alert-meta">
-              <span>📍 Tatuapé · SP</span><span>🕐 Hoje, 18:05</span><span>📈 +42% do padrão</span>
+              <span><iconify-icon icon="hugeicons:location-01"></iconify-icon> Tatuapé · SP</span><span><iconify-icon icon="hugeicons:clock-01"></iconify-icon> Hoje, 18:05</span><span><iconify-icon icon="hugeicons:chart-increase"></iconify-icon> +42% do padrão</span>
             </div>
             <div class="alert-actions">
               <button class="btn-secondary" style="padding:5px 14px;font-size:.75rem;" onclick="openDrawer('pico')">Ver detalhes</button>
@@ -240,7 +240,7 @@
 
         <!-- AVISO 2 -->
         <div class="alert-card warning" id="a5">
-          <div class="alert-icon warning">💤</div>
+          <div class="alert-icon warning"><iconify-icon icon="hugeicons:moon-02"></iconify-icon></div>
           <div style="flex:1;">
             <div style="display:flex;justify-content:space-between;align-items:flex-start;gap:8px;">
               <div style="font-size:.9rem;font-weight:700;color:var(--cream);">Idle time acima de 30% · Santo André (Qui manhã)</div>
@@ -248,18 +248,18 @@
             </div>
             <div style="font-size:.8rem;color:var(--muted);margin-top:4px;line-height:1.5;">Baias da unidade Santo André ficaram ociosas por 32% do tempo na quinta-feira manhã (07h-12h). Média histórica é de 18%. Pode indicar necessidade de ação promocional.</div>
             <div class="alert-meta">
-              <span>📍 Santo André · SP</span><span>🕐 Qui, 12:00</span><span>📉 32% idle vs 18% médio</span>
+              <span><iconify-icon icon="hugeicons:location-01"></iconify-icon> Santo André · SP</span><span><iconify-icon icon="hugeicons:clock-01"></iconify-icon> Qui, 12:00</span><span><iconify-icon icon="hugeicons:chart-decrease"></iconify-icon> 32% idle vs 18% médio</span>
             </div>
             <div class="alert-actions">
               <button class="btn-secondary" style="padding:5px 14px;font-size:.75rem;" onclick="openDrawer('idle')">Ver relatório</button>
-              <a href="./promocoes.html" class="btn-gold" style="padding:5px 14px;font-size:.75rem;display:inline-flex;align-items:center;gap:6px;">⚡ Criar promoção</a>
+              <a href="./promocoes.html" class="btn-gold" style="padding:5px 14px;font-size:.75rem;display:inline-flex;align-items:center;gap:6px;"><iconify-icon icon="hugeicons:zap"></iconify-icon> Criar promoção</a>
             </div>
           </div>
         </div>
 
         <!-- AVISO 3 -->
         <div class="alert-card warning" id="a6">
-          <div class="alert-icon warning">📲</div>
+          <div class="alert-icon warning"><iconify-icon icon="hugeicons:mobile-navigator-01"></iconify-icon></div>
           <div style="flex:1;">
             <div style="display:flex;justify-content:space-between;align-items:flex-start;gap:8px;">
               <div style="font-size:.9rem;font-weight:700;color:var(--cream);">Queda na taxa de conversão do app · Campinas</div>
@@ -267,7 +267,7 @@
             </div>
             <div style="font-size:.8rem;color:var(--muted);margin-top:4px;line-height:1.5;">Taxa de conversão de visitantes do app para lavagem caiu de 34% para 21% nos últimos 3 dias em Campinas Centro. Possível problema de UX ou conexão.</div>
             <div class="alert-meta">
-              <span>📍 Campinas · SP</span><span>🕐 Hoje, 08:30</span><span>📲 Conversão: 21% (-13pp)</span>
+              <span><iconify-icon icon="hugeicons:location-01"></iconify-icon> Campinas · SP</span><span><iconify-icon icon="hugeicons:clock-01"></iconify-icon> Hoje, 08:30</span><span><iconify-icon icon="hugeicons:mobile-navigator-01"></iconify-icon> Conversão: 21% (-13pp)</span>
             </div>
             <div class="alert-actions">
               <button class="btn-secondary" style="padding:5px 14px;font-size:.75rem;" onclick="openDrawer('conversao')">Ver detalhes</button>
@@ -278,7 +278,7 @@
 
         <!-- AVISO 4 -->
         <div class="alert-card warning" id="a7">
-          <div class="alert-icon warning">⭐</div>
+          <div class="alert-icon warning"><iconify-icon icon="hugeicons:star" style="color:#f5b301"></iconify-icon></div>
           <div style="flex:1;">
             <div style="display:flex;justify-content:space-between;align-items:flex-start;gap:8px;">
               <div style="font-size:.9rem;font-weight:700;color:var(--cream);">Queda no NPS · Osasco (-8pts em 7 dias)</div>
@@ -286,7 +286,7 @@
             </div>
             <div style="font-size:.8rem;color:var(--muted);margin-top:4px;line-height:1.5;">NPS da unidade Osasco caiu de 82 para 74 nos últimos 7 dias. 4 avaliações negativas relacionadas ao "tempo de espera no caixa". Franqueado notificado.</div>
             <div class="alert-meta">
-              <span>📍 Osasco · SP</span><span>🕐 Ontem, 20:00</span><span>⭐ NPS: 74 (-8pts)</span>
+              <span><iconify-icon icon="hugeicons:location-01"></iconify-icon> Osasco · SP</span><span><iconify-icon icon="hugeicons:clock-01"></iconify-icon> Ontem, 20:00</span><span><iconify-icon icon="hugeicons:star" style="color:#f5b301"></iconify-icon> NPS: 74 (-8pts)</span>
             </div>
             <div class="alert-actions">
               <button class="btn-secondary" style="padding:5px 14px;font-size:.75rem;" onclick="openDrawer('nps')">Ver avaliações</button>
@@ -297,7 +297,7 @@
 
         <!-- INFO 1 -->
         <div class="alert-card info" id="a8">
-          <div class="alert-icon info">🔧</div>
+          <div class="alert-icon info"><iconify-icon icon="hugeicons:wrench-01"></iconify-icon></div>
           <div style="flex:1;">
             <div style="display:flex;justify-content:space-between;align-items:flex-start;gap:8px;">
               <div style="font-size:.9rem;font-weight:700;color:var(--cream);">Manutenção preventiva agendada · Mooca</div>
@@ -305,7 +305,7 @@
             </div>
             <div style="font-size:.8rem;color:var(--muted);margin-top:4px;line-height:1.5;">Manutenção preventiva do sistema de bombas agendada para 08/06 às 06h. Previsão de duração: 2 horas. Baias 1 e 2 ficarão offline.</div>
             <div class="alert-meta">
-              <span>📍 Mooca · SP</span><span>🕐 Agendado: 08/06 06h</span>
+              <span><iconify-icon icon="hugeicons:location-01"></iconify-icon> Mooca · SP</span><span><iconify-icon icon="hugeicons:clock-01"></iconify-icon> Agendado: 08/06 06h</span>
             </div>
             <div class="alert-actions">
               <button class="btn-secondary" style="padding:5px 14px;font-size:.75rem;" onclick="openDrawer('manutencao')">Ver detalhes</button>
@@ -315,7 +315,7 @@
 
         <!-- INFO 2 -->
         <div class="alert-card info" id="a9">
-          <div class="alert-icon info">📦</div>
+          <div class="alert-icon info"><iconify-icon icon="hugeicons:package-01"></iconify-icon></div>
           <div style="flex:1;">
             <div style="display:flex;justify-content:space-between;align-items:flex-start;gap:8px;">
               <div style="font-size:.9rem;font-weight:700;color:var(--cream);">Estoque de insumos baixo · Tatuapé</div>
@@ -323,7 +323,7 @@
             </div>
             <div style="font-size:.8rem;color:var(--muted);margin-top:4px;line-height:1.5;">Shampoo concentrado abaixo do nível mínimo (8L restantes, mínimo: 20L). Pedido de reposição não foi efetuado pelo franqueado. Prazo estimado: 3 dias.</div>
             <div class="alert-meta">
-              <span>📍 Tatuapé · SP</span><span>🕐 Hoje, 07:15</span>
+              <span><iconify-icon icon="hugeicons:location-01"></iconify-icon> Tatuapé · SP</span><span><iconify-icon icon="hugeicons:clock-01"></iconify-icon> Hoje, 07:15</span>
             </div>
             <div class="alert-actions">
               <button class="btn-secondary" style="padding:5px 14px;font-size:.75rem;" onclick="notificar('Ana Souza','Tatuapé','a9')">Notificar franqueado</button>
@@ -333,7 +333,7 @@
 
         <!-- INFO 3 -->
         <div class="alert-card info" id="a10">
-          <div class="alert-icon info">📋</div>
+          <div class="alert-icon info"><iconify-icon icon="hugeicons:clipboard"></iconify-icon></div>
           <div style="flex:1;">
             <div style="display:flex;justify-content:space-between;align-items:flex-start;gap:8px;">
               <div style="font-size:.9rem;font-weight:700;color:var(--cream);">Nova franquia aprovada · Pinheiros</div>
@@ -341,7 +341,7 @@
             </div>
             <div style="font-size:.8rem;color:var(--muted);margin-top:4px;line-height:1.5;">Contrato de franquia Pinheiros foi assinado digitalmente por Bruno Alves. Previsão de abertura: 25/06. Setup inicial: R$48.000. Em análise pelo jurídico.</div>
             <div class="alert-meta">
-              <span>📍 Pinheiros · SP</span><span>🕐 Hoje, 11:40</span>
+              <span><iconify-icon icon="hugeicons:location-01"></iconify-icon> Pinheiros · SP</span><span><iconify-icon icon="hugeicons:clock-01"></iconify-icon> Hoje, 11:40</span>
             </div>
             <div class="alert-actions">
               <a href="./franqueados.html" class="btn-secondary" style="padding:5px 14px;font-size:.75rem;display:inline-flex;align-items:center;">Ver franqueados</a>
@@ -359,7 +359,7 @@
 
 <!-- ── DRAWER ── -->
 <div class="drawer" id="drawer">
-  <button class="drawer-close" onclick="closeDrawer()">✕</button>
+  <button class="drawer-close" onclick="closeDrawer()"><iconify-icon icon="hugeicons:cancel-01"></iconify-icon></button>
   <div id="drawer-body"></div>
 </div>
 
@@ -394,8 +394,8 @@ const DRAWERS = {
         <div class="drawer-section-label">Ação recomendada</div>
         <p style="font-size:.82rem;color:var(--muted);line-height:1.6;margin-bottom:12px;">O intervalo de 3min44s é suspeito mas pode ser falha de leitura. Recomenda-se bloquear temporariamente o QR e solicitar confirmação ao usuário antes de reativar.</p>
         <div style="display:flex;gap:8px;flex-wrap:wrap;">
-          <button class="btn-primary" style="font-size:.75rem;" onclick="toast('🔒 QR #M-4821 bloqueado temporariamente');closeDrawer()">Bloquear QR</button>
-          <button class="btn-secondary" style="font-size:.75rem;" onclick="toast('📧 E-mail enviado para Carlos Mendes');closeDrawer()">Contatar usuário</button>
+          <button class="btn-primary" style="font-size:.75rem;" onclick="toast('<iconify-icon icon="hugeicons:lock"></iconify-icon> QR #M-4821 bloqueado temporariamente');closeDrawer()">Bloquear QR</button>
+          <button class="btn-secondary" style="font-size:.75rem;" onclick="toast('<iconify-icon icon="hugeicons:mail-01"></iconify-icon> E-mail enviado para Carlos Mendes');closeDrawer()">Contatar usuário</button>
           <button class="btn-secondary" style="font-size:.75rem;" onclick="resolve('a1');closeDrawer()">Ignorar e resolver</button>
         </div>
       </div>`
@@ -415,15 +415,15 @@ const DRAWERS = {
       </div>
       <div class="drawer-section">
         <div class="drawer-section-label">Situação financeira</div>
-        <div class="drawer-row"><span style="color:var(--muted)">Maio/2025 (pago)</span><span style="color:#22c55e">R$ 4.850 ✓</span></div>
-        <div class="drawer-row"><span style="color:var(--muted)">Junho/2025 (vencido)</span><span style="color:var(--red)">R$ 3.240 ⚠</span></div>
+        <div class="drawer-row"><span style="color:var(--muted)">Maio/2025 (pago)</span><span style="color:#22c55e">R$ 4.850 <iconify-icon icon="hugeicons:tick-01"></iconify-icon></span></div>
+        <div class="drawer-row"><span style="color:var(--muted)">Junho/2025 (vencido)</span><span style="color:var(--red)">R$ 3.240 <iconify-icon icon="hugeicons:alert-02"></iconify-icon></span></div>
         <div class="drawer-row"><span style="color:var(--muted)">Dias em atraso</span><span style="color:var(--red)">12 dias</span></div>
         <div class="drawer-row"><span style="color:var(--muted)">Avisos enviados</span><span>2 (e-mail)</span></div>
       </div>
       <div style="display:flex;gap:8px;flex-wrap:wrap;margin-top:4px;">
         <button class="btn-primary" style="font-size:.75rem;" onclick="notificar('Rafael Torres','Guarulhos','a2');closeDrawer()">Enviar 3º aviso</button>
-        <button class="btn-secondary" style="font-size:.75rem;" onclick="toast('⚖️ Chamado jurídico aberto');closeDrawer()">Acionar jurídico</button>
-        <button class="btn-secondary" style="font-size:.75rem;" onclick="toast('🔒 Acesso suspenso temporariamente');resolve('a2');closeDrawer()">Suspender unidade</button>
+        <button class="btn-secondary" style="font-size:.75rem;" onclick="toast('<iconify-icon icon="hugeicons:justice-scale-01"></iconify-icon> Chamado jurídico aberto');closeDrawer()">Acionar jurídico</button>
+        <button class="btn-secondary" style="font-size:.75rem;" onclick="toast('<iconify-icon icon="hugeicons:lock"></iconify-icon> Acesso suspenso temporariamente');resolve('a2');closeDrawer()">Suspender unidade</button>
       </div>`
   },
   logs: {
@@ -450,7 +450,7 @@ const DRAWERS = {
       </div>
       <div style="display:flex;gap:8px;flex-wrap:wrap;margin-top:4px;">
         <button class="btn-primary" style="font-size:.75rem;" onclick="acionarTecnico('a3');closeDrawer()">Acionar técnico agora</button>
-        <button class="btn-secondary" style="font-size:.75rem;" onclick="toast('📋 Log exportado para PDF');closeDrawer()">Exportar log</button>
+        <button class="btn-secondary" style="font-size:.75rem;" onclick="toast('<iconify-icon icon="hugeicons:clipboard"></iconify-icon> Log exportado para PDF');closeDrawer()">Exportar log</button>
       </div>`
   },
   pico: {
@@ -471,7 +471,7 @@ const DRAWERS = {
         <div class="drawer-row"><span style="color:var(--muted)">Média do mês</span><span>4,8 usuários</span></div>
       </div>
       <div style="display:flex;gap:8px;flex-wrap:wrap;margin-top:4px;">
-        <button class="btn-primary" style="font-size:.75rem;" onclick="toast('📲 Push enviado: "Tatuapé com fila, tente outra unidade"');resolve('a4');closeDrawer()">Notificar usuários próximos</button>
+        <button class="btn-primary" style="font-size:.75rem;" onclick="toast('<iconify-icon icon="hugeicons:mobile-navigator-01"></iconify-icon> Push enviado: "Tatuapé com fila, tente outra unidade"');resolve('a4');closeDrawer()">Notificar usuários próximos</button>
         <button class="btn-secondary" style="font-size:.75rem;" onclick="resolve('a4');closeDrawer()">Monitorar e resolver</button>
       </div>`
   },
@@ -493,13 +493,13 @@ const DRAWERS = {
         <p style="font-size:.82rem;color:var(--muted);line-height:1.6;">Uma promoção relâmpago de "Lavagem Simples por R$12 das 7h às 10h" poderia elevar ocupação em ~30% nas quintas. Veja o histórico de promoções similares aplicadas em Mooca.</p>
       </div>
       <div style="display:flex;gap:8px;flex-wrap:wrap;margin-top:4px;">
-        <a href="./promocoes.html" class="btn-gold" style="font-size:.75rem;padding:6px 14px;display:inline-flex;align-items:center;gap:6px;">⚡ Criar promoção</a>
-        <button class="btn-secondary" style="font-size:.75rem;" onclick="toast('📧 Relatório enviado para admin@uashi.com.br');closeDrawer()">Exportar relatório</button>
+        <a href="./promocoes.html" class="btn-gold" style="font-size:.75rem;padding:6px 14px;display:inline-flex;align-items:center;gap:6px;"><iconify-icon icon="hugeicons:zap"></iconify-icon> Criar promoção</a>
+        <button class="btn-secondary" style="font-size:.75rem;" onclick="toast('<iconify-icon icon="hugeicons:mail-01"></iconify-icon> Relatório enviado para admin@uashi.com.br');closeDrawer()">Exportar relatório</button>
       </div>`
   },
   conversao: {
     title: 'Queda de conversão · Campinas',
-    sub: '34% → 21% nos últimos 3 dias',
+    sub: '34% <iconify-icon icon="hugeicons:arrow-right-01"></iconify-icon> 21% nos últimos 3 dias',
     html: `
       <div class="drawer-section">
         <div class="drawer-section-label">Funil de conversão</div>
@@ -516,21 +516,21 @@ const DRAWERS = {
         <div class="drawer-row"><span style="color:var(--muted)">Atualização do app v2.4</span><span style="color:var(--gold)">Média</span></div>
       </div>
       <div style="display:flex;gap:8px;flex-wrap:wrap;margin-top:4px;">
-        <button class="btn-primary" style="font-size:.75rem;" onclick="toast('🔍 Diagnóstico remoto iniciado em Campinas');closeDrawer()">Iniciar diagnóstico</button>
+        <button class="btn-primary" style="font-size:.75rem;" onclick="toast('<iconify-icon icon="hugeicons:search-01"></iconify-icon> Diagnóstico remoto iniciado em Campinas');closeDrawer()">Iniciar diagnóstico</button>
         <button class="btn-secondary" style="font-size:.75rem;" onclick="notificar('Marina Oliveira','Campinas','a6');closeDrawer()">Avisar franqueado</button>
       </div>`
   },
   nps: {
     title: 'Avaliações negativas · Osasco',
-    sub: 'NPS caiu de 82 → 74 · 4 avaliações recentes',
+    sub: 'NPS caiu de 82 <iconify-icon icon="hugeicons:arrow-right-01"></iconify-icon> 74 · 4 avaliações recentes',
     html: `
       <div class="drawer-section">
         <div class="drawer-section-label">Avaliações recentes (1–3 estrelas)</div>
         ${[
-          ['★★☆☆☆','Fila enorme na sexta à tarde, esperei 25 min. O espaço é bom mas precisa de mais baias.','Rodrigo F. · 09/06'],
-          ['★★★☆☆','Lavagem boa mas o caixa demorou pra liberar meu QR. Fiquei uns 10 min tentando.','Juliana M. · 08/06'],
-          ['★★☆☆☆','Segunda vez que venho e a fila demora. Meu plano pro deveria ter fila prioritária.','Carlos A. · 07/06'],
-          ['★★☆☆☆','Sistema travou e precisei sair sem lavar. Me pediram pra voltar depois. Péssimo.','Fernando T. · 06/06'],
+          ['<iconify-icon icon="hugeicons:star" style="color:#f5b301"></iconify-icon><iconify-icon icon="hugeicons:star" style="color:#f5b301"></iconify-icon><iconify-icon icon="hugeicons:star" style="color:#c9c9c9"></iconify-icon><iconify-icon icon="hugeicons:star" style="color:#c9c9c9"></iconify-icon><iconify-icon icon="hugeicons:star" style="color:#c9c9c9"></iconify-icon>','Fila enorme na sexta à tarde, esperei 25 min. O espaço é bom mas precisa de mais baias.','Rodrigo F. · 09/06'],
+          ['<iconify-icon icon="hugeicons:star" style="color:#f5b301"></iconify-icon><iconify-icon icon="hugeicons:star" style="color:#f5b301"></iconify-icon><iconify-icon icon="hugeicons:star" style="color:#f5b301"></iconify-icon><iconify-icon icon="hugeicons:star" style="color:#c9c9c9"></iconify-icon><iconify-icon icon="hugeicons:star" style="color:#c9c9c9"></iconify-icon>','Lavagem boa mas o caixa demorou pra liberar meu QR. Fiquei uns 10 min tentando.','Juliana M. · 08/06'],
+          ['<iconify-icon icon="hugeicons:star" style="color:#f5b301"></iconify-icon><iconify-icon icon="hugeicons:star" style="color:#f5b301"></iconify-icon><iconify-icon icon="hugeicons:star" style="color:#c9c9c9"></iconify-icon><iconify-icon icon="hugeicons:star" style="color:#c9c9c9"></iconify-icon><iconify-icon icon="hugeicons:star" style="color:#c9c9c9"></iconify-icon>','Segunda vez que venho e a fila demora. Meu plano pro deveria ter fila prioritária.','Carlos A. · 07/06'],
+          ['<iconify-icon icon="hugeicons:star" style="color:#f5b301"></iconify-icon><iconify-icon icon="hugeicons:star" style="color:#f5b301"></iconify-icon><iconify-icon icon="hugeicons:star" style="color:#c9c9c9"></iconify-icon><iconify-icon icon="hugeicons:star" style="color:#c9c9c9"></iconify-icon><iconify-icon icon="hugeicons:star" style="color:#c9c9c9"></iconify-icon>','Sistema travou e precisei sair sem lavar. Me pediram pra voltar depois. Péssimo.','Fernando T. · 06/06'],
         ].map(([stars,text,author]) => `
           <div style="background:var(--surface-2);border-radius:8px;padding:10px 12px;margin-bottom:8px;">
             <div style="color:var(--gold);font-size:.8rem;margin-bottom:4px;">${stars}</div>
@@ -563,7 +563,7 @@ const DRAWERS = {
         <div class="drawer-row"><span style="color:var(--muted)">Usuários notificados</span><span style="color:#22c55e">Sim — push enviado</span></div>
       </div>
       <div style="display:flex;gap:8px;flex-wrap:wrap;margin-top:4px;">
-        <button class="btn-secondary" style="font-size:.75rem;" onclick="toast('📧 Relatório de manutenção exportado');closeDrawer()">Exportar relatório</button>
+        <button class="btn-secondary" style="font-size:.75rem;" onclick="toast('<iconify-icon icon="hugeicons:mail-01"></iconify-icon> Relatório de manutenção exportado');closeDrawer()">Exportar relatório</button>
         <button class="btn-secondary" style="font-size:.75rem;" onclick="resolve('a8');closeDrawer()">Ciente · Fechar alerta</button>
       </div>`
   }
@@ -580,7 +580,7 @@ function resolve(id, btn) {
   // atualiza contador "resolvidos hoje"
   const el = document.querySelector('.alert-stat:last-child .val');
   if (el) el.textContent = String(18 + resolved);
-  toast('✓ Alerta marcado como resolvido');
+  toast('<iconify-icon icon="hugeicons:tick-01"></iconify-icon> Alerta marcado como resolvido');
 }
 
 // ── Drawer ──────────────────────────────────────────────────────────────────
@@ -602,13 +602,13 @@ function closeDrawer() {
 
 // ── Ações específicas ───────────────────────────────────────────────────────
 function notificar(nome, unidade, id) {
-  toast(`📧 Notificação enviada para ${nome} (${unidade})`);
+  toast(`<iconify-icon icon="hugeicons:mail-01"></iconify-icon> Notificação enviada para ${nome} (${unidade})`);
   setTimeout(() => resolve(id), 1200);
 }
 
 function acionarTecnico(id, btn) {
-  if (btn) btn.disabled = true, btn.textContent = 'Acionado ✓';
-  toast('🔧 Técnico acionado — previsão de chegada em 90 min');
+  if (btn) btn.disabled = true, btn.textContent = 'Acionado <iconify-icon icon="hugeicons:tick-01"></iconify-icon>';
+  toast('<iconify-icon icon="hugeicons:wrench-01"></iconify-icon> Técnico acionado — previsão de chegada em 90 min');
   setTimeout(() => resolve(id), 1400);
 }
 
@@ -625,7 +625,7 @@ function toast(msg) {
 // ── Resolver todos ───────────────────────────────────────────────────────────
 document.querySelector('button.btn-secondary').addEventListener('click', () => {
   ['a1','a2','a3','a4','a5','a6','a7','a8','a9'].forEach(id => resolve(id));
-  toast('✓ Todos os alertas marcados como resolvidos');
+  toast('<iconify-icon icon="hugeicons:tick-01"></iconify-icon> Todos os alertas marcados como resolvidos');
 });
 </script>
 </body>

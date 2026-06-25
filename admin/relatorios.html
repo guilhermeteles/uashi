@@ -20,7 +20,7 @@
     <div class="sidebar-logo"><img src="../uashi-logo.svg" alt="Uashi" style="height:28px;width:auto;display:block;" /><div class="swoosh"></div></div>
     <div class="sidebar-profile">
       <div class="sidebar-avatar">A</div>
-      <div><div class="sidebar-name">Admin Matriz</div><div class="sidebar-role">🏢 Matriz</div></div>
+      <div><div class="sidebar-name">Admin Matriz</div><div class="sidebar-role"><iconify-icon icon="hugeicons:building-01"></iconify-icon> Matriz</div></div>
     </div>
     <nav class="sidebar-nav">
       <div class="nav-section-label">Principal</div>
@@ -35,7 +35,7 @@
       <div class="nav-section-label">Conta</div>
       <a href="perfil.html" class="nav-item"><span class="nav-icon"><iconify-icon icon="hugeicons:user"></iconify-icon></span>Perfil</a>
     </nav>
-    <div class="sidebar-footer"><a href="login.html" style="font-size:.75rem;color:var(--muted);text-decoration:none;">← Sair</a></div>
+    <div class="sidebar-footer"><a href="login.html" style="font-size:.75rem;color:var(--muted);text-decoration:none;"><iconify-icon icon="hugeicons:arrow-left-01"></iconify-icon> Sair</a></div>
   </aside>
 
   <div class="main-area">
@@ -65,22 +65,22 @@
         <div class="kpi-card">
           <div class="kpi-val" style="color:var(--gold);">R$&nbsp;224K</div>
           <div class="kpi-label">Receita total</div>
-          <div class="kpi-delta up">▲ +12% vs mês anterior</div>
+          <div class="kpi-delta up"><iconify-icon icon="hugeicons:arrow-up-01"></iconify-icon> +12% vs mês anterior</div>
         </div>
         <div class="kpi-card">
           <div class="kpi-val" style="color:var(--cream);">7.840</div>
           <div class="kpi-label">Lavagens</div>
-          <div class="kpi-delta up">▲ +8%</div>
+          <div class="kpi-delta up"><iconify-icon icon="hugeicons:arrow-up-01"></iconify-icon> +8%</div>
         </div>
         <div class="kpi-card">
           <div class="kpi-val" style="color:var(--cream);">4.320</div>
           <div class="kpi-label">Assinantes</div>
-          <div class="kpi-delta up">▲ +22%</div>
+          <div class="kpi-delta up"><iconify-icon icon="hugeicons:arrow-up-01"></iconify-icon> +22%</div>
         </div>
         <div class="kpi-card">
           <div class="kpi-val" style="color:var(--cream);">R$&nbsp;28,60</div>
           <div class="kpi-label">Ticket médio</div>
-          <div class="kpi-delta up">▲ +3%</div>
+          <div class="kpi-delta up"><iconify-icon icon="hugeicons:arrow-up-01"></iconify-icon> +3%</div>
         </div>
       </div>
 
@@ -89,7 +89,7 @@
       <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:16px;margin-bottom:32px;">
 
         <div class="report-card" onclick="downloadReport('Receita por unidade')">
-          <div class="report-icon" style="background:rgba(245,168,0,.12);">💰</div>
+          <div class="report-icon" style="background:rgba(245,168,0,.12);"><iconify-icon icon="hugeicons:coins-01"></iconify-icon></div>
           <div style="font-weight:700;font-size:.9rem;color:var(--cream);margin-bottom:4px;">Receita por unidade</div>
           <div style="font-size:.75rem;color:var(--muted);margin-bottom:12px;">Faturamento detalhado por franqueado, período e modalidade.</div>
           <div style="display:flex;gap:6px;">
@@ -98,35 +98,35 @@
         </div>
 
         <div class="report-card" onclick="downloadReport('Lavagens por período')">
-          <div class="report-icon" style="background:rgba(26,111,212,.12);">🚗</div>
+          <div class="report-icon" style="background:rgba(26,111,212,.12);"><iconify-icon icon="hugeicons:car-01"></iconify-icon></div>
           <div style="font-weight:700;font-size:.9rem;color:var(--cream);margin-bottom:4px;">Lavagens por período</div>
           <div style="font-size:.75rem;color:var(--muted);margin-bottom:12px;">Volume de lavagens por tipo, unidade e horário.</div>
           <div style="display:flex;gap:6px;"><span class="tag tag-blue">CSV</span><span class="tag tag-muted">PDF</span></div>
         </div>
 
         <div class="report-card" onclick="downloadReport('Assinaturas e planos')">
-          <div class="report-icon" style="background:rgba(232,50,26,.12);">♾️</div>
+          <div class="report-icon" style="background:rgba(232,50,26,.12);"><iconify-icon icon="hugeicons:infinity-01"></iconify-icon></div>
           <div style="font-weight:700;font-size:.9rem;color:var(--cream);margin-bottom:4px;">Assinaturas e planos</div>
           <div style="font-size:.75rem;color:var(--muted);margin-bottom:12px;">Churn, retenção, MRR, novos assinantes por plano.</div>
           <div style="display:flex;gap:6px;"><span class="tag tag-red">CSV</span><span class="tag tag-muted">PDF</span></div>
         </div>
 
         <div class="report-card" onclick="downloadReport('Usuários e fidelidade')">
-          <div class="report-icon" style="background:rgba(34,197,94,.12);">⭐</div>
+          <div class="report-icon" style="background:rgba(34,197,94,.12);"><iconify-icon icon="hugeicons:star" style="color:#f5b301"></iconify-icon></div>
           <div style="font-weight:700;font-size:.9rem;color:var(--cream);margin-bottom:4px;">Usuários e fidelidade</div>
           <div style="font-size:.75rem;color:var(--muted);margin-bottom:12px;">Distribuição por nível, pontos acumulados, resgates.</div>
           <div style="display:flex;gap:6px;"><span class="tag tag-green">CSV</span><span class="tag tag-muted">PDF</span></div>
         </div>
 
         <div class="report-card" onclick="downloadReport('Royalties franqueados')">
-          <div class="report-icon" style="background:rgba(245,168,0,.12);">🏪</div>
+          <div class="report-icon" style="background:rgba(245,168,0,.12);"><iconify-icon icon="hugeicons:store-01"></iconify-icon></div>
           <div style="font-weight:700;font-size:.9rem;color:var(--cream);margin-bottom:4px;">Royalties franqueados</div>
           <div style="font-size:.75rem;color:var(--muted);margin-bottom:12px;">Tabela consolidada de royalties e fundo de marketing por unidade.</div>
           <div style="display:flex;gap:6px;"><span class="tag tag-gold">CSV</span><span class="tag tag-muted">PDF</span></div>
         </div>
 
         <div class="report-card" onclick="downloadReport('Chamados de suporte')">
-          <div class="report-icon" style="background:rgba(107,107,107,.12);">💬</div>
+          <div class="report-icon" style="background:rgba(107,107,107,.12);"><iconify-icon icon="hugeicons:message-01"></iconify-icon></div>
           <div style="font-weight:700;font-size:.9rem;color:var(--cream);margin-bottom:4px;">Chamados de suporte</div>
           <div style="font-size:.75rem;color:var(--muted);margin-bottom:12px;">SLA, categorias, tempo de resolução e satisfação.</div>
           <div style="display:flex;gap:6px;"><span class="tag tag-muted">CSV</span><span class="tag tag-muted">PDF</span></div>
@@ -141,9 +141,9 @@
           <table class="data-table">
             <thead><tr><th>Relatório</th><th>Período</th><th>Formato</th><th>Gerado em</th><th>Ações</th></tr></thead>
             <tbody>
-              <tr><td>Receita por unidade</td><td>Maio 2025</td><td><span class="tag tag-gold">CSV</span></td><td style="color:var(--muted);">11/06/2025 09:12</td><td><button class="btn-icon" onclick="alert('(protótipo) Download')">⬇</button></td></tr>
-              <tr><td>Assinaturas e planos</td><td>Maio 2025</td><td><span class="tag tag-muted">PDF</span></td><td style="color:var(--muted);">10/06/2025 14:45</td><td><button class="btn-icon" onclick="alert('(protótipo) Download')">⬇</button></td></tr>
-              <tr><td>Lavagens por período</td><td>Abril 2025</td><td><span class="tag tag-blue">CSV</span></td><td style="color:var(--muted);">02/05/2025 10:30</td><td><button class="btn-icon" onclick="alert('(protótipo) Download')">⬇</button></td></tr>
+              <tr><td>Receita por unidade</td><td>Maio 2025</td><td><span class="tag tag-gold">CSV</span></td><td style="color:var(--muted);">11/06/2025 09:12</td><td><button class="btn-icon" onclick="alert('(protótipo) Download')"><iconify-icon icon="hugeicons:arrow-down-01"></iconify-icon></button></td></tr>
+              <tr><td>Assinaturas e planos</td><td>Maio 2025</td><td><span class="tag tag-muted">PDF</span></td><td style="color:var(--muted);">10/06/2025 14:45</td><td><button class="btn-icon" onclick="alert('(protótipo) Download')"><iconify-icon icon="hugeicons:arrow-down-01"></iconify-icon></button></td></tr>
+              <tr><td>Lavagens por período</td><td>Abril 2025</td><td><span class="tag tag-blue">CSV</span></td><td style="color:var(--muted);">02/05/2025 10:30</td><td><button class="btn-icon" onclick="alert('(protótipo) Download')"><iconify-icon icon="hugeicons:arrow-down-01"></iconify-icon></button></td></tr>
             </tbody>
           </table>
         </div>

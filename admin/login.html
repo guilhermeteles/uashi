@@ -35,22 +35,22 @@
         <div class="form-label" style="margin-bottom:8px;">Acessar como</div>
         <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;" id="role-list">
           <button class="role-btn selected" onclick="selectRole(this)">
-            <div style="font-size:1.2rem;margin-bottom:4px;">🏢</div>
+            <div style="font-size:1.2rem;margin-bottom:4px;"><iconify-icon icon="hugeicons:building-01"></iconify-icon></div>
             <div style="font-size:.8rem;font-weight:700;color:var(--cream);">Matriz</div>
             <div style="font-size:.65rem;color:var(--muted);">Visão global</div>
           </button>
           <button class="role-btn" onclick="selectRole(this)">
-            <div style="font-size:1.2rem;margin-bottom:4px;">🏪</div>
+            <div style="font-size:1.2rem;margin-bottom:4px;"><iconify-icon icon="hugeicons:store-01"></iconify-icon></div>
             <div style="font-size:.8rem;font-weight:700;color:var(--cream);">Franqueado</div>
             <div style="font-size:.65rem;color:var(--muted);">Sua unidade</div>
           </button>
           <button class="role-btn" onclick="selectRole(this)">
-            <div style="font-size:1.2rem;margin-bottom:4px;">🚛</div>
+            <div style="font-size:1.2rem;margin-bottom:4px;"><iconify-icon icon="hugeicons:container-truck-01"></iconify-icon></div>
             <div style="font-size:.8rem;font-weight:700;color:var(--cream);">Frota</div>
             <div style="font-size:.65rem;color:var(--muted);">Gestão de frota</div>
           </button>
           <button class="role-btn" onclick="selectRole(this)">
-            <div style="font-size:1.2rem;margin-bottom:4px;">👤</div>
+            <div style="font-size:1.2rem;margin-bottom:4px;"><iconify-icon icon="hugeicons:user"></iconify-icon></div>
             <div style="font-size:.8rem;font-weight:700;color:var(--cream);">Usuário</div>
             <div style="font-size:.65rem;color:var(--muted);">Painel pessoal</div>
           </button>
@@ -67,12 +67,12 @@
       </div>
 
       <button class="btn-primary" onclick="goToMFA()" style="width:100%;justify-content:center;padding:12px;font-size:.875rem;border-radius:10px;">
-        Entrar →
+        Entrar <iconify-icon icon="hugeicons:arrow-right-01"></iconify-icon>
       </button>
     </div>
 
     <p style="text-align:center;font-size:.75rem;color:var(--muted);margin-top:16px;">
-      <a href="../landing/index.html" style="color:var(--muted);">← Voltar para o site</a>
+      <a href="../landing/index.html" style="color:var(--muted);"><iconify-icon icon="hugeicons:arrow-left-01"></iconify-icon> Voltar para o site</a>
     </p>
   </div>
 
@@ -96,9 +96,9 @@
       </div>
       <p style="font-size:.75rem;color:var(--muted);">Código válido por <strong style="color:var(--cream);">4:32</strong></p>
       <button class="btn-primary" onclick="window.location.href='index.html'" style="width:100%;justify-content:center;padding:12px;font-size:.875rem;border-radius:10px;">
-        Verificar e entrar →
+        Verificar e entrar <iconify-icon icon="hugeicons:arrow-right-01"></iconify-icon>
       </button>
-      <button onclick="document.getElementById('step-mfa').style.display='none';document.getElementById('step-login').style.display='block'" style="background:none;border:none;color:var(--muted);font-size:.8rem;cursor:pointer;">← Voltar</button>
+      <button onclick="document.getElementById('step-mfa').style.display='none';document.getElementById('step-login').style.display='block'" style="background:none;border:none;color:var(--muted);font-size:.8rem;cursor:pointer;"><iconify-icon icon="hugeicons:arrow-left-01"></iconify-icon> Voltar</button>
     </div>
   </div>
 

@@ -17,9 +17,9 @@
 </head>
 <body>
 <div class="app-frame" style="max-width:390px;margin:0 auto;">
-  <div class="status-bar"><span class="status-time">09:41</span><div class="status-icons"><span>●●●</span><span>WiFi</span><span>🔋</span></div></div>
+  <div class="status-bar"><span class="status-time">09:41</span><div class="status-icons"><span><iconify-icon icon="hugeicons:signal-full-01"></iconify-icon></span><span>WiFi</span><span><iconify-icon icon="hugeicons:battery-medium-01"></iconify-icon></span></div></div>
   <div class="top-bar">
-    <a href="index.html" class="top-bar-back">←</a>
+    <a href="index.html" class="top-bar-back"><iconify-icon icon="hugeicons:arrow-left-01"></iconify-icon></a>
     <span class="top-bar-title">Adicionar Créditos</span>
   </div>
   <hr class="swoosh" />
@@ -43,7 +43,7 @@
           <button class="amount-btn" onclick="selectAmt(this,'100')"><div style="font-family:var(--font-display);font-size:1.3rem;color:var(--cream);">R$ 100</div><div style="font-size:.65rem;color:var(--muted);">+ 15 bônus</div></button>
           <button class="amount-btn" onclick="selectAmt(this,'150')"><div style="font-family:var(--font-display);font-size:1.3rem;color:var(--cream);">R$ 150</div><div style="font-size:.65rem;color:var(--muted);">+ 30 bônus</div></button>
           <button class="amount-btn" onclick="selectAmt(this,'200')"><div style="font-family:var(--font-display);font-size:1.3rem;color:var(--cream);">R$ 200</div><div style="font-size:.65rem;color:var(--muted);">+ 50 bônus</div></button>
-          <button class="amount-btn" onclick="openCustom()"><div style="font-size:1.2rem;">✏️</div><div style="font-size:.65rem;color:var(--muted);">Outro valor</div></button>
+          <button class="amount-btn" onclick="openCustom()"><div style="font-size:1.2rem;"><iconify-icon icon="hugeicons:pencil-edit-01"></iconify-icon></div><div style="font-size:.65rem;color:var(--muted);">Outro valor</div></button>
         </div>
         <div id="custom-wrap" style="display:none;">
           <input type="number" class="form-input" placeholder="R$ 0,00" min="10" step="10" style="text-align:center;font-size:1.1rem;font-weight:700;" />
@@ -55,7 +55,7 @@
         <div style="font-size:.72rem;font-weight:600;color:var(--muted);text-transform:uppercase;letter-spacing:.08em;margin-bottom:10px;">Forma de pagamento</div>
         <div style="display:flex;flex-direction:column;gap:8px;">
           <label class="pay-method selected" onclick="selectPay(this)">
-            <span style="font-size:1.4rem;">💳</span>
+            <span style="font-size:1.4rem;"><iconify-icon icon="hugeicons:credit-card"></iconify-icon></span>
             <div style="flex:1;">
               <div style="font-weight:600;font-size:.875rem;color:var(--cream);">Cartão de crédito</div>
               <div style="font-size:.75rem;color:var(--muted);">Mastercard •••• 4821</div>
@@ -63,7 +63,7 @@
             <div style="width:20px;height:20px;border-radius:50%;border:2px solid var(--blue);display:flex;align-items:center;justify-content:center;"><div style="width:10px;height:10px;border-radius:50%;background:var(--blue);"></div></div>
           </label>
           <label class="pay-method" onclick="selectPay(this)">
-            <span style="font-size:1.4rem;">🟢</span>
+            <span style="font-size:1.4rem;"><iconify-icon icon="hugeicons:circle" style="color:#28a745"></iconify-icon></span>
             <div style="flex:1;">
               <div style="font-weight:600;font-size:.875rem;color:var(--cream);">Pix</div>
               <div style="font-size:.75rem;color:var(--muted);">Aprovação instantânea</div>
@@ -71,7 +71,7 @@
             <div style="width:20px;height:20px;border-radius:50%;border:2px solid rgba(255,255,255,.2);"></div>
           </label>
           <label class="pay-method" onclick="selectPay(this)">
-            <span style="font-size:1.4rem;">💳</span>
+            <span style="font-size:1.4rem;"><iconify-icon icon="hugeicons:credit-card"></iconify-icon></span>
             <div style="flex:1;">
               <div style="font-weight:600;font-size:.875rem;color:var(--cream);">Débito</div>
               <div style="font-size:.75rem;color:var(--muted);">Adicionar cartão</div>
@@ -100,7 +100,7 @@
   <nav class="tab-bar">
     <a href="index.html" class="tab-item"><span class="tab-icon"><iconify-icon icon="hugeicons:home-01"></iconify-icon></span><span class="tab-label">Home</span></a>
     <a href="mapa.html" class="tab-item"><span class="tab-icon"><iconify-icon icon="hugeicons:location-01"></iconify-icon></span><span class="tab-label">Lojas</span></a>
-    <a href="qrcode.html" class="tab-qr"><div class="tab-qr-btn">🔲</div></a>
+    <a href="qrcode.html" class="tab-qr"><div class="tab-qr-btn"><iconify-icon icon="hugeicons:qr-code-01"></iconify-icon></div></a>
     <a href="historico.html" class="tab-item"><span class="tab-icon"><iconify-icon icon="hugeicons:task-01"></iconify-icon></span><span class="tab-label">Histórico</span></a>
     <a href="conta.html" class="tab-item"><span class="tab-icon"><iconify-icon icon="hugeicons:user"></iconify-icon></span><span class="tab-label">Conta</span></a>
   </nav>

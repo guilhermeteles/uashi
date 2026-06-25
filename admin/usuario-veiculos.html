@@ -14,7 +14,7 @@
     <div class="sidebar-logo"><img src="../uashi-logo.svg" alt="Uashi" style="height:28px;width:auto;display:block;" /><div class="swoosh"></div></div>
     <div class="sidebar-profile">
       <div class="sidebar-avatar" style="background:var(--red);">C</div>
-      <div><div class="sidebar-name">Carlos Mendes</div><div class="sidebar-role">👤 Usuário · Plano Pro</div></div>
+      <div><div class="sidebar-name">Carlos Mendes</div><div class="sidebar-role"><iconify-icon icon="hugeicons:user"></iconify-icon> Usuário · Plano Pro</div></div>
     </div>
     <nav class="sidebar-nav">
       <div class="nav-section-label">Minha conta</div>
@@ -27,7 +27,7 @@
       <a href="perfil.html" class="nav-item"><span class="nav-icon"><iconify-icon icon="hugeicons:user"></iconify-icon></span>Perfil</a>
     </nav>
     <div class="sidebar-footer">
-      <a href="../app/index.html" style="font-size:.75rem;color:var(--blue);text-decoration:none;">← Voltar ao app</a>
+      <a href="../app/index.html" style="font-size:.75rem;color:var(--blue);text-decoration:none;"><iconify-icon icon="hugeicons:arrow-left-01"></iconify-icon> Voltar ao app</a>
     </div>
   </aside>
 
@@ -56,11 +56,11 @@
         <div class="card" style="padding:20px;border-color:rgba(245,168,0,.3);">
           <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:16px;">
             <div>
-              <span class="tag tag-gold" style="margin-bottom:8px;display:inline-block;">Principal ⭐</span>
+              <span class="tag tag-gold" style="margin-bottom:8px;display:inline-block;">Principal <iconify-icon icon="hugeicons:star" style="color:#f5b301"></iconify-icon></span>
               <div style="font-family:var(--font-display);font-size:1.5rem;color:var(--cream);">HONDA HR-V</div>
               <div style="font-size:.8rem;color:var(--muted);margin-top:2px;">Placa: ABC-1234 · Cinza · 2022</div>
             </div>
-            <div style="font-size:2rem;">🚙</div>
+            <div style="font-size:2rem;"><iconify-icon icon="hugeicons:car-02"></iconify-icon></div>
           </div>
           <div style="display:flex;gap:12px;font-size:.8rem;color:var(--muted);margin-bottom:16px;">
             <div><span style="color:var(--cream);font-weight:700;">14</span> lavagens este mês</div>
@@ -68,7 +68,7 @@
           </div>
           <div style="display:flex;gap:8px;">
             <button class="btn-secondary" style="flex:1;font-size:.72rem;" onclick="alert('(protótipo) Editar veículo')">Editar</button>
-            <button class="btn-secondary" style="font-size:.72rem;" onclick="alert('(protótipo) Ver histórico de lavagens')">📊 Histórico</button>
+            <button class="btn-secondary" style="font-size:.72rem;" onclick="alert('(protótipo) Ver histórico de lavagens')"><iconify-icon icon="hugeicons:analytics-01"></iconify-icon> Histórico</button>
           </div>
         </div>
 
@@ -80,7 +80,7 @@
               <div style="font-family:var(--font-display);font-size:1.5rem;color:var(--cream);">VW GOL</div>
               <div style="font-size:.8rem;color:var(--muted);margin-top:2px;">Placa: DEF-5678 · Branco · 2019</div>
             </div>
-            <div style="font-size:2rem;">🚗</div>
+            <div style="font-size:2rem;"><iconify-icon icon="hugeicons:car-01"></iconify-icon></div>
           </div>
           <div style="display:flex;gap:12px;font-size:.8rem;color:var(--muted);margin-bottom:16px;">
             <div><span style="color:var(--cream);font-weight:700;">3</span> lavagens este mês</div>
@@ -88,8 +88,8 @@
           </div>
           <div style="display:flex;gap:8px;">
             <button class="btn-secondary" style="flex:1;font-size:.72rem;" onclick="alert('(protótipo) Editar veículo')">Editar</button>
-            <button class="btn-secondary" style="font-size:.72rem;" onclick="alert('(protótipo) Definir como principal')">⭐ Principal</button>
-            <button class="btn-icon" onclick="if(confirm('Remover VW Gol?')) alert('(protótipo) Veículo removido')">🗑</button>
+            <button class="btn-secondary" style="font-size:.72rem;" onclick="alert('(protótipo) Definir como principal')"><iconify-icon icon="hugeicons:star" style="color:#f5b301"></iconify-icon> Principal</button>
+            <button class="btn-icon" onclick="if(confirm('Remover VW Gol?')) alert('(protótipo) Veículo removido')"><iconify-icon icon="hugeicons:delete-02"></iconify-icon></button>
           </div>
         </div>
 
@@ -129,7 +129,7 @@
   <div style="background:var(--surface);border:1px solid rgba(255,255,255,.08);border-radius:16px;padding:24px;width:420px;max-width:calc(100vw - 40px);">
     <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:20px;">
       <span style="font-family:var(--font-display);font-size:1.2rem;color:var(--cream);">ADICIONAR VEÍCULO</span>
-      <button onclick="document.getElementById('add-modal').style.display='none'" style="background:none;border:none;color:var(--muted);font-size:1.2rem;cursor:pointer;">✕</button>
+      <button onclick="document.getElementById('add-modal').style.display='none'" style="background:none;border:none;color:var(--muted);font-size:1.2rem;cursor:pointer;"><iconify-icon icon="hugeicons:cancel-01"></iconify-icon></button>
     </div>
     <div style="display:flex;flex-direction:column;gap:14px;">
       <div class="form-group"><label class="form-label">Placa</label><input class="form-input" type="text" placeholder="AAA-0000" /></div>
