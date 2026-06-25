@@ -40,6 +40,7 @@ body {
   color: var(--cream);
   font-family: var(--font-body);
   line-height: 1.6;
+  overflow-x: hidden;
   -webkit-font-smoothing: antialiased;
 }
 
@@ -61,21 +62,30 @@ body {
     0.105em 0.105em 0 rgba(6,120,191,0.9);
 }
 
-/* ── Swoosh divider ───────────────────────────────────────── */
+/* ── Swoosh divider: eco em camadas (mesma técnica do .destaque) ── */
 .swoosh {
-  height: 3px;
-  background: var(--swoosh);
+  height: 2px;
+  background: var(--cream);
   border: none;
   width: 100%;
   display: block;
+  box-shadow:
+    2px 3px 0 0 var(--gold),
+    4px 6px 0 0 var(--red),
+    6px 9px 0 0 rgba(6,120,191,0.85);
+  margin-bottom: 11px;
 }
 
 .swoosh-sm {
-  height: 3px;
-  background: var(--swoosh);
+  height: 2px;
+  background: var(--cream);
   width: 60px;
   display: block;
-  border-radius: 2px;
+  box-shadow:
+    2px 3px 0 0 var(--gold),
+    4px 6px 0 0 var(--red),
+    6px 9px 0 0 rgba(6,120,191,0.85);
+  margin-bottom: 11px;
 }
 
 /* ── Typography helpers ───────────────────────────────────── */

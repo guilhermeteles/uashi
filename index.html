@@ -11,12 +11,12 @@
       --font-display:'Bebas Neue',sans-serif;
     }
     * { box-sizing:border-box; margin:0; padding:0; }
-    body { background:var(--bg); color:var(--cream); font-family:'Inter',sans-serif; min-height:100vh; }
+    body { background:var(--bg); color:var(--cream); font-family:'Inter',sans-serif; min-height:100vh; overflow-x:hidden; }
 
     /* ── header ── */
     header { padding:48px 40px 0; max-width:1100px; margin:0 auto; }
     .logo { height:36px; width:auto; display:block; margin-bottom:20px; }
-    .swoosh { height:3px; background:linear-gradient(90deg,var(--red),var(--gold),var(--blue)); border:none; border-radius:2px; margin:20px 0 32px; }
+    .swoosh { height:2px; background:var(--cream); border:none; width:60px; box-shadow:2px 3px 0 0 var(--gold),4px 6px 0 0 var(--red),6px 9px 0 0 rgba(6,120,191,.85); margin:20px 0 40px; }
     .headline { font-family:var(--font-display); font-size:clamp(1.6rem,3vw,2.4rem); letter-spacing:.04em; color:var(--cream); line-height:1; margin-bottom:6px; }
     .subline { font-size:.85rem; color:var(--muted); }
 
