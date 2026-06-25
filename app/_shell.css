@@ -13,6 +13,7 @@
   --swoosh:    linear-gradient(90deg, #F21D1D 0%, #F2A007 50%, #0678BF 100%);
   --font-display: 'Bebas Neue', sans-serif;
   --font-body:    'Inter', sans-serif;
+  --ease-out: cubic-bezier(0.23, 1, 0.32, 1);
   --tab-h: 68px;
   --topbar-h: 56px;
 }
@@ -37,7 +38,7 @@ body {
   min-height: 100vh;
   background: linear-gradient(-45deg, #00102b, #011c50, #02326f, #011a4a, #00102b);
   background-size: 400% 400%;
-  animation: uashiFlow 22s ease-in-out infinite;
+  animation: uashiFlow 22s linear infinite;
   position: relative;
   display: flex;
   flex-direction: column;
@@ -196,6 +197,10 @@ h1,h2,h3 { font-family: var(--font-display); letter-spacing: .02em; line-height:
   cursor: pointer; text-decoration: none; width: 100%;
   transition: filter .2s; letter-spacing: .03em; text-transform: uppercase;
 }
+.btn-primary:active, .btn-secondary:active, .btn-gold:active { transform: scale(0.97); }
+.btn-primary { transition: filter .2s, transform .15s var(--ease-out); }
+.btn-secondary { transition: border-color .2s, transform .15s var(--ease-out); }
+.btn-gold { transition: filter .2s, transform .15s var(--ease-out); }
 .btn-primary:hover { filter: brightness(1.1); }
 .btn-secondary {
   display: flex; align-items: center; justify-content: center; gap: 8px;

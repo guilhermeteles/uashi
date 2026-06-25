@@ -10,6 +10,7 @@
   --blue:      #0678BF;
   --cream:     #F2F1E9;
   --muted:     #7ba3c8;
+  --ease-out: cubic-bezier(0.23, 1, 0.32, 1);
   --sidebar-w: 220px;
   --topbar-h:  56px;
   --font-display: 'Bebas Neue', sans-serif;
@@ -22,7 +23,7 @@ body {
   background: linear-gradient(-45deg, #00102b, #011c50, #02326f, #011a4a, #00102b);
   background-size: 400% 400%;
   background-attachment: fixed;
-  animation: uashiFlow 22s ease-in-out infinite;
+  animation: uashiFlow 22s linear infinite;
   color: var(--cream); font-family: var(--font-body);
   overflow-x: hidden;
 }
@@ -109,6 +110,8 @@ body {
 
 /* ── Buttons ── */
 .btn-primary { display: inline-flex; align-items: center; gap: 8px; background: var(--red); color: #fff; font-family: var(--font-body); font-weight: 700; font-size: .8rem; padding: 10px 20px; border-radius: 8px; border: none; cursor: pointer; text-decoration: none; transition: filter .2s; letter-spacing: .04em; text-transform: uppercase; }
+.btn-primary:active, .btn-secondary:active, .btn-gold:active { transform: scale(0.97); }
+.btn-primary, .btn-secondary, .btn-gold { transition: filter .2s, border-color .2s, transform .15s var(--ease-out); }
 .btn-primary:hover { filter: brightness(1.1); }
 .btn-secondary { display: inline-flex; align-items: center; gap: 8px; background: var(--surface-2); color: var(--cream); font-family: var(--font-body); font-weight: 600; font-size: .8rem; padding: 9px 18px; border-radius: 8px; border: 1.5px solid rgba(255,255,255,.1); cursor: pointer; text-decoration: none; transition: border-color .2s; letter-spacing: .04em; text-transform: uppercase; }
 .btn-secondary:hover { border-color: rgba(255,255,255,.3); }

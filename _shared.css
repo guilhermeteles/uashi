@@ -20,6 +20,9 @@
   /* Typography */
   --font-display: 'Bebas Neue', sans-serif;
   --font-body:    'Inter', sans-serif;
+
+  /* Easing (curvas fortes — animations.dev) */
+  --ease-out: cubic-bezier(0.23, 1, 0.32, 1);
 }
 
 *, *::before, *::after {
@@ -36,7 +39,7 @@ body {
   background: linear-gradient(-45deg, #00102b, #011c50, #02326f, #011a4a, #00102b);
   background-size: 400% 400%;
   background-attachment: fixed;
-  animation: uashiFlow 22s ease-in-out infinite;
+  animation: uashiFlow 22s linear infinite;
   color: var(--cream);
   font-family: var(--font-body);
   line-height: 1.6;
@@ -108,11 +111,12 @@ h1, h2, h3 { font-family: var(--font-display); letter-spacing: 0.02em; line-heig
   border: none;
   cursor: pointer;
   text-decoration: none;
-  transition: filter 0.2s, transform 0.15s;
+  transition: filter 0.2s, transform 0.15s var(--ease-out);
   letter-spacing: 0.03em;
   text-transform: uppercase;
 }
 .btn-primary:hover { filter: brightness(1.12); transform: translateY(-1px); }
+.btn-primary:active { transform: scale(0.97); }
 
 .btn-secondary {
   display: inline-flex;
@@ -132,7 +136,9 @@ h1, h2, h3 { font-family: var(--font-display); letter-spacing: 0.02em; line-heig
   letter-spacing: 0.03em;
   text-transform: uppercase;
 }
+.btn-secondary { transition: border-color 0.2s, color 0.2s, transform 0.15s var(--ease-out); }
 .btn-secondary:hover { border-color: var(--cream); color: #fff; }
+.btn-secondary:active { transform: scale(0.97); }
 
 .btn-gold {
   display: inline-flex;
@@ -148,11 +154,12 @@ h1, h2, h3 { font-family: var(--font-display); letter-spacing: 0.02em; line-heig
   border: none;
   cursor: pointer;
   text-decoration: none;
-  transition: filter 0.2s, transform 0.15s;
+  transition: filter 0.2s, transform 0.15s var(--ease-out);
   letter-spacing: 0.03em;
   text-transform: uppercase;
 }
 .btn-gold:hover { filter: brightness(1.1); transform: translateY(-1px); }
+.btn-gold:active { transform: scale(0.97); }
 
 /* ── Card base ────────────────────────────────────────────── */
 .card {
