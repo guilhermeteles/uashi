@@ -181,6 +181,42 @@
     .sglow.g-gold::before  { background:radial-gradient(circle, rgba(242,160,7,.13), transparent 68%);  top:-220px; left:-160px; }
     .sglow.g-green::before { background:radial-gradient(circle, rgba(34,197,94,.12), transparent 68%);  top:-220px; left:-160px; }
     .sglow.g-red::before   { background:radial-gradient(circle, rgba(242,29,29,.13), transparent 68%);  bottom:-220px; right:-160px; }
+
+    /* ── Túnel de lava-jato (Como Funciona) ── */
+    .tunnel { display:flex; align-items:stretch; gap:20px; }
+    .tunnel-lane { flex:1; position:relative; padding-top:6px; }
+    .tunnel-side { display:flex; flex-direction:column; justify-content:space-around; gap:22px; padding:6px 0; flex-shrink:0; }
+    .brush { width:76px; height:76px; border-radius:50%; position:relative; flex-shrink:0; box-shadow:0 0 34px rgba(6,120,191,.28); }
+    .brush::before { content:""; position:absolute; inset:0; border-radius:50%;
+      background:repeating-conic-gradient(from 0deg, rgba(6,120,191,.95) 0 6deg, rgba(242,241,233,.20) 6deg 12deg);
+      animation:brushspin 2.2s linear infinite; will-change:transform; }
+    .brush::after { content:""; position:absolute; inset:32%; border-radius:50%; background:var(--surface-2); box-shadow:0 0 0 3px rgba(255,255,255,.08) inset; }
+    .tunnel-side.right .brush::before { animation-direction:reverse; }
+    @keyframes brushspin { to { transform:rotate(360deg); } }
+
+    /* sprays de água caindo do topo */
+    .sprays { position:absolute; top:-2px; left:6%; right:6%; height:0; z-index:0; pointer-events:none; }
+    .sprays i { position:absolute; top:0; width:2px; height:14px; background:linear-gradient(rgba(255,255,255,.55), transparent); border-radius:2px; animation:spray 1.7s linear infinite; }
+    .sprays i:nth-child(1){ left:6%;  animation-delay:0s; }
+    .sprays i:nth-child(2){ left:24%; animation-delay:.5s; }
+    .sprays i:nth-child(3){ left:42%; animation-delay:.9s; }
+    .sprays i:nth-child(4){ left:60%; animation-delay:.3s; }
+    .sprays i:nth-child(5){ left:78%; animation-delay:1.2s; }
+    .sprays i:nth-child(6){ left:92%; animation-delay:.7s; }
+    @keyframes spray { 0%{ transform:translateY(0); opacity:0; } 18%{ opacity:1; } 100%{ transform:translateY(64px); opacity:0; } }
+
+    /* esteira em movimento */
+    .conveyor { height:14px; margin-top:24px; border-radius:4px; overflow:hidden; border:1px solid rgba(255,255,255,.06);
+      background:repeating-linear-gradient(90deg, #02132f 0 18px, #06214d 18px 36px); animation:convey 1.1s linear infinite; }
+    @keyframes convey { to { background-position:36px 0; } }
+
+    @media (max-width:860px){
+      .tunnel-side { display:none; }
+      .tunnel { gap:0; }
+    }
+    @media (prefers-reduced-motion: reduce){
+      .brush::before, .sprays i, .conveyor { animation:none; }
+    }
   </style>
   <script src="https://code.iconify.design/iconify-icon/2.1.0/iconify-icon.min.js"></script>
 </head>
@@ -307,49 +343,31 @@
 ════════════════════════════════════════════════════════════ -->
 <section id="como-funciona" class="section sglow g-blue">
   <div class="container">
-    <div style="text-align:center;margin-bottom:48px;">
+    <div style="text-align:center;margin-bottom:44px;">
       <span class="tag tag-blue" style="margin-bottom:12px;">Simples assim</span>
       <h2 style="font-size:clamp(2.2rem,5vw,3.5rem);color:var(--cream);">COMO FUNCIONA</h2>
-      <p style="color:var(--muted);font-size:.9rem;margin-top:10px;">Do volante ao carro limpo em menos de 5 minutos.</p>
+      <p style="color:var(--muted);font-size:.9rem;margin-top:10px;">Do volante ao carro limpo em menos de 5 minutos — como passar por um túnel de lavagem.</p>
     </div>
 
-    <div class="steps" id="steps">
-      <div class="steps-line"><div class="steps-line-fill" id="stepsFill"></div></div>
+    <div class="tunnel">
+      <div class="tunnel-side left" aria-hidden="true"><span class="brush"></span><span class="brush"></span><span class="brush"></span></div>
+      <div class="tunnel-lane">
+        <!-- sprays -->
+        <div class="sprays" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i></div>
 
-      <button class="step is-active" data-i="0">
-        <span class="step-dot"><iconify-icon icon="hugeicons:car-01"></iconify-icon></span>
-        <span class="step-body"><span class="step-k">Passo 1</span>
-        <span class="step-t">CHEGOU</span>
-        <span class="step-d">Dirija até uma unidade Uashi. Sem agendamento, sem fila.</span></span>
-      </button>
+        <div class="steps" id="steps">
+          <div class="steps-line"><div class="steps-line-fill" id="stepsFill"></div></div>
+          <button class="step is-active" data-i="0"><span class="step-dot"><iconify-icon icon="hugeicons:car-01"></iconify-icon></span><span class="step-body"><span class="step-k">Passo 1</span><span class="step-t">CHEGOU</span><span class="step-d">Dirija até uma unidade Uashi. Sem agendamento, sem fila.</span></span></button>
+          <button class="step" data-i="1"><span class="step-dot"><iconify-icon icon="hugeicons:mobile-navigator-01"></iconify-icon></span><span class="step-body"><span class="step-k">Passo 2</span><span class="step-t">ABRIU O APP</span><span class="step-d">Selecione o tipo de lavagem e seu veículo no app.</span></span></button>
+          <button class="step" data-i="2"><span class="step-dot"><iconify-icon icon="hugeicons:qr-code-01"></iconify-icon></span><span class="step-body"><span class="step-k">Passo 3</span><span class="step-t">GEROU O QR</span><span class="step-d">Mostre o QR code para o leitor na entrada da esteira.</span></span></button>
+          <button class="step" data-i="3"><span class="step-dot"><iconify-icon icon="hugeicons:car-01"></iconify-icon></span><span class="step-body"><span class="step-k">Passo 4</span><span class="step-t">PASSOU PELA ESTEIRA</span><span class="step-d">Mantenha o ponto morto. A esteira cuida do resto.</span></span></button>
+          <button class="step" data-i="4"><span class="step-dot"><iconify-icon icon="hugeicons:checkmark-circle-02"></iconify-icon></span><span class="step-body"><span class="step-k">Passo 5</span><span class="step-t">FOI EMBORA</span><span class="step-d">Carro limpo em menos de 5 minutos. Pronto!</span></span></button>
+        </div>
 
-      <button class="step" data-i="1">
-        <span class="step-dot"><iconify-icon icon="hugeicons:mobile-navigator-01"></iconify-icon></span>
-        <span class="step-body"><span class="step-k">Passo 2</span>
-        <span class="step-t">ABRIU O APP</span>
-        <span class="step-d">Selecione o tipo de lavagem e seu veículo no app.</span></span>
-      </button>
-
-      <button class="step" data-i="2">
-        <span class="step-dot"><iconify-icon icon="hugeicons:qr-code-01"></iconify-icon></span>
-        <span class="step-body"><span class="step-k">Passo 3</span>
-        <span class="step-t">GEROU O QR</span>
-        <span class="step-d">Mostre o QR code para o leitor na entrada da esteira.</span></span>
-      </button>
-
-      <button class="step" data-i="3">
-        <span class="step-dot"><iconify-icon icon="hugeicons:car-01"></iconify-icon></span>
-        <span class="step-body"><span class="step-k">Passo 4</span>
-        <span class="step-t">PASSOU PELA ESTEIRA</span>
-        <span class="step-d">Mantenha o ponto morto. A esteira cuida do resto.</span></span>
-      </button>
-
-      <button class="step" data-i="4">
-        <span class="step-dot"><iconify-icon icon="hugeicons:checkmark-circle-02"></iconify-icon></span>
-        <span class="step-body"><span class="step-k">Passo 5</span>
-        <span class="step-t">FOI EMBORA</span>
-        <span class="step-d">Carro limpo em menos de 5 minutos. Pronto!</span></span>
-      </button>
+        <!-- esteira -->
+        <div class="conveyor" aria-hidden="true"></div>
+      </div>
+      <div class="tunnel-side right" aria-hidden="true"><span class="brush"></span><span class="brush"></span><span class="brush"></span></div>
     </div>
   </div>
 </section>
