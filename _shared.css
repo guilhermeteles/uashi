@@ -7,14 +7,15 @@
   --bg:        #011c50;
   --surface:   #013272;
   --surface-2: #01408a;
-  --red:       #E8321A;
-  --gold:      #F5A800;
-  --blue:      #037BC9;
-  --cream:     #F0E8D0;
+  --red:       #F21D1D;
+  --gold:      #F2A007;
+  --blue:      #0678BF;
+  --cream:     #F2F1E9;
+  --black:     #0D0D0D;
   --muted:     #7ba3c8;
 
   /* Swoosh gradient */
-  --swoosh: linear-gradient(90deg, #E8321A 0%, #F5A800 50%, #037BC9 100%);
+  --swoosh: linear-gradient(90deg, #F21D1D 0%, #F2A007 50%, #0678BF 100%);
 
   /* Typography */
   --font-display: 'Bebas Neue', sans-serif;
@@ -49,6 +50,15 @@ body {
 }
 @media (prefers-reduced-motion: reduce) {
   body { animation: none; }
+}
+
+/* ── Texto de destaque: eco em camadas nas cores da marca ── */
+.destaque {
+  color: var(--cream);
+  text-shadow:
+    -0.03em 0 0 var(--red),
+    -0.06em 0 0 var(--gold),
+    -0.09em 0 0 rgba(6,120,191,0.7);
 }
 
 /* ── Swoosh divider ───────────────────────────────────────── */
