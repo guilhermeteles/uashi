@@ -28,7 +28,7 @@
 
 ## LANDING (em andamento)
 
-- [~] `landing/index.html` — Home pública (em andamento: stepper interativo no "Como Funciona" + sistema de diferenciação de seções (ritmo de bandas transparente↔surface + glow de canto por seção); túnel de lava-jato no Como Funciona (escovas giratórias); cards de Lavagem Avulsa com spotlight + borda gradiente animada)
+- [x] `landing/index.html` — Home pública (✓ polish concluído: stepper interativo no "Como Funciona" + sistema de diferenciação de seções (ritmo de bandas transparente↔surface + glow de canto por seção); túnel de lava-jato no Como Funciona (escovas giratórias); cards de Lavagem Avulsa brancos com spotlight azul + borda gradiente; seção Baixe o App com app real (iframe) + pattern de pontos; Lavagem Avulsa com fundo carvão)
 - [ ] `landing/cadastro.html` — Criar conta
 - [ ] `landing/franquia.html` — Seja franqueado
 - [x] `landing/frota.html` — **NOVA**: landing para frotistas (criada ✓ — hero, vantagens, como funciona, planos, formulário B2B)
@@ -47,4 +47,4 @@
 ---
 
 ## Log de sessões
-- 2026-06-25: criado tracker; foco = polish+consistência; criada landing/frota.html e linkada na nav. Em andamento: landing/index.html — seção "Como Funciona" reescrita como stepper interativo. Próximo: hero/preços/planos/FAQ da home.
+- 2026-06-25: criado tracker; foco = polish+consistência; criada landing/frota.html e linkada na nav. landing/index.html CONCLUÍDA (túnel, seções diferenciadas, cards brancos, app real, fundos variados). Próximo: landing/cadastro.html e landing/franquia.html.
