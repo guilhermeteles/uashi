@@ -1,0 +1,128 @@
+@property --ang {
+  syntax: '<angle>';
+  initial-value: 0deg;
+  inherits: false;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 20px;
+}
+
+.card {
+  background: #ffffff;
+  color: #0d0d0d;
+  border: 1px solid rgba(0, 0, 0, 0.06);
+  border-radius: 16px;
+  padding: 28px 24px;
+  text-align: center;
+  transition:
+    transform 0.25s var(--ease-out),
+    box-shadow 0.25s var(--ease-out);
+  position: relative;
+  isolation: isolate;
+}
+.card > * {
+  position: relative;
+  z-index: 1;
+}
+.card::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  pointer-events: none;
+  z-index: 0;
+  background: radial-gradient(
+    260px circle at var(--mx, 50%) var(--my, -20%),
+    rgba(6, 120, 191, 0.16),
+    transparent 60%
+  );
+  opacity: 0;
+  transition: opacity 0.3s var(--ease-out);
+}
+@media (hover: hover) and (pointer: fine) {
+  .card:hover {
+    transform: translateY(-8px);
+    box-shadow:
+      0 0 0 1px rgba(6, 120, 191, 0.45),
+      0 22px 56px rgba(0, 0, 0, 0.45);
+  }
+  .card:hover::before {
+    opacity: 1;
+  }
+}
+
+.featured {
+  border: 3px solid transparent;
+  background:
+    linear-gradient(#ffffff, #ffffff) padding-box,
+    conic-gradient(from var(--ang), var(--gold), var(--red), var(--blue), var(--gold)) border-box;
+  box-shadow: 0 0 44px rgba(242, 160, 7, 0.18);
+  animation: spinborder 6s linear infinite;
+}
+@keyframes spinborder {
+  to {
+    --ang: 360deg;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .featured {
+    animation: none;
+    background:
+      linear-gradient(#ffffff, #ffffff) padding-box,
+      linear-gradient(var(--gold), var(--gold)) border-box;
+  }
+}
+
+.popular {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+}
+.icon {
+  font-size: 2.5rem;
+  margin-bottom: 12px;
+  color: #0d0d0d;
+}
+.name {
+  font-family: var(--font-display);
+  font-size: 1.4rem;
+  color: #0d0d0d;
+  margin-bottom: 4px;
+}
+.examples {
+  font-size: 0.8rem;
+  color: #6b7480;
+  margin-bottom: 20px;
+}
+.rule {
+  border: none;
+  border-top: 1px solid rgba(0, 0, 0, 0.1);
+  margin-bottom: 20px;
+}
+.prices {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.priceRow {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.priceLabel {
+  font-size: 0.85rem;
+  color: #6b7480;
+}
+.priceValue {
+  font-family: var(--font-display);
+  font-size: 1.4rem;
+}
+.note {
+  text-align: center;
+  color: var(--muted);
+  font-size: 0.8rem;
+  margin-top: 24px;
+}

@@ -1,0 +1,105 @@
+.patGrid::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  background-image: radial-gradient(rgba(255, 255, 255, 0.07) 1.5px, transparent 1.6px);
+  background-size: 26px 26px;
+  -webkit-mask-image: radial-gradient(ellipse 75% 75% at 50% 45%, #000 35%, transparent 78%);
+  mask-image: radial-gradient(ellipse 75% 75% at 50% 45%, #000 35%, transparent 78%);
+}
+.grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 64px;
+  align-items: center;
+}
+.mockups {
+  display: flex;
+  justify-content: center;
+  gap: 24px;
+}
+.title {
+  font-size: clamp(2.2rem, 4vw, 3.5rem);
+  color: var(--cream);
+  margin-bottom: 16px;
+}
+.lead {
+  color: var(--muted);
+  margin-bottom: 32px;
+  font-size: 1rem;
+}
+.badges {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-bottom: 28px;
+}
+.features {
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+.feature {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.85rem;
+  color: var(--muted);
+}
+
+.loyalty {
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(180deg, #013272, #00102b);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  padding: 34px 20px;
+}
+.loyaltyTop {
+  font-family: var(--font-display);
+  font-size: 1.4rem;
+  letter-spacing: 0.06em;
+  color: var(--cream);
+  margin-bottom: 12px;
+}
+.loyaltyPoints {
+  font-family: var(--font-display);
+  font-size: 3.2rem;
+  line-height: 1;
+  color: var(--gold);
+}
+.loyaltyLabel {
+  font-size: 0.75rem;
+  color: var(--muted);
+}
+.loyaltyBar {
+  width: 100%;
+  height: 8px;
+  border-radius: 99px;
+  background: rgba(255, 255, 255, 0.1);
+  overflow: hidden;
+  margin-top: 18px;
+}
+.loyaltyBar span {
+  display: block;
+  height: 100%;
+  border-radius: 99px;
+  background: linear-gradient(90deg, var(--red), var(--gold));
+}
+.loyaltyNext {
+  font-size: 0.72rem;
+  color: var(--muted);
+  margin-top: 10px;
+  text-align: center;
+}
+
+@media (max-width: 860px) {
+  .grid {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+}

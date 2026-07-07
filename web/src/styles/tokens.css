@@ -1,0 +1,29 @@
+/* Uashi — Design tokens (portado de _shared.css / admin/_admin.css) */
+
+:root {
+  /* Cores */
+  --bg: #011c50;
+  --surface: #013272;
+  --surface-2: #01408a;
+  --red: #f21d1d;
+  --gold: #f2a007;
+  --blue: #0678bf;
+  --cream: #f2f1e9;
+  --black: #0d0d0d;
+  --muted: #7ba3c8;
+  --green: #22c55e;
+
+  /* Swoosh gradient */
+  --swoosh: linear-gradient(90deg, #f21d1d 0%, #f2a007 50%, #0678bf 100%);
+
+  /* Tipografia */
+  --font-display: 'Bebas Neue', sans-serif;
+  --font-body: 'Inter', sans-serif;
+
+  /* Easing (curvas fortes — animations.dev) */
+  --ease-out: cubic-bezier(0.23, 1, 0.32, 1);
+
+  /* Layout dashboard */
+  --sidebar-w: 220px;
+  --topbar-h: 56px;
+}

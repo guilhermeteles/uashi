@@ -1,0 +1,70 @@
+/* Uashi — reset + base global */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+  -webkit-font-smoothing: antialiased;
+}
+
+body {
+  background: linear-gradient(-45deg, #00102b, #011c50, #02326f, #011a4a, #00102b);
+  background-size: 400% 400%;
+  background-attachment: fixed;
+  animation: uashiFlow 22s linear infinite;
+  color: var(--cream);
+  font-family: var(--font-body);
+  line-height: 1.6;
+  overflow-x: hidden;
+}
+
+@keyframes uashiFlow {
+  0%,
+  100% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  body {
+    animation: none;
+  }
+}
+
+h1,
+h2,
+h3 {
+  font-family: var(--font-display);
+  letter-spacing: 0.02em;
+  line-height: 1.05;
+}
+
+a {
+  color: inherit;
+}
+
+/* Texto de destaque: eco em camadas nas cores da marca */
+.destaque {
+  color: var(--cream);
+  text-shadow:
+    0.035em 0.035em 0 var(--gold),
+    0.07em 0.07em 0 var(--red),
+    0.105em 0.105em 0 rgba(6, 120, 191, 0.9);
+}
+
+/* Utilitário: glow em texto */
+.glow-gold {
+  text-shadow: 0 0 32px rgba(245, 168, 0, 0.4);
+}
+.glow-red {
+  text-shadow: 0 0 32px rgba(232, 50, 26, 0.4);
+}
