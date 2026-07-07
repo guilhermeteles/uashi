@@ -1,0 +1,58 @@
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  font-family: var(--font-body);
+  font-size: 0.9rem;
+  padding: 12px 24px;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+  text-decoration: none;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+  transition:
+    filter 0.2s,
+    border-color 0.2s,
+    color 0.2s,
+    transform 0.15s var(--ease-out);
+}
+.btn:active {
+  transform: scale(0.97);
+}
+.full {
+  width: 100%;
+}
+
+.primary {
+  background: var(--red);
+  color: #fff;
+  font-weight: 700;
+}
+.primary:hover {
+  filter: brightness(1.12);
+  transform: translateY(-1px);
+}
+
+.secondary {
+  background: transparent;
+  color: var(--cream);
+  font-weight: 600;
+  padding: 11px 24px;
+  border: 1.5px solid var(--muted);
+}
+.secondary:hover {
+  border-color: var(--cream);
+  color: #fff;
+}
+
+.gold {
+  background: var(--gold);
+  color: #0a0a0a;
+  font-weight: 700;
+}
+.gold:hover {
+  filter: brightness(1.1);
+  transform: translateY(-1px);
+}

@@ -1,0 +1,55 @@
+.wrap {
+  max-width: 760px;
+  margin: 0 auto;
+}
+.head {
+  text-align: center;
+  margin-bottom: 48px;
+}
+.title {
+  font-size: clamp(2.2rem, 5vw, 3.5rem);
+  color: var(--cream);
+}
+.item {
+  border-bottom: 1px solid rgba(255, 255, 255, 0.07);
+}
+.btn {
+  width: 100%;
+  text-align: left;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  color: var(--cream);
+  font-family: var(--font-body);
+  font-size: 1rem;
+  font-weight: 600;
+  padding: 20px 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+}
+.icon {
+  font-size: 1.4rem;
+  color: var(--red);
+  flex-shrink: 0;
+  transition: transform 0.3s;
+}
+.iconOpen {
+  transform: rotate(45deg);
+}
+.answer {
+  max-height: 0;
+  overflow: hidden;
+  transition:
+    max-height 0.35s ease,
+    padding 0.35s ease;
+}
+.answerOpen {
+  max-height: 400px;
+  padding-bottom: 20px;
+}
+.answer p {
+  color: var(--muted);
+  font-size: 0.9rem;
+}
