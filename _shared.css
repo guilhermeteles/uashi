@@ -36,7 +36,7 @@ html {
 }
 
 body {
-  background: linear-gradient(-45deg, #00102b, #011c50, #02326f, #011a4a, #00102b);
+  background: linear-gradient(-45deg, #000c24, #011c50, #02326f, #011a4a, #000c24);
   background-size: 400% 400%;
   background-attachment: fixed;
   animation: uashiFlow 22s linear infinite;
@@ -45,6 +45,20 @@ body {
   line-height: 1.6;
   overflow-x: hidden;
   -webkit-font-smoothing: antialiased;
+  isolation: isolate; /* stacking context para os glows do ::before ficarem sob o conteúdo */
+}
+
+/* glows fixos sobre o gradiente — profundidade sem competir com o conteúdo */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  background:
+    radial-gradient(900px 620px at 88% -8%, rgba(6,120,191,0.30), transparent 65%),
+    radial-gradient(760px 560px at -6% 106%, rgba(242,160,7,0.07), transparent 60%),
+    radial-gradient(520px 420px at 50% 115%, rgba(2,50,111,0.55), transparent 70%);
 }
 
 /* ── Animated blue background ── */
