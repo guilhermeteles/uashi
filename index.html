@@ -6,19 +6,12 @@
   <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
   <style>
     :root {
-      --bg:#011c50; --surface:#013272; --surface-2:#01408a;
-      --red:#F21D1D; --gold:#F2A007; --blue:#4db4f0; --cream:#F2F1E9; --muted:#7ba3c8;
+      --bg:#0A0A0A; --surface:#141414; --surface-2:#1E1E1E;
+      --red:#F21D1D; --gold:#F2A007; --blue:#0678BF; --cream:#F0E8D0; --muted:#6B6B6B;
       --font-display:'Bebas Neue',sans-serif;
     }
     * { box-sizing:border-box; margin:0; padding:0; }
-    body {
-      background: linear-gradient(-45deg, #000c24, #011c50, #02326f, #011a4a, #000c24);
-      background-size: 400% 400%; background-attachment: fixed;
-      animation: idxFlow 22s linear infinite;
-      color:var(--cream); font-family:'Inter',sans-serif; min-height:100vh; overflow-x:hidden;
-    }
-    @keyframes idxFlow { 0%,100% { background-position:0% 50%; } 50% { background-position:100% 50%; } }
-    @media (prefers-reduced-motion: reduce) { body { animation:none; } }
+    body { background:var(--bg); color:var(--cream); font-family:'Inter',sans-serif; min-height:100vh; overflow-x:hidden; }
 
     /* ── header ── */
     header { padding:48px 40px 0; max-width:1100px; margin:0 auto; }
